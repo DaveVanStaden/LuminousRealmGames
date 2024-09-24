@@ -114,17 +114,22 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _foam_amount: 0.3
+    - _foam_cutoff: 1
+    - _foam_scale: 40
+    - _foam_speed: 1
     - _refraction_scale: 1
-    - _refraction_speed: 0.5
-    - _refraction_strenght: 0
+    - _refraction_speed: 0.05
+    - _refraction_strenght: 0.06
     - _water_depth: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _deep_water_color: {r: 0.24738427, g: 0.008223519, b: 0.2905661, a: 0}
-    - _shallow_water_color: {r: 0.9547169, g: 0.32244205, b: 0.74507165, a: 0}
+    - _deep_water_color: {r: 0.15732735, g: 0, b: 0.83137256, a: 0.2627451}
+    - _foam_color: {r: 0.4566037, g: 0, b: 0.4137971, a: 0}
+    - _shallow_water_color: {r: 1, g: 0.53396225, b: 0.846584, a: 0.29411766}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &942056378012841936
