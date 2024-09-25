@@ -43,8 +43,8 @@ MonoBehaviour:
     y: 0
     width: 917
     height: 871
-  m_MinSize: {x: 202, y: 226}
-  m_MaxSize: {x: 4002, y: 4026}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 46
+  controlID: 48
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 47
+  controlID: 49
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 48
+  controlID: 50
   draggingID: 0
 --- !u!114 &9
 MonoBehaviour:
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 118
+  controlID: 120
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -349,8 +349,8 @@ MonoBehaviour:
     y: 0
     width: 405
     height: 1293
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -935,9 +935,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -2.9158823, y: 0.13223423, z: -294.32242}
+    m_Target: {x: -314.9192, y: -849.93585, z: -756.5249}
     speed: 2
-    m_Value: {x: -2.9158823, y: 0.13223423, z: -294.32242}
+    m_Value: {x: -314.9192, y: -849.93585, z: -756.5249}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -983,13 +983,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.009677218, y: -0.71337533, z: 0.009850955, w: -0.70063865}
+    m_Target: {x: 0.04897051, y: -0.93622667, z: 0.31630367, w: 0.1449572}
     speed: 2
-    m_Value: {x: -0.0096772695, y: -0.7133791, z: 0.009851006, w: -0.70064235}
+    m_Value: {x: 0.04897102, y: -0.93623644, z: 0.31630698, w: 0.1449587}
   m_Size:
-    m_Target: 1.2247449
+    m_Target: 707.1483
     speed: 2
-    m_Value: 1.2247449
+    m_Value: 707.1483
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1059,9 +1059,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 3685ffff
-      m_LastClickedID: -31434
-      m_ExpandedIDs: 3685fffffcfaffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: fcfaffffbaaa0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1233,7 +1233,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/EndlessRunner
+    - Assets
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1243,16 +1243,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/EndlessRunner
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\School\Jaar4\ProjectVrij3\LuminousRealmGames\LuminousRealmGames
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: bead0000
-    m_LastClickedID: 44478
-    m_ExpandedIDs: 0000000022ab0000b6ad0000
+    m_SelectedIDs: 1eab0000
+    m_LastClickedID: 43806
+    m_ExpandedIDs: 000000001eab0000acad0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1281,7 +1281,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000022ab0000
+    m_ExpandedIDs: 000000001eab0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
