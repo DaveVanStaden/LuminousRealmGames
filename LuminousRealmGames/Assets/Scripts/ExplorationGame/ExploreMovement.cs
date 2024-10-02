@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ExploreMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;         
-    [SerializeField] private float rotationSpeed = 300f;   
-    [SerializeField] private float jumpForce = 5f;         
+    [SerializeField] private float moveSpeed = 5f;     
+    [SerializeField] private float sprintSpeed = 10f;  
+    [SerializeField] private float rotationSpeed = 300f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform orientation;
     [SerializeField] private Transform player;
@@ -18,6 +18,11 @@ public class ExploreMovement : MonoBehaviour
 // Threshold to snap to a complete stop
     [SerializeField] private float stopThreshold = 0.1f;
 
+    [SerializeField] private float minJumpForce = 5f;   // Minimum jump force
+    [SerializeField] private float maxJumpForce = 15f;  // Maximum jump force
+    [SerializeField] private float maxChargeTime = 2f;  // Max time to fully charge the jump
+    private float jumpChargeTime = 0f;                  // Time spent charging the jump
+    private bool isChargingJump = false;       
 // Glide variables
     [SerializeField] private float glideFallSpeed = 1f;  // How fast the player falls while gliding
     [SerializeField] private bool isGliding = false;  // Check if player is gliding
@@ -36,6 +41,11 @@ public class ExploreMovement : MonoBehaviour
         HandleInput();
         HandleRotation();
     }
+    void FixedUpdate()
+    {
+        HandleMovement();
+        GroundCheck();
+    }
 
     private void HandleInput()
     {
@@ -44,25 +54,47 @@ public class ExploreMovement : MonoBehaviour
 
         moveInput = new Vector3(moveHorizontal, 0, moveVertical).normalized;
 
-        // Jump
-        if (Input.GetButtonDown("Jump") && (isGrounded))
+        // Start charging the jump if grounded and jump button is pressed
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isChargingJump = true;
+        }
+
+        // Continue charging while holding the jump button
+        if (Input.GetButton("Jump") && isChargingJump)
+        {
+            jumpChargeTime += Time.deltaTime;
+            jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);  // Limit charge time
+        }
+
+        // Release the jump button to perform the jump
+        if (Input.GetButtonUp("Jump") && isChargingJump && isGrounded)
+        {
+            PerformJump();
+            isChargingJump = false;  // Reset charging state after jump
         }
     }
-
-    void FixedUpdate()
+    private void PerformJump()
     {
-        HandleMovement();
-        GroundCheck();
+        // Calculate jump force based on how long the player charged
+        float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpChargeTime / maxChargeTime);
+
+        // Apply the calculated jump force
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+        // Reset charge time after jumping
+        jumpChargeTime = 0f;
     }
 
     private void HandleMovement()
     {
+        // Check if sprinting
+        float currentMoveSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+
         if (moveInput.magnitude > 0)
         {
-            // Move the player based on input
-            Vector3 moveDirection = orientation.TransformDirection(moveInput) * moveSpeed;
+            // Move the player based on input and sprint
+            Vector3 moveDirection = orientation.TransformDirection(moveInput) * currentMoveSpeed;
             rb.linearVelocity = new Vector3(moveDirection.x, rb.linearVelocity.y, moveDirection.z);
         }
         else
@@ -128,8 +160,7 @@ public class ExploreMovement : MonoBehaviour
     {
         Vector3 rayOrigin = groundCheck.position;
         isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
-
-        // Reset jump count when grounded
+        
         if (isGrounded)
         {
             isGliding = false;  // Stop gliding when grounded
