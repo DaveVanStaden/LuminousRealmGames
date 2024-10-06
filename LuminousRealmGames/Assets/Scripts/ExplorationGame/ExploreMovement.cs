@@ -2,28 +2,39 @@ using UnityEngine;
 
 public class ExploreMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;         
-    [SerializeField] private float rotationSpeed = 300f;   
-    [SerializeField] private float jumpForce = 5f;         
+    public float moveSpeed = 5f;     
+    public float sprintSpeed = 10f;  
+    [SerializeField] private float rotationSpeed = 300f;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask wallLayer;
     [SerializeField] private Transform orientation;
     [SerializeField] private Transform player;
     [SerializeField] private Transform playerObj;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform wallCheck;
+    [SerializeField] private PlayerHealth playerHealth;
+
+
     private bool isGrounded = true;
-    
-// Increased damping for faster stopping
+    private bool hasWallJumped = false;  
+    private int jumpCount = 0;             
+    private int maxJumps = 2;              
+
     [SerializeField] private float stopDamping = 10f;
-// Threshold to snap to a complete stop
     [SerializeField] private float stopThreshold = 0.1f;
 
-// Glide variables
-    [SerializeField] private float glideFallSpeed = 1f;  // How fast the player falls while gliding
-    [SerializeField] private bool isGliding = false;  // Check if player is gliding
+    [SerializeField] private float minJumpForce = 5f;
+    [SerializeField] private float maxJumpForce = 15f;
+    [SerializeField] private float maxChargeTime = 2f;
+    private float jumpChargeTime = 0f;
+    private bool isChargingJump = false;  
+
+    [SerializeField] private float glideFallSpeed = 1f;
+    private bool isGliding = false;
 
     private Vector3 moveInput;
-    
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -33,8 +44,29 @@ public class ExploreMovement : MonoBehaviour
 
     void Update()
     {
+        AdjustSpeedBasedOnState();
         HandleInput();
         HandleRotation();
+    }
+
+    void FixedUpdate()
+    {
+        HandleMovement();
+        GroundCheck();
+        WallCheck();
+    }
+    private void AdjustSpeedBasedOnState()
+    {
+        if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
+        {
+            moveSpeed = 6f;     // Set to a faster speed when injured
+            sprintSpeed = 12f;   // Adjust sprint speed when healed
+        }
+        else if (playerHealth.currentState == PlayerHealth.PlayerState.Injured)
+        {
+            moveSpeed = 4f;     // Set to a faster speed when injured
+            sprintSpeed = 7f;  // Increase sprint speed when injured
+        }
     }
 
     private void HandleInput()
@@ -43,70 +75,134 @@ public class ExploreMovement : MonoBehaviour
         float moveVertical = Input.GetAxis("Vertical");
 
         moveInput = new Vector3(moveHorizontal, 0, moveVertical).normalized;
-
-        // Jump
-        if (Input.GetButtonDown("Jump") && (isGrounded))
+        
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isChargingJump = true;
+            jumpChargeTime = 0f;  
+        }
+        
+        if (Input.GetButton("Jump") && isChargingJump)
+        {
+            jumpChargeTime += Time.deltaTime;
+            jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);  
+        }
+        
+        if (Input.GetButtonUp("Jump") && isChargingJump)
+        {
+            PerformJump();
+            isChargingJump = false;  
+        }
+        
+        if (Input.GetButtonDown("Jump") && !isGrounded && jumpCount < maxJumps && !hasWallJumped)
+        {
+            PerformJump();  
+            jumpCount++;
         }
     }
 
-    void FixedUpdate()
+    private void PerformJump()
     {
-        HandleMovement();
-        GroundCheck();
+        float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpChargeTime / maxChargeTime);
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); 
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        jumpChargeTime = 0f;
+        if (!isGrounded)
+        {
+            jumpCount++; 
+        }
+        hasWallJumped = false;
+        
+        isGliding = false;
     }
 
     private void HandleMovement()
     {
+        float currentMoveSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+
         if (moveInput.magnitude > 0)
         {
-            // Move the player based on input
-            Vector3 moveDirection = orientation.TransformDirection(moveInput) * moveSpeed;
+            Vector3 moveDirection = orientation.TransformDirection(moveInput) * currentMoveSpeed;
             rb.linearVelocity = new Vector3(moveDirection.x, rb.linearVelocity.y, moveDirection.z);
         }
         else
         {
-            // Smoothly stop the player's movement when not pressing keys
             Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
             horizontalVelocity = Vector3.Lerp(horizontalVelocity, Vector3.zero, stopDamping * Time.fixedDeltaTime);
 
             if (horizontalVelocity.magnitude < stopThreshold)
             {
-                horizontalVelocity = Vector3.zero;  // Snap to stop when slow enough
+                horizontalVelocity = Vector3.zero;
             }
 
             rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
         }
 
-        // Glide logic: activate only when in air and no longer grounded
         if (!isGrounded && rb.linearVelocity.y < 0)
         {
-            if (Input.GetButton("Jump"))  // Holding the jump button triggers the glide
+            if (Input.GetButton("Jump"))
             {
                 StartGlide();
             }
             else
             {
-                StopGlide();  // Stop gliding when the button is released
+                StopGlide();
             }
         }
 
-        // Adjust the fall speed while gliding
         if (isGliding)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, -glideFallSpeed, rb.linearVelocity.z);
         }
     }
+
     private void StartGlide()
     {
         isGliding = true;
-        // Set the fall speed to the glide speed
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, -glideFallSpeed, rb.linearVelocity.z);
     }
+
     private void StopGlide()
     {
         isGliding = false;
+    }
+
+    private void GroundCheck()
+    {
+        Vector3 rayOrigin = groundCheck.position;
+        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
+
+        if (isGrounded)
+        {
+            isGliding = false;
+            jumpCount = 0;
+            hasWallJumped = false;  
+        }
+    }
+
+    private void WallCheck()
+    {
+        if (!isGrounded)
+        {
+            Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
+            float wallCheckDistance = 0.5f;
+
+            foreach (var direction in directions)
+            {
+                if (Physics.Raycast(wallCheck.position, direction, wallCheckDistance, wallLayer))
+                {
+                    
+                    if (!hasWallJumped)
+                    {
+                        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); 
+                        PerformJump(); 
+                        jumpCount++;    
+                        hasWallJumped = true;  
+                        break;  
+                    }
+                }
+            }
+        }
     }
 
     private void HandleRotation()
@@ -121,18 +217,6 @@ public class ExploreMovement : MonoBehaviour
         if (inputDir != Vector3.zero)
         {
             playerObj.forward = Vector3.Lerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
-        }
-    }
-
-    private void GroundCheck()
-    {
-        Vector3 rayOrigin = groundCheck.position;
-        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
-
-        // Reset jump count when grounded
-        if (isGrounded)
-        {
-            isGliding = false;  // Stop gliding when grounded
         }
     }
 }
