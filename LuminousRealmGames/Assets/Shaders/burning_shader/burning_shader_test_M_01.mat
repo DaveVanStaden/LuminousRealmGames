@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: burning_shader_test_M
+  m_Name: burning_shader_test_M_01
   m_Shader: {fileID: 4800000, guid: 943e100f40c38ea48ba40f193ba3c5fb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6dff73914d9880c44809c1ce61a7166c, type: 3}
         m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _Texture0:
@@ -36,8 +36,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureSample3:
-        m_Texture: {fileID: 2800000, guid: 8b92fe3ea6b9e3343b516d2c1921a40c, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: 7130c16fd8005b546b111d341310a9a4, type: 3}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _albedo:
         m_Texture: {fileID: 2800000, guid: 8b92fe3ea6b9e3343b516d2c1921a40c, type: 3}
@@ -88,9 +88,9 @@ Material:
     - _TransShadow: 0.5
     - _TransStrength: 1
     - _TransmissionShadow: 0.445
-    - _burn: 0.181
+    - _burn: 0.808
     - _cracks_strenght: 0
-    - _distortion_amount: 0.181
+    - _distortion_amount: 0.1
     - _distortion_amount1: 0
     - _scroll_speed: 0.032
     - _smoothness_strenght: 0

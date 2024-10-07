@@ -5440,7 +5440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203471775}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12218136, y: -0.005579093, z: 0.0006868179, w: 0.9924919}
+  m_LocalRotation: {x: 0.122181654, y: -0.005051618, z: 0.0006218823, w: 0.99249476}
   m_LocalPosition: {x: 0.013721466, y: 2.25, z: -9.021118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6803,7 +6803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542479718}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12218137, y: -0.0055790935, z: 0.000686818, w: 0.9924919}
+  m_LocalRotation: {x: 0.12218168, y: -0.005051618, z: 0.0006218826, w: 0.9924947}
   m_LocalPosition: {x: -589.9747, y: 230.68756, z: -139.17822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7634,7 +7634,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 2d99c4ba773b74442b65d2e9cb72bfcd, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 23d0d1849d1201e42ab9c9ab649c3123, type: 2}
+      objectReference: {fileID: 2100000, guid: efc1630dffd274140a680b69bf32aeb7, type: 2}
     - target: {fileID: 2300000, guid: 2d99c4ba773b74442b65d2e9cb72bfcd, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
@@ -7760,10 +7760,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7918335002988649766, guid: 0c6357261cebef641882a9a8c911cf34, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 23d0d1849d1201e42ab9c9ab649c3123, type: 2}
+    - target: {fileID: -7023974396876390944, guid: 0c6357261cebef641882a9a8c911cf34, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 23d0d1849d1201e42ab9c9ab649c3123, type: 2}
+    - target: {fileID: -241587437493983680, guid: 0c6357261cebef641882a9a8c911cf34, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 23d0d1849d1201e42ab9c9ab649c3123, type: 2}
     - target: {fileID: 919132149155446097, guid: 0c6357261cebef641882a9a8c911cf34, type: 3}
       propertyPath: m_Name
       value: Tree_Blockout
       objectReference: {fileID: 0}
+    - target: {fileID: 6745302439343835087, guid: 0c6357261cebef641882a9a8c911cf34, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: efc1630dffd274140a680b69bf32aeb7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10013,7 +10029,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9df7e5789ed8db748a265aca793e26a2, type: 2}
+  - {fileID: 2100000, guid: efc1630dffd274140a680b69bf32aeb7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11729,6 +11745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocks_Test_1
       objectReference: {fileID: 0}
+    - target: {fileID: 8567717000986892130, guid: 0eea0c28df99b4041a3ef34759461b03, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: efc1630dffd274140a680b69bf32aeb7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
