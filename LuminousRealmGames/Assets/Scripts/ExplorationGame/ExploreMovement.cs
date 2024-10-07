@@ -59,13 +59,13 @@ public class ExploreMovement : MonoBehaviour
     {
         if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
-            moveSpeed = 6f;     // Set to a faster speed when injured
-            sprintSpeed = 12f;   // Adjust sprint speed when healed
+            moveSpeed = 4f;     // Set to a faster speed when injured
+            sprintSpeed = 7f;   // Adjust sprint speed when healed
         }
         else if (playerHealth.currentState == PlayerHealth.PlayerState.Injured)
         {
-            moveSpeed = 4f;     // Set to a faster speed when injured
-            sprintSpeed = 7f;  // Increase sprint speed when injured
+            moveSpeed = 6f;     // Set to a faster speed when injured
+            sprintSpeed = 12f;  // Increase sprint speed when injured
         }
     }
 
