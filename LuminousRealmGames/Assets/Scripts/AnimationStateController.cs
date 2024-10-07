@@ -3,8 +3,6 @@ using UnityEngine;
 public class AnimationStateController : MonoBehaviour
 {
     Animator animator;
-    // int isStrafingRightHash;
-    // int isStrafingLeftHash;
     int isTrottingHash;
     int isIdleHash;
     int isJumpingHash;
@@ -39,11 +37,11 @@ public class AnimationStateController : MonoBehaviour
         Vector3 rayOrigin = groundCheck.position;
         isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
        
-        if (isGrounded)
-        {
-            animator.SetBool(isFallingHash, false);
-            animator.SetBool(isLandingHash, true);
-        }
+      //  if (isGrounded)
+       // {
+      //      animator.SetBool(isFallingHash, false);
+       //     animator.SetBool(isLandingHash, true);
+        //}
     }
 
     // Update is called once per frame
@@ -62,46 +60,35 @@ public class AnimationStateController : MonoBehaviour
         bool isSpaceHold = Input.GetKey(KeyCode.Space);
         bool isSpaceReleased = Input.GetKeyUp(KeyCode.Space);
 
-        if (isMoving && !isSpaceHold)
+        if (isMoving && isGrounded)
         {
             animator.SetBool(isTrottingHash, true);
             animator.SetBool(isIdleHash, false);
-        } 
-        else
+        }
+
+        if (!isMoving && isGrounded)
         {
             animator.SetBool(isTrottingHash, false);
             animator.SetBool(isIdleHash, true);
         }
-
-        if (isSpacePressed)
+        
+        if (isMoving && !isGrounded)
         {
-            animator.SetBool(isJumpingHash, true);
             animator.SetBool(isTrottingHash, false);
-            animator.SetBool(isIdleHash, false); 
+            animator.SetBool(isIdleHash, false);
         }
-        else 
+
+        if (isSpacePressed) 
+        {
+            animator.SetBool(isTrottingHash, false);
+            animator.SetBool(isIdleHash, false);
+            animator.SetBool(isJumpingHash, true);
+        }
+
+        if (isSpaceReleased) 
         {
             animator.SetBool(isJumpingHash, false);
-        }
-
-        if (isSpaceHold && !isGrounded) 
-        {
-            animator.SetBool(isHoveringHash, true);
-            animator.SetBool(isFallingHash, false);
-        }
-        else
-        {
-            animator.SetBool(isHoveringHash, false);
-        }
-
-        if (isSpaceReleased)
-        {
             animator.SetBool(isFallingHash, true);
-        }
-        if (isSpaceReleased && isGrounded) 
-        {
-            animator.SetBool(isFallingHash, false);
-            animator.SetBool(isLandingHash, true);
         }
     }
 }
