@@ -634,6 +634,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1941866783}
   wallCheck: {fileID: 1382449448}
   playerHealth: {fileID: 1382449449}
+  inputManager: {fileID: 664883207}
   stopDamping: 5
   stopThreshold: 0.1
   minJumpForce: 5
@@ -670,6 +671,50 @@ MonoBehaviour:
       m_Bits: 257
     MaximumRaycast: 10
     Damping: 0.5
+--- !u!1 &664883206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 664883208}
+  - component: {fileID: 664883207}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &664883207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664883206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4ac79e27e3b2c469aa243fecce4e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &664883208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664883206}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1007503446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,3 +1910,4 @@ SceneRoots:
   - {fileID: 1647545051}
   - {fileID: 434836267}
   - {fileID: 1007503449}
+  - {fileID: 664883208}

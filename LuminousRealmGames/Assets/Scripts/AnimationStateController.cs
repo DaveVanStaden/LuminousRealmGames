@@ -14,7 +14,6 @@ public class AnimationStateController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool isGrounded = true;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -24,7 +23,6 @@ public class AnimationStateController : MonoBehaviour
         isHoveringHash = Animator.StringToHash("isHovering");
         isFallingHash = Animator.StringToHash("isFalling");
         isLandingHash = Animator.StringToHash("isLanding");
-
     }
 
     void FixedUpdate()
@@ -36,59 +34,68 @@ public class AnimationStateController : MonoBehaviour
     {
         Vector3 rayOrigin = groundCheck.position;
         isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
-       
-      //  if (isGrounded)
-       // {
-      //      animator.SetBool(isFallingHash, false);
-       //     animator.SetBool(isLandingHash, true);
-        //}
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         bool isTrotting = animator.GetBool(isTrottingHash);
         bool isIdle = animator.GetBool(isIdleHash);
         bool isJumping = animator.GetBool(isJumpingHash);
-        bool isHovering = animator.GetBool(isHoveringHash);
         bool isFalling = animator.GetBool(isFallingHash);
         bool isLanding = animator.GetBool(isLandingHash);
 
-        bool isMoving = Input.GetKey("a") || Input.GetKey("w") || Input.GetKey("d") || Input.GetKey("s");
-        bool isSpacePressed = Input.GetKeyDown(KeyCode.Space);
-        bool isSpaceHold = Input.GetKey(KeyCode.Space);
-        bool isSpaceReleased = Input.GetKeyUp(KeyCode.Space);
+        // Check for movement input
+        bool isMoving = Input.GetKey("a") || Input.GetKey("w") || Input.GetKey("d") || Input.GetKey("s") || 
+                        Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0;
 
+        // Check for jump input
+        bool isSpacePressed = Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump");
+        bool isSpaceReleased = Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Jump");
+
+        // Movement Animation
         if (isMoving && isGrounded)
         {
             animator.SetBool(isTrottingHash, true);
             animator.SetBool(isIdleHash, false);
         }
-
-        if (!isMoving && isGrounded)
+        else if (!isMoving && isGrounded)
         {
             animator.SetBool(isTrottingHash, false);
             animator.SetBool(isIdleHash, true);
         }
-        
-        if (isMoving && !isGrounded)
+        else if (isMoving && !isGrounded)
         {
             animator.SetBool(isTrottingHash, false);
             animator.SetBool(isIdleHash, false);
         }
 
-        if (isSpacePressed) 
+        // Jumping Animation
+        if (isSpacePressed && isGrounded)
         {
-            animator.SetBool(isTrottingHash, false);
-            animator.SetBool(isIdleHash, false);
             animator.SetBool(isJumpingHash, true);
+            animator.SetBool(isTrottingHash, false);
+            animator.SetBool(isIdleHash, false);
         }
-
-        if (isSpaceReleased) 
+        
+        // If already jumping, do not re-enter jumping animation on button hold
+        if (isJumping && !isGrounded)
         {
             animator.SetBool(isJumpingHash, false);
             animator.SetBool(isFallingHash, true);
+        }
+
+        // Reset jump and falling animations based on grounded state
+        if (isGrounded)
+        {
+            if (isFalling)
+            {
+                animator.SetBool(isFallingHash, false);
+                animator.SetBool(isLandingHash, true);
+            }
+            else
+            {
+                animator.SetBool(isLandingHash, false);
+            }
         }
     }
 }
