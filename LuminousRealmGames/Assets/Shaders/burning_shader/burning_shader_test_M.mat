@@ -92,7 +92,7 @@ Material:
     - _TransShadow: 0.5
     - _TransStrength: 1
     - _TransmissionShadow: 0.445
-    - _burn: 0.255
+    - _burn: 0.179
     - _cracks_strenght: 0
     - _distortion_amount: 0.859
     - _distortion_amount1: 0
