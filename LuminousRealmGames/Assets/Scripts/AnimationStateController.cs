@@ -33,7 +33,7 @@ public class AnimationStateController : MonoBehaviour
     private void GroundCheck() 
     {
         Vector3 rayOrigin = groundCheck.position;
-        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
+        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.4f, groundLayer);
     }
 
     void Update()
