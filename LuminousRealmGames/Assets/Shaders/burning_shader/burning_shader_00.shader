@@ -7,14 +7,15 @@ Shader "New Amplify Shader"
 		[HideInInspector] _AlphaCutoff("Alpha Cutoff ", Range(0, 1)) = 0.5
 		[HideInInspector] _EmissionColor("Emission Color", Color) = (1,1,1,1)
 		_Mask("Mask", 2D) = "white" {}
+		_base_color("base_color", 2D) = "white" {}
 		_distortion_amount("distortion_amount", Range( 0 , 1)) = 0
+		_normal_map("normal_map", 2D) = "white" {}
 		_smoothness_strenght("smoothness_strenght", Range( 0 , 1)) = 0
-		[Normal]_Texture0("Texture 0", 2D) = "bump" {}
+		[Normal]_wave_normal("wave_normal", 2D) = "bump" {}
 		_scroll_speed("scroll_speed", Range( 0 , 1)) = 0.06947487
 		_warm_color("warm_color", Color) = (0.9622642,0.412882,0,0)
 		_hot_color("hot_color", Color) = (1,0.813481,0.3226415,0)
 		_burn("burn", Range( 0 , 1)) = 0.1015193
-		_albedo_texture("albedo_texture", 2D) = "white" {}
 		_heat_wave("heat_wave", Range( 0 , 1)) = 0
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
@@ -200,6 +201,7 @@ Shader "New Amplify Shader"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -257,7 +259,9 @@ Shader "New Amplify Shader"
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
 
-			
+			#define ASE_NEEDS_FRAG_WORLD_POSITION
+			#define ASE_NEEDS_FRAG_SCREEN_POSITION
+
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
 				#define ASE_SV_DEPTH SV_DepthLessEqual
@@ -303,10 +307,11 @@ Shader "New Amplify Shader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -342,12 +347,62 @@ Shader "New Amplify Shader"
 				int _PassValue;
 			#endif
 
-			sampler2D _albedo_texture;
+			sampler2D _base_color;
+			sampler2D _normal_map;
 			sampler2D _Mask;
-			sampler2D _Texture0;
+			sampler2D _wave_normal;
 
 
+			half4 CalculateShadowMask216_g5( half2 LightmapUV )
+			{
+				#if defined(SHADOWS_SHADOWMASK) && defined(LIGHTMAP_ON)
+				half4 shadowMask = inputData.shadowMask;
+				#elif !defined (LIGHTMAP_ON)
+				half4 shadowMask = unity_ProbesOcclusion;
+				#else
+				half4 shadowMask = half4(1, 1, 1, 1);
+				#endif
+				return shadowMask;
+			}
 			
+			float3 AdditionalLightsFlatMask17x( float3 WorldPosition, float2 ScreenUV, float4 ShadowMask )
+			{
+				float3 Color = 0;
+				#if defined(_ADDITIONAL_LIGHTS)
+					#define SUM_LIGHTFLAT(Light)\
+						Color += Light.color * ( Light.distanceAttenuation * Light.shadowAttenuation );
+					InputData inputData = (InputData)0;
+					inputData.normalizedScreenSpaceUV = ScreenUV;
+					inputData.positionWS = WorldPosition;
+					uint meshRenderingLayers = GetMeshRenderingLayer();
+					uint pixelLightCount = GetAdditionalLightsCount();	
+					#if USE_FORWARD_PLUS
+					[loop] for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
+					{
+						FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					}
+					#endif
+					LIGHT_LOOP_BEGIN( pixelLightCount )
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					LIGHT_LOOP_END
+				#endif
+				return Color;
+			}
+			
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -356,9 +411,7 @@ Shader "New Amplify Shader"
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
 				output.ase_texcoord9.xy = input.texcoord.xy;
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord9.zw = 0;
+				output.ase_texcoord9.zw = input.texcoord2.xy;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -552,28 +605,41 @@ Shader "New Amplify Shader"
 
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float2 uv_albedo_texture = input.ase_texcoord9.xy * _albedo_texture_ST.xy + _albedo_texture_ST.zw;
+				float2 uv_base_color = input.ase_texcoord9.xy * _base_color_ST.xy + _base_color_ST.zw;
+				float3 worldPosValue184_g5 = WorldPosition;
+				float3 WorldPosition175_g5 = worldPosValue184_g5;
+				float4 ase_screenPosNorm = ScreenPos / ScreenPos.w;
+				ase_screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm.z : ase_screenPosNorm.z * 0.5 + 0.5;
+				float2 ScreenUV183_g5 = (ase_screenPosNorm).xy;
+				float2 ScreenUV175_g5 = ScreenUV183_g5;
+				half2 LightmapUV216_g5 = (input.ase_texcoord9.zw*(unity_DynamicLightmapST).xy + (unity_DynamicLightmapST).zw);
+				half4 localCalculateShadowMask216_g5 = CalculateShadowMask216_g5( LightmapUV216_g5 );
+				float4 shadowMaskValue182_g5 = localCalculateShadowMask216_g5;
+				float4 ShadowMask175_g5 = shadowMaskValue182_g5;
+				float3 localAdditionalLightsFlatMask17x175_g5 = AdditionalLightsFlatMask17x( WorldPosition175_g5 , ScreenUV175_g5 , ShadowMask175_g5 );
 				
-				float2 uv_Texture0 = input.ase_texcoord9.xy * _Texture0_ST.xy + _Texture0_ST.zw;
+				float2 uv_normal_map = input.ase_texcoord9.xy * _normal_map_ST.xy + _normal_map_ST.zw;
+				
+				float2 uv_wave_normal = input.ase_texcoord9.xy * _wave_normal_ST.xy + _wave_normal_ST.zw;
 				float mulTime24 = _TimeParameters.x * 2.0;
 				float temp_output_25_0 = ( mulTime24 * _scroll_speed );
 				float2 panner23 = ( temp_output_25_0 * float2( 0,-1 ) + float2( 0,0 ));
 				float2 texCoord20 = input.ase_texcoord9.xy * float2( 1,1 ) + panner23;
-				float4 lerpResult30 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _Texture0, uv_Texture0 ), 1.0f )).xy * _distortion_amount ) + texCoord20 ) ).r);
-				float4 temp_cast_1 = (3.0).xxxx;
+				float4 lerpResult30 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _wave_normal, uv_wave_normal ), 1.0f )).xy * _distortion_amount ) + texCoord20 ) ).r);
+				float4 temp_cast_3 = (3.0).xxxx;
 				float2 texCoord101 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
 				float2 panner100 = ( temp_output_25_0 * float2( 0,-1 ) + texCoord101);
 				float2 texCoord107 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode37 = tex2D( _Mask, ( ( (tex2D( _Texture0, panner100 ).rgb).xyz * _heat_wave ) + float3( texCoord107 ,  0.0 ) ).xy );
-				float3 temp_cast_4 = (_burn).xxx;
-				float3 temp_output_38_0 = step( tex2DNode37.rgb , temp_cast_4 );
-				float3 temp_cast_5 = (_burn).xxx;
-				float3 temp_cast_6 = (( _burn / 1.2 )).xxx;
+				float4 tex2DNode37 = tex2D( _Mask, ( ( (tex2D( _wave_normal, panner100 ).rgb).xyz * _heat_wave ) + float3( texCoord107 ,  0.0 ) ).xy );
+				float3 temp_cast_6 = (_burn).xxx;
+				float3 temp_output_38_0 = step( tex2DNode37.rgb , temp_cast_6 );
+				float3 temp_cast_7 = (_burn).xxx;
+				float3 temp_cast_8 = (( _burn / 1.2 )).xxx;
 				
 
-				float3 BaseColor = tex2D( _albedo_texture, uv_albedo_texture ).rgb;
-				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( ( pow( lerpResult30 , temp_cast_1 ) * 3.0 ) * float4( ( temp_output_38_0 + ( temp_output_38_0 - step( tex2DNode37.rgb , temp_cast_6 ) ) ) , 0.0 ) ).rgb;
+				float3 BaseColor = ( tex2D( _base_color, uv_base_color ) + float4( localAdditionalLightsFlatMask17x175_g5 , 0.0 ) ).rgb;
+				float3 Normal = tex2D( _normal_map, uv_normal_map ).rgb;
+				float3 Emission = ( ( pow( lerpResult30 , temp_cast_3 ) * 3.0 ) * float4( ( temp_output_38_0 + ( temp_output_38_0 - step( tex2DNode37.rgb , temp_cast_8 ) ) ) , 0.0 ) ).rgb;
 				float3 Specular = 0.5;
 				float Metallic = 0;
 				float Smoothness = _smoothness_strenght;
@@ -842,6 +908,7 @@ Shader "New Amplify Shader"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -907,10 +974,11 @@ Shader "New Amplify Shader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -1163,6 +1231,7 @@ Shader "New Amplify Shader"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -1225,10 +1294,11 @@ Shader "New Amplify Shader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -1450,6 +1520,7 @@ Shader "New Amplify Shader"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 			#pragma shader_feature EDITOR_VISUALIZATION
@@ -1476,7 +1547,8 @@ Shader "New Amplify Shader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/MetaInput.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_FRAG_WORLD_POSITION
+
 
 			struct Attributes
 			{
@@ -1503,15 +1575,17 @@ Shader "New Amplify Shader"
 					float4 LightCoord : TEXCOORD3;
 				#endif
 				float4 ase_texcoord4 : TEXCOORD4;
+				float4 ase_texcoord5 : TEXCOORD5;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -1547,12 +1621,61 @@ Shader "New Amplify Shader"
 				int _PassValue;
 			#endif
 
-			sampler2D _albedo_texture;
+			sampler2D _base_color;
 			sampler2D _Mask;
-			sampler2D _Texture0;
+			sampler2D _wave_normal;
 
 
+			half4 CalculateShadowMask216_g5( half2 LightmapUV )
+			{
+				#if defined(SHADOWS_SHADOWMASK) && defined(LIGHTMAP_ON)
+				half4 shadowMask = inputData.shadowMask;
+				#elif !defined (LIGHTMAP_ON)
+				half4 shadowMask = unity_ProbesOcclusion;
+				#else
+				half4 shadowMask = half4(1, 1, 1, 1);
+				#endif
+				return shadowMask;
+			}
 			
+			float3 AdditionalLightsFlatMask17x( float3 WorldPosition, float2 ScreenUV, float4 ShadowMask )
+			{
+				float3 Color = 0;
+				#if defined(_ADDITIONAL_LIGHTS)
+					#define SUM_LIGHTFLAT(Light)\
+						Color += Light.color * ( Light.distanceAttenuation * Light.shadowAttenuation );
+					InputData inputData = (InputData)0;
+					inputData.normalizedScreenSpaceUV = ScreenUV;
+					inputData.positionWS = WorldPosition;
+					uint meshRenderingLayers = GetMeshRenderingLayer();
+					uint pixelLightCount = GetAdditionalLightsCount();	
+					#if USE_FORWARD_PLUS
+					[loop] for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
+					{
+						FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					}
+					#endif
+					LIGHT_LOOP_BEGIN( pixelLightCount )
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					LIGHT_LOOP_END
+				#endif
+				return Color;
+			}
+			
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -1560,10 +1683,12 @@ Shader "New Amplify Shader"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
-				output.ase_texcoord4.xy = input.texcoord0.xy;
+				float4 ase_clipPos = TransformObjectToHClip((input.positionOS).xyz);
+				float4 screenPos = ComputeScreenPos(ase_clipPos);
+				output.ase_texcoord5 = screenPos;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord4.zw = 0;
+				output.ase_texcoord4.xy = input.texcoord0.xy;
+				output.ase_texcoord4.zw = input.texcoord2.xy;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -1714,27 +1839,39 @@ Shader "New Amplify Shader"
 					#endif
 				#endif
 
-				float2 uv_albedo_texture = input.ase_texcoord4.xy * _albedo_texture_ST.xy + _albedo_texture_ST.zw;
+				float2 uv_base_color = input.ase_texcoord4.xy * _base_color_ST.xy + _base_color_ST.zw;
+				float3 worldPosValue184_g5 = WorldPosition;
+				float3 WorldPosition175_g5 = worldPosValue184_g5;
+				float4 screenPos = input.ase_texcoord5;
+				float4 ase_screenPosNorm = screenPos / screenPos.w;
+				ase_screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm.z : ase_screenPosNorm.z * 0.5 + 0.5;
+				float2 ScreenUV183_g5 = (ase_screenPosNorm).xy;
+				float2 ScreenUV175_g5 = ScreenUV183_g5;
+				half2 LightmapUV216_g5 = (input.ase_texcoord4.zw*(unity_DynamicLightmapST).xy + (unity_DynamicLightmapST).zw);
+				half4 localCalculateShadowMask216_g5 = CalculateShadowMask216_g5( LightmapUV216_g5 );
+				float4 shadowMaskValue182_g5 = localCalculateShadowMask216_g5;
+				float4 ShadowMask175_g5 = shadowMaskValue182_g5;
+				float3 localAdditionalLightsFlatMask17x175_g5 = AdditionalLightsFlatMask17x( WorldPosition175_g5 , ScreenUV175_g5 , ShadowMask175_g5 );
 				
-				float2 uv_Texture0 = input.ase_texcoord4.xy * _Texture0_ST.xy + _Texture0_ST.zw;
+				float2 uv_wave_normal = input.ase_texcoord4.xy * _wave_normal_ST.xy + _wave_normal_ST.zw;
 				float mulTime24 = _TimeParameters.x * 2.0;
 				float temp_output_25_0 = ( mulTime24 * _scroll_speed );
 				float2 panner23 = ( temp_output_25_0 * float2( 0,-1 ) + float2( 0,0 ));
 				float2 texCoord20 = input.ase_texcoord4.xy * float2( 1,1 ) + panner23;
-				float4 lerpResult30 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _Texture0, uv_Texture0 ), 1.0f )).xy * _distortion_amount ) + texCoord20 ) ).r);
-				float4 temp_cast_1 = (3.0).xxxx;
+				float4 lerpResult30 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _wave_normal, uv_wave_normal ), 1.0f )).xy * _distortion_amount ) + texCoord20 ) ).r);
+				float4 temp_cast_2 = (3.0).xxxx;
 				float2 texCoord101 = input.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
 				float2 panner100 = ( temp_output_25_0 * float2( 0,-1 ) + texCoord101);
 				float2 texCoord107 = input.ase_texcoord4.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode37 = tex2D( _Mask, ( ( (tex2D( _Texture0, panner100 ).rgb).xyz * _heat_wave ) + float3( texCoord107 ,  0.0 ) ).xy );
-				float3 temp_cast_4 = (_burn).xxx;
-				float3 temp_output_38_0 = step( tex2DNode37.rgb , temp_cast_4 );
+				float4 tex2DNode37 = tex2D( _Mask, ( ( (tex2D( _wave_normal, panner100 ).rgb).xyz * _heat_wave ) + float3( texCoord107 ,  0.0 ) ).xy );
 				float3 temp_cast_5 = (_burn).xxx;
-				float3 temp_cast_6 = (( _burn / 1.2 )).xxx;
+				float3 temp_output_38_0 = step( tex2DNode37.rgb , temp_cast_5 );
+				float3 temp_cast_6 = (_burn).xxx;
+				float3 temp_cast_7 = (( _burn / 1.2 )).xxx;
 				
 
-				float3 BaseColor = tex2D( _albedo_texture, uv_albedo_texture ).rgb;
-				float3 Emission = ( ( pow( lerpResult30 , temp_cast_1 ) * 3.0 ) * float4( ( temp_output_38_0 + ( temp_output_38_0 - step( tex2DNode37.rgb , temp_cast_6 ) ) ) , 0.0 ) ).rgb;
+				float3 BaseColor = ( tex2D( _base_color, uv_base_color ) + float4( localAdditionalLightsFlatMask17x175_g5 , 0.0 ) ).rgb;
+				float3 Emission = ( ( pow( lerpResult30 , temp_cast_2 ) * 3.0 ) * float4( ( temp_output_38_0 + ( temp_output_38_0 - step( tex2DNode37.rgb , temp_cast_7 ) ) ) , 0.0 ) ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -1773,6 +1910,7 @@ Shader "New Amplify Shader"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -1797,13 +1935,15 @@ Shader "New Amplify Shader"
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ShaderGraphFunctions.hlsl"
 			#include "Packages/com.unity.render-pipelines.universal/Editor/ShaderGraph/Includes/ShaderPass.hlsl"
 
-			
+			#define ASE_NEEDS_FRAG_WORLD_POSITION
+
 
 			struct Attributes
 			{
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
 				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_texcoord2 : TEXCOORD2;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1817,15 +1957,17 @@ Shader "New Amplify Shader"
 					float4 shadowCoord : TEXCOORD1;
 				#endif
 				float4 ase_texcoord2 : TEXCOORD2;
+				float4 ase_texcoord3 : TEXCOORD3;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -1861,10 +2003,59 @@ Shader "New Amplify Shader"
 				int _PassValue;
 			#endif
 
-			sampler2D _albedo_texture;
+			sampler2D _base_color;
 
 
+			half4 CalculateShadowMask216_g5( half2 LightmapUV )
+			{
+				#if defined(SHADOWS_SHADOWMASK) && defined(LIGHTMAP_ON)
+				half4 shadowMask = inputData.shadowMask;
+				#elif !defined (LIGHTMAP_ON)
+				half4 shadowMask = unity_ProbesOcclusion;
+				#else
+				half4 shadowMask = half4(1, 1, 1, 1);
+				#endif
+				return shadowMask;
+			}
 			
+			float3 AdditionalLightsFlatMask17x( float3 WorldPosition, float2 ScreenUV, float4 ShadowMask )
+			{
+				float3 Color = 0;
+				#if defined(_ADDITIONAL_LIGHTS)
+					#define SUM_LIGHTFLAT(Light)\
+						Color += Light.color * ( Light.distanceAttenuation * Light.shadowAttenuation );
+					InputData inputData = (InputData)0;
+					inputData.normalizedScreenSpaceUV = ScreenUV;
+					inputData.positionWS = WorldPosition;
+					uint meshRenderingLayers = GetMeshRenderingLayer();
+					uint pixelLightCount = GetAdditionalLightsCount();	
+					#if USE_FORWARD_PLUS
+					[loop] for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
+					{
+						FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					}
+					#endif
+					LIGHT_LOOP_BEGIN( pixelLightCount )
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					LIGHT_LOOP_END
+				#endif
+				return Color;
+			}
+			
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -1872,10 +2063,12 @@ Shader "New Amplify Shader"
 				UNITY_TRANSFER_INSTANCE_ID( input, output );
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO( output );
 
-				output.ase_texcoord2.xy = input.ase_texcoord.xy;
+				float4 ase_clipPos = TransformObjectToHClip((input.positionOS).xyz);
+				float4 screenPos = ComputeScreenPos(ase_clipPos);
+				output.ase_texcoord3 = screenPos;
 				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord2.zw = 0;
+				output.ase_texcoord2.xy = input.ase_texcoord.xy;
+				output.ase_texcoord2.zw = input.ase_texcoord2.xy;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -1914,6 +2107,7 @@ Shader "New Amplify Shader"
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
 				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_texcoord2 : TEXCOORD2;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -1932,6 +2126,7 @@ Shader "New Amplify Shader"
 				output.vertex = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.ase_texcoord = input.ase_texcoord;
+				output.ase_texcoord2 = input.ase_texcoord2;
 				return output;
 			}
 
@@ -1971,6 +2166,7 @@ Shader "New Amplify Shader"
 				output.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				output.ase_texcoord2 = patch[0].ase_texcoord2 * bary.x + patch[1].ase_texcoord2 * bary.y + patch[2].ase_texcoord2 * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -2007,10 +2203,22 @@ Shader "New Amplify Shader"
 					#endif
 				#endif
 
-				float2 uv_albedo_texture = input.ase_texcoord2.xy * _albedo_texture_ST.xy + _albedo_texture_ST.zw;
+				float2 uv_base_color = input.ase_texcoord2.xy * _base_color_ST.xy + _base_color_ST.zw;
+				float3 worldPosValue184_g5 = WorldPosition;
+				float3 WorldPosition175_g5 = worldPosValue184_g5;
+				float4 screenPos = input.ase_texcoord3;
+				float4 ase_screenPosNorm = screenPos / screenPos.w;
+				ase_screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm.z : ase_screenPosNorm.z * 0.5 + 0.5;
+				float2 ScreenUV183_g5 = (ase_screenPosNorm).xy;
+				float2 ScreenUV175_g5 = ScreenUV183_g5;
+				half2 LightmapUV216_g5 = (input.ase_texcoord2.zw*(unity_DynamicLightmapST).xy + (unity_DynamicLightmapST).zw);
+				half4 localCalculateShadowMask216_g5 = CalculateShadowMask216_g5( LightmapUV216_g5 );
+				float4 shadowMaskValue182_g5 = localCalculateShadowMask216_g5;
+				float4 ShadowMask175_g5 = shadowMaskValue182_g5;
+				float3 localAdditionalLightsFlatMask17x175_g5 = AdditionalLightsFlatMask17x( WorldPosition175_g5 , ScreenUV175_g5 , ShadowMask175_g5 );
 				
 
-				float3 BaseColor = tex2D( _albedo_texture, uv_albedo_texture ).rgb;
+				float3 BaseColor = ( tex2D( _base_color, uv_base_color ) + float4( localAdditionalLightsFlatMask17x175_g5 , 0.0 ) ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -2044,6 +2252,7 @@ Shader "New Amplify Shader"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -2090,7 +2299,7 @@ Shader "New Amplify Shader"
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
 				float4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2106,16 +2315,17 @@ Shader "New Amplify Shader"
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
 					float4 shadowCoord : TEXCOORD4;
 				#endif
-				
+				float4 ase_texcoord5 : TEXCOORD5;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -2151,7 +2361,8 @@ Shader "New Amplify Shader"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _normal_map;
+
 
 			
 			PackedVaryings VertexFunction( Attributes input  )
@@ -2161,7 +2372,10 @@ Shader "New Amplify Shader"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				output.ase_texcoord5.xy = input.ase_texcoord.xy;
 				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				output.ase_texcoord5.zw = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
 				#else
@@ -2206,7 +2420,8 @@ Shader "New Amplify Shader"
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
 				float4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2224,7 +2439,7 @@ Shader "New Amplify Shader"
 				output.vertex = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.tangentOS = input.tangentOS;
-				
+				output.ase_texcoord = input.ase_texcoord;
 				return output;
 			}
 
@@ -2264,7 +2479,7 @@ Shader "New Amplify Shader"
 				output.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.tangentOS = patch[0].tangentOS * bary.x + patch[1].tangentOS * bary.y + patch[2].tangentOS * bary.z;
-				
+				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -2314,9 +2529,10 @@ Shader "New Amplify Shader"
 					#endif
 				#endif
 
+				float2 uv_normal_map = input.ase_texcoord5.xy * _normal_map_ST.xy + _normal_map_ST.zw;
 				
 
-				float3 Normal = float3(0, 0, 1);
+				float3 Normal = tex2D( _normal_map, uv_normal_map ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -2390,6 +2606,7 @@ Shader "New Amplify Shader"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -2444,7 +2661,9 @@ Shader "New Amplify Shader"
 				#define ENABLE_TERRAIN_PERPIXEL_NORMAL
 			#endif
 
-			
+			#define ASE_NEEDS_FRAG_WORLD_POSITION
+			#define ASE_NEEDS_FRAG_SCREEN_POSITION
+
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
 				#define ASE_SV_DEPTH SV_DepthLessEqual
@@ -2490,10 +2709,11 @@ Shader "New Amplify Shader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -2529,14 +2749,64 @@ Shader "New Amplify Shader"
 				int _PassValue;
 			#endif
 
-			sampler2D _albedo_texture;
+			sampler2D _base_color;
+			sampler2D _normal_map;
 			sampler2D _Mask;
-			sampler2D _Texture0;
+			sampler2D _wave_normal;
 
 
 			#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/UnityGBuffer.hlsl"
 
+			half4 CalculateShadowMask216_g5( half2 LightmapUV )
+			{
+				#if defined(SHADOWS_SHADOWMASK) && defined(LIGHTMAP_ON)
+				half4 shadowMask = inputData.shadowMask;
+				#elif !defined (LIGHTMAP_ON)
+				half4 shadowMask = unity_ProbesOcclusion;
+				#else
+				half4 shadowMask = half4(1, 1, 1, 1);
+				#endif
+				return shadowMask;
+			}
 			
+			float3 AdditionalLightsFlatMask17x( float3 WorldPosition, float2 ScreenUV, float4 ShadowMask )
+			{
+				float3 Color = 0;
+				#if defined(_ADDITIONAL_LIGHTS)
+					#define SUM_LIGHTFLAT(Light)\
+						Color += Light.color * ( Light.distanceAttenuation * Light.shadowAttenuation );
+					InputData inputData = (InputData)0;
+					inputData.normalizedScreenSpaceUV = ScreenUV;
+					inputData.positionWS = WorldPosition;
+					uint meshRenderingLayers = GetMeshRenderingLayer();
+					uint pixelLightCount = GetAdditionalLightsCount();	
+					#if USE_FORWARD_PLUS
+					[loop] for (uint lightIndex = 0; lightIndex < min(URP_FP_DIRECTIONAL_LIGHTS_COUNT, MAX_VISIBLE_LIGHTS); lightIndex++)
+					{
+						FORWARD_PLUS_SUBTRACTIVE_LIGHT_CHECK
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					}
+					#endif
+					LIGHT_LOOP_BEGIN( pixelLightCount )
+						Light light = GetAdditionalLight(lightIndex, WorldPosition, ShadowMask);
+						#ifdef _LIGHT_LAYERS
+						if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
+						#endif
+						{
+							SUM_LIGHTFLAT( light );
+						}
+					LIGHT_LOOP_END
+				#endif
+				return Color;
+			}
+			
+
 			PackedVaryings VertexFunction( Attributes input  )
 			{
 				PackedVaryings output = (PackedVaryings)0;
@@ -2545,9 +2815,7 @@ Shader "New Amplify Shader"
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
 				output.ase_texcoord9.xy = input.texcoord.xy;
-				
-				//setting value to unused interpolator channels and avoid initialization warnings
-				output.ase_texcoord9.zw = 0;
+				output.ase_texcoord9.zw = input.texcoord2.xy;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
 				#else
@@ -2734,28 +3002,41 @@ Shader "New Amplify Shader"
 
 				WorldViewDirection = SafeNormalize( WorldViewDirection );
 
-				float2 uv_albedo_texture = input.ase_texcoord9.xy * _albedo_texture_ST.xy + _albedo_texture_ST.zw;
+				float2 uv_base_color = input.ase_texcoord9.xy * _base_color_ST.xy + _base_color_ST.zw;
+				float3 worldPosValue184_g5 = WorldPosition;
+				float3 WorldPosition175_g5 = worldPosValue184_g5;
+				float4 ase_screenPosNorm = ScreenPos / ScreenPos.w;
+				ase_screenPosNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_screenPosNorm.z : ase_screenPosNorm.z * 0.5 + 0.5;
+				float2 ScreenUV183_g5 = (ase_screenPosNorm).xy;
+				float2 ScreenUV175_g5 = ScreenUV183_g5;
+				half2 LightmapUV216_g5 = (input.ase_texcoord9.zw*(unity_DynamicLightmapST).xy + (unity_DynamicLightmapST).zw);
+				half4 localCalculateShadowMask216_g5 = CalculateShadowMask216_g5( LightmapUV216_g5 );
+				float4 shadowMaskValue182_g5 = localCalculateShadowMask216_g5;
+				float4 ShadowMask175_g5 = shadowMaskValue182_g5;
+				float3 localAdditionalLightsFlatMask17x175_g5 = AdditionalLightsFlatMask17x( WorldPosition175_g5 , ScreenUV175_g5 , ShadowMask175_g5 );
 				
-				float2 uv_Texture0 = input.ase_texcoord9.xy * _Texture0_ST.xy + _Texture0_ST.zw;
+				float2 uv_normal_map = input.ase_texcoord9.xy * _normal_map_ST.xy + _normal_map_ST.zw;
+				
+				float2 uv_wave_normal = input.ase_texcoord9.xy * _wave_normal_ST.xy + _wave_normal_ST.zw;
 				float mulTime24 = _TimeParameters.x * 2.0;
 				float temp_output_25_0 = ( mulTime24 * _scroll_speed );
 				float2 panner23 = ( temp_output_25_0 * float2( 0,-1 ) + float2( 0,0 ));
 				float2 texCoord20 = input.ase_texcoord9.xy * float2( 1,1 ) + panner23;
-				float4 lerpResult30 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _Texture0, uv_Texture0 ), 1.0f )).xy * _distortion_amount ) + texCoord20 ) ).r);
-				float4 temp_cast_1 = (3.0).xxxx;
+				float4 lerpResult30 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _wave_normal, uv_wave_normal ), 1.0f )).xy * _distortion_amount ) + texCoord20 ) ).r);
+				float4 temp_cast_3 = (3.0).xxxx;
 				float2 texCoord101 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
 				float2 panner100 = ( temp_output_25_0 * float2( 0,-1 ) + texCoord101);
 				float2 texCoord107 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
-				float4 tex2DNode37 = tex2D( _Mask, ( ( (tex2D( _Texture0, panner100 ).rgb).xyz * _heat_wave ) + float3( texCoord107 ,  0.0 ) ).xy );
-				float3 temp_cast_4 = (_burn).xxx;
-				float3 temp_output_38_0 = step( tex2DNode37.rgb , temp_cast_4 );
-				float3 temp_cast_5 = (_burn).xxx;
-				float3 temp_cast_6 = (( _burn / 1.2 )).xxx;
+				float4 tex2DNode37 = tex2D( _Mask, ( ( (tex2D( _wave_normal, panner100 ).rgb).xyz * _heat_wave ) + float3( texCoord107 ,  0.0 ) ).xy );
+				float3 temp_cast_6 = (_burn).xxx;
+				float3 temp_output_38_0 = step( tex2DNode37.rgb , temp_cast_6 );
+				float3 temp_cast_7 = (_burn).xxx;
+				float3 temp_cast_8 = (( _burn / 1.2 )).xxx;
 				
 
-				float3 BaseColor = tex2D( _albedo_texture, uv_albedo_texture ).rgb;
-				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( ( pow( lerpResult30 , temp_cast_1 ) * 3.0 ) * float4( ( temp_output_38_0 + ( temp_output_38_0 - step( tex2DNode37.rgb , temp_cast_6 ) ) ) , 0.0 ) ).rgb;
+				float3 BaseColor = ( tex2D( _base_color, uv_base_color ) + float4( localAdditionalLightsFlatMask17x175_g5 , 0.0 ) ).rgb;
+				float3 Normal = tex2D( _normal_map, uv_normal_map ).rgb;
+				float3 Emission = ( ( pow( lerpResult30 , temp_cast_3 ) * 3.0 ) * float4( ( temp_output_38_0 + ( temp_output_38_0 - step( tex2DNode37.rgb , temp_cast_8 ) ) ) , 0.0 ) ).rgb;
 				float3 Specular = 0.5;
 				float Metallic = 0;
 				float Smoothness = _smoothness_strenght;
@@ -2886,6 +3167,7 @@ Shader "New Amplify Shader"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -2934,10 +3216,11 @@ Shader "New Amplify Shader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -3140,6 +3423,7 @@ Shader "New Amplify Shader"
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -3188,10 +3472,11 @@ Shader "New Amplify Shader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -3395,6 +3680,7 @@ Shader "New Amplify Shader"
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -3451,10 +3737,11 @@ Shader "New Amplify Shader"
 			};
 
 			CBUFFER_START(UnityPerMaterial)
-			float4 _albedo_texture_ST;
+			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
-			float4 _Texture0_ST;
+			float4 _wave_normal_ST;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -3583,8 +3870,8 @@ Shader "New Amplify Shader"
 Version=19603
 Node;AmplifyShaderEditor.TexturePropertyNode;11;-1200,-704;Inherit;True;Property;_Mask;Mask;0;0;Create;True;0;0;0;False;0;False;b7ec81aab0af4bf47b5e1d30bc7d9994;b7ec81aab0af4bf47b5e1d30bc7d9994;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.SimpleAddOpNode;21;-1152,-496;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT2;0,0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.ColorNode;28;-768,-928;Inherit;False;Property;_hot_color;hot_color;6;0;Create;True;0;0;0;False;0;False;1,0.813481,0.3226415,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
-Node;AmplifyShaderEditor.ColorNode;29;-768,-1200;Inherit;False;Property;_warm_color;warm_color;5;0;Create;True;0;0;0;False;0;False;0.9622642,0.412882,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.ColorNode;28;-768,-928;Inherit;False;Property;_hot_color;hot_color;8;0;Create;True;0;0;0;False;0;False;1,0.813481,0.3226415,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.ColorNode;29;-768,-1200;Inherit;False;Property;_warm_color;warm_color;7;0;Create;True;0;0;0;False;0;False;0.9622642,0.412882,0,0;0,0,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.LerpOp;30;0,-1104;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.PowerNode;32;416,-1088;Inherit;False;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;1;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;33;816,-1104;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
@@ -3592,11 +3879,10 @@ Node;AmplifyShaderEditor.RangedFloatNode;34;256,-816;Inherit;False;Constant;_Flo
 Node;AmplifyShaderEditor.SamplerNode;15;-2048,-704;Inherit;True;Property;_TextureSample1;Texture Sample 1;2;0;Create;True;0;0;0;False;0;False;22;None;None;True;0;False;white;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.ComponentMaskNode;16;-1744,-672;Inherit;False;True;True;False;True;1;0;FLOAT3;0,0,0;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;17;-1504,-672;Inherit;False;2;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;1;FLOAT2;0
-Node;AmplifyShaderEditor.TexturePropertyNode;22;-2320,-688;Inherit;True;Property;_Texture0;Texture 0;3;1;[Normal];Create;True;0;0;0;False;0;False;a3c286e1384aa1f41aed5d4f9b65790c;a3c286e1384aa1f41aed5d4f9b65790c;True;bump;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.RangedFloatNode;19;-1984,-496;Inherit;False;Property;_distortion_amount;distortion_amount;1;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;19;-1984,-496;Inherit;False;Property;_distortion_amount;distortion_amount;2;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;40;1200,-448;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SamplerNode;37;-368,-256;Inherit;True;Property;_TextureSample2;Texture Sample 2;7;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
-Node;AmplifyShaderEditor.RangedFloatNode;39;-336,-64;Inherit;False;Property;_burn;burn;7;0;Create;True;0;0;0;False;0;False;0.1015193;0.1721662;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;39;-336,-64;Inherit;False;Property;_burn;burn;9;0;Create;True;0;0;0;False;0;False;0.1015193;0.1721662;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.StepOpNode;38;144,-352;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT;0.2;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.SimpleDivideOpNode;94;48,144;Inherit;False;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleSubtractOpNode;96;608,80;Inherit;False;2;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
@@ -3608,17 +3894,22 @@ Node;AmplifyShaderEditor.TextureCoordinatesNode;101;-2352,272;Inherit;False;0;-1
 Node;AmplifyShaderEditor.PannerNode;100;-2000,272;Inherit;False;3;0;FLOAT2;0,0;False;2;FLOAT2;0,-1;False;1;FLOAT;1;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.SamplerNode;98;-1680,240;Inherit;True;Property;_TextureSample3;Texture Sample 3;9;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.ComponentMaskNode;104;-1248,256;Inherit;False;True;True;True;True;1;0;FLOAT3;0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.RangedFloatNode;106;-1296,400;Inherit;False;Property;_heat_wave;heat_wave;9;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;106;-1296,400;Inherit;False;Property;_heat_wave;heat_wave;10;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;105;-960,144;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;108;-622.1235,256.9302;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT2;0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;107;-928,320;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;25;-2992,-256;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;26;-3344,-176;Inherit;False;Property;_scroll_speed;scroll_speed;4;0;Create;True;0;0;0;False;0;False;0.06947487;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;26;-3344,-176;Inherit;False;Property;_scroll_speed;scroll_speed;6;0;Create;True;0;0;0;False;0;False;0.06947487;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.PannerNode;23;-2592,-304;Inherit;False;3;0;FLOAT2;0,0;False;2;FLOAT2;0,-1;False;1;FLOAT;1;False;1;FLOAT2;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;20;-2256,-352;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleTimeNode;24;-3312,-288;Inherit;False;1;0;FLOAT;2;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SamplerNode;42;1840,-944;Inherit;True;Property;_albedo_texture;albedo_texture;8;0;Create;True;0;0;0;False;0;False;-1;8b92fe3ea6b9e3343b516d2c1921a40c;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
-Node;AmplifyShaderEditor.RangedFloatNode;36;1968,-256;Inherit;False;Property;_smoothness_strenght;smoothness_strenght;2;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;36;1968,-256;Inherit;False;Property;_smoothness_strenght;smoothness_strenght;3;0;Create;True;0;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.TexturePropertyNode;22;-2320,-688;Inherit;True;Property;_wave_normal;wave_normal;5;1;[Normal];Create;True;0;0;0;False;0;False;a3c286e1384aa1f41aed5d4f9b65790c;a3c286e1384aa1f41aed5d4f9b65790c;True;bump;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;156;1248,-1264;Inherit;True;Property;_base_color;base_color;1;0;Create;True;0;0;0;False;0;False;8b92fe3ea6b9e3343b516d2c1921a40c;8b92fe3ea6b9e3343b516d2c1921a40c;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.SamplerNode;155;1504,-1264;Inherit;True;Property;_TextureSample4;Texture Sample 0;3;0;Create;True;0;0;0;False;0;False;-1;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.SimpleAddOpNode;157;2032,-1280;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT3;0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.FunctionNode;154;1664,-1024;Inherit;False;SRP Additional Light;-1;;5;6c86746ad131a0a408ca599df5f40861;8,212,1,6,0,9,0,23,0,24,1,142,1,168,1,154,1;6;2;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;15;FLOAT3;0,0,0;False;14;FLOAT3;0,0,0;False;18;FLOAT;0.5;False;32;FLOAT4;0,0,0,0;False;1;FLOAT3;0
+Node;AmplifyShaderEditor.SamplerNode;151;1744,-800;Inherit;True;Property;_normal_map;normal_map;3;0;Create;True;0;0;0;False;0;False;-1;9a4a55d8d2e54394d97426434477cdcf;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;133;2352,-416;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;135;2352,-416;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;136;2352,-416;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
@@ -3672,8 +3963,12 @@ WireConnection;25;0;24;0
 WireConnection;25;1;26;0
 WireConnection;23;1;25;0
 WireConnection;20;1;23;0
-WireConnection;134;0;42;0
+WireConnection;155;0;156;0
+WireConnection;157;0;155;0
+WireConnection;157;1;154;0
+WireConnection;134;0;157;0
+WireConnection;134;1;151;0
 WireConnection;134;2;40;0
 WireConnection;134;4;36;0
 ASEEND*/
-//CHKSM=30CFA344146A84EF0D726C4DD7A6781A4316FD78
+//CHKSM=FBC1B8D8CCC199F2B2900C51B4208D9F4E6E6ADA
