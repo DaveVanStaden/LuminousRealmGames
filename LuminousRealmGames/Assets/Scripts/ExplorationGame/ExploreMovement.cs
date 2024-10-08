@@ -60,13 +60,13 @@ public class ExploreMovement : MonoBehaviour
     {
         if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
-            moveSpeed = 6; // Set to a slower speed when healed
-            sprintSpeed = 12f; // Adjust sprint speed when healed
+            moveSpeed = 5; // Set to a slower speed when healed
+            sprintSpeed = 10f; // Adjust sprint speed when healed
         }
         else if (playerHealth.currentState == PlayerHealth.PlayerState.Injured)
         {
-            moveSpeed = 8f; // Set to a faster speed when injured
-            sprintSpeed = 15f; // Increase sprint speed when injured
+            moveSpeed = 7f; // Set to a faster speed when injured
+            sprintSpeed = 13f; // Increase sprint speed when injured
         }
     }
 
@@ -182,7 +182,7 @@ public class ExploreMovement : MonoBehaviour
     private void GroundCheck()
     {
         Vector3 rayOrigin = groundCheck.position;
-        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
+        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.4f, groundLayer);
 
         if (isGrounded)
         {
