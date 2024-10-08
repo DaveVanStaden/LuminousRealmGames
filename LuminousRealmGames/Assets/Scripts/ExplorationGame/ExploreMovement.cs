@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ExploreMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;     
-    public float sprintSpeed = 10f;  
+    public float moveSpeed = 5f;
+    public float sprintSpeed = 10f;
     [SerializeField] private float rotationSpeed = 300f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
@@ -14,12 +14,12 @@ public class ExploreMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private PlayerHealth playerHealth;
-
+    [SerializeField] private InputManager inputManager; // Reference to the InputManager
 
     private bool isGrounded = true;
-    private bool hasWallJumped = false;  
-    private int jumpCount = 0;             
-    private int maxJumps = 2;              
+    private bool hasWallJumped = false;
+    private int jumpCount = 0;
+    private int maxJumps = 2;
 
     [SerializeField] private float stopDamping = 10f;
     [SerializeField] private float stopThreshold = 0.1f;
@@ -28,7 +28,7 @@ public class ExploreMovement : MonoBehaviour
     [SerializeField] private float maxJumpForce = 15f;
     [SerializeField] private float maxChargeTime = 2f;
     private float jumpChargeTime = 0f;
-    private bool isChargingJump = false;  
+    private bool isChargingJump = false;
 
     [SerializeField] private float glideFallSpeed = 1f;
     private bool isGliding = false;
@@ -55,70 +55,82 @@ public class ExploreMovement : MonoBehaviour
         GroundCheck();
         WallCheck();
     }
+
     private void AdjustSpeedBasedOnState()
     {
         if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
-            moveSpeed = 4f;     // Set to a faster speed when injured
-            sprintSpeed = 7f;   // Adjust sprint speed when healed
+            moveSpeed = 4f; // Set to a slower speed when healed
+            sprintSpeed = 7f; // Adjust sprint speed when healed
         }
         else if (playerHealth.currentState == PlayerHealth.PlayerState.Injured)
         {
-            moveSpeed = 6f;     // Set to a faster speed when injured
-            sprintSpeed = 12f;  // Increase sprint speed when injured
+            moveSpeed = 6f; // Set to a faster speed when injured
+            sprintSpeed = 12f; // Increase sprint speed when injured
         }
     }
 
     private void HandleInput()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        Vector2 input = inputManager.GetMoveInput();
+        moveInput = new Vector3(input.x, 0, input.y).normalized;
 
-        moveInput = new Vector3(moveHorizontal, 0, moveVertical).normalized;
-        
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // Start charging the jump if grounded
+        if (isGrounded && inputManager.GetJumpInputDown())
         {
             isChargingJump = true;
-            jumpChargeTime = 0f;  
+            jumpChargeTime = 0f;
         }
-        
-        if (Input.GetButton("Jump") && isChargingJump)
+
+        // Charge the jump while holding the button
+        if (isChargingJump && inputManager.GetJumpInput())
         {
             jumpChargeTime += Time.deltaTime;
-            jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);  
+            jumpChargeTime = Mathf.Clamp(jumpChargeTime, 0f, maxChargeTime);
         }
-        
-        if (Input.GetButtonUp("Jump") && isChargingJump)
+
+        // Release the jump button to perform the charged jump
+        if (isChargingJump && !inputManager.GetJumpInput())
         {
-            PerformJump();
-            isChargingJump = false;  
+            PerformJump(); // Apply the charged jump force for the first jump
+            isChargingJump = false;
         }
-        
-        if (Input.GetButtonDown("Jump") && !isGrounded && jumpCount < maxJumps && !hasWallJumped)
+
+        // Handle wall jumps separately if the player is in the air
+        if (!isGrounded && inputManager.GetJumpInputDown() && jumpCount < maxJumps && !hasWallJumped)
         {
-            PerformJump();  
+            PerformJump(); // Normal jump for wall jumping
             jumpCount++;
         }
     }
 
     private void PerformJump()
     {
+        // Calculate the jump force based on the charging time
         float jumpForce = Mathf.Lerp(minJumpForce, maxJumpForce, jumpChargeTime / maxChargeTime);
-        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); 
+
+        // Reset the vertical velocity before applying the jump force to avoid stacking forces
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+
+        // Apply the calculated jump force
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+        // Reset jump charge variables
         jumpChargeTime = 0f;
+        isChargingJump = false;
+        hasWallJumped = false;
+        isGliding = false;
+
+        // Increment jump count if the player is not grounded
         if (!isGrounded)
         {
-            jumpCount++; 
+            jumpCount++;
         }
-        hasWallJumped = false;
-        
-        isGliding = false;
     }
 
     private void HandleMovement()
     {
-        float currentMoveSpeed = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : moveSpeed;
+        float currentMoveSpeed = inputManager.GetSprintInput() ? sprintSpeed : moveSpeed;
 
         if (moveInput.magnitude > 0)
         {
@@ -140,7 +152,7 @@ public class ExploreMovement : MonoBehaviour
 
         if (!isGrounded && rb.linearVelocity.y < 0)
         {
-            if (Input.GetButton("Jump"))
+            if (inputManager.GetJumpInput())
             {
                 StartGlide();
             }
@@ -176,7 +188,7 @@ public class ExploreMovement : MonoBehaviour
         {
             isGliding = false;
             jumpCount = 0;
-            hasWallJumped = false;  
+            hasWallJumped = false;
         }
     }
 
@@ -184,21 +196,20 @@ public class ExploreMovement : MonoBehaviour
     {
         if (!isGrounded)
         {
-            Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
+            Vector3[] directions = {transform.forward, -transform.forward, transform.right, -transform.right};
             float wallCheckDistance = 0.5f;
 
             foreach (var direction in directions)
             {
                 if (Physics.Raycast(wallCheck.position, direction, wallCheckDistance, wallLayer))
                 {
-                    
                     if (!hasWallJumped)
                     {
-                        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z); 
-                        PerformJump(); 
-                        jumpCount++;    
-                        hasWallJumped = true;  
-                        break;  
+                        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+                        PerformJump();
+                        jumpCount++;
+                        hasWallJumped = true;
+                        break;
                     }
                 }
             }
@@ -210,9 +221,8 @@ public class ExploreMovement : MonoBehaviour
         Vector3 viewDir = player.position - new Vector3(transform.position.x, player.position.y, transform.position.z);
         orientation.forward = viewDir.normalized;
 
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 inputDir = orientation.forward * moveVertical + orientation.right * moveHorizontal;
+        Vector2 input = inputManager.GetMoveInput();
+        Vector3 inputDir = orientation.forward * input.y + orientation.right * input.x;
 
         if (inputDir != Vector3.zero)
         {
