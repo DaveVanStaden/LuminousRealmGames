@@ -184,7 +184,7 @@ Material:
     - __dirty: 0
     - _burn: 0
     - _distortion_amount: 0
-    - _fresnel_strenght: 2.12
+    - _fresnel_strenght: 10
     - _heat_wave: 0
     - _scroll_speed: 0
     m_Colors:

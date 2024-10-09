@@ -15,7 +15,7 @@ Shader "toon_burn_shader"
 		_hot_color("hot_color", Color) = (1,0.813481,0.3226415,0)
 		_burn("burn", Range( 0 , 1)) = 0.1015193
 		_heat_wave("heat_wave", Range( 0 , 1)) = 0
-		_fresnel_strenght("fresnel_strenght", Range( 0 , 10)) = 1.996079
+		_normal_map("normal_map", 2D) = "bump" {}
 		[HideInInspector] _texcoord( "", 2D ) = "white" {}
 
 
@@ -191,6 +191,9 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
+			#pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
+			#pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
 			#pragma multi_compile_instancing
@@ -199,10 +202,8 @@ Shader "toon_burn_shader"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
-			#pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
-			#pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -263,7 +264,9 @@ Shader "toon_burn_shader"
 			#define ASE_NEEDS_FRAG_WORLD_POSITION
 			#define ASE_NEEDS_FRAG_SCREEN_POSITION
 			#define ASE_NEEDS_FRAG_WORLD_VIEW_DIR
+			#define ASE_NEEDS_FRAG_WORLD_TANGENT
 			#define ASE_NEEDS_FRAG_WORLD_NORMAL
+			#define ASE_NEEDS_FRAG_WORLD_BITANGENT
 
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
@@ -311,10 +314,10 @@ Shader "toon_burn_shader"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -350,6 +353,7 @@ Shader "toon_burn_shader"
 			#endif
 
 			sampler2D _base_color;
+			sampler2D _normal_map;
 			sampler2D _Mask;
 			sampler2D _wave_normal;
 
@@ -604,8 +608,16 @@ Shader "toon_burn_shader"
 				float2 ScreenUV176_g1 = ScreenUV183_g1;
 				float3 localAdditionalLightsFlat17x176_g1 = AdditionalLightsFlat17x( WorldPosition176_g1 , ScreenUV176_g1 );
 				float2 uv_base_color = input.ase_texcoord9.xy * _base_color_ST.xy + _base_color_ST.zw;
-				float fresnelNdotV260 = dot( normalize( WorldNormal ), WorldViewDirection );
+				float3 temp_cast_1 = (0.0).xxx;
+				float3 tanToWorld0 = float3( WorldTangent.x, WorldBiTangent.x, WorldNormal.x );
+				float3 tanToWorld1 = float3( WorldTangent.y, WorldBiTangent.y, WorldNormal.y );
+				float3 tanToWorld2 = float3( WorldTangent.z, WorldBiTangent.z, WorldNormal.z );
+				float3 tanNormal262 = temp_cast_1;
+				float3 worldNormal262 = float3(dot(tanToWorld0,tanNormal262), dot(tanToWorld1,tanNormal262), dot(tanToWorld2,tanNormal262));
+				float fresnelNdotV260 = dot( normalize( worldNormal262 ), WorldViewDirection );
 				float fresnelNode260 = ( 1.0 + 2.0 * pow( max( 1.0 - fresnelNdotV260 , 0.0001 ), 30.0 ) );
+				
+				float2 uv_normal_map = input.ase_texcoord9.xy * _normal_map_ST.xy + _normal_map_ST.zw;
 				
 				float2 uv_wave_normal = input.ase_texcoord9.xy * _wave_normal_ST.xy + _wave_normal_ST.zw;
 				float mulTime309 = _TimeParameters.x * 2.0;
@@ -613,23 +625,23 @@ Shader "toon_burn_shader"
 				float2 panner307 = ( temp_output_305_0 * float2( 0,-1 ) + float2( 0,0 ));
 				float2 texCoord308 = input.ase_texcoord9.xy * float2( 1,1 ) + panner307;
 				float4 lerpResult279 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _wave_normal, uv_wave_normal ), 1.0f )).xy * _distortion_amount ) + texCoord308 ) ).r);
-				float4 temp_cast_2 = (3.0).xxxx;
+				float4 temp_cast_3 = (3.0).xxxx;
 				float2 texCoord297 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
 				float2 panner298 = ( temp_output_305_0 * float2( 0,-1 ) + texCoord297);
 				float2 texCoord304 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 tex2DNode288 = tex2D( _Mask, ( ( (tex2D( _wave_normal, panner298 ).rgb).xyz * _heat_wave ) + float3( texCoord304 ,  0.0 ) ).xy );
-				float3 temp_cast_5 = (_burn).xxx;
-				float3 temp_output_290_0 = step( tex2DNode288.rgb , temp_cast_5 );
 				float3 temp_cast_6 = (_burn).xxx;
-				float3 temp_cast_7 = (( _burn / 1.2 )).xxx;
+				float3 temp_output_290_0 = step( tex2DNode288.rgb , temp_cast_6 );
+				float3 temp_cast_7 = (_burn).xxx;
+				float3 temp_cast_8 = (( _burn / 1.2 )).xxx;
 				
-				float3 temp_cast_10 = (0.0).xxx;
+				float3 temp_cast_11 = (0.0).xxx;
 				
 
-				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) * ( ( 1.0 - fresnelNode260 ) + _fresnel_strenght ) ).rgb;
-				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( ( pow( lerpResult279 , temp_cast_2 ) * 3.0 ) * float4( ( temp_output_290_0 + ( temp_output_290_0 - step( tex2DNode288.rgb , temp_cast_7 ) ) ) , 0.0 ) ).rgb;
-				float3 Specular = temp_cast_10;
+				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) + ( ( 1.0 - fresnelNode260 ) + 0.0 ) ).rgb;
+				float3 Normal = UnpackNormalScale( tex2D( _normal_map, uv_normal_map ), 1.0f );
+				float3 Emission = ( ( pow( lerpResult279 , temp_cast_3 ) * 3.0 ) * float4( ( temp_output_290_0 + ( temp_output_290_0 - step( tex2DNode288.rgb , temp_cast_8 ) ) ) , 0.0 ) ).rgb;
+				float3 Specular = temp_cast_11;
 				float Metallic = 0;
 				float Smoothness = 0.0;
 				float Occlusion = 1;
@@ -892,13 +904,14 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_instancing
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -965,10 +978,10 @@ Shader "toon_burn_shader"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -1215,13 +1228,14 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_instancing
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -1285,10 +1299,10 @@ Shader "toon_burn_shader"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -1506,11 +1520,12 @@ Shader "toon_burn_shader"
 			Cull Off
 
 			HLSLPROGRAM
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 			#pragma shader_feature EDITOR_VISUALIZATION
@@ -1548,7 +1563,7 @@ Shader "toon_burn_shader"
 				float4 texcoord0 : TEXCOORD0;
 				float4 texcoord1 : TEXCOORD1;
 				float4 texcoord2 : TEXCOORD2;
-				
+				float4 ase_tangent : TANGENT;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1568,16 +1583,18 @@ Shader "toon_burn_shader"
 				float4 ase_texcoord4 : TEXCOORD4;
 				float4 ase_texcoord5 : TEXCOORD5;
 				float4 ase_texcoord6 : TEXCOORD6;
+				float4 ase_texcoord7 : TEXCOORD7;
+				float4 ase_texcoord8 : TEXCOORD8;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -1665,14 +1682,21 @@ Shader "toon_burn_shader"
 				float4 ase_clipPos = TransformObjectToHClip((input.positionOS).xyz);
 				float4 screenPos = ComputeScreenPos(ase_clipPos);
 				output.ase_texcoord4 = screenPos;
+				float3 ase_worldTangent = TransformObjectToWorldDir(input.ase_tangent.xyz);
+				output.ase_texcoord6.xyz = ase_worldTangent;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(input.normalOS);
-				output.ase_texcoord6.xyz = ase_worldNormal;
+				output.ase_texcoord7.xyz = ase_worldNormal;
+				float ase_vertexTangentSign = input.ase_tangent.w * ( unity_WorldTransformParams.w >= 0.0 ? 1.0 : -1.0 );
+				float3 ase_worldBitangent = cross( ase_worldNormal, ase_worldTangent ) * ase_vertexTangentSign;
+				output.ase_texcoord8.xyz = ase_worldBitangent;
 				
 				output.ase_texcoord5.xy = input.texcoord0.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				output.ase_texcoord5.zw = 0;
 				output.ase_texcoord6.w = 0;
+				output.ase_texcoord7.w = 0;
+				output.ase_texcoord8.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -1724,7 +1748,8 @@ Shader "toon_burn_shader"
 				float4 texcoord0 : TEXCOORD0;
 				float4 texcoord1 : TEXCOORD1;
 				float4 texcoord2 : TEXCOORD2;
-				
+				float4 ase_tangent : TANGENT;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1744,7 +1769,7 @@ Shader "toon_burn_shader"
 				output.texcoord0 = input.texcoord0;
 				output.texcoord1 = input.texcoord1;
 				output.texcoord2 = input.texcoord2;
-				
+				output.ase_tangent = input.ase_tangent;
 				return output;
 			}
 
@@ -1786,7 +1811,7 @@ Shader "toon_burn_shader"
 				output.texcoord0 = patch[0].texcoord0 * bary.x + patch[1].texcoord0 * bary.y + patch[2].texcoord0 * bary.z;
 				output.texcoord1 = patch[0].texcoord1 * bary.x + patch[1].texcoord1 * bary.y + patch[2].texcoord1 * bary.z;
 				output.texcoord2 = patch[0].texcoord2 * bary.x + patch[1].texcoord2 * bary.y + patch[2].texcoord2 * bary.z;
-				
+				output.ase_tangent = patch[0].ase_tangent * bary.x + patch[1].ase_tangent * bary.y + patch[2].ase_tangent * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -1834,8 +1859,16 @@ Shader "toon_burn_shader"
 				float2 uv_base_color = input.ase_texcoord5.xy * _base_color_ST.xy + _base_color_ST.zw;
 				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - WorldPosition );
 				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 ase_worldNormal = input.ase_texcoord6.xyz;
-				float fresnelNdotV260 = dot( normalize( ase_worldNormal ), ase_worldViewDir );
+				float3 temp_cast_1 = (0.0).xxx;
+				float3 ase_worldTangent = input.ase_texcoord6.xyz;
+				float3 ase_worldNormal = input.ase_texcoord7.xyz;
+				float3 ase_worldBitangent = input.ase_texcoord8.xyz;
+				float3 tanToWorld0 = float3( ase_worldTangent.x, ase_worldBitangent.x, ase_worldNormal.x );
+				float3 tanToWorld1 = float3( ase_worldTangent.y, ase_worldBitangent.y, ase_worldNormal.y );
+				float3 tanToWorld2 = float3( ase_worldTangent.z, ase_worldBitangent.z, ase_worldNormal.z );
+				float3 tanNormal262 = temp_cast_1;
+				float3 worldNormal262 = float3(dot(tanToWorld0,tanNormal262), dot(tanToWorld1,tanNormal262), dot(tanToWorld2,tanNormal262));
+				float fresnelNdotV260 = dot( normalize( worldNormal262 ), ase_worldViewDir );
 				float fresnelNode260 = ( 1.0 + 2.0 * pow( max( 1.0 - fresnelNdotV260 , 0.0001 ), 30.0 ) );
 				
 				float2 uv_wave_normal = input.ase_texcoord5.xy * _wave_normal_ST.xy + _wave_normal_ST.zw;
@@ -1844,19 +1877,19 @@ Shader "toon_burn_shader"
 				float2 panner307 = ( temp_output_305_0 * float2( 0,-1 ) + float2( 0,0 ));
 				float2 texCoord308 = input.ase_texcoord5.xy * float2( 1,1 ) + panner307;
 				float4 lerpResult279 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _wave_normal, uv_wave_normal ), 1.0f )).xy * _distortion_amount ) + texCoord308 ) ).r);
-				float4 temp_cast_2 = (3.0).xxxx;
+				float4 temp_cast_3 = (3.0).xxxx;
 				float2 texCoord297 = input.ase_texcoord5.xy * float2( 1,1 ) + float2( 0,0 );
 				float2 panner298 = ( temp_output_305_0 * float2( 0,-1 ) + texCoord297);
 				float2 texCoord304 = input.ase_texcoord5.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 tex2DNode288 = tex2D( _Mask, ( ( (tex2D( _wave_normal, panner298 ).rgb).xyz * _heat_wave ) + float3( texCoord304 ,  0.0 ) ).xy );
-				float3 temp_cast_5 = (_burn).xxx;
-				float3 temp_output_290_0 = step( tex2DNode288.rgb , temp_cast_5 );
 				float3 temp_cast_6 = (_burn).xxx;
-				float3 temp_cast_7 = (( _burn / 1.2 )).xxx;
+				float3 temp_output_290_0 = step( tex2DNode288.rgb , temp_cast_6 );
+				float3 temp_cast_7 = (_burn).xxx;
+				float3 temp_cast_8 = (( _burn / 1.2 )).xxx;
 				
 
-				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) * ( ( 1.0 - fresnelNode260 ) + _fresnel_strenght ) ).rgb;
-				float3 Emission = ( ( pow( lerpResult279 , temp_cast_2 ) * 3.0 ) * float4( ( temp_output_290_0 + ( temp_output_290_0 - step( tex2DNode288.rgb , temp_cast_7 ) ) ) , 0.0 ) ).rgb;
+				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) + ( ( 1.0 - fresnelNode260 ) + 0.0 ) ).rgb;
+				float3 Emission = ( ( pow( lerpResult279 , temp_cast_3 ) * 3.0 ) * float4( ( temp_output_290_0 + ( temp_output_290_0 - step( tex2DNode288.rgb , temp_cast_8 ) ) ) , 0.0 ) ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -1892,11 +1925,12 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -1930,6 +1964,7 @@ Shader "toon_burn_shader"
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
 				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_tangent : TANGENT;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -1945,16 +1980,18 @@ Shader "toon_burn_shader"
 				float4 ase_texcoord2 : TEXCOORD2;
 				float4 ase_texcoord3 : TEXCOORD3;
 				float4 ase_texcoord4 : TEXCOORD4;
+				float4 ase_texcoord5 : TEXCOORD5;
+				float4 ase_texcoord6 : TEXCOORD6;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -2040,14 +2077,21 @@ Shader "toon_burn_shader"
 				float4 ase_clipPos = TransformObjectToHClip((input.positionOS).xyz);
 				float4 screenPos = ComputeScreenPos(ase_clipPos);
 				output.ase_texcoord2 = screenPos;
+				float3 ase_worldTangent = TransformObjectToWorldDir(input.ase_tangent.xyz);
+				output.ase_texcoord4.xyz = ase_worldTangent;
 				float3 ase_worldNormal = TransformObjectToWorldNormal(input.normalOS);
-				output.ase_texcoord4.xyz = ase_worldNormal;
+				output.ase_texcoord5.xyz = ase_worldNormal;
+				float ase_vertexTangentSign = input.ase_tangent.w * ( unity_WorldTransformParams.w >= 0.0 ? 1.0 : -1.0 );
+				float3 ase_worldBitangent = cross( ase_worldNormal, ase_worldTangent ) * ase_vertexTangentSign;
+				output.ase_texcoord6.xyz = ase_worldBitangent;
 				
 				output.ase_texcoord3.xy = input.ase_texcoord.xy;
 				
 				//setting value to unused interpolator channels and avoid initialization warnings
 				output.ase_texcoord3.zw = 0;
 				output.ase_texcoord4.w = 0;
+				output.ase_texcoord5.w = 0;
+				output.ase_texcoord6.w = 0;
 
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
@@ -2086,6 +2130,7 @@ Shader "toon_burn_shader"
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
 				float4 ase_texcoord : TEXCOORD0;
+				float4 ase_tangent : TANGENT;
 
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
@@ -2104,6 +2149,7 @@ Shader "toon_burn_shader"
 				output.vertex = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.ase_texcoord = input.ase_texcoord;
+				output.ase_tangent = input.ase_tangent;
 				return output;
 			}
 
@@ -2143,6 +2189,7 @@ Shader "toon_burn_shader"
 				output.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
+				output.ase_tangent = patch[0].ase_tangent * bary.x + patch[1].ase_tangent * bary.y + patch[2].ase_tangent * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -2190,12 +2237,20 @@ Shader "toon_burn_shader"
 				float2 uv_base_color = input.ase_texcoord3.xy * _base_color_ST.xy + _base_color_ST.zw;
 				float3 ase_worldViewDir = ( _WorldSpaceCameraPos.xyz - WorldPosition );
 				ase_worldViewDir = normalize(ase_worldViewDir);
-				float3 ase_worldNormal = input.ase_texcoord4.xyz;
-				float fresnelNdotV260 = dot( normalize( ase_worldNormal ), ase_worldViewDir );
+				float3 temp_cast_1 = (0.0).xxx;
+				float3 ase_worldTangent = input.ase_texcoord4.xyz;
+				float3 ase_worldNormal = input.ase_texcoord5.xyz;
+				float3 ase_worldBitangent = input.ase_texcoord6.xyz;
+				float3 tanToWorld0 = float3( ase_worldTangent.x, ase_worldBitangent.x, ase_worldNormal.x );
+				float3 tanToWorld1 = float3( ase_worldTangent.y, ase_worldBitangent.y, ase_worldNormal.y );
+				float3 tanToWorld2 = float3( ase_worldTangent.z, ase_worldBitangent.z, ase_worldNormal.z );
+				float3 tanNormal262 = temp_cast_1;
+				float3 worldNormal262 = float3(dot(tanToWorld0,tanNormal262), dot(tanToWorld1,tanNormal262), dot(tanToWorld2,tanNormal262));
+				float fresnelNdotV260 = dot( normalize( worldNormal262 ), ase_worldViewDir );
 				float fresnelNode260 = ( 1.0 + 2.0 * pow( max( 1.0 - fresnelNdotV260 , 0.0001 ), 30.0 ) );
 				
 
-				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) * ( ( 1.0 - fresnelNode260 ) + _fresnel_strenght ) ).rgb;
+				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) + ( ( 1.0 - fresnelNode260 ) + 0.0 ) ).rgb;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -2224,13 +2279,14 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_instancing
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -2277,7 +2333,7 @@ Shader "toon_burn_shader"
 				float4 positionOS : POSITION;
 				float3 normalOS : NORMAL;
 				float4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2293,17 +2349,17 @@ Shader "toon_burn_shader"
 				#if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR) && defined(ASE_NEEDS_FRAG_SHADOWCOORDS)
 					float4 shadowCoord : TEXCOORD4;
 				#endif
-				
+				float4 ase_texcoord5 : TEXCOORD5;
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -2338,7 +2394,8 @@ Shader "toon_burn_shader"
 				int _PassValue;
 			#endif
 
-			
+			sampler2D _normal_map;
+
 
 			
 			PackedVaryings VertexFunction( Attributes input  )
@@ -2348,7 +2405,10 @@ Shader "toon_burn_shader"
 				UNITY_TRANSFER_INSTANCE_ID(input, output);
 				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
 
+				output.ase_texcoord5.xy = input.ase_texcoord.xy;
 				
+				//setting value to unused interpolator channels and avoid initialization warnings
+				output.ase_texcoord5.zw = 0;
 				#ifdef ASE_ABSOLUTE_VERTEX_POS
 					float3 defaultVertexValue = input.positionOS.xyz;
 				#else
@@ -2393,7 +2453,8 @@ Shader "toon_burn_shader"
 				float4 vertex : INTERNALTESSPOS;
 				float3 normalOS : NORMAL;
 				float4 tangentOS : TANGENT;
-				
+				float4 ase_texcoord : TEXCOORD0;
+
 				UNITY_VERTEX_INPUT_INSTANCE_ID
 			};
 
@@ -2411,7 +2472,7 @@ Shader "toon_burn_shader"
 				output.vertex = input.positionOS;
 				output.normalOS = input.normalOS;
 				output.tangentOS = input.tangentOS;
-				
+				output.ase_texcoord = input.ase_texcoord;
 				return output;
 			}
 
@@ -2451,7 +2512,7 @@ Shader "toon_burn_shader"
 				output.positionOS = patch[0].vertex * bary.x + patch[1].vertex * bary.y + patch[2].vertex * bary.z;
 				output.normalOS = patch[0].normalOS * bary.x + patch[1].normalOS * bary.y + patch[2].normalOS * bary.z;
 				output.tangentOS = patch[0].tangentOS * bary.x + patch[1].tangentOS * bary.y + patch[2].tangentOS * bary.z;
-				
+				output.ase_texcoord = patch[0].ase_texcoord * bary.x + patch[1].ase_texcoord * bary.y + patch[2].ase_texcoord * bary.z;
 				#if defined(ASE_PHONG_TESSELLATION)
 				float3 pp[3];
 				for (int i = 0; i < 3; ++i)
@@ -2501,9 +2562,10 @@ Shader "toon_burn_shader"
 					#endif
 				#endif
 
+				float2 uv_normal_map = input.ase_texcoord5.xy * _normal_map_ST.xy + _normal_map_ST.zw;
 				
 
-				float3 Normal = float3(0, 0, 1);
+				float3 Normal = UnpackNormalScale( tex2D( _normal_map, uv_normal_map ), 1.0f );
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
 
@@ -2569,6 +2631,9 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
+			#pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
+			#pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_instancing
 			#pragma instancing_options renderinglayer
@@ -2576,10 +2641,8 @@ Shader "toon_burn_shader"
 			#pragma multi_compile_fog
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
-			#pragma shader_feature_local_fragment _SPECULARHIGHLIGHTS_OFF
-			#pragma shader_feature_local_fragment _ENVIRONMENTREFLECTIONS_OFF
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -2637,7 +2700,9 @@ Shader "toon_burn_shader"
 			#define ASE_NEEDS_FRAG_WORLD_POSITION
 			#define ASE_NEEDS_FRAG_SCREEN_POSITION
 			#define ASE_NEEDS_FRAG_WORLD_VIEW_DIR
+			#define ASE_NEEDS_FRAG_WORLD_TANGENT
 			#define ASE_NEEDS_FRAG_WORLD_NORMAL
+			#define ASE_NEEDS_FRAG_WORLD_BITANGENT
 
 
 			#if defined(ASE_EARLY_Z_DEPTH_OPTIMIZE) && (SHADER_TARGET >= 45)
@@ -2685,10 +2750,10 @@ Shader "toon_burn_shader"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -2724,6 +2789,7 @@ Shader "toon_burn_shader"
 			#endif
 
 			sampler2D _base_color;
+			sampler2D _normal_map;
 			sampler2D _Mask;
 			sampler2D _wave_normal;
 
@@ -2973,8 +3039,16 @@ Shader "toon_burn_shader"
 				float2 ScreenUV176_g1 = ScreenUV183_g1;
 				float3 localAdditionalLightsFlat17x176_g1 = AdditionalLightsFlat17x( WorldPosition176_g1 , ScreenUV176_g1 );
 				float2 uv_base_color = input.ase_texcoord9.xy * _base_color_ST.xy + _base_color_ST.zw;
-				float fresnelNdotV260 = dot( normalize( WorldNormal ), WorldViewDirection );
+				float3 temp_cast_1 = (0.0).xxx;
+				float3 tanToWorld0 = float3( WorldTangent.x, WorldBiTangent.x, WorldNormal.x );
+				float3 tanToWorld1 = float3( WorldTangent.y, WorldBiTangent.y, WorldNormal.y );
+				float3 tanToWorld2 = float3( WorldTangent.z, WorldBiTangent.z, WorldNormal.z );
+				float3 tanNormal262 = temp_cast_1;
+				float3 worldNormal262 = float3(dot(tanToWorld0,tanNormal262), dot(tanToWorld1,tanNormal262), dot(tanToWorld2,tanNormal262));
+				float fresnelNdotV260 = dot( normalize( worldNormal262 ), WorldViewDirection );
 				float fresnelNode260 = ( 1.0 + 2.0 * pow( max( 1.0 - fresnelNdotV260 , 0.0001 ), 30.0 ) );
+				
+				float2 uv_normal_map = input.ase_texcoord9.xy * _normal_map_ST.xy + _normal_map_ST.zw;
 				
 				float2 uv_wave_normal = input.ase_texcoord9.xy * _wave_normal_ST.xy + _wave_normal_ST.zw;
 				float mulTime309 = _TimeParameters.x * 2.0;
@@ -2982,23 +3056,23 @@ Shader "toon_burn_shader"
 				float2 panner307 = ( temp_output_305_0 * float2( 0,-1 ) + float2( 0,0 ));
 				float2 texCoord308 = input.ase_texcoord9.xy * float2( 1,1 ) + panner307;
 				float4 lerpResult279 = lerp( _warm_color , _hot_color , tex2D( _Mask, ( ( (UnpackNormalScale( tex2D( _wave_normal, uv_wave_normal ), 1.0f )).xy * _distortion_amount ) + texCoord308 ) ).r);
-				float4 temp_cast_2 = (3.0).xxxx;
+				float4 temp_cast_3 = (3.0).xxxx;
 				float2 texCoord297 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
 				float2 panner298 = ( temp_output_305_0 * float2( 0,-1 ) + texCoord297);
 				float2 texCoord304 = input.ase_texcoord9.xy * float2( 1,1 ) + float2( 0,0 );
 				float4 tex2DNode288 = tex2D( _Mask, ( ( (tex2D( _wave_normal, panner298 ).rgb).xyz * _heat_wave ) + float3( texCoord304 ,  0.0 ) ).xy );
-				float3 temp_cast_5 = (_burn).xxx;
-				float3 temp_output_290_0 = step( tex2DNode288.rgb , temp_cast_5 );
 				float3 temp_cast_6 = (_burn).xxx;
-				float3 temp_cast_7 = (( _burn / 1.2 )).xxx;
+				float3 temp_output_290_0 = step( tex2DNode288.rgb , temp_cast_6 );
+				float3 temp_cast_7 = (_burn).xxx;
+				float3 temp_cast_8 = (( _burn / 1.2 )).xxx;
 				
-				float3 temp_cast_10 = (0.0).xxx;
+				float3 temp_cast_11 = (0.0).xxx;
 				
 
-				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) * ( ( 1.0 - fresnelNode260 ) + _fresnel_strenght ) ).rgb;
-				float3 Normal = float3(0, 0, 1);
-				float3 Emission = ( ( pow( lerpResult279 , temp_cast_2 ) * 3.0 ) * float4( ( temp_output_290_0 + ( temp_output_290_0 - step( tex2DNode288.rgb , temp_cast_7 ) ) ) , 0.0 ) ).rgb;
-				float3 Specular = temp_cast_10;
+				float3 BaseColor = ( ( float4( localAdditionalLightsFlat17x176_g1 , 0.0 ) + tex2D( _base_color, uv_base_color ) ) + ( ( 1.0 - fresnelNode260 ) + 0.0 ) ).rgb;
+				float3 Normal = UnpackNormalScale( tex2D( _normal_map, uv_normal_map ), 1.0f );
+				float3 Emission = ( ( pow( lerpResult279 , temp_cast_3 ) * 3.0 ) * float4( ( temp_output_290_0 + ( temp_output_290_0 - step( tex2DNode288.rgb , temp_cast_8 ) ) ) , 0.0 ) ).rgb;
+				float3 Specular = temp_cast_11;
 				float Metallic = 0;
 				float Smoothness = 0.0;
 				float Occlusion = 1;
@@ -3125,11 +3199,12 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -3179,10 +3254,10 @@ Shader "toon_burn_shader"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -3381,11 +3456,12 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -3435,10 +3511,10 @@ Shader "toon_burn_shader"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -3636,13 +3712,14 @@ Shader "toon_burn_shader"
 
 			HLSLPROGRAM
 
+			#define _SPECULAR_SETUP 1
 			#define _NORMAL_DROPOFF_TS 1
 			#pragma multi_compile_instancing
 			#pragma multi_compile _ LOD_FADE_CROSSFADE
 			#define ASE_FOG 1
 			#define ASE_FINAL_COLOR_ALPHA_MULTIPLY 1
-			#define _SPECULAR_SETUP 1
 			#define _EMISSION
+			#define _NORMALMAP 1
 			#define ASE_SRP_VERSION 170003
 
 
@@ -3700,10 +3777,10 @@ Shader "toon_burn_shader"
 
 			CBUFFER_START(UnityPerMaterial)
 			float4 _base_color_ST;
+			float4 _normal_map_ST;
 			float4 _warm_color;
 			float4 _hot_color;
 			float4 _wave_normal_ST;
-			float _fresnel_strenght;
 			float _distortion_amount;
 			float _scroll_speed;
 			float _heat_wave;
@@ -3872,15 +3949,17 @@ Node;AmplifyShaderEditor.StepOpNode;293;-1312,1328;Inherit;False;2;0;FLOAT3;0,0,
 Node;AmplifyShaderEditor.RangedFloatNode;294;-1968,1456;Inherit;False;Constant;_divide_amount;divide_amount;9;0;Create;True;0;0;0;False;0;False;1.2;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;303;-2304,1488;Inherit;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT2;0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.ColorNode;278;-1376,-176;Inherit;False;Property;_warm_color;warm_color;7;0;Create;True;0;0;0;False;0;False;0.9622642,0.412882,0,0;0.9622641,0.4128819,0,0;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;268;272,-368;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;313;-48,-720;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.OneMinusNode;267;-384,-816;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;314;-672,-608;Inherit;False;Property;_fresnel_strenght;fresnel_strenght;11;0;Create;True;0;0;0;False;0;False;1.996079;1.763068;0;10;0;1;FLOAT;0
-Node;AmplifyShaderEditor.FresnelNode;260;-640,-832;Inherit;False;Standard;WorldNormal;LightDir;True;True;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;1;False;2;FLOAT;2;False;3;FLOAT;30;False;1;FLOAT;0
-Node;AmplifyShaderEditor.WorldNormalVector;262;-912,-832;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.SimpleAddOpNode;244;-272,-1200;Inherit;True;2;2;0;FLOAT3;1,1,1;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.FunctionNode;245;-880,-1248;Inherit;False;SRP Additional Light;-1;;1;6c86746ad131a0a408ca599df5f40861;8,212,1,6,0,9,0,23,0,24,0,142,0,168,0,154,0;6;2;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;15;FLOAT3;0,0,0;False;14;FLOAT3;0,0,0;False;18;FLOAT;0.5;False;32;FLOAT4;0,0,0,0;False;1;FLOAT3;0
-Node;AmplifyShaderEditor.RangedFloatNode;181;320,-16;Inherit;False;Constant;_Float0;Float 0;1;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;315;279.6899,-660.9688;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.OneMinusNode;267;-384,-816;Inherit;False;1;0;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.FresnelNode;260;-640,-832;Inherit;False;Standard;WorldNormal;LightDir;True;True;5;0;FLOAT3;0,0,1;False;4;FLOAT3;0,0,0;False;1;FLOAT;1;False;2;FLOAT;2;False;3;FLOAT;30;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;314;-720,-608;Inherit;False;Property;_fresnel_strenght;fresnel_strenght;11;0;Create;True;0;0;0;False;0;False;9.835571;1.763068;0;10;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;181;336,64;Inherit;False;Constant;_Float0;Float 0;1;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SamplerNode;318;272,-176;Inherit;True;Property;_normal_map;normal_map;12;0;Create;True;0;0;0;False;0;False;-1;9a4a55d8d2e54394d97426434477cdcf;None;True;0;True;bump;Auto;True;Object;-1;Auto;Texture2D;8;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;6;FLOAT;0;False;7;SAMPLERSTATE;;False;6;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
+Node;AmplifyShaderEditor.WorldNormalVector;262;-944,-832;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.RangedFloatNode;323;-1344,-848;Inherit;True;Constant;_world_normal_strenght;world_normal_strenght;13;0;Create;True;0;0;0;False;0;False;0;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;249;544,-128;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;0;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;0;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;251;544,-128;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;False;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;True;3;False;;False;True;1;LightMode=ShadowCaster;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;252;544,-128;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;True;True;False;False;False;0;False;;False;False;False;False;False;False;False;False;False;True;1;False;;False;False;True;1;LightMode=DepthOnly;False;False;0;;0;0;Standard;0;False;0
@@ -3891,7 +3970,7 @@ Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;256;544,-128;Float;False;Fa
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;257;544,-128;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;SceneSelectionPass;0;8;SceneSelectionPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;2;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=SceneSelectionPass;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;258;544,-128;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;ScenePickingPass;0;9;ScenePickingPass;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Picking;False;False;0;;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;259;544,-128;Float;False;False;-1;2;UnityEditor.ShaderGraphLitGUI;0;1;New Amplify Shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;MotionVectors;0;10;MotionVectors;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;False;False;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=MotionVectors;False;False;0;;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;250;544,-128;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;toon_burn_shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;21;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;44;Lighting Model;0;638640691231456530;Workflow;0;0;Surface;0;0;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;638640692330024129;  Use Shadow Threshold;0;0;Receive Shadows;0;638640683948271401;Receive SSAO;1;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;1;638640690325191010;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;11;False;True;True;True;True;True;True;True;True;True;True;False;;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;250;736,-112;Float;False;True;-1;2;UnityEditor.ShaderGraphLitGUI;0;12;toon_burn_shader;94348b07e5e8bab40bd6c8a1e3df54cd;True;Forward;0;1;Forward;21;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;;False;True;0;False;;False;False;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;4;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;UniversalMaterialType=Lit;True;5;True;12;all;0;False;True;1;1;False;;0;False;;1;1;False;;0;False;;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;True;1;False;;True;3;False;;True;True;0;False;;0;False;;True;1;LightMode=UniversalForward;False;False;0;;0;0;Standard;44;Lighting Model;0;638640691231456530;Workflow;0;0;Surface;0;0;  Refraction Model;0;0;  Blend;0;0;Two Sided;1;0;Fragment Normal Space,InvertActionOnDeselection;0;0;Forward Only;0;0;Transmission;0;0;  Transmission Shadow;0.5,False,;0;Translucency;0;0;  Translucency Strength;1,False,;0;  Normal Distortion;0.5,False,;0;  Scattering;2,False,;0;  Direct;0.9,False,;0;  Ambient;0.1,False,;0;  Shadow;0.5,False,;0;Cast Shadows;1;638640692330024129;  Use Shadow Threshold;0;0;Receive Shadows;0;638640683948271401;Receive SSAO;1;0;Motion Vectors;1;0;  Add Precomputed Velocity;0;0;GPU Instancing;1;0;LOD CrossFade;1;0;Built-in Fog;1;0;_FinalColorxAlpha;1;638640690325191010;Meta Pass;1;0;Override Baked GI;0;0;Extra Pre Pass;0;0;Tessellation;0;0;  Phong;0;0;  Strength;0.5,False,;0;  Type;0;0;  Tess;16,False,;0;  Min;10,False,;0;  Max;25,False,;0;  Edge Length;16,False,;0;  Max Displacement;25,False,;0;Write Depth;0;0;  Early Z;0;0;Vertex Position,InvertActionOnDeselection;1;0;Debug Display;0;0;Clear Coat;0;0;0;11;False;True;True;True;True;True;True;True;True;True;True;False;;False;0
 WireConnection;189;0;177;0
 WireConnection;279;0;278;0
 WireConnection;279;1;277;0
@@ -3935,18 +4014,19 @@ WireConnection;293;0;288;5
 WireConnection;293;1;291;0
 WireConnection;303;0;302;0
 WireConnection;303;1;304;0
-WireConnection;268;0;244;0
-WireConnection;268;1;313;0
 WireConnection;313;0;267;0
-WireConnection;313;1;314;0
+WireConnection;244;0;245;0
+WireConnection;244;1;189;0
+WireConnection;315;0;244;0
+WireConnection;315;1;313;0
 WireConnection;267;0;260;0
 WireConnection;260;0;262;0
 WireConnection;260;4;266;0
-WireConnection;244;0;245;0
-WireConnection;244;1;189;0
-WireConnection;250;0;268;0
+WireConnection;262;0;323;0
+WireConnection;250;0;315;0
+WireConnection;250;1;318;0
 WireConnection;250;2;287;0
 WireConnection;250;9;181;0
 WireConnection;250;4;181;0
 ASEEND*/
-//CHKSM=BA3701A1B35748DCE681A01BF93AD063266BE35E
+//CHKSM=5DF74F0C795C25BC49D8CD202CE32D3CF62EE97B
