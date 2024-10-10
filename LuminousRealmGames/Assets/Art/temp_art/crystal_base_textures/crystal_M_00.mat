@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: crystal_M_00
-  m_Shader: {fileID: -6465566751694194690, guid: 005604e1babc3ec4f9ee2f8cc584a939, type: 3}
+  m_Shader: {fileID: 4800000, guid: d2a218a890d66d84586f94284be00d25, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -31,12 +31,15 @@ Material:
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses:
-  - MOTIONVECTORS
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _13444_normal:
+        m_Texture: {fileID: 2800000, guid: 8a76224996c6b9a469452eb7d1bc6c33, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -77,12 +80,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_64716804f28d4f05a61f13d0e35db75b_Texture_1_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _albedo:
         m_Texture: {fileID: 2800000, guid: c902dd9dddf7a494d86f40203c905e71, type: 3}
+        m_Scale: {x: 20, y: 20}
+        m_Offset: {x: 1, y: 1}
+    - _base_color:
+        m_Texture: {fileID: 2800000, guid: 120e8b21e3da619459e782e4e0dbbb9c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _emission:
@@ -90,11 +101,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normals:
-        m_Texture: {fileID: 2800000, guid: 8a76224996c6b9a469452eb7d1bc6c33, type: 3}
+        m_Texture: {fileID: 2800000, guid: f53512d44b91e954dae7bf028209df1a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _parallax_texture:
-        m_Texture: {fileID: 2800000, guid: a0cf56866077b5b438043619ea727e08, type: 3}
+        m_Texture: {fileID: 2800000, guid: 361201a618c99554c8e5e0cbca54d2af, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -113,6 +128,7 @@ Material:
     m_Floats:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
+    - _AlphaCutoff: 0.5
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -144,17 +160,19 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _depth: 6.94
-    - _fresnel_size: 0.44
-    - _fresnel_strenght: 1.99
+    - _depth: 1
+    - _fresnel_size: 1
+    - _fresnel_strenght: 1
     - _metallic: 0
     - _offset: 1
     - _smoothness: 4.16
-    - _strenght: 0.02
+    - _strenght: 0.2
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.75621873, g: 0.40650585, b: 0.8207547, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _tiling_albedo: {r: 0, g: 0, b: 0, a: 0}
+    - _tiling_normal: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
