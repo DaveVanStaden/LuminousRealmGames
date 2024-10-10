@@ -375,6 +375,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 123605193256660436, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 2000964590}
     - target: {fileID: 1629690132446460873, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.99669725
@@ -417,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 1887237856}
     - target: {fileID: 3963427697544078429, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
       propertyPath: healCooldown
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3963427697544078429, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
       propertyPath: bloodParticle1
@@ -427,6 +431,10 @@ PrefabInstance:
       propertyPath: bloodParticle2
       value: 
       objectReference: {fileID: 896829882}
+    - target: {fileID: 3963427697544078429, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
+      propertyPath: exploreMovement
+      value: 
+      objectReference: {fileID: 749282794}
     - target: {fileID: 3963427697544078429, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
       propertyPath: screenEffectImage
       value: 
@@ -536,6 +544,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749282794 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4690198809056858947, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
+  m_PrefabInstance: {fileID: 519026092}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ed89b8b232be44aa9b0100f27e0a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &896829882 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1079607658929761716, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
@@ -1450,6 +1469,17 @@ Transform:
   - {fileID: 1833871855}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2000964590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3963427697544078429, guid: 2d1438b1496db1e4598527f66c27fa82, type: 3}
+  m_PrefabInstance: {fileID: 519026092}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4a09277fe8b4949a3e9c91249dcf1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8644373533632516354
 PrefabInstance:
   m_ObjectHideFlags: 0

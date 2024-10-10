@@ -35,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     // Text for timer display
     [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private ExploreMovement exploreMovement;
 
     void Start()
     {
@@ -102,6 +103,10 @@ public class PlayerHealth : MonoBehaviour
         currentState = PlayerState.Healed;  // Switch to Healed state
         UpdatePlayerMaterial(); // Update to healed material
         UpdateTimerUI(); // Reset timer display
+        if (currentState == PlayerState.Healed)
+        {
+            exploreMovement.ResetAdrenaline(); // Call this when the player is healed
+        }
         Debug.Log("Player healed and in Healed state.");
     }
 
@@ -111,7 +116,10 @@ public class PlayerHealth : MonoBehaviour
         UpdatePlayerMaterial(); // Update to injured material
         Debug.Log("Player is now Injured.");
     }
-
+    public float GetHealthPercentage()
+    {
+        return health / maxHealth; // Assuming currentHealth and maxHealth are defined in your PlayerHealth script
+    }
     private void UpdatePlayerState(PlayerState newState)
     {
         if (newState == PlayerState.Injured)

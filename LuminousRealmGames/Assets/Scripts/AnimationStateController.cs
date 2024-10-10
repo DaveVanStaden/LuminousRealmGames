@@ -15,6 +15,7 @@ public class AnimationStateController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool isGrounded = true;
+    [SerializeField] private PlayerHealth playerHealth; // Reference to the PlayerHealth component
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class AnimationStateController : MonoBehaviour
         GroundCheck();
     }
 
-    private void GroundCheck() 
+    private void GroundCheck()
     {
         Vector3 rayOrigin = groundCheck.position;
         isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.4f, groundLayer);
@@ -61,6 +62,9 @@ public class AnimationStateController : MonoBehaviour
         bool isSpaceReleased = Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Jump");
         bool isSpaceHeld = Input.GetKey(KeyCode.Space);
 
+        // Check if the player is healed
+        bool isPlayerHealed = playerHealth.currentState == PlayerHealth.PlayerState.Healed;
+
         // Movement Animation
         if (isMoving && isGrounded)
         {
@@ -80,18 +84,19 @@ public class AnimationStateController : MonoBehaviour
             animator.SetBool(isWalkingHash, false);
         }
 
-        //Sprinting Animation
-        if (isMoving && isGrounded && isSprinting)
+        // Sprinting Animation (only if player is healed)
+        if (isMoving && isGrounded && isSprinting && isPlayerHealed)
         {
             animator.SetBool(isWalkingHash, false);
             animator.SetBool(isTrottingHash, true);
         }
-        else if (isMoving && isGrounded && !isSprinting)
+        else if (isMoving && isGrounded && (!isSprinting || !isPlayerHealed))
         {
             animator.SetBool(isWalkingHash, true);
             animator.SetBool(isTrottingHash, false);
         }
-        //JumpCharge Animation
+
+        // JumpCharge Animation
         if (isSpaceHeld && isGrounded)
         {
             animator.SetBool(isChargingHash, true);
@@ -99,13 +104,13 @@ public class AnimationStateController : MonoBehaviour
             animator.SetBool(isIdleHash, false);
             animator.SetBool(isWalkingHash, false);
         }
-        else 
+        else
         {
             animator.SetBool(isChargingHash, false);
         }
 
-        // Hovering Animation
-        if (isSpaceHeld && !isGrounded)
+        // Hovering Animation (only if player is healed)
+        if (isSpaceHeld && !isGrounded && isPlayerHealed)
         {
             animator.SetBool(isHoveringHash, true);
             animator.SetBool(isJumpingHash, false);
