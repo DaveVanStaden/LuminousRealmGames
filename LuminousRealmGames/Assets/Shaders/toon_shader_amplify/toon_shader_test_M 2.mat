@@ -180,10 +180,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
-    - _burn: 0.187
-    - _distortion_amount: 0.332
+    - _burn: 0.279
+    - _distortion_amount: 0.975
     - _fresnel_strenght: 10
-    - _heat_wave: 0.1
+    - _heat_wave: 0.136
     - _scroll_speed: 0.067
     m_Colors:
     - _BaseColor: {r: 1, g: 0.2028302, b: 0.2028302, a: 1}

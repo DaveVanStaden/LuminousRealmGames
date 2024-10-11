@@ -152,9 +152,9 @@ Material:
     - _fresnel_size: 0.2
     - _fresnel_strenght: 1.92
     - _metallic: 0
-    - _offset: 1.32
+    - _offset: 1.38
     - _smoothness: 1.01
-    - _strenght: -0.05
+    - _strenght: 0.09
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.4575472, g: 0.798218, b: 1, a: 1}
