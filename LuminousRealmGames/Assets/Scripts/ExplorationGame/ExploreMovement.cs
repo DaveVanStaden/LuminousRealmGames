@@ -42,6 +42,9 @@ public class ExploreMovement : MonoBehaviour
 
     private Vector3 moveInput;
 
+    [SerializeField] private float drag = 0.9f;
+    [SerializeField] private float airDrag= 0.98f;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -61,6 +64,7 @@ public class ExploreMovement : MonoBehaviour
         HandleMovement();
         GroundCheck();
         WallCheck();
+        ApplyDrag();
     }
 
     private void AdjustSpeedBasedOnState()
@@ -226,6 +230,18 @@ public class ExploreMovement : MonoBehaviour
         if (isGliding)
         {
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, -glideFallSpeed, rb.linearVelocity.z);
+        }
+    }
+
+    private void ApplyDrag()
+    {
+        if (isGrounded)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x * drag, rb.linearVelocity.y, rb.linearVelocity.z * drag);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x * airDrag, rb.linearVelocity.y, rb.linearVelocity.z * airDrag);
         }
     }
 
