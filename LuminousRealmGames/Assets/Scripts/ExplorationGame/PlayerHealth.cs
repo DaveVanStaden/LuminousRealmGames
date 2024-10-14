@@ -1,6 +1,8 @@
 using UnityEngine;
-using TMPro;  // Import TextMeshPro namespace
-using UnityEngine.UI;  // Import UI namespace for the screen effect
+using TMPro;
+using Unity.Cinemachine; // Import TextMeshPro namespace
+using UnityEngine.UI;
+using static Unity.Cinemachine.CinemachineCamera; // Import UI namespace for the screen effect
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -36,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
     // Text for timer display
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private ExploreMovement exploreMovement;
+    [SerializeField] private CinemachineOrbitalFollow camera;
 
     void Start()
     {
@@ -130,6 +133,9 @@ public class PlayerHealth : MonoBehaviour
 
             if (bloodParticle2 != null && !bloodParticle2.isEmitting)
                 bloodParticle2.Play();
+            camera.Orbits.Top.Radius = 2.01f;
+            camera.Orbits.Center.Radius = 3.65f;
+            camera.Orbits.Bottom.Radius = 2.24f;
         }
         else if (newState == PlayerState.Healed)
         {
@@ -139,6 +145,9 @@ public class PlayerHealth : MonoBehaviour
 
             if (bloodParticle2 != null && bloodParticle2.isPlaying)
                 bloodParticle2.Stop();
+            camera.Orbits.Top.Radius = 2.51f;
+            camera.Orbits.Center.Radius = 4.15f;
+            camera.Orbits.Bottom.Radius = 2.74f;
         }
     }
 

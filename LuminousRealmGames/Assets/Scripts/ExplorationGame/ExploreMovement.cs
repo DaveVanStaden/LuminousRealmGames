@@ -45,11 +45,14 @@ public class ExploreMovement : MonoBehaviour
     [SerializeField] private float drag = 0.9f;
     [SerializeField] private float airDrag= 0.98f;
 
+    [SerializeField] private ParticleSystem dustParticle;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rb.freezeRotation = true;
+        dustParticle.gameObject.SetActive(true);
     }
 
     void Update()
@@ -139,9 +142,10 @@ public class ExploreMovement : MonoBehaviour
         isAdrenalineActive = true; // Set the flag to indicate that adrenaline is active
         float originalMoveSpeed = moveSpeed; // Save the original speed
         moveSpeed = adrenalineSpeed; // Apply the adrenaline speed
+        dustParticle.Play();
 
         yield return new WaitForSeconds(adrenalineDuration); // Wait for the duration of the boost
-
+        dustParticle.Stop();
         // Reset speed back to the original
         moveSpeed = originalMoveSpeed; 
         isAdrenalineActive = false; // Reset the adrenaline active flag
@@ -194,6 +198,18 @@ public class ExploreMovement : MonoBehaviour
         else if (inputManager.GetSprintInput() && playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
             currentMoveSpeed = sprintSpeed; // Normal sprinting when healed
+            if (dustParticle != null && !dustParticle.isEmitting)
+            {
+                dustParticle.Play();
+            }
+            
+        }
+        else
+        {
+            if (dustParticle != null && dustParticle.isPlaying)
+            {
+                dustParticle.Stop();
+            }
         }
 
         if (moveInput.magnitude > 0)
