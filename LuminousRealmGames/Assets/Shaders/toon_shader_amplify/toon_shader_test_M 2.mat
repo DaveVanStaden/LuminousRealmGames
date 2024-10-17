@@ -61,7 +61,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 4902aa49199c1094ab4755ae51fdd03d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -70,6 +70,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: f6c6c1b32bc656d46965609595a5ab7c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -155,6 +159,7 @@ Material:
     - _IsFace: 0
     - _MainLightIgnoreCelShade: 0.277
     - _Metallic: 0
+    - _NormalScale: 1
     - _OcclusionRemapEnd: 1
     - _OcclusionRemapStart: 0
     - _OcclusionStrength: 0.736
@@ -168,6 +173,8 @@ Material:
     - _ReceiveShadowMappingAmount: 0.461
     - _ReceiveShadowMappingPosOffset: 0
     - _ReceiveShadows: 1
+    - _RimOffset: 0.38
+    - _RimShadow: 0.86
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -180,11 +187,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
-    - _burn: 0.279
-    - _distortion_amount: 0.975
+    - _burn: 0.062
+    - _distortion_amount: 0.872
     - _fresnel_strenght: 10
     - _heat_wave: 0.136
-    - _scroll_speed: 0.067
+    - _scroll_speed: 0.285
     m_Colors:
     - _BaseColor: {r: 1, g: 0.2028302, b: 0.2028302, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -194,6 +201,8 @@ Material:
     - _IndirectLightMinColor: {r: 0.09999997, g: 0.09999997, b: 0.09999997, a: 1}
     - _OcclusionMapChannelMask: {r: 1, g: 0, b: 0, a: 0}
     - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _RimColor: {r: 0.22191615, g: 0.20785868, b: 0.254717, a: 0}
+    - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _ShadowMapColor: {r: 1, g: 0.825, b: 0.78, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _albedo_color: {r: 1, g: 1, b: 1, a: 0}
