@@ -300,10 +300,17 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 350
     y: 24
     width: 1960
     height: 967
+=======
+    x: 877
+    y: 24
+    width: 1156
+    height: 947
+>>>>>>> origin/Valentine+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -402,8 +409,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 24
+<<<<<<< HEAD
     width: 348
     height: 967
+=======
+    width: 226
+    height: 947
+>>>>>>> origin/Valentine+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -420,7 +432,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: fafaffff
+=======
+      m_ExpandedIDs: ae98ffffa099ffffaa99ffffbc99ffffbe99ffff10a6ffff9ebdffffa8bdffffb8bdffffa2c5ffffdec7ffffeec7ffffa6ceffffeaf5ffffd4c50000eec50000e0cb0000facb000088d2000004d30000b8d30000
+>>>>>>> origin/Valentine+
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -466,10 +482,17 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 350
     y: 24
     width: 1960
     height: 967
+=======
+    x: 228
+    y: 24
+    width: 647
+    height: 947
+>>>>>>> origin/Valentine+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1024,7 +1047,11 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: -0.0437969, y: 8.92778, z: 282.85663}
+=======
+    m_Target: {x: -976.07806, y: 3.6209219, z: 677.6285}
+>>>>>>> origin/Valentine+
     speed: 2
     m_Value: {x: -0.0437969, y: 8.92778, z: 282.85663}
   m_RenderMode: 0
@@ -1072,11 +1099,19 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
+<<<<<<< HEAD
     m_Target: {x: 0.1329113, y: 0.35396203, z: -0.050925996, w: 0.9244431}
+=======
+    m_Target: {x: 0.023884153, y: -0.8244342, z: 0.034908496, w: 0.56438404}
+>>>>>>> origin/Valentine+
     speed: 2
     m_Value: {x: -0.1329113, y: -0.35396203, z: 0.050925996, w: -0.9244431}
   m_Size:
+<<<<<<< HEAD
     m_Target: 0.6407797
+=======
+    m_Target: 17.595514
+>>>>>>> origin/Valentine+
     speed: 2
     m_Value: 0.6407797
   m_Ortho:
@@ -1131,9 +1166,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 1017
     width: 2310
     height: 274
+=======
+    y: 24
+    width: 1357
+    height: 294
+>>>>>>> origin/Valentine+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1172,10 +1213,17 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 79}
     m_SelectedIDs: eac20000
     m_LastClickedID: 49898
     m_ExpandedIDs: 00000000eac20000ecc20000eec20000
+=======
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 32c50000
+    m_LastClickedID: 50482
+    m_ExpandedIDs: 000000005ae00000
+>>>>>>> origin/Valentine+
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1204,7 +1252,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000eac20000ecc20000eec20000
+=======
+    m_ExpandedIDs: 000000005ae00000
+>>>>>>> origin/Valentine+
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1283,10 +1335,17 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 0
     y: 1072
     width: 2310
     height: 274
+=======
+    x: 1359
+    y: 24
+    width: 674
+    height: 294
+>>>>>>> origin/Valentine+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1319,9 +1378,15 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 2312
     y: 24
     width: 248
+=======
+    x: 2035
+    y: 24
+    width: 525
+>>>>>>> origin/Valentine+
     height: 1267
   m_SerializedDataModeController:
     m_DataMode: 0
