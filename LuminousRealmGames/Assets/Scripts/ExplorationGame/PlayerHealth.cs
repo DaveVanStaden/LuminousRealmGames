@@ -37,93 +37,62 @@ public class PlayerHealth : MonoBehaviour
 
     // Text for timer display
     [SerializeField] private TextMeshProUGUI timerText;
-    [SerializeField] private ExploreMovement exploreMovement;
-    [SerializeField] private CinemachineOrbitalFollow camera;
 
     void Start()
     {
         health = maxHealth;
-        UpdatePlayerMaterial(); // Set initial material based on state
-        UpdateHealthUI(); // Set initial health display
-        UpdateScreenEffect(); // Set initial screen effect
-        UpdateTimerUI(); // Set initial timer display
+        UpdatePlayerMaterial(); 
+        UpdateHealthUI(); 
+        UpdateScreenEffect(); 
+        UpdateTimerUI(); 
     }
 
-    void Update()
-    {
-        if (currentState == PlayerState.Healed)
-        {
-            UpdatePlayerState(PlayerState.Healed);
-            HandleHealedState();
-        }
-        else if (currentState == PlayerState.Injured)
-        {
-            UpdatePlayerState(PlayerState.Injured);
-            HandleInjuredState();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        UpdateHealthUI();  // Update health display every physics frame
-        UpdateScreenEffect(); // Update screen effect based on health
-    }
-
-    private void HandleHealedState()
+    public void HandleHealedState()
     {
         healTimer += Time.deltaTime;
 
-        // Update the timer display
+        
         UpdateTimerUI();
 
         if (healTimer >= healCooldown)
         {
-            SwitchToInjured();  // Become injured after cooldown period
+            SwitchToInjured();  
         }
     }
 
-    private void HandleInjuredState()
+    public void HandleInjuredState()
     {
         // Gradually become more injured over time
         health -= injuryRate * Time.deltaTime;
-
-        if (health <= maxHealth * 0.5f)  // Start taking damage when health is less than 50%
-        {
-            health -= damagePerSecond * Time.deltaTime;
-        }
+        
 
         if (health <= 0)
         {
-            // Handle player death (e.g., game over, respawn logic)
             Debug.Log("Player has died!");
         }
     }
 
     public void HealPlayer()
     {
-        health = maxHealth;  // Restore full health
-        healTimer = 0f;  // Reset the heal timer
-        currentState = PlayerState.Healed;  // Switch to Healed state
-        UpdatePlayerMaterial(); // Update to healed material
-        UpdateTimerUI(); // Reset timer display
-        if (currentState == PlayerState.Healed)
-        {
-            exploreMovement.ResetAdrenaline(); // Call this when the player is healed
-        }
+        health = maxHealth;  
+        healTimer = 0f;  
+        currentState = PlayerState.Healed;  
+        UpdatePlayerMaterial(); 
+        UpdateTimerUI();
         Debug.Log("Player healed and in Healed state.");
     }
 
     private void SwitchToInjured()
     {
         currentState = PlayerState.Injured;
-        UpdatePlayerMaterial(); // Update to injured material
+        UpdatePlayerMaterial(); 
         Debug.Log("Player is now Injured.");
     }
     public float GetHealthPercentage()
     {
-        return health / maxHealth; // Assuming currentHealth and maxHealth are defined in your PlayerHealth script
+        return health / maxHealth; 
     }
-    private void UpdatePlayerState(PlayerState newState)
+    public void UpdatePlayerState(PlayerState newState)
     {
         if (newState == PlayerState.Injured)
         {
@@ -133,9 +102,6 @@ public class PlayerHealth : MonoBehaviour
 
             if (bloodParticle2 != null && !bloodParticle2.isEmitting)
                 bloodParticle2.Play();
-            camera.Orbits.Top.Radius = 2.01f;
-            camera.Orbits.Center.Radius = 3.65f;
-            camera.Orbits.Bottom.Radius = 2.24f;
         }
         else if (newState == PlayerState.Healed)
         {
@@ -145,9 +111,6 @@ public class PlayerHealth : MonoBehaviour
 
             if (bloodParticle2 != null && bloodParticle2.isPlaying)
                 bloodParticle2.Stop();
-            camera.Orbits.Top.Radius = 2.51f;
-            camera.Orbits.Center.Radius = 4.15f;
-            camera.Orbits.Bottom.Radius = 2.74f;
         }
     }
 
@@ -163,13 +126,13 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         // Display rounded health value
         healthText.text = Mathf.RoundToInt(health).ToString();
     }
 
-    private void UpdateScreenEffect()
+    public void UpdateScreenEffect()
     {
         // Lerp the color of the screen effect based on the player's health
         float healthPercentage = health / maxHealth;
