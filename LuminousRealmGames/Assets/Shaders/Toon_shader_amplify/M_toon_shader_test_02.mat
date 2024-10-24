@@ -187,7 +187,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
-    - _burn: 0.213
+    - _burn: 0.056
     - _distortion_amount: 0.872
     - _fresnel_strenght: 10
     - _heat_wave: 0.136
