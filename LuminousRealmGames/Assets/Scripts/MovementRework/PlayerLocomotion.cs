@@ -247,7 +247,7 @@ public void HandleJump()
         float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
         Vector3 playerVelocity = moveDirection;
         playerVelocity.y = jumpingVelocity;
-        playerRB.velocity = playerVelocity; // Set the velocity for the jump
+        playerRB.linearVelocity = playerVelocity; // Set the velocity for the jump
 
         inAirTimer = 0; // Reset air timer
         isGliding = false; // Stop gliding when performing a jump
@@ -262,7 +262,7 @@ public void HandleJump()
         float wallJumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
         Vector3 jumpDirection = moveDirection + (wallNormal * wallJumpOffForce);
         jumpDirection.y = wallJumpingVelocity;
-        playerRB.velocity = jumpDirection; // Set the velocity for the wall jump
+        playerRB.linearVelocity = jumpDirection; // Set the velocity for the wall jump
 
         inAirTimer = 0; // Reset air timer for wall jump
         isGliding = false; // Stop gliding when wall jumping
@@ -276,7 +276,7 @@ public void HandleJump()
         float doubleJumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
         Vector3 playerVelocity = moveDirection;
         playerVelocity.y = doubleJumpingVelocity;
-        playerRB.velocity = playerVelocity; // Set the velocity for the double jump
+        playerRB.linearVelocity = playerVelocity; // Set the velocity for the double jump
 
         inAirTimer = 0; // Reset air timer to ensure smooth double jump
         isGliding = false; // Stop gliding when performing a double jump
