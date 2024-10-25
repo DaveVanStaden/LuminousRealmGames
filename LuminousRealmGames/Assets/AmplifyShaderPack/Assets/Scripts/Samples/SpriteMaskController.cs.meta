@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 88ffeb3639c7dc34f86a3b9901fb7a05
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Scripts/Samples/SpriteMaskController.cs
+  uploadId: 685514

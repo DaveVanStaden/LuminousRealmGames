@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 17ec3236ec20390488bb6a4bcf57c048
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Samples/Material Sample Fabirc.asset
+  uploadId: 685514

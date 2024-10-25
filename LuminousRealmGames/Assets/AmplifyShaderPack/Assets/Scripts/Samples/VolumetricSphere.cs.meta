@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 01dc094bb81a51547973c5733d6245f4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Scripts/Samples/VolumetricSphere.cs
+  uploadId: 685514

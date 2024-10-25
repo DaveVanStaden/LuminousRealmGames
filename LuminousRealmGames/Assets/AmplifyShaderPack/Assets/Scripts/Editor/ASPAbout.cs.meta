@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 27d3528087d4e87459b75f33f5c6d7c2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Scripts/Editor/ASPAbout.cs
+  uploadId: 685514
