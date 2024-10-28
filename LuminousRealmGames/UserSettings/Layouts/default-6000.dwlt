@@ -280,7 +280,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 138
+  controlID: 128
   draggingID: 0
 --- !u!114 &12
 MonoBehaviour:
@@ -502,21 +502,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: fcbd0000
       m_LastClickedID: 48636
-      m_ExpandedIDs: fafaffff32be0000
+      m_ExpandedIDs: fafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Player
-        m_OriginalName: Player
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 48636
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 8}
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 35.854088, y: 0.19999999, z: 298.16898}
     speed: 2
-    m_Value: {x: -1.1047726, y: 22.357533, z: 327.58002}
+    m_Value: {x: 35.854088, y: 0.19999999, z: 298.16898}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 0.30390376
     speed: 2
-    m_Value: 12.124355
+    m_Value: 0.30390376
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -5144,7 +5144,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts/MovementRework
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -5154,15 +5154,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts/MovementRework
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\School\Jaar4\ProjectVrij3\LuminousRealmGames\LuminousRealmGames
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: 4ec30000
-    m_LastClickedID: 49998
+    m_SelectedIDs: e6c30000
+    m_LastClickedID: 50150
     m_ExpandedIDs: 000000004ec3000050c3000052c30000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
