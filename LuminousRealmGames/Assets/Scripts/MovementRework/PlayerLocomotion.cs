@@ -55,6 +55,7 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Jump Settings")]
     [SerializeField] private int maxJumps = 2; 
     public int currentJumpCount = 0;
+    private bool canWallJump = true;
     
     [Header("Charged Jump Settings")]
 
@@ -273,8 +274,12 @@ public class PlayerLocomotion : MonoBehaviour
     }
     public void HandleJump()
     {
-    if (isGrounded)
-        currentJumpCount = 0;
+        if (isGrounded)
+        {
+            currentJumpCount = 0;
+            canWallJump = true;
+        }
+        
     
     if (isGrounded && !isCrouching && currentJumpCount == 0)
     {
@@ -292,7 +297,7 @@ public class PlayerLocomotion : MonoBehaviour
             chargeTimer += Time.deltaTime;
         }
     }
-    else if (IsNearWall(out Vector3 wallNormal)&& playerManager.currentState != PlayerHealth.PlayerState.Injured)
+    else if (IsNearWall(out Vector3 wallNormal)&& playerManager.currentState != PlayerHealth.PlayerState.Injured && canWallJump)
     {
         animatorManager.animator.SetBool("isJumping", true);
         animatorManager.PlayTargetAnimation("Jump", false);
@@ -303,6 +308,7 @@ public class PlayerLocomotion : MonoBehaviour
         jumpDirection.y = wallJumpingVelocity;
         playerRB.linearVelocity = jumpDirection; // Set the velocity for the wall jump
 
+        canWallJump = false;
         inAirTimer = 0; // Reset air timer for wall jump
         isGliding = false; // Stop gliding when wall jumping
         // Do not increment currentJumpCount for wall jump
