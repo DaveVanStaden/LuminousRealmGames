@@ -28,9 +28,15 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isChargingJump;
 
     [Header("Movement Speeds")]
-    [SerializeField] private float runningSpeed = 5f;
-    [SerializeField] private float walkingSpeed = 1.5f;
-    [SerializeField] private float sprintSpeed = 7f;
+    [SerializeField] private float injuredRunningSpeed = 3f;
+    [SerializeField] private float healthyRunningSpeed = 5f;
+    private float runningSpeed = 5f;
+    [SerializeField] private float injuredWalkingSpeed = 0.5f;
+    [SerializeField] private float healthyWalkingSpeed = 1.5f;
+    private float walkingSpeed = 1.5f;
+    [SerializeField] private float injuredSprintSpeed = 5;
+    [SerializeField] private float healthySprintSpeed = 7f;
+    private float sprintSpeed = 7f;
     [SerializeField] private float rotationSpeed = 15;
     [SerializeField] private float crouchSpeed = 0.5f;
 
@@ -129,14 +135,16 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (playerManager.currentState == PlayerHealth.PlayerState.Healed)
         {
-            walkingSpeed = 1.5f; 
-            sprintSpeed = 5f; 
+            walkingSpeed = healthyWalkingSpeed;
+            sprintSpeed = healthySprintSpeed;
+            runningSpeed = healthyRunningSpeed;
             canUseAdrenaline = true; 
         }
         else if (playerManager.currentState == PlayerHealth.PlayerState.Injured)
         {
-            walkingSpeed = 0.5f; 
-            sprintSpeed = 3f; 
+            walkingSpeed = injuredWalkingSpeed;
+            sprintSpeed = injuredSprintSpeed;
+            runningSpeed = injuredRunningSpeed;
         }
     }
 
