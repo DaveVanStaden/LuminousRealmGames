@@ -127,13 +127,13 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NormalScale: 0.157
+    - _NormalScale: 0.333
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
-    - _RimOffset: 2.06
+    - _RimOffset: 3.01
     - _RimShadow: 0
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0

@@ -159,7 +159,7 @@ Material:
     - _offset: 4.3
     - _parallax_strenght: 0
     - _power_up: 1
-    - _power_up_strenght: 1
+    - _power_up_strenght: 0
     - _power_up_texture_offset: 2.8
     - _power_up_texture_strenght: 4
     - _scroll_speed: 0.06947487
