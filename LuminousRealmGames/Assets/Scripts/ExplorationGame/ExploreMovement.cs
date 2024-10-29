@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ExploreMovement : MonoBehaviour
@@ -33,13 +35,24 @@ public class ExploreMovement : MonoBehaviour
     [SerializeField] private float glideFallSpeed = 1f;
     private bool isGliding = false;
 
+    [SerializeField] private float adrenalineSpeed = 15f; 
+    [SerializeField] private float adrenalineDuration = 2f; 
+    private bool canUseAdrenaline = false; 
+    private bool isAdrenalineActive = false; 
+
     private Vector3 moveInput;
+
+    [SerializeField] private float drag = 0.9f;
+    [SerializeField] private float airDrag= 0.98f;
+
+    [SerializeField] private ParticleSystem dustParticle;
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rb.freezeRotation = true;
+        dustParticle.gameObject.SetActive(true);
     }
 
     void Update()
@@ -54,19 +67,21 @@ public class ExploreMovement : MonoBehaviour
         HandleMovement();
         GroundCheck();
         WallCheck();
+        ApplyDrag();
     }
 
     private void AdjustSpeedBasedOnState()
     {
         if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
-            moveSpeed = 4f; // Set to a slower speed when healed
-            sprintSpeed = 7f; // Adjust sprint speed when healed
+            moveSpeed = 5f; // Set to a normal speed when healed
+            sprintSpeed = 10f; // Adjust sprint speed when healed
+            canUseAdrenaline = true; // Enable adrenaline usage again when healed
         }
         else if (playerHealth.currentState == PlayerHealth.PlayerState.Injured)
         {
-            moveSpeed = 6f; // Set to a faster speed when injured
-            sprintSpeed = 12f; // Increase sprint speed when injured
+            moveSpeed = 3f; // Set to a slower speed when injured
+            sprintSpeed = 6f; // Decrease sprint speed when injured
         }
     }
 
@@ -96,14 +111,52 @@ public class ExploreMovement : MonoBehaviour
             isChargingJump = false;
         }
 
-        // Handle wall jumps separately if the player is in the air
-        if (!isGrounded && inputManager.GetJumpInputDown() && jumpCount < maxJumps && !hasWallJumped)
+        // Handle double jump or wall jump logic only if the player is healed
+        if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
-            PerformJump(); // Normal jump for wall jumping
-            jumpCount++;
+            // Allow double jump when not grounded
+            if (!isGrounded && inputManager.GetJumpInputDown() && jumpCount < maxJumps && !hasWallJumped)
+            {
+                PerformJump(); // Normal jump for wall jumping or double jump
+                jumpCount++;
+            }
+        }
+
+        // Handle Adrenaline Input
+        if (playerHealth.currentState == PlayerHealth.PlayerState.Injured && 
+            canUseAdrenaline && 
+            inputManager.GetSprintInput())
+        {
+            // Activate Adrenaline Boost
+            StartCoroutine(AdrenalineBoost());
+        }
+        else if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
+        {
+            // Reset canUseAdrenaline when healed
+            canUseAdrenaline = true; 
         }
     }
+    private IEnumerator AdrenalineBoost()
+    {
+        canUseAdrenaline = false; // Disable further adrenaline usage
+        isAdrenalineActive = true; // Set the flag to indicate that adrenaline is active
+        float originalMoveSpeed = moveSpeed; // Save the original speed
+        moveSpeed = adrenalineSpeed; // Apply the adrenaline speed
+        dustParticle.Play();
 
+        yield return new WaitForSeconds(adrenalineDuration); // Wait for the duration of the boost
+        dustParticle.Stop();
+        // Reset speed back to the original
+        moveSpeed = originalMoveSpeed; 
+        isAdrenalineActive = false; // Reset the adrenaline active flag
+    }
+
+    public void ResetAdrenaline()
+    {
+        // Only reset when healed
+        isAdrenalineActive = false; // Deactivate adrenaline boost
+        AdjustSpeedBasedOnState(); // Call the existing method to adjust speeds
+    }
     private void PerformJump()
     {
         // Calculate the jump force based on the charging time
@@ -119,7 +172,12 @@ public class ExploreMovement : MonoBehaviour
         jumpChargeTime = 0f;
         isChargingJump = false;
         hasWallJumped = false;
-        isGliding = false;
+
+        // Allow gliding only if the player is healed
+        if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
+        {
+            isGliding = false;
+        }
 
         // Increment jump count if the player is not grounded
         if (!isGrounded)
@@ -130,7 +188,29 @@ public class ExploreMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        float currentMoveSpeed = inputManager.GetSprintInput() ? sprintSpeed : moveSpeed;
+        float currentMoveSpeed = moveSpeed; // Default to moveSpeed
+
+        // If adrenaline is active, use the adrenaline speed
+        if (isAdrenalineActive) // Check if adrenaline is currently active
+        {
+            currentMoveSpeed = adrenalineSpeed; // Set to adrenaline speed during boost
+        }
+        else if (inputManager.GetSprintInput() && playerHealth.currentState == PlayerHealth.PlayerState.Healed)
+        {
+            currentMoveSpeed = sprintSpeed; // Normal sprinting when healed
+            if (dustParticle != null && !dustParticle.isEmitting)
+            {
+                dustParticle.Play();
+            }
+            
+        }
+        else
+        {
+            if (dustParticle != null && dustParticle.isPlaying)
+            {
+                dustParticle.Stop();
+            }
+        }
 
         if (moveInput.magnitude > 0)
         {
@@ -150,7 +230,8 @@ public class ExploreMovement : MonoBehaviour
             rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
         }
 
-        if (!isGrounded && rb.linearVelocity.y < 0)
+        // Only allow gliding if the player is healed
+        if (!isGrounded && rb.linearVelocity.y < 0 && playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
             if (inputManager.GetJumpInput())
             {
@@ -168,6 +249,18 @@ public class ExploreMovement : MonoBehaviour
         }
     }
 
+    private void ApplyDrag()
+    {
+        if (isGrounded)
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x * drag, rb.linearVelocity.y, rb.linearVelocity.z * drag);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x * airDrag, rb.linearVelocity.y, rb.linearVelocity.z * airDrag);
+        }
+    }
+
     private void StartGlide()
     {
         isGliding = true;
@@ -182,7 +275,7 @@ public class ExploreMovement : MonoBehaviour
     private void GroundCheck()
     {
         Vector3 rayOrigin = groundCheck.position;
-        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.2f, groundLayer);
+        isGrounded = Physics.Raycast(rayOrigin, Vector3.down, 0.4f, groundLayer);
 
         if (isGrounded)
         {
@@ -196,14 +289,14 @@ public class ExploreMovement : MonoBehaviour
     {
         if (!isGrounded)
         {
-            Vector3[] directions = {transform.forward, -transform.forward, transform.right, -transform.right};
+            Vector3[] directions = { transform.forward, -transform.forward, transform.right, -transform.right };
             float wallCheckDistance = 0.5f;
 
             foreach (var direction in directions)
             {
                 if (Physics.Raycast(wallCheck.position, direction, wallCheckDistance, wallLayer))
                 {
-                    if (!hasWallJumped)
+                    if (!hasWallJumped && playerHealth.currentState == PlayerHealth.PlayerState.Healed)
                     {
                         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
                         PerformJump();
@@ -222,11 +315,10 @@ public class ExploreMovement : MonoBehaviour
         orientation.forward = viewDir.normalized;
 
         Vector2 input = inputManager.GetMoveInput();
-        Vector3 inputDir = orientation.forward * input.y + orientation.right * input.x;
-
+        Vector3 inputDir = new Vector3(input.x, 0, input.y);
         if (inputDir != Vector3.zero)
         {
-            playerObj.forward = Vector3.Lerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
+            playerObj.forward = Vector3.Slerp(playerObj.forward, inputDir.normalized, Time.deltaTime * rotationSpeed);
         }
     }
 }

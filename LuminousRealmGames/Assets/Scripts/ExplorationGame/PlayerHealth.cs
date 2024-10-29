@@ -1,5 +1,8 @@
 using UnityEngine;
-using TMPro;  // Import TextMeshPro namespace
+using TMPro;
+using Unity.Cinemachine; // Import TextMeshPro namespace
+using UnityEngine.UI;
+using static Unity.Cinemachine.CinemachineCamera; // Import UI namespace for the screen effect
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -18,75 +21,97 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Material healedMaterial;
     [SerializeField] private Material injuredMaterial;
     [SerializeField] private Renderer playerRenderer;
+    
+    [SerializeField] private ParticleSystem bloodParticle1;
+    [SerializeField] private ParticleSystem bloodParticle2;
 
     // TextMeshPro for health display
     [SerializeField] private TextMeshProUGUI healthText;
 
+    // UI Image for screen effect
+    [SerializeField] private Image screenEffectImage;
+
+    // Colors for screen effect
+    private Color initialColor = new Color(1, 0, 0, 0); // Start with transparent red
+    private Color maxColor = new Color(0.5f, 0, 0, 0.8f); // Darker red with higher opacity
+
+    // Text for timer display
+    [SerializeField] private TextMeshProUGUI timerText;
+
     void Start()
     {
         health = maxHealth;
-        UpdatePlayerMaterial(); // Set initial material based on state
-        UpdateHealthUI(); // Set initial health display
+        UpdatePlayerMaterial(); 
+        UpdateHealthUI(); 
+        UpdateScreenEffect(); 
+        UpdateTimerUI(); 
     }
 
-    void Update()
-    {
-        if (currentState == PlayerState.Healed)
-        {
-            HandleHealedState();
-        }
-        else if (currentState == PlayerState.Injured)
-        {
-            HandleInjuredState();
-        }
-    }
-
-    void FixedUpdate()
-    {
-        UpdateHealthUI();  // Update health display every physics frame
-    }
-
-    private void HandleHealedState()
+    public void HandleHealedState()
     {
         healTimer += Time.deltaTime;
 
+        
+        UpdateTimerUI();
+
         if (healTimer >= healCooldown)
         {
-            SwitchToInjured();  // Become injured after cooldown period
+            SwitchToInjured();  
         }
     }
 
-    private void HandleInjuredState()
+    public void HandleInjuredState()
     {
         // Gradually become more injured over time
         health -= injuryRate * Time.deltaTime;
-
-        if (health <= maxHealth * 0.5f)  // Start taking damage when health is less than 50%
-        {
-            health -= damagePerSecond * Time.deltaTime;
-        }
+        
 
         if (health <= 0)
         {
-            // Handle player death (e.g., game over, respawn logic)
             Debug.Log("Player has died!");
         }
     }
 
     public void HealPlayer()
     {
-        health = maxHealth;  // Restore full health
-        healTimer = 0f;  // Reset the heal timer
-        currentState = PlayerState.Healed;  // Switch to Healed state
-        UpdatePlayerMaterial(); // Update to healed material
+        health = maxHealth;  
+        healTimer = 0f;  
+        currentState = PlayerState.Healed;  
+        UpdatePlayerMaterial(); 
+        UpdateTimerUI();
         Debug.Log("Player healed and in Healed state.");
     }
 
     private void SwitchToInjured()
     {
         currentState = PlayerState.Injured;
-        UpdatePlayerMaterial(); // Update to injured material
+        UpdatePlayerMaterial(); 
         Debug.Log("Player is now Injured.");
+    }
+    public float GetHealthPercentage()
+    {
+        return health / maxHealth; 
+    }
+    public void UpdatePlayerState(PlayerState newState)
+    {
+        if (newState == PlayerState.Injured)
+        {
+            // Activate blood particles
+            if (bloodParticle1 != null && !bloodParticle1.isEmitting)
+                bloodParticle1.Play();
+
+            if (bloodParticle2 != null && !bloodParticle2.isEmitting)
+                bloodParticle2.Play();
+        }
+        else if (newState == PlayerState.Healed)
+        {
+            // Stop blood particles when healed
+            if (bloodParticle1 != null && bloodParticle1.isPlaying)
+                bloodParticle1.Stop();
+
+            if (bloodParticle2 != null && bloodParticle2.isPlaying)
+                bloodParticle2.Stop();
+        }
     }
 
     private void UpdatePlayerMaterial()
@@ -101,10 +126,24 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void UpdateHealthUI()
+    public void UpdateHealthUI()
     {
         // Display rounded health value
         healthText.text = Mathf.RoundToInt(health).ToString();
+    }
+
+    public void UpdateScreenEffect()
+    {
+        // Lerp the color of the screen effect based on the player's health
+        float healthPercentage = health / maxHealth;
+        screenEffectImage.color = Color.Lerp(maxColor, initialColor, healthPercentage);
+    }
+
+    private void UpdateTimerUI()
+    {
+        // Display remaining time until injury
+        float timeUntilInjured = healCooldown - healTimer;
+        timerText.text = $"Injured in: {Mathf.Max(0, Mathf.RoundToInt(timeUntilInjured))}"; // Show 0 if negative
     }
 
     private void OnTriggerEnter(Collider other)
