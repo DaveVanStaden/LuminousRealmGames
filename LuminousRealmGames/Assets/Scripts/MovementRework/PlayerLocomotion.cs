@@ -251,6 +251,8 @@ public class PlayerLocomotion : MonoBehaviour
     }
     public void HandleJumpCharge()
     {
+        animatorManager.animator.SetBool("isJumping", true);
+        animatorManager.PlayTargetAnimation("Jump", false);
         //float chargedJumpHeight = Mathf.Lerp(minJumpForce, maxJumpForce, chargeTimer / maxChargeTime);
         float chargedJumpHeight = minJumpForce + (chargeTimer / maxChargeTime) * (maxJumpForce - minJumpForce);
         float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * chargedJumpHeight);
