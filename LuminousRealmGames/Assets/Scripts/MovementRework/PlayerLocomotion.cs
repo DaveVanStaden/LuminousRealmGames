@@ -201,6 +201,7 @@ public class PlayerLocomotion : MonoBehaviour
             if (!isGrounded && playerManager.isInteracting)
             {
                 animatorManager.PlayTargetAnimation("Landing", true);
+                
             }
     
             inAirTimer = 0;
@@ -250,7 +251,10 @@ public class PlayerLocomotion : MonoBehaviour
     }
     public void HandleJumpCharge()
     {
-        float chargedJumpHeight = Mathf.Lerp(minJumpForce, maxJumpForce, chargeTimer / maxChargeTime);
+        animatorManager.animator.SetBool("isJumping", true);
+        animatorManager.PlayTargetAnimation("Jump", false);
+        //float chargedJumpHeight = Mathf.Lerp(minJumpForce, maxJumpForce, chargeTimer / maxChargeTime);
+        float chargedJumpHeight = minJumpForce + (chargeTimer / maxChargeTime) * (maxJumpForce - minJumpForce);
         float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * chargedJumpHeight);
         Vector3 playerVelocity = moveDirection;
         playerVelocity.y = jumpingVelocity;
@@ -261,15 +265,18 @@ public class PlayerLocomotion : MonoBehaviour
     }
     public void HandleJump()
     {
-        if (isGrounded)
-            currentJumpCount = 0;
-    // If the player is grounded, allow the initial jump
+    if (isGrounded)
+        currentJumpCount = 0;
+    
     if (isGrounded && !isCrouching && currentJumpCount == 0)
     {
+        if (!isChargingJump)
+        {
+            chargeTimer = 0f;
+        }
         if (isGrounded && inputManager.jumpInput)
         {
             isChargingJump = true;
-            chargeTimer = 0f;
         }
 
         if (isChargingJump && inputManager.jumpInput && chargeTimer < maxChargeTime)

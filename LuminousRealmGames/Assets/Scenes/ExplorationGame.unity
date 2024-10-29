@@ -2726,8 +2726,8 @@ MonoBehaviour:
   wallJumpOffForce: 5
   maxJumps: 2
   currentJumpCount: 0
-  minJumpForce: 10
-  maxJumpForce: 100
+  minJumpForce: 5
+  maxJumpForce: 15
   maxChargeTime: 1.5
   chargeTimer: 0
   glideFallSpeed: 1
