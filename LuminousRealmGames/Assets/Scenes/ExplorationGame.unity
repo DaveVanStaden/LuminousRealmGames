@@ -2714,7 +2714,7 @@ MonoBehaviour:
   isChargingJump: 0
   runningSpeed: 3
   walkingSpeed: 1.5
-  sprintSpeed: 6
+  sprintSpeed: 20
   rotationSpeed: 4
   crouchSpeed: 0.5
   adrenalineDuration: 3
