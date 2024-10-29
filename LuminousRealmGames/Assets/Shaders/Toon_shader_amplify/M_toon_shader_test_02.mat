@@ -190,7 +190,9 @@ Material:
     - _burn: 0.056
     - _distortion_amount: 0.872
     - _fresnel_strenght: 10
-    - _heat_wave: 0.136
+    - _heat_wave: 0.072
+    - _heatwave_offset: 0.57
+    - _heatwave_scale: 0.21
     - _scroll_speed: 0.166
     m_Colors:
     - _BaseColor: {r: 1, g: 0.2028302, b: 0.2028302, a: 1}
