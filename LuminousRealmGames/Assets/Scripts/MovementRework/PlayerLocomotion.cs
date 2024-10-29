@@ -110,7 +110,7 @@ public class PlayerLocomotion : MonoBehaviour
             moveDirection *= sprintSpeed;
         } else if (isSprinting && playerManager.currentState == PlayerHealth.PlayerState.Injured && canUseAdrenaline)
         {
-            StartCoroutine(AdrenalineBoost());
+            //StartCoroutine(AdrenalineBoost());
         }
         else
         {
