@@ -22,6 +22,10 @@ public class PlayerInputManager : MonoBehaviour
     public bool glideInput;
     public bool crouchInput;
 
+    [Header("Jump Settings")]
+    public bool jumpInputHeld; // True while jump button is held
+    private float jumpCharge = 0f;
+
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -89,9 +93,20 @@ public class PlayerInputManager : MonoBehaviour
     {
         if (jumpInput)
         {
-            playerLocomotion.HandleJump();
-            jumpInput = false;
+            playerInput.PlayerActions.Jump.canceled += i => jumpInput = false;
+            playerLocomotion.HandleJump(); // Initial jum
         }
+
+        if (playerLocomotion.isChargingJump)
+        {
+            if (!jumpInput)
+            {
+                playerLocomotion.HandleJumpCharge();
+            }
+        }
+
+        
+
     }
 
     private void HandleCrouchInput()
