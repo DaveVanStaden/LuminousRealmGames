@@ -110,7 +110,7 @@ Material:
     - _TransmissionShadow: 0.445
     - _burn: 0.056
     - _cracks_strenght: 0
-    - _distortion_amount: 0.859
+    - _distortion_amount: 0.768
     - _distortion_amount1: 0
     - _heat_wave: 0.049
     - _scroll_speed: 0.166

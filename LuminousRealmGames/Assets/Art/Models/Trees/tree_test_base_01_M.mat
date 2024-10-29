@@ -134,7 +134,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _RimOffset: 1.21
-    - _RimShadow: 0
+    - _RimShadow: 0.053
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -143,10 +143,10 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _burn: 0.083
-    - _distortion_amount: 0
-    - _heat_wave: 0
-    - _scroll_speed: 0
+    - _burn: 0.097
+    - _distortion_amount: 0.053
+    - _heat_wave: 0.146
+    - _scroll_speed: 0.007
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
