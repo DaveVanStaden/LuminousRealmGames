@@ -153,7 +153,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _depth: 4.41
-    - _emission_strenght: 0.72
+    - _emission_strenght: 0.86
     - _fresnel_size: 0.41
     - _fresnel_strenght: 2.27
     - _metallic: 0
