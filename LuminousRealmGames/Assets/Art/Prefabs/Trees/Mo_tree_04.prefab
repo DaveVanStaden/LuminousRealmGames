@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a5dd40ea436390b478f2ed71ba6f94c6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: ae8f32806198f0043b848ad8236639cd, type: 2}
+      objectReference: {fileID: 2100000, guid: d43b1b50c6cf0a64792fa6f2484f7113, type: 2}
     - target: {fileID: 919132149155446097, guid: a5dd40ea436390b478f2ed71ba6f94c6, type: 3}
       propertyPath: m_Name
       value: Mo_tree_04

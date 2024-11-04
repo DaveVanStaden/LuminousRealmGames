@@ -147,8 +147,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _burn: 0.146
-    - _distortion_amount: 0.844
+    - _distortion_amount: 0.673
     - _heat_wave: 0.034
+    - _heatwave_offset: 2.56
+    - _heatwave_scale: 2.21
     - _scroll_speed: 0.252
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
