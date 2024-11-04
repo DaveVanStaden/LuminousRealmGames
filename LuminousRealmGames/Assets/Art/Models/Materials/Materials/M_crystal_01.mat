@@ -153,13 +153,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _depth: 4.41
-    - _emission_strenght: 0.63
+    - _emission_strenght: 0.85
     - _fresnel_size: 0.41
     - _fresnel_strenght: 2.27
     - _metallic: 0
     - _offset: 2
     - _parallax_strenght: 0.61
-    - _smoothness: 1.01
+    - _smoothness: 0
     - _strenght: 0.63
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
