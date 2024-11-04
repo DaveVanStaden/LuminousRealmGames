@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _RECEIVE_SHADOWS_OFF
+  - _TEXTURE_BLENDING_ON
   m_InvalidKeywords:
   - _RECEIVESHADOWS_OFF
   m_LightmapFlags: 4
@@ -81,8 +82,20 @@ Material:
         m_Texture: {fileID: 2800000, guid: 4b917fbb5f6d5c246ae9bda5455ba912, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _heightmap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _normal_map:
         m_Texture: {fileID: 2800000, guid: f6c6c1b32bc656d46965609595a5ab7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _splatmask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _terrain_albedo:
+        m_Texture: {fileID: 2800000, guid: 7417ecc1017574f4588b0c85480c83a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -126,6 +139,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Keyword0: 0
     - _Metallic: 0
     - _NormalScale: 0.333
     - _OcclusionStrength: 1
@@ -143,13 +157,18 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _blend_strenght: 0
+    - _blending: 0
     - _burn: 0
     - _distortion_amount: 0
     - _fresnel_strenght: 1.996079
     - _heat_wave: 0
     - _heatwave_offset: 0
     - _heatwave_scale: 0
+    - _offset_blend: 0
     - _scroll_speed: 0.06947487
+    - _texture_blending: 1
+    - _tiling_blend: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
