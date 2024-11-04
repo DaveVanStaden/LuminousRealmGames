@@ -208,7 +208,7 @@ Material:
     - __dirty: 0
     - _blend_strenght: 1.1
     - _blending: 0
-    - _burn: 0.181
+    - _burn: 0.1
     - _distortion_amount: 0.058
     - _fresnel_strenght: 0
     - _heat_wave: 0
@@ -233,7 +233,7 @@ Material:
     - _ShadowMapColor: {r: 1, g: 0.825, b: 0.78, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _albedo_color: {r: 1, g: 1, b: 1, a: 0}
-    - _hot_color: {r: 1, g: 0.813481, b: 0.32264143, a: 0}
-    - _warm_color: {r: 0.9622641, g: 0.41288194, b: 0, a: 0}
+    - _hot_color: {r: 1, g: 0.813481, b: 0.3226414, a: 0}
+    - _warm_color: {r: 0.9622641, g: 0.4128819, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
