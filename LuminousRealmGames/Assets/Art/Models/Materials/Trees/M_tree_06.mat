@@ -164,14 +164,14 @@ Material:
     - _blend_strenght: 2.73
     - _blending: 0
     - _burn: 0.13
-    - _distortion_amount: 0.16
+    - _distortion_amount: 0.192
     - _heat_wave: 0.09
-    - _heatwave_offset: 2.34
-    - _heatwave_scale: 1.41
+    - _heatwave_offset: 1.39
+    - _heatwave_scale: 0.85
     - _offset_blend: 0.18
     - _scroll_speed: 0.066
     - _texture_blending: 0
-    - _tiling_blend: 0.76
+    - _tiling_blend: 0.65
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
