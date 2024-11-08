@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 2dbde0ff1ce546b988fcd2e56a3b2750
+timeCreated: 1492642648
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Scripts/Samples/highlightAnimated.cs
+  uploadId: 685514

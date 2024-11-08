@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1ab576a6940ee30489e517acfe250a47
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Community Physical Based Rendering/PBR
+    Algorithms/NDF Ward Anisotropic.asset
+  uploadId: 685514

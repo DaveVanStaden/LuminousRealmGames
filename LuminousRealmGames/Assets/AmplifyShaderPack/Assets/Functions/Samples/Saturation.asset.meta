@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4f383aa3b2a7ef640be83276d286e709
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Samples/Saturation.asset
+  uploadId: 685514

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2a2ee1a57fbb6b24d8f10c234027eef7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Community Physical Based Rendering/PBR
+    Functions/PBR Light Model.asset
+  uploadId: 685514
