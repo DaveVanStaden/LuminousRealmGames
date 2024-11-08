@@ -25,11 +25,18 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isGrounded;
     public bool isJumping;
     public bool isCrouching;
+    public bool isChargingJump;
 
     [Header("Movement Speeds")]
-    [SerializeField] private float runningSpeed = 5f;
-    [SerializeField] private float walkingSpeed = 1.5f;
-    [SerializeField] private float sprintSpeed = 7f;
+    [SerializeField] private float injuredRunningSpeed = 3f;
+    [SerializeField] private float healthyRunningSpeed = 5f;
+    private float runningSpeed = 5f;
+    [SerializeField] private float injuredWalkingSpeed = 0.5f;
+    [SerializeField] private float healthyWalkingSpeed = 1.5f;
+    private float walkingSpeed = 1.5f;
+    [SerializeField] private float injuredSprintSpeed = 5;
+    [SerializeField] private float healthySprintSpeed = 7f;
+    private float sprintSpeed = 7f;
     [SerializeField] private float rotationSpeed = 15;
     [SerializeField] private float crouchSpeed = 0.5f;
 
@@ -43,10 +50,20 @@ public class PlayerLocomotion : MonoBehaviour
     [SerializeField] private float gravityIntensity = -5f;
     [SerializeField] private float jumpHeight = 5f;
     [SerializeField] private float wallJumpOffForce = 5f;
+    private float currentJumpHeight;
     
     [Header("Jump Settings")]
     [SerializeField] private int maxJumps = 2; 
-    private int currentJumpCount = 0;
+    public int currentJumpCount = 0;
+    private bool canWallJump = true;
+    
+    [Header("Charged Jump Settings")]
+
+    [SerializeField] private float minJumpForce = 10f;
+    [SerializeField] private float maxJumpForce = 20f;
+    [SerializeField] private float maxChargeTime = 2f; 
+    [SerializeField] private float chargeTimer = 0f;
+
     
     [Header("Gliding Settings")]
     [SerializeField] private float glideFallSpeed = 0.2f; 
@@ -71,10 +88,12 @@ public class PlayerLocomotion : MonoBehaviour
         HandleFallingAndLanding();
         if (playerManager.isInteracting)
             return;
+        
         HandleCrouch();
         HandleMovement();
         HandleRotation();
     }
+
 
     private void HandleMovement()
     {
@@ -91,7 +110,7 @@ public class PlayerLocomotion : MonoBehaviour
             moveDirection *= sprintSpeed;
         } else if (isSprinting && playerManager.currentState == PlayerHealth.PlayerState.Injured && canUseAdrenaline)
         {
-            StartCoroutine(AdrenalineBoost());
+            //StartCoroutine(AdrenalineBoost());
         }
         else
         {
@@ -117,14 +136,16 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (playerManager.currentState == PlayerHealth.PlayerState.Healed)
         {
-            walkingSpeed = 1.5f; 
-            sprintSpeed = 5f; 
+            walkingSpeed = healthyWalkingSpeed;
+            sprintSpeed = healthySprintSpeed;
+            runningSpeed = healthyRunningSpeed;
             canUseAdrenaline = true; 
         }
         else if (playerManager.currentState == PlayerHealth.PlayerState.Injured)
         {
-            walkingSpeed = 0.5f; 
-            sprintSpeed = 3f; 
+            walkingSpeed = injuredWalkingSpeed;
+            sprintSpeed = injuredSprintSpeed;
+            runningSpeed = injuredRunningSpeed;
         }
     }
 
@@ -157,49 +178,50 @@ public class PlayerLocomotion : MonoBehaviour
     }
 
     private void HandleFallingAndLanding()
-{
-    RaycastHit hit;
-    Vector3 rayCastOrigin = transform.position;
-    rayCastOrigin.y += rayCastHeightOffSet;
-    
-    if (!isGrounded && !isJumping)
     {
-        if (!playerManager.isInteracting)
+        RaycastHit hit;
+        Vector3 rayCastOrigin = transform.position;
+        rayCastOrigin.y += rayCastHeightOffSet;
+        
+        if (!isGrounded && !isJumping)
         {
-            animatorManager.PlayTargetAnimation("Descending", false);
-        }
+            if (isGliding)
+            {
+                inAirTimer = 0;
+            }
+            else
+            {
+                inAirTimer += Time.deltaTime;
+            }
 
-        inAirTimer += Time.deltaTime;
+
+            if (isGliding && playerManager.currentState == PlayerHealth.PlayerState.Healed)
+            {
+                playerRB.AddForce(Vector3.up * glideFallSpeed, ForceMode.Acceleration);
+            }
+            else
+            {
+                playerRB.AddForce(-Vector3.up * fallingVelocity * inAirTimer, ForceMode.Acceleration);
+            }
+        }
         
-        playerRB.AddForce(transform.forward * leapingVelocity, ForceMode.Acceleration);
-        
-        if (isGliding && playerManager.currentState == PlayerHealth.PlayerState.Healed)
+        if (Physics.SphereCast(rayCastOrigin, 0.2f, -Vector3.up, out hit, 0.5f, groundLayer))
         {
-            playerRB.AddForce(-Vector3.up * glideFallSpeed);
+            if (!isGrounded && playerManager.isInteracting)
+            {
+                animatorManager.PlayTargetAnimation("Landing", true);
+                
+            }
+    
+            inAirTimer = 0;
+            isGrounded = true;
+            playerManager.isInteracting = false;
         }
         else
         {
-            playerRB.AddForce(-Vector3.up * fallingVelocity * inAirTimer, ForceMode.Acceleration);
+            isGrounded = false;
         }
     }
-    
-    if (Physics.SphereCast(rayCastOrigin, 0.2f, -Vector3.up, out hit, 0.5f, groundLayer))
-    {
-        if (!isGrounded && playerManager.isInteracting)
-        {
-            animatorManager.PlayTargetAnimation("Landing", true);
-        }
-        
-        inAirTimer = 0;
-        isGrounded = true;
-        playerManager.isInteracting = false;
-    }
-    else
-    {
-        isGrounded = false;
-    }
-    
-}
     private bool IsNearWall(out Vector3 wallNormal)
     {
         RaycastHit hit;
@@ -236,24 +258,46 @@ public class PlayerLocomotion : MonoBehaviour
             collider.height = 0.4f;
         }
     }
-
-public void HandleJump()
-{
-    // If the player is grounded, allow the initial jump
-    if (isGrounded && !isCrouching)
+    public void HandleJumpCharge()
     {
         animatorManager.animator.SetBool("isJumping", true);
         animatorManager.PlayTargetAnimation("Jump", false);
-        float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
+        //float chargedJumpHeight = Mathf.Lerp(minJumpForce, maxJumpForce, chargeTimer / maxChargeTime);
+        float chargedJumpHeight = minJumpForce + (chargeTimer / maxChargeTime) * (maxJumpForce - minJumpForce);
+        float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * chargedJumpHeight);
         Vector3 playerVelocity = moveDirection;
         playerVelocity.y = jumpingVelocity;
-        playerRB.velocity = playerVelocity; // Set the velocity for the jump
-
-        inAirTimer = 0; // Reset air timer
-        isGliding = false; // Stop gliding when performing a jump
-        currentJumpCount = 1; // Set to 1 to indicate the player has jumped once
+        playerRB.linearVelocity = playerVelocity;
+        inAirTimer = 0;
+        currentJumpCount = 1;
+        isChargingJump = false;
     }
-    else if (IsNearWall(out Vector3 wallNormal)&& playerManager.currentState != PlayerHealth.PlayerState.Injured)
+    public void HandleJump()
+    {
+        if (isGrounded)
+        {
+            currentJumpCount = 0;
+            canWallJump = true;
+        }
+        
+    
+    if (isGrounded && !isCrouching && currentJumpCount == 0)
+    {
+        if (!isChargingJump)
+        {
+            chargeTimer = 0f;
+        }
+        if (isGrounded && inputManager.jumpInput)
+        {
+            isChargingJump = true;
+        }
+
+        if (isChargingJump && inputManager.jumpInput && chargeTimer < maxChargeTime)
+        {
+            chargeTimer += Time.deltaTime;
+        }
+    }
+    else if (IsNearWall(out Vector3 wallNormal)&& playerManager.currentState != PlayerHealth.PlayerState.Injured && canWallJump)
     {
         animatorManager.animator.SetBool("isJumping", true);
         animatorManager.PlayTargetAnimation("Jump", false);
@@ -262,8 +306,9 @@ public void HandleJump()
         float wallJumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
         Vector3 jumpDirection = moveDirection + (wallNormal * wallJumpOffForce);
         jumpDirection.y = wallJumpingVelocity;
-        playerRB.velocity = jumpDirection; // Set the velocity for the wall jump
+        playerRB.linearVelocity = jumpDirection; // Set the velocity for the wall jump
 
+        canWallJump = false;
         inAirTimer = 0; // Reset air timer for wall jump
         isGliding = false; // Stop gliding when wall jumping
         // Do not increment currentJumpCount for wall jump
@@ -276,26 +321,32 @@ public void HandleJump()
         float doubleJumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
         Vector3 playerVelocity = moveDirection;
         playerVelocity.y = doubleJumpingVelocity;
-        playerRB.velocity = playerVelocity; // Set the velocity for the double jump
+        playerRB.linearVelocity = playerVelocity; // Set the velocity for the double jump
 
         inAirTimer = 0; // Reset air timer to ensure smooth double jump
         isGliding = false; // Stop gliding when performing a double jump
-        currentJumpCount++; // Increment the jump count to 2 for the double jump
+        StartCoroutine(IncreaseJumpCount());
     }
     // Wall jump if the player is near a wall, regardless of jump count
-
 }
+
+    private IEnumerator IncreaseJumpCount()
+    {
+        yield return new WaitForSeconds(0.2f);
+        currentJumpCount++;
+    }
+    
 
     private void IsGliding()
     {
-        // Activate gliding only if the player is in the air
-        if (!isGrounded && inputManager.glideInput)
+        if (!isGrounded && inputManager.glideInput && currentJumpCount >= maxJumps)
         {
-            isGliding = true; // Activate gliding
+            isGliding = true;
+            playerRB.linearVelocity = new Vector3(playerRB.linearVelocity.x, -glideFallSpeed, playerRB.linearVelocity.z); // Set a consistent fall speed
         }
         else if (isGliding && !inputManager.glideInput)
         {
-            isGliding = false; // Deactivate gliding when the jump input is released
+            isGliding = false;
         }
     }
 

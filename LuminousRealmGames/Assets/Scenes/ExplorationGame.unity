@@ -2649,6 +2649,7 @@ MonoBehaviour:
   jumpInput: 0
   glideInput: 0
   crouchInput: 0
+  jumpInputHeld: 0
 --- !u!136 &2000964594
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2710,6 +2711,7 @@ MonoBehaviour:
   isGrounded: 1
   isJumping: 0
   isCrouching: 0
+  isChargingJump: 0
   runningSpeed: 3
   walkingSpeed: 1.5
   sprintSpeed: 6
@@ -2723,7 +2725,12 @@ MonoBehaviour:
   jumpHeight: 5
   wallJumpOffForce: 5
   maxJumps: 2
-  glideFallSpeed: 0.05
+  currentJumpCount: 0
+  minJumpForce: 5
+  maxJumpForce: 15
+  maxChargeTime: 1.5
+  chargeTimer: 0
+  glideFallSpeed: 1
   isGliding: 0
 --- !u!114 &2000964597
 MonoBehaviour:
