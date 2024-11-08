@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Roberto.meta
+guid: f150e2fcd4e105d43926537cbdf4111f
+========
 guid: b868f87c8ea6c3f4381191832fe54644
+>>>>>>>> Valentine+:LuminousRealmGames/Assets/Art/Models/FBX.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
