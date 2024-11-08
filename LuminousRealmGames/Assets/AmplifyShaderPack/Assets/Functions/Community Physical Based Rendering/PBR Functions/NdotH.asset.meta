@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fadb6690f179c1448859861f76ebb061
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Community Physical Based Rendering/PBR
+    Functions/NdotH.asset
+  uploadId: 685514

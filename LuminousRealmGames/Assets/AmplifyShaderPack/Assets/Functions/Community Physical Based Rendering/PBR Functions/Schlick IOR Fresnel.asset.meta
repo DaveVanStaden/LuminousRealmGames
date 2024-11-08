@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4e5b8e7e69de2624b8c2eb0fc8a0add3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Community Physical Based Rendering/PBR
+    Functions/Schlick IOR Fresnel.asset
+  uploadId: 685514

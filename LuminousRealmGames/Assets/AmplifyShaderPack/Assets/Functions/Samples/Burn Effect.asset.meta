@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 05e3549071b9ccc4295de9c50416327f
+timeCreated: 1495543873
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Samples/Burn Effect.asset
+  uploadId: 685514
