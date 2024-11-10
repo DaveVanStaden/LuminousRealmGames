@@ -1,4 +1,4 @@
-using BehaviorTree;
+/* using BehaviorTree;
 using UnityEngine;
 
 public class CheckPlayerInRange : Node
@@ -32,5 +32,34 @@ public class CheckPlayerInRange : Node
 
         state = NodeState.SUCCES;
         return state;
+    }
+} */
+using UnityEngine;
+using BehaviorTree;
+
+public class CheckPlayerInRange : Node
+{
+    private Transform _transform;
+
+    public CheckPlayerInRange(Transform transform)
+    {
+        _transform = transform;
+    }
+
+    public override NodeState Evaluate()
+    {
+        // Assuming you have a method to get the player's position
+        Transform player = GetPlayerTransform();
+        if (Vector3.Distance(_transform.position, player.position) < ArrowBT.targetRange)
+        {
+            return NodeState.SUCCES;
+        }
+        return NodeState.FAILURE;
+    }
+
+    private Transform GetPlayerTransform()
+    {
+        Transform playerTransform = GameObject.FindWithTag("Player").transform;
+        return playerTransform;
     }
 }

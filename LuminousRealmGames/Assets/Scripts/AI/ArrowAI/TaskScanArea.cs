@@ -1,4 +1,4 @@
-using BehaviorTree;
+/* using BehaviorTree;
 using UnityEngine;
 
 public class TaskScanArea : Node
@@ -46,4 +46,40 @@ public class TaskScanArea : Node
       state = NodeState.RUNNING;
       return state;
    }
+}
+*/
+using UnityEngine;
+using BehaviorTree;
+using System.Collections.Generic;
+
+public class TaskScanArea : Node
+{
+    private Transform _transform;
+    private Transform[] _waypoints;
+    private int _currentWaypointIndex = 0;
+
+    public TaskScanArea(Transform transform, Transform[] waypoints)
+    {
+        _transform = transform;
+        _waypoints = waypoints;
+    }
+
+    public override NodeState Evaluate()
+    {
+        if (_waypoints.Length == 0)
+        {
+            return NodeState.FAILURE;
+        }
+
+        Transform targetWaypoint = _waypoints[_currentWaypointIndex];
+        _transform.position = Vector3.MoveTowards(_transform.position, targetWaypoint.position, ArrowBT.speed * Time.deltaTime);
+
+        if (Vector3.Distance(_transform.position, targetWaypoint.position) < 0.1f)
+        {
+            _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
+            return NodeState.SUCCES;
+        }
+
+        return NodeState.RUNNING;
+    }
 }

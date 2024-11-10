@@ -8,7 +8,8 @@ public class ArrowBT : Tree
 {
     public Transform[] waypoints;
     
-    public static float speed = 2f;
+    public static float speed = 4f;
+    public static float followSpeed = 6f;
     public static float targetRange = 10f;
     protected override Node SetupTree()
     {
