@@ -28,15 +28,9 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isChargingJump;
 
     [Header("Movement Speeds")]
-    [SerializeField] private float injuredRunningSpeed = 3f;
-    [SerializeField] private float healthyRunningSpeed = 5f;
-    private float runningSpeed = 5f;
-    [SerializeField] private float injuredWalkingSpeed = 0.5f;
-    [SerializeField] private float healthyWalkingSpeed = 1.5f;
-    private float walkingSpeed = 1.5f;
-    [SerializeField] private float injuredSprintSpeed = 5;
-    [SerializeField] private float healthySprintSpeed = 7f;
-    private float sprintSpeed = 7f;
+    [SerializeField] private float runningSpeed = 5f;
+    [SerializeField] private float walkingSpeed = 1.5f;
+    [SerializeField] private float sprintSpeed = 7f;
     [SerializeField] private float rotationSpeed = 15;
     [SerializeField] private float crouchSpeed = 0.5f;
 
@@ -55,7 +49,6 @@ public class PlayerLocomotion : MonoBehaviour
     [Header("Jump Settings")]
     [SerializeField] private int maxJumps = 2; 
     public int currentJumpCount = 0;
-    private bool canWallJump = true;
     
     [Header("Charged Jump Settings")]
 
@@ -110,7 +103,7 @@ public class PlayerLocomotion : MonoBehaviour
             moveDirection *= sprintSpeed;
         } else if (isSprinting && playerManager.currentState == PlayerHealth.PlayerState.Injured && canUseAdrenaline)
         {
-            //StartCoroutine(AdrenalineBoost());
+            StartCoroutine(AdrenalineBoost());
         }
         else
         {
@@ -136,16 +129,14 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (playerManager.currentState == PlayerHealth.PlayerState.Healed)
         {
-            walkingSpeed = healthyWalkingSpeed;
-            sprintSpeed = healthySprintSpeed;
-            runningSpeed = healthyRunningSpeed;
+            walkingSpeed = 1.5f; 
+            sprintSpeed = 5f; 
             canUseAdrenaline = true; 
         }
         else if (playerManager.currentState == PlayerHealth.PlayerState.Injured)
         {
-            walkingSpeed = injuredWalkingSpeed;
-            sprintSpeed = injuredSprintSpeed;
-            runningSpeed = injuredRunningSpeed;
+            walkingSpeed = 0.5f; 
+            sprintSpeed = 3f; 
         }
     }
 
@@ -210,7 +201,6 @@ public class PlayerLocomotion : MonoBehaviour
             if (!isGrounded && playerManager.isInteracting)
             {
                 animatorManager.PlayTargetAnimation("Landing", true);
-                
             }
     
             inAirTimer = 0;
@@ -260,10 +250,7 @@ public class PlayerLocomotion : MonoBehaviour
     }
     public void HandleJumpCharge()
     {
-        animatorManager.animator.SetBool("isJumping", true);
-        animatorManager.PlayTargetAnimation("Jump", false);
-        //float chargedJumpHeight = Mathf.Lerp(minJumpForce, maxJumpForce, chargeTimer / maxChargeTime);
-        float chargedJumpHeight = minJumpForce + (chargeTimer / maxChargeTime) * (maxJumpForce - minJumpForce);
+        float chargedJumpHeight = Mathf.Lerp(minJumpForce, maxJumpForce, chargeTimer / maxChargeTime);
         float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * chargedJumpHeight);
         Vector3 playerVelocity = moveDirection;
         playerVelocity.y = jumpingVelocity;
@@ -275,21 +262,14 @@ public class PlayerLocomotion : MonoBehaviour
     public void HandleJump()
     {
         if (isGrounded)
-        {
             currentJumpCount = 0;
-            canWallJump = true;
-        }
-        
-    
+    // If the player is grounded, allow the initial jump
     if (isGrounded && !isCrouching && currentJumpCount == 0)
     {
-        if (!isChargingJump)
-        {
-            chargeTimer = 0f;
-        }
         if (isGrounded && inputManager.jumpInput)
         {
             isChargingJump = true;
+            chargeTimer = 0f;
         }
 
         if (isChargingJump && inputManager.jumpInput && chargeTimer < maxChargeTime)
@@ -297,7 +277,7 @@ public class PlayerLocomotion : MonoBehaviour
             chargeTimer += Time.deltaTime;
         }
     }
-    else if (IsNearWall(out Vector3 wallNormal)&& playerManager.currentState != PlayerHealth.PlayerState.Injured && canWallJump)
+    else if (IsNearWall(out Vector3 wallNormal)&& playerManager.currentState != PlayerHealth.PlayerState.Injured)
     {
         animatorManager.animator.SetBool("isJumping", true);
         animatorManager.PlayTargetAnimation("Jump", false);
@@ -308,7 +288,6 @@ public class PlayerLocomotion : MonoBehaviour
         jumpDirection.y = wallJumpingVelocity;
         playerRB.linearVelocity = jumpDirection; // Set the velocity for the wall jump
 
-        canWallJump = false;
         inAirTimer = 0; // Reset air timer for wall jump
         isGliding = false; // Stop gliding when wall jumping
         // Do not increment currentJumpCount for wall jump
