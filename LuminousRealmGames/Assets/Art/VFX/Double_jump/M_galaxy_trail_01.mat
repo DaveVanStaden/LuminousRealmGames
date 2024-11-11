@@ -21,24 +21,17 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_galaxy_trail_01
-  m_Shader: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
+  m_Shader: {fileID: 4800000, guid: 2ce4c95e7106985488f7f5bb730b3ae5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _ALPHATEST_ON
-  - _EMISSION
-  - _SURFACE_TYPE_TRANSPARENT
-  m_InvalidKeywords:
-  - _FLIPBOOKBLENDING_OFF
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
-  - SHADOWCASTER
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
@@ -67,6 +60,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DissolveMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DistortionMaskTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -79,6 +76,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: e1205ef33b855de468dcda7c63a8acbe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MaskMoveTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask_Texture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -87,12 +92,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NoiseDistortion_Texture:
+    - _NoiseDistortionTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NoiseDistortion_Texture:
+        m_Texture: {fileID: 2800000, guid: df764b5cd37838140952a51acb175de6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Noise_01_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a2591eaaf270d9d429c711657dec5830, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise_02_Texture:
@@ -108,6 +117,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -154,15 +167,18 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Dissolve: 0
+    - _Distortion: 1
     - _DistortionAmount: 1
     - _DistortionBlend: 0.5
     - _DistortionEnabled: 0
+    - _DistortionIntensity: 0
     - _DistortionMaskIntensity: 1
     - _DistortionStrength: 1
     - _DistortionStrengthScaled: 0.1
     - _Dst1: 10
     - _DstBlend: 10
     - _DstBlendAlpha: 10
+    - _EmissionIntensity: 1
     - _EmissiveIntensity: 1
     - _EnvironmentReflections: 1
     - _FlipbookBlending: 0
@@ -170,14 +186,22 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _MaskMoveMultiply: 1
+    - _MaskMovePower: 1
+    - _MaskMultiply: 1
+    - _MaskPower: 1
+    - _MaskSpeed: 0
     - _Mask_Multiply: 1
     - _Mask_Power: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NoisesMultiply: 1
     - _NoisesOpacityBoost: 1
+    - _NoisesPower: 1
     - _Noises_Multiply: 5
     - _Noises_Power: 1
     - _OcclusionStrength: 1
+    - _OpacityBoost: 5
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -203,18 +227,30 @@ Material:
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorBottom: {r: 1, g: 0.36666667, b: 0, a: 0}
-    - _ColorTop: {r: 1, g: 0.6666667, b: 0, a: 0}
+    - _ColorBottom: {r: 0, g: 0.39118576, b: 1, a: 0}
+    - _ColorTop: {r: 0.023584902, g: 0.9601347, b: 1, a: 0}
+    - _DissolveUVP: {r: 0, g: 0, b: 0, a: 0}
+    - _DissolveUVS: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0.002377775, b: 0.09433961, a: 1}
+    - _MaskMoveScale: {r: 1, g: 1, b: 0, a: 0}
+    - _MaskOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskScale: {r: 1, g: 1, b: 0, a: 0}
     - _Mask_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Mask_Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _Noise01Scale: {r: 0.8, g: 0.8, b: 0, a: 0}
+    - _Noise01Speed: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Noise02Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _Noise02Speed: {r: -0.2, g: 0.4, b: 0, a: 0}
+    - _NoiseDistortionScale: {r: 1, g: 1, b: 0, a: 0}
+    - _NoiseDistortionSpeed: {r: 0.2, g: 0.25, b: 0, a: 0}
     - _NoiseDistortion_Scale: {r: 1, g: 1, b: 0, a: 0}
     - _NoiseDistortion_Speed: {r: -0.3, g: -0.3, b: 0, a: 0}
     - _Noise_01_Scale: {r: 0.8, g: 0.8, b: 0, a: 0}
-    - _Noise_01_Speed: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Noise_01_Speed: {r: 0.01, g: 0.01, b: 0, a: 0}
     - _Noise_02_Scale: {r: 1, g: 1, b: 0, a: 0}
-    - _Noise_02_Speed: {r: -0.2, g: 0.4, b: 0, a: 0}
+    - _Noise_02_Speed: {r: 0.01, g: 0.53, b: 0, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _TextureChannel: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
