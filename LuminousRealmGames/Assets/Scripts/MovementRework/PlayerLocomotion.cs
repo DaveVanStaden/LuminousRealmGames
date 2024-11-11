@@ -63,7 +63,9 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isGliding = false;
     [Header("Crouch Settings")] 
     private CapsuleCollider collider;
-    
+    [Header("Particle Systems")]
+    [SerializeField] private ParticleSystem doubleJumpParticle;
+
     private void Awake()
     {
         animatorManager = GetComponent<AnimatorManager>();
@@ -71,6 +73,7 @@ public class PlayerLocomotion : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         collider = GetComponent<CapsuleCollider>();
         playerRB = GetComponent<Rigidbody>();
+        doubleJumpParticle.GetComponent<ParticleSystem>();
         cameraObject = Camera.main.transform;
     }
 
@@ -295,6 +298,10 @@ public class PlayerLocomotion : MonoBehaviour
     // Allow double jump only if the player is in the air and hasn't reached the max jump count
     else if (currentJumpCount > 0 && currentJumpCount < maxJumps && playerManager.currentState != PlayerHealth.PlayerState.Injured)
     {
+        if (!isGrounded)
+        {
+            doubleJumpParticle.Play();
+        }
         animatorManager.animator.SetBool("isJumping", true);
         animatorManager.PlayTargetAnimation("Jump", false);
         float doubleJumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);

@@ -13,15 +13,15 @@ public class CameraManager : MonoBehaviour
     private Vector3 cameraFollowVelocity = Vector3.zero;
     private Vector3 cameraVectorPosition;
 
-    public float cameraCollisionRadius = 0.2f;
-    public float minimumCollisionOffSet = 0.2f;
-    public float cameraCollisionOffSet = 0.2f; //how much the camera will jump off colliding object
-    public float cameraFollowSpeed = 0.2f;
-    public float cameraLookSpeed = 2f;
-    public float cameraPivotSpeed = 2f;
+    public float cameraCollisionRadius;
+    public float minimumCollisionOffSet;
+    public float cameraCollisionOffSet; //how much the camera will jump off colliding object
+    public float cameraFollowSpeed;
+    public float cameraLookSpeed;
+    public float cameraPivotSpeed;
 
-    public float minimumPivotAngle = -35;
-    public float maximumPivotAngle = 35;
+    public float minimumPivotAngle;
+    public float maximumPivotAngle;
 
     public float lookAngle;
     public float pivotAngle;
