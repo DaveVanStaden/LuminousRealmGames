@@ -170,13 +170,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _blend_strenght: 0.85
-    - _burn: 0.015
+    - _burn: 0.045
     - _distortion_amount: 0.038
-    - _heat_wave: 0
-    - _heatwave_offset: 0.5478243
+    - _heat_wave: 0.317
+    - _heatwave_offset: 1.34
     - _heatwave_scale: 0.5478243
     - _offset_blend: 0.14
-    - _scroll_speed: 0.257
+    - _scroll_speed: 0.014
     - _texture_blending: 1
     - _tiling_blend: 0.85
     m_Colors:

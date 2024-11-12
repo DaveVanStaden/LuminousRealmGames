@@ -164,7 +164,7 @@ Material:
     - _heat_wave: 0
     - _heatwave_offset: 0
     - _heatwave_scale: 0
-    - _offset_blend: 0.94
+    - _offset_blend: 0.89
     - _scroll_speed: 0.06947487
     - _texture_blending: 0
     - _tiling_blend: 2.07

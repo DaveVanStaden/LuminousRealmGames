@@ -156,7 +156,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _blend_strenght: 2.72
+    - _blend_strenght: 1.41
     - _blending: 0
     - _burn: 0
     - _distortion_amount: 0
