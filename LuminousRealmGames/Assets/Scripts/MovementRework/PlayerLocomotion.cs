@@ -132,7 +132,22 @@ public class PlayerLocomotion : MonoBehaviour
             moveDirection *= adrenalineSpeed;
         }
 
-        Vector3 movementVelocity = new Vector3(moveDirection.x,playerRB.linearVelocity.y,moveDirection.z);
+        // Play or stop footsteps sound based on movement
+        if (moveDirection.magnitude > 0)
+        {
+            playerAudioManager.PlayFootsteps(0);
+        }
+        else
+        {
+            playerAudioManager.StopFootsteps();
+            playerAudioManager.PlayIdleSounds();
+        }
+        if (!isGrounded)
+        {
+            playerAudioManager.StopFootsteps();
+        }
+
+        Vector3 movementVelocity = new Vector3(moveDirection.x, playerRB.linearVelocity.y, moveDirection.z);
         playerRB.linearVelocity = movementVelocity;
     }
     private void AdjustSpeedBasedOnState()
