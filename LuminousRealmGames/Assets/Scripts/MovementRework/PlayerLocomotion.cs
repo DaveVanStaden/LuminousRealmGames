@@ -73,6 +73,7 @@ public class PlayerLocomotion : MonoBehaviour
     private CapsuleCollider collider;
     [Header("Particle Systems")]
     [SerializeField] private ParticleSystem doubleJumpParticle;
+    [SerializeField] private ParticleSystem glideParticle;
 
     private void Awake()
     {
@@ -83,6 +84,7 @@ public class PlayerLocomotion : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         audioManager = GetComponent<PlayerAudioManager>();
         doubleJumpParticle.GetComponent<ParticleSystem>();
+        glideParticle.GetComponent<ParticleSystem>();  
         cameraObject = Camera.main.transform;
     }
 
@@ -364,11 +366,12 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (!isGliding)
         {
-            //audioManager.wings.Stop();
+            glideParticle.Stop();
         }
         if (!isGrounded && inputManager.glideInput && currentJumpCount >= maxJumps)
         {
             //audioManager.PlayGlideSounds();
+            glideParticle.Play();
             isGliding = true;
             playerRB.linearVelocity = new Vector3(playerRB.linearVelocity.x, -glideFallSpeed, playerRB.linearVelocity.z); // Set a consistent fall speed
         }
