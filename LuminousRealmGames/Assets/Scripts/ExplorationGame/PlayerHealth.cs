@@ -22,7 +22,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Material injuredMaterial;
     [SerializeField] private Renderer playerRenderer;
     [SerializeField] private Animator animator;
-    
+    private PlayerAudioManager audioManager;
+
     [SerializeField] private ParticleSystem bloodParticle1;
     [SerializeField] private ParticleSystem bloodParticle2;
 
@@ -38,9 +39,13 @@ public class PlayerHealth : MonoBehaviour
 
     // Text for timer display
     [SerializeField] private TextMeshProUGUI timerText;
-
+    private void Awake()
+    {
+        audioManager = GetComponent<PlayerAudioManager>();
+    }
     void Start()
     {
+        
         health = maxHealth;
         UpdatePlayerMaterial(); 
         UpdateHealthUI(); 
@@ -52,6 +57,11 @@ public class PlayerHealth : MonoBehaviour
     {
         healTimer += Time.deltaTime;
 
+        if(audioManager.aura.isPlaying == false)
+        {
+            audioManager.aura.loop = true;
+            audioManager.PowerupContinuous();
+        }
         
         UpdateTimerUI();
 
@@ -66,6 +76,8 @@ public class PlayerHealth : MonoBehaviour
         // Gradually become more injured over time
         health -= injuryRate * Time.deltaTime;
         Debug.Log($"Health: {health}");
+        audioManager.PlayInjuredSounds();
+        audioManager.PlayHeartbeat();
 
         // Calculate the hurt layer weight based on the time the player has been injured
         float hurtLayerWeight = Mathf.Clamp01(1 - (health / maxHealth));
@@ -92,6 +104,8 @@ public class PlayerHealth : MonoBehaviour
     private void SwitchToInjured()
     {
         currentState = PlayerState.Injured;
+        audioManager.aura.loop = false;
+        audioManager.PowerupEnd();
         UpdatePlayerMaterial(); 
         Debug.Log("Player is now Injured.");
     }
@@ -160,6 +174,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.CompareTag("Checkpoint"))
         {
+            audioManager.aura.loop = false;
+            audioManager.PowerupStart();
+            audioManager.crystal.Play();
             HealPlayer();  // Heal the player when they touch a checkpoint
             Destroy(other.gameObject);
         }

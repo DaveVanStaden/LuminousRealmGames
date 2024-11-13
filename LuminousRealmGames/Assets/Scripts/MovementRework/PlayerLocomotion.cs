@@ -8,6 +8,7 @@ public class PlayerLocomotion : MonoBehaviour
     private PlayerInputManager inputManager;
     private PlayerManager playerManager;
     private AnimatorManager animatorManager;
+    private PlayerAudioManager audioManager;
     
     private Vector3 moveDirection;
     private Transform cameraObject;
@@ -80,6 +81,7 @@ public class PlayerLocomotion : MonoBehaviour
         inputManager = GetComponent<PlayerInputManager>();
         collider = GetComponent<CapsuleCollider>();
         playerRB = GetComponent<Rigidbody>();
+        audioManager = GetComponent<PlayerAudioManager>();
         doubleJumpParticle.GetComponent<ParticleSystem>();
         cameraObject = Camera.main.transform;
     }
@@ -132,7 +134,22 @@ public class PlayerLocomotion : MonoBehaviour
             moveDirection *= adrenalineSpeed;
         }
 
-        Vector3 movementVelocity = new Vector3(moveDirection.x,playerRB.linearVelocity.y,moveDirection.z);
+        // Play or stop footsteps sound based on movement
+        if (moveDirection.magnitude > 0)
+        {
+            audioManager.PlayFootsteps(0);
+        }
+        else
+        {
+            audioManager.StopFootsteps();
+            audioManager.PlayIdleSounds();
+        }
+        if (!isGrounded)
+        {
+            audioManager.StopFootsteps();
+        }
+
+        Vector3 movementVelocity = new Vector3(moveDirection.x, playerRB.linearVelocity.y, moveDirection.z);
         playerRB.linearVelocity = movementVelocity;
     }
     private void AdjustSpeedBasedOnState()
@@ -274,6 +291,7 @@ public class PlayerLocomotion : MonoBehaviour
         inAirTimer = 0;
         currentJumpCount = 1;
         isChargingJump = false;
+        audioManager.PlayJumpSounds();
     }
     public void HandleJump()
     {
@@ -314,8 +332,9 @@ public class PlayerLocomotion : MonoBehaviour
         canWallJump = false;
         inAirTimer = 0; // Reset air timer for wall jump
         isGliding = false; // Stop gliding when wall jumping
-        // Do not increment currentJumpCount for wall jump
-    }
+        audioManager.PlayJumpSounds();
+            // Do not increment currentJumpCount for wall jump
+        }
     // Allow double jump only if the player is in the air and hasn't reached the max jump count
     else if (currentJumpCount > 0 && currentJumpCount < maxJumps && playerManager.currentState != PlayerHealth.PlayerState.Injured)
     {
@@ -332,6 +351,7 @@ public class PlayerLocomotion : MonoBehaviour
 
         inAirTimer = 0; // Reset air timer to ensure smooth double jump
         isGliding = false; // Stop gliding when performing a double jump
+        audioManager.PlayDoubleJumpSounds();
         StartCoroutine(IncreaseJumpCount());
     }
     // Wall jump if the player is near a wall, regardless of jump count
@@ -346,8 +366,13 @@ public class PlayerLocomotion : MonoBehaviour
 
     private void IsGliding()
     {
+        if (!isGliding)
+        {
+            audioManager.wings.Stop();
+        }
         if (!isGrounded && inputManager.glideInput && currentJumpCount >= maxJumps)
         {
+            audioManager.PlayGlideSounds();
             isGliding = true;
             playerRB.linearVelocity = new Vector3(playerRB.linearVelocity.x, -glideFallSpeed, playerRB.linearVelocity.z); // Set a consistent fall speed
         }
