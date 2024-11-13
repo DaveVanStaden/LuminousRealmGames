@@ -614,6 +614,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2967012736769424213, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021796695213517742, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3607553285152420712, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
       propertyPath: healthySprintSpeed
       value: 15
@@ -633,6 +641,18 @@ PrefabInstance:
     - target: {fileID: 3607553285152420712, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
       propertyPath: injuredWalkingSpeed
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838507390675926193, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.078
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838507390675926193, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.457
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838507390675926193, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.155
       objectReference: {fileID: 0}
     - target: {fileID: 9191362634633581846, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
       propertyPath: animator
