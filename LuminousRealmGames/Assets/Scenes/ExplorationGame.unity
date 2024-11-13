@@ -614,6 +614,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3607553285152420712, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: healthySprintSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607553285152420712, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: injuredSprintSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607553285152420712, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: healthyWalkingSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607553285152420712, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: injuredRunningSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3607553285152420712, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: injuredWalkingSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9191362634633581846, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
       propertyPath: animator
       value: 
@@ -626,6 +646,10 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1887237856}
+    - target: {fileID: 9191362634633581846, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
+      propertyPath: healCooldown
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9191362634633581846, guid: 7e8fd9b32eb18834a888bb1e3e620e09, type: 3}
       propertyPath: playerRenderer
       value: 
@@ -2130,6 +2154,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3959133325824462709, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959133325824462709, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 5657728216388566341, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2213,6 +2245,14 @@ PrefabInstance:
     - target: {fileID: 6566555952708711029, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952129312810365224, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8952129312810365224, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

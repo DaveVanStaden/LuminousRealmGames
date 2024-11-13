@@ -5307,12 +5307,12 @@ MonoBehaviour:
   isJumping: 0
   isCrouching: 0
   isChargingJump: 0
-  injuredRunningSpeed: 3
+  injuredRunningSpeed: 5
   healthyRunningSpeed: 10
-  injuredWalkingSpeed: 0.5
-  healthyWalkingSpeed: 1.5
+  injuredWalkingSpeed: 1
+  healthyWalkingSpeed: 2
   injuredSprintSpeed: 5
-  healthySprintSpeed: 7
+  healthySprintSpeed: 15
   rotationSpeed: 4
   crouchSpeed: 0.5
   adrenalineDuration: 3
@@ -5330,7 +5330,7 @@ MonoBehaviour:
   chargeTimer: 0
   glideFallSpeed: 1
   isGliding: 0
-  doubleJumpParticle: {fileID: 1994996647206575372}
+  doubleJumpParticle: {fileID: 0}
 --- !u!114 &4552328101450994777
 MonoBehaviour:
   m_ObjectHideFlags: 0
