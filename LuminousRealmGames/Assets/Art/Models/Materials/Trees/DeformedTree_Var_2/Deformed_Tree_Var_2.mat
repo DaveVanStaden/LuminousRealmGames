@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 44025d57305ca684185eab6b33a9fd4d, type: 3}
+        m_Texture: {fileID: 2800000, guid: d59f1565aca0ae64e84c2fa0f5a1fc72, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: f2cd2d8351ebb574fbfbea5c2ac6660a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 45dffa2cf1684e34cbb344d7ba79e260, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -92,7 +92,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _heightmap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 50578a0dd9b4ca44f98c19b0f26dcb18, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _splatmask:
@@ -100,7 +100,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _terrain_albedo:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ad9ddf389bf9425438e881243422f4dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
