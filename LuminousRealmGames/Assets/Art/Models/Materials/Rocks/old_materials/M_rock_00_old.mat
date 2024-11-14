@@ -7,13 +7,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_rocks_00
+  m_Name: M_rock_00_old
   m_Shader: {fileID: 4800000, guid: 27f206f49913dd144bb162806f43acf4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _RECEIVE_SHADOWS_OFF
-  - _TEXTURE_BLENDING_ON
   m_InvalidKeywords:
   - _RECEIVESHADOWS_OFF
   m_LightmapFlags: 4
@@ -51,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1b74e6a7dad32514c99f1b9ab5b2784a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 728444a54d7af8245865d100108f3be6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -83,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _heightmap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 50578a0dd9b4ca44f98c19b0f26dcb18, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normal_map:
@@ -91,7 +90,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _splatmask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 88250ee9abb08744c8674789d69c2a57, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _terrain_albedo:
@@ -141,14 +140,14 @@ Material:
     - _GlossyReflections: 0
     - _Keyword0: 0
     - _Metallic: 0
-    - _NormalScale: 0.904
+    - _NormalScale: 0.358
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _RimOffset: 3.01
-    - _RimShadow: 0
+    - _RimShadow: 1
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -157,7 +156,7 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _blend_strenght: 0
+    - _blend_strenght: 1.05
     - _blending: 0
     - _burn: 0
     - _distortion_amount: 0
@@ -165,10 +164,10 @@ Material:
     - _heat_wave: 0
     - _heatwave_offset: 0
     - _heatwave_scale: 0
-    - _offset_blend: 0
+    - _offset_blend: 0.89
     - _scroll_speed: 0.06947487
-    - _texture_blending: 1
-    - _tiling_blend: 0
+    - _texture_blending: 0
+    - _tiling_blend: 2.07
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
