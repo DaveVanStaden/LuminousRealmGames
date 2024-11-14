@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float health;
-    [SerializeField] private float injuryRate = 1f;  // How fast the player gets injured over time
+    public float injuryRate = 1f;  // How fast the player gets injured over time
     [SerializeField] private float damagePerSecond = 5f;  // Damage taken while injured
     [SerializeField] private float healCooldown = 30f;  // Time to remain healed after touching a checkpoint
 
@@ -21,7 +21,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Material healedMaterial;
     [SerializeField] private Material injuredMaterial;
     [SerializeField] private Renderer playerRenderer;
-    
+    [SerializeField] private Animator animator;
+    private PlayerAudioManager audioManager;
+
     [SerializeField] private ParticleSystem bloodParticle1;
     [SerializeField] private ParticleSystem bloodParticle2;
 
@@ -37,9 +39,13 @@ public class PlayerHealth : MonoBehaviour
 
     // Text for timer display
     [SerializeField] private TextMeshProUGUI timerText;
-
+    private void Awake()
+    {
+        audioManager = GetComponent<PlayerAudioManager>();
+    }
     void Start()
     {
+        
         health = maxHealth;
         UpdatePlayerMaterial(); 
         UpdateHealthUI(); 
@@ -51,6 +57,11 @@ public class PlayerHealth : MonoBehaviour
     {
         healTimer += Time.deltaTime;
 
+        if(audioManager.aura.isPlaying == false)
+        {
+            audioManager.aura.loop = true;
+            audioManager.PowerupContinuous();
+        }
         
         UpdateTimerUI();
 
@@ -64,7 +75,15 @@ public class PlayerHealth : MonoBehaviour
     {
         // Gradually become more injured over time
         health -= injuryRate * Time.deltaTime;
-        
+        Debug.Log($"Health: {health}");
+        audioManager.PlayInjuredSounds();
+        audioManager.PlayHeartbeat();
+
+        // Calculate the hurt layer weight based on the time the player has been injured
+        float hurtLayerWeight = Mathf.Clamp01(1 - (health / maxHealth));
+        Debug.Log($"Hurt Layer Weight: {hurtLayerWeight}");
+
+        animator.SetLayerWeight(1, hurtLayerWeight);
 
         if (health <= 0)
         {
@@ -85,17 +104,22 @@ public class PlayerHealth : MonoBehaviour
     private void SwitchToInjured()
     {
         currentState = PlayerState.Injured;
+        audioManager.aura.loop = false;
+        audioManager.PowerupEnd();
         UpdatePlayerMaterial(); 
         Debug.Log("Player is now Injured.");
     }
     public float GetHealthPercentage()
     {
-        return health / maxHealth; 
+        float healthPercentage = health / maxHealth;
+        Debug.Log($"Health Percentage: {healthPercentage}");
+        return healthPercentage;
     }
     public void UpdatePlayerState(PlayerState newState)
     {
         if (newState == PlayerState.Injured)
         {
+
             // Activate blood particles
             if (bloodParticle1 != null && !bloodParticle1.isEmitting)
                 bloodParticle1.Play();
@@ -150,6 +174,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.CompareTag("Checkpoint"))
         {
+            audioManager.aura.loop = false;
+            audioManager.PowerupStart();
+            audioManager.crystal.Play();
             HealPlayer();  // Heal the player when they touch a checkpoint
             Destroy(other.gameObject);
         }

@@ -158,7 +158,7 @@ Material:
     - _fresnel_strenght: 2.27
     - _metallic: 0
     - _offset: 2
-    - _parallax_strenght: 0.61
+    - _parallax_strenght: 1.85
     - _smoothness: 0
     - _strenght: 0.63
     m_Colors:
