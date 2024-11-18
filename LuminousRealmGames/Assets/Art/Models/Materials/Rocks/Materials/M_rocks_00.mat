@@ -25,8 +25,9 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ASH_FEATURE_ON
+  m_InvalidKeywords:
   - _TEXTURE_BLENDING_ON
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -89,6 +90,18 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ash_texture:
+        m_Texture: {fileID: 2800000, guid: 51700b90dff9d4347affab71c9b30ef4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient_ash:
+        m_Texture: {fileID: 2800000, guid: 04cbee8881408bc49932a9a8e9f20dda, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _heightmap:
         m_Texture: {fileID: 2800000, guid: 91a14343eefa80244bc289aced8f5023, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -102,6 +115,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -142,6 +159,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Keyword0: 0
     - _Metallic: 0
     - _NormalScale: 0.11
     - _OcclusionStrength: 1
@@ -159,6 +177,9 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _ash_feature: 1
+    - _ash_level: 0.9
+    - _ash_texture: 0
     - _blend_strenght: 2.93
     - _burn: 0
     - _distortion_amount: 0
@@ -169,6 +190,7 @@ Material:
     - _scroll_speed: 0.06947487
     - _texture_blending: 1
     - _tiling_blend: 2.61
+    - _world_level: 4.22
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
