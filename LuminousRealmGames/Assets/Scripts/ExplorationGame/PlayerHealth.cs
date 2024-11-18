@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public float injuryRate = 1f;  // How fast the player gets injured over time
     [SerializeField] private float damagePerSecond = 5f;  // Damage taken while injured
     [SerializeField] private float healCooldown = 30f;  // Time to remain healed after touching a checkpoint
+    [SerializeField] private float arrowDamage = 10f;  // Time to remain healed after touching a checkpoint
 
     private float healTimer = 0f;  // Timer to track the healed state duration
 
@@ -179,6 +180,16 @@ public class PlayerHealth : MonoBehaviour
             audioManager.crystal.Play();
             HealPlayer();  // Heal the player when they touch a checkpoint
             Destroy(other.gameObject);
+        }
+        if(other.CompareTag("Arrow"))
+        {
+            if(currentState == PlayerState.Healed)
+            {
+                SwitchToInjured();
+            }else if(currentState == PlayerState.Injured)
+            {
+                health -= arrowDamage;
+            }
         }
     }
 }
