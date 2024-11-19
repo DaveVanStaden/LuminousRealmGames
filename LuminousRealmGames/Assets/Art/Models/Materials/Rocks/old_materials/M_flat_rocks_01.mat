@@ -102,7 +102,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _gradient_ash:
-        m_Texture: {fileID: 2800000, guid: 8b18b0d1dc20f194c9aa0ba8f71226da, type: 3}
+        m_Texture: {fileID: 2800000, guid: 04cbee8881408bc49932a9a8e9f20dda, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _heightmap:
@@ -185,7 +185,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _ash_feature: 1
-    - _ash_level: 0.2
+    - _ash_level: 1.66
     - _ash_texture: 0
     - _blend_strenght: 1.57
     - _burn: 0
@@ -198,7 +198,7 @@ Material:
     - _smoothness_strenght: 0
     - _texture_blending: 0
     - _tiling_blend: 1.21
-    - _world_level: 9.9
+    - _world_level: 0.7
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
