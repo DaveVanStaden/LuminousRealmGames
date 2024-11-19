@@ -27,6 +27,7 @@ Material:
   m_ValidKeywords:
   - _ASH_FEATURE_ON
   - _RECEIVE_SHADOWS_OFF
+  - _TEXTURE_BLENDING_ON
   m_InvalidKeywords:
   - _KEYWORD0_ON
   - _RECEIVESHADOWS_OFF
@@ -191,7 +192,7 @@ Material:
     - _heatwave_scale: 1.31
     - _offset_blend: 0.19
     - _scroll_speed: 0.022
-    - _texture_blending: 0
+    - _texture_blending: 1
     - _tiling_blend: 0.21
     - _world_level: 0.38
     m_Colors:
