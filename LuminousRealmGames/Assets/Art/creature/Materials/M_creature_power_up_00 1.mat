@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_creature_power_up_00
+  m_Name: M_creature_power_up_00 1
   m_Shader: {fileID: 4800000, guid: 662b7766db89a8349852bcb8e9c5d063, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -86,27 +86,35 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _TextureSample0:
         m_Texture: {fileID: 2800000, guid: 1512fc63e5069b346acf1dfe9bfe17c0, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     - _TextureSample1:
         m_Texture: {fileID: 2800000, guid: 635aedd4901bad24cab28ad052c8d9e9, type: 3}
         m_Scale: {x: 9.15, y: 9.15}
         m_Offset: {x: 0, y: 0}
     - _gradient_ash:
-        m_Texture: {fileID: 2800000, guid: 04cbee8881408bc49932a9a8e9f20dda, type: 3}
+        m_Texture: {fileID: 2800000, guid: 40f28130ef3d74546885080e293f804c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient_ash1:
+        m_Texture: {fileID: 2800000, guid: 58e19a3187f1a174f8387bf7315dca73, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _opacity_mask:
-        m_Texture: {fileID: 2800000, guid: 011b158423abe1a4092faa28317d25ff, type: 3}
-        m_Scale: {x: 4.82, y: 1}
+        m_Texture: {fileID: 2800000, guid: 8b18b0d1dc20f194c9aa0ba8f71226da, type: 3}
+        m_Scale: {x: 1.84, y: 1}
         m_Offset: {x: 0, y: 0}
     - _opacity_mask1:
         m_Texture: {fileID: 2800000, guid: 88250ee9abb08744c8674789d69c2a57, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _power_up_texture:
-        m_Texture: {fileID: 2800000, guid: 1512fc63e5069b346acf1dfe9bfe17c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 635aedd4901bad24cab28ad052c8d9e9, type: 3}
         m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _star_sparkle:
+        m_Texture: {fileID: 2800000, guid: 91211e84ca0867b42a89f5bcfc079751, type: 3}
+        m_Scale: {x: -9.48, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
@@ -146,7 +154,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Float0: 0.215
+    - _Float0: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -167,28 +175,32 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _ash_level: 0.48
-    - _fresnelopacity: 0.527
+    - _ash_level: 0
+    - _fresnelopacity: 1
     - _fresnelopacity1: 0
+    - _offset: 9.9
     - _opacity: 0
-    - _power_up_strenght: 0
+    - _power_up_strenght: 0.07
     - _power_up_texture_offset: 12.1628
     - _power_up_texture_strenght: 0.9565784
-    - _scroll_speed1: 0.06947487
-    - _world_level: 2.39
+    - _powerup_offset: 4.3
+    - _scroll_speed1: 0.058
+    - _texture_opacity: 0.232
+    - _texture_strenght: 4
+    - _world_level: 0.05
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.0141509175, g: 0.5361265, b: 1, a: 0}
+    - _Color0: {r: 0, g: 0.84313726, b: 1, a: 0}
     - _Color0emission: {r: 0.29699183, g: 0.39263132, b: 0.8867924, a: 0}
     - _Color1: {r: 0.10813459, g: 0.22100005, b: 0.509434, a: 0}
-    - _Color2: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0}
+    - _Color2: {r: 0.029503385, g: 0.16487187, b: 0.3679245, a: 0}
     - _Color2emission: {r: 0.735849, g: 0.5865966, b: 0.5865966, a: 0}
     - _Color3: {r: 0.23113209, g: 0.6411477, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _power_up_color: {r: 1, g: 0, b: 0.33305168, a: 0}
+    - _power_up_color: {r: 0, g: 0.681592, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
