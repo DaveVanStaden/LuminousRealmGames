@@ -13,25 +13,27 @@ public class CameraManager : MonoBehaviour
     private Vector3 cameraFollowVelocity = Vector3.zero;
     private Vector3 cameraVectorPosition;
 
-    public float cameraCollisionRadius = 0.2f;
-    public float minimumCollisionOffSet = 0.2f;
-    public float cameraCollisionOffSet = 0.2f; //how much the camera will jump off colliding object
-    public float cameraFollowSpeed = 0.2f;
-    public float cameraLookSpeed = 2f;
-    public float cameraPivotSpeed = 2f;
+    public float cameraCollisionRadius;
+    public float minimumCollisionOffSet;
+    public float cameraCollisionOffSet; //how much the camera will jump off colliding object
+    public float cameraFollowSpeed;
+    public float cameraLookSpeed;
+    public float cameraPivotSpeed;
 
-    public float minimumPivotAngle = -35;
-    public float maximumPivotAngle = 35;
+    public float minimumPivotAngle;
+    public float maximumPivotAngle;
 
     public float lookAngle;
     public float pivotAngle;
+
+    public float cameraDistance = 10f; // New field to set the camera distance
 
     private void Awake()
     {
         inputManager = FindAnyObjectByType<PlayerInputManager>();
         targetTransform = FindAnyObjectByType<PlayerManager>().transform;
         cameraTransform = Camera.main.transform;
-        defaultPosition = cameraTransform.localPosition.z;
+        defaultPosition = -cameraDistance; // Set the default position based on the camera distance
     }
 
     public void HandleAllCameraMovement()
@@ -56,12 +58,12 @@ public class CameraManager : MonoBehaviour
         lookAngle += (inputManager.cameraInputX * cameraLookSpeed);
         pivotAngle -= (inputManager.cameraInputY * cameraPivotSpeed);
         pivotAngle = Mathf.Clamp(pivotAngle, minimumPivotAngle, maximumPivotAngle);
-        
+
         rotation = Vector3.zero;
         rotation.y = lookAngle;
         targetRotation = Quaternion.Euler(rotation);
         transform.rotation = targetRotation;
-        
+
         rotation = Vector3.zero;
         rotation.x = pivotAngle;
         targetRotation = quaternion.Euler(rotation);
@@ -76,10 +78,10 @@ public class CameraManager : MonoBehaviour
         direction.Normalize();
 
         if (Physics.SphereCast(cameraPivot.transform.position, cameraCollisionRadius, direction, out hit,
-                Mathf.Abs(targetPosition),collisionLayers))
+                Mathf.Abs(targetPosition), collisionLayers))
         {
             float distance = Vector3.Distance(cameraPivot.position, hit.point);
-            targetPosition =- (distance - cameraCollisionOffSet);
+            targetPosition = -(distance - cameraCollisionOffSet);
         }
 
         if (Mathf.Abs(targetPosition) < minimumCollisionOffSet)

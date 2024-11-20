@@ -175,7 +175,7 @@ Material:
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _hot_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
-    - _warm_color: {r: 0.9622641, g: 0.41288197, b: 0, a: 0}
+    - _hot_color: {r: 0.21226418, g: 0.51053184, b: 1, a: 0}
+    - _warm_color: {r: 0.24056602, g: 0.6526285, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

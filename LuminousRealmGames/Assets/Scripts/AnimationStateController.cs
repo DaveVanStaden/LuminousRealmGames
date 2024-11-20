@@ -16,6 +16,7 @@ public class AnimationStateController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool isGrounded = true;
     [SerializeField] private PlayerHealth playerHealth; // Reference to the PlayerHealth component
+    private float hurtLayerWeight;
 
     void Start()
     {
@@ -64,7 +65,7 @@ public class AnimationStateController : MonoBehaviour
 
         // Check if the player is healed
         bool isPlayerHealed = playerHealth.currentState == PlayerHealth.PlayerState.Healed;
-
+        
         // Movement Animation
         if (isMoving && isGrounded)
         {

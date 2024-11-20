@@ -1,55 +1,38 @@
-/* using BehaviorTree;
-using UnityEngine;
-
-public class CheckPlayerInRange : Node
-{
-    private static LayerMask _playerLayerMask = 6;
-    private Transform _transform;
-
-    public CheckPlayerInRange(Transform transform)
-    {
-        _transform = transform;
-    }
-
-    public override NodeState Evaluate()
-    {
-        object t = GetData("target");
-        if (t == null)
-        {
-            Collider[] colliders = Physics.OverlapSphere(
-                   _transform.position,ArrowBT.targetRange , _playerLayerMask);
-
-            if (colliders.Length > 0)
-            {
-                parent.parent.SetData("target", colliders[0].transform);
-                
-                state = NodeState.SUCCES;
-                return state;
-            }
-            state = NodeState.FAILURE;
-            return state;
-        }
-
-        state = NodeState.SUCCES;
-        return state;
-    }
-} */
 using UnityEngine;
 using BehaviorTree;
 
 public class CheckPlayerInRange : Node
 {
     private Transform _transform;
+    private ArrowBT _arrowBT;
+    private float _maxDistanceFromWaypoint = 50.0f; // Maximum allowed distance from the current waypoint
 
-    public CheckPlayerInRange(Transform transform)
+    public CheckPlayerInRange(Transform transform, ArrowBT arrowBT)
     {
         _transform = transform;
+        _arrowBT = arrowBT;
     }
 
     public override NodeState Evaluate()
     {
+        // Check if the enemy is too far from the current waypoint
+        if (_arrowBT.CurrentWaypoint != null)
+        {
+            float distanceFromWaypoint = Vector3.Distance(_transform.position, _arrowBT.CurrentWaypoint.position);
+            if (distanceFromWaypoint > _maxDistanceFromWaypoint)
+            {
+                Debug.Log("Too far from waypoint, returning to scan area");
+                return NodeState.FAILURE;
+            }
+        }
+
         // Assuming you have a method to get the player's position
         Transform player = GetPlayerTransform();
+        if (player == null)
+        {
+            return NodeState.FAILURE;
+        }
+
         if (Vector3.Distance(_transform.position, player.position) < ArrowBT.targetRange)
         {
             return NodeState.SUCCES;
@@ -59,7 +42,7 @@ public class CheckPlayerInRange : Node
 
     private Transform GetPlayerTransform()
     {
-        Transform playerTransform = GameObject.FindWithTag("Player").transform;
-        return playerTransform;
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        return playerObject != null ? playerObject.transform : null;
     }
 }
