@@ -5250,7 +5250,7 @@ MonoBehaviour:
   injuryRate: 1
   damagePerSecond: 5
   healCooldown: 10
-  healedMaterial: {fileID: 1151844921754575795, guid: bf8706d492fb3d94ca1961967084b654, type: 3}
+  healedMaterial: {fileID: 2100000, guid: 65a68d6526d2e1b46bcd436a4b8b338a, type: 2}
   injuredMaterial: {fileID: 2100000, guid: 9f2455e17c78fb348b2728b5b3ea1afb, type: 2}
   playerRenderer: {fileID: 2947589567177300335}
   animator: {fileID: 6371557593102389590}

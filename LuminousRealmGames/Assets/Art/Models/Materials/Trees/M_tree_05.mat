@@ -70,8 +70,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Texture: {fileID: 2800000, guid: 6b861daf0882f5a438322cbe553ad39e, type: 3}
+        m_Scale: {x: -2.36, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -171,7 +171,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _RimOffset: 6.16
-    - _RimShadow: 1
+    - _RimShadow: 0.718
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -185,13 +185,13 @@ Material:
     - _ash_texture: 1
     - _blend_strenght: 1.56
     - _blending: 0
-    - _burn: 0.075
-    - _distortion_amount: 0.267
-    - _heat_wave: 0.734
-    - _heatwave_offset: 5.32
-    - _heatwave_scale: 1.31
+    - _burn: 0.086
+    - _distortion_amount: 0.142
+    - _heat_wave: 0.462
+    - _heatwave_offset: 5.38
+    - _heatwave_scale: 1.16
     - _offset_blend: 0.31
-    - _scroll_speed: 0.023
+    - _scroll_speed: 0.015
     - _texture_blending: 1
     - _tiling_blend: 0.76
     - _world_level: -0.11
@@ -202,7 +202,7 @@ Material:
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _hot_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
-    - _warm_color: {r: 0.9622641, g: 0.41288197, b: 0, a: 0}
+    - _hot_color: {r: 1, g: 0.7476182, b: 0.08962262, a: 0}
+    - _warm_color: {r: 1, g: 0.46900272, b: 0.07075471, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

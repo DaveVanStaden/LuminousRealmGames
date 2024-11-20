@@ -27,10 +27,10 @@ Material:
   m_ValidKeywords:
   - _ASH_FEATURE_ON
   - _RECEIVE_SHADOWS_OFF
-  - _TEXTURE_BLENDING_ON
   m_InvalidKeywords:
   - _KEYWORD0_ON
   - _RECEIVESHADOWS_OFF
+  - _TEXTURE_BLENDING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -70,8 +70,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Texture: {fileID: 2800000, guid: 6b861daf0882f5a438322cbe553ad39e, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -185,13 +185,13 @@ Material:
     - _ash_texture: 0
     - _blend_strenght: 5
     - _blending: 0
-    - _burn: 0.093
-    - _distortion_amount: 0.267
-    - _heat_wave: 0.33
-    - _heatwave_offset: 1.94
-    - _heatwave_scale: 1.31
+    - _burn: 0.088
+    - _distortion_amount: 0.697
+    - _heat_wave: 0.561
+    - _heatwave_offset: 3.2
+    - _heatwave_scale: 0.66
     - _offset_blend: 0.19
-    - _scroll_speed: 0.022
+    - _scroll_speed: 0.006
     - _texture_blending: 1
     - _tiling_blend: 0.21
     - _world_level: 0.38

@@ -216,7 +216,7 @@ Material:
     - _power_up_strenght: 0.159
     - _power_up_texture_offset: 12.1628
     - _power_up_texture_strenght: 0.9565784
-    - _powerup_offset: 5.39
+    - _powerup_offset: 6.4
     - _powerup_scroll_speed: 0.105
     - _powerup_texture_strenght: 4
     - _scroll_speed1: 0.03
@@ -229,9 +229,9 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.2688679, g: 0.8853126, b: 1, a: 0}
+    - _Color0: {r: 0.21226418, g: 0.8771811, b: 1, a: 0}
     - _Color0emission: {r: 0.29699183, g: 0.39263132, b: 0.8867924, a: 0}
-    - _Color1: {r: 0.10813459, g: 0.22100005, b: 0.509434, a: 0}
+    - _Color1: {r: 0, g: 0, b: 0, a: 0}
     - _Color2: {r: 0, g: 0, b: 0, a: 0}
     - _Color2emission: {r: 0.735849, g: 0.5865966, b: 0.5865966, a: 0}
     - _Color3: {r: 0.23113209, g: 0.6411477, b: 1, a: 0}
@@ -239,6 +239,6 @@ Material:
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _power_up_color: {r: 0, g: 0.49550182, b: 0.7264151, a: 0}
+    - _power_up_color: {r: 0, g: 0.7254902, b: 0.18383825, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

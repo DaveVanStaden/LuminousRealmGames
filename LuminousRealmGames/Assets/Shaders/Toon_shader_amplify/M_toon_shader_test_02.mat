@@ -24,8 +24,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 27f206f49913dd144bb162806f43acf4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _ASH_FEATURE_ON
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _TEXTURE_BLENDING_ON
   m_LightmapFlags: 4
@@ -67,7 +66,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b861daf0882f5a438322cbe553ad39e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -218,7 +217,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - __dirty: 0
-    - _ash_feature: 1
+    - _ash_feature: 0
     - _ash_level: 1.37
     - _ash_texture: 0
     - _blend_strenght: 0
@@ -227,7 +226,7 @@ Material:
     - _fresnel_strenght: 10
     - _heat_wave: 0.072
     - _heatwave_offset: 0.57
-    - _heatwave_scale: 0.21
+    - _heatwave_scale: 0.72
     - _offset_blend: 0
     - _scroll_speed: 0.166
     - _texture_blending: 1
