@@ -11,7 +11,8 @@ public class TaskAttack : Node
     private float _cooldownTime;
     private float _lastShotTime;
     private int _arrowCount = 6; // Number of arrows to shoot
-    private float _randomRadius = 1.0f; // Radius for random offset
+    private float _spreadRadius = 1.0f; // Radius for spread around the target
+    private float _speedVariation = 0.5f; // Variation in arrow speed
 
     public TaskAttack(Transform transform, Transform shootingPosition, GameObject arrowPrefab, float attackRadius, float cooldownTime)
     {
@@ -64,10 +65,12 @@ public class TaskAttack : Node
         {
             GameObject arrow = GameObject.Instantiate(_arrowPrefab, _shootingPosition.position, Quaternion.identity);
             Rigidbody rb = arrow.GetComponent<Rigidbody>();
-            Vector3 targetPosition = GetPositionAroundPlayer(player.position, i, _arrowCount, _randomRadius);
+            Vector3 targetPosition = GetPositionAroundPlayer(player.position, i, _arrowCount, _spreadRadius);
             Vector3 direction = (targetPosition - _shootingPosition.position).normalized;
+
             float distance = Vector3.Distance(_shootingPosition.position, targetPosition);
-            float speed = (distance / 1.0f) * _arrowSpeed; // Adjust the divisor to control the speed
+            float speed = (distance / 1.0f) * (_arrowSpeed + Random.Range(-_speedVariation, _speedVariation)); // Adjust the speed with variation
+
             arrow.GetComponent<RotateArrow>().target = player;
 
             rb.linearVelocity = direction * speed;
