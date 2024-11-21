@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Checkpoint
   - Wall
+  - Arrow
   layers:
   - Default
   - TransparentFX
