@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: 6b861daf0882f5a438322cbe553ad39e, type: 3}
+        m_Texture: {fileID: 2800000, guid: f25f9b30f82a4c74aad8b8145f44d2a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -182,11 +182,11 @@ Material:
     - _ash_level: 5.46
     - _ash_texture: 0
     - _blend_strenght: 0
-    - _burn: 0.15
+    - _burn: 0.092
     - _distortion_amount: 0.16
-    - _heat_wave: 0.914
-    - _heatwave_offset: 0.72
-    - _heatwave_scale: 2
+    - _heat_wave: 0.754
+    - _heatwave_offset: 3.16
+    - _heatwave_scale: 3
     - _offset_blend: 0
     - _scroll_speed: 0.007
     - _texture_blending: 1

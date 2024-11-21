@@ -28,9 +28,7 @@ Material:
   - _ASH_FEATURE_ON
   - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
-  - _KEYWORD0_ON
   - _RECEIVESHADOWS_OFF
-  - _TEXTURE_BLENDING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -97,6 +95,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 51700b90dff9d4347affab71c9b30ef4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _base_color:
+        m_Texture: {fileID: 2800000, guid: c9c5fb5a9b5a896438357d3479542d85, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _gradient:
         m_Texture: {fileID: 2800000, guid: 58e19a3187f1a174f8387bf7315dca73, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -107,6 +109,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _heightmap:
         m_Texture: {fileID: 2800000, guid: 50578a0dd9b4ca44f98c19b0f26dcb18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normal_map:
+        m_Texture: {fileID: 2800000, guid: 600899dd40e9273468a024d32d815cf3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _splatmask:
@@ -181,17 +187,18 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _ash_feature: 1
-    - _ash_level: 4.7
+    - _ash_level: 5.47
     - _ash_texture: 1
-    - _blend_strenght: 1.56
+    - _blend_strenght: 1.2
     - _blending: 0
     - _burn: 0.086
-    - _distortion_amount: 0.142
+    - _distortion_amount: 0.207
     - _heat_wave: 0.462
     - _heatwave_offset: 5.38
     - _heatwave_scale: 1.16
     - _offset_blend: 0.31
     - _scroll_speed: 0.015
+    - _smoothness_strenght: 0.106
     - _texture_blending: 1
     - _tiling_blend: 0.76
     - _world_level: -0.11
