@@ -10,6 +10,7 @@ TagManager:
   - Fly
   - Checkpoint
   - Wall
+  - Arrow
   layers:
   - Default
   - TransparentFX

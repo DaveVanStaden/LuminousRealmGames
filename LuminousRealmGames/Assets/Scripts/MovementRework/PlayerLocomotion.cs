@@ -73,6 +73,7 @@ public class PlayerLocomotion : MonoBehaviour
     private CapsuleCollider collider;
     [Header("Particle Systems")]
     [SerializeField] private ParticleSystem doubleJumpParticle;
+    [SerializeField] private ParticleSystem glideParticle;
 
     private void Awake()
     {
@@ -83,6 +84,7 @@ public class PlayerLocomotion : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
         audioManager = GetComponent<PlayerAudioManager>();
         doubleJumpParticle.GetComponent<ParticleSystem>();
+        glideParticle.GetComponent<ParticleSystem>();  
         cameraObject = Camera.main.transform;
     }
 
@@ -113,9 +115,9 @@ public class PlayerLocomotion : MonoBehaviour
         else if (isSprinting && playerManager.currentState == PlayerHealth.PlayerState.Healed)
         {
             moveDirection *= sprintSpeed;
-        } else if (isSprinting && playerManager.currentState == PlayerHealth.PlayerState.Injured && canUseAdrenaline)
+        } else if (isSprinting && playerManager.currentState == PlayerHealth.PlayerState.Injured)
         {
-            //StartCoroutine(AdrenalineBoost());
+            moveDirection *= injuredSprintSpeed;
         }
         else
         {
@@ -129,10 +131,6 @@ public class PlayerLocomotion : MonoBehaviour
             }
         }
 
-        if (isAdrenalineActive)
-        {
-            moveDirection *= adrenalineSpeed;
-        }
 
         // Play or stop footsteps sound based on movement
         if (moveDirection.magnitude > 0)
@@ -368,11 +366,12 @@ public class PlayerLocomotion : MonoBehaviour
     {
         if (!isGliding)
         {
-            audioManager.wings.Stop();
+            glideParticle.Stop();
         }
         if (!isGrounded && inputManager.glideInput && currentJumpCount >= maxJumps)
         {
-            audioManager.PlayGlideSounds();
+            //audioManager.PlayGlideSounds();
+            glideParticle.Play();
             isGliding = true;
             playerRB.linearVelocity = new Vector3(playerRB.linearVelocity.x, -glideFallSpeed, playerRB.linearVelocity.z); // Set a consistent fall speed
         }
