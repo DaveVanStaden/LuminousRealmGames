@@ -73,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8b92fe3ea6b9e3343b516d2c1921a40c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -86,6 +86,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _heightmap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _splatmask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _terrain_albedo:
+        m_Texture: {fileID: 2800000, guid: 7417ecc1017574f4588b0c85480c83a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -146,12 +158,16 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _blend_strenght: 0
     - _burn: 0.146
     - _distortion_amount: 0.673
     - _heat_wave: 0.034
     - _heatwave_offset: 2.56
     - _heatwave_scale: 2.21
+    - _offset_blend: 0
     - _scroll_speed: 0.252
+    - _texture_blending: 0
+    - _tiling_blend: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -159,7 +175,7 @@ Material:
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _hot_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
-    - _warm_color: {r: 0.9622641, g: 0.41288197, b: 0, a: 0}
+    - _hot_color: {r: 0.21226418, g: 0.51053184, b: 1, a: 0}
+    - _warm_color: {r: 0.24056602, g: 0.6526285, b: 1, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
