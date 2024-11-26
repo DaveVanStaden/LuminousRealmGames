@@ -6,6 +6,7 @@ public class PlayerInputManager : MonoBehaviour
     private PlayerInput playerInput;
     private AnimatorManager animatorManager;
     private PlayerLocomotion playerLocomotion;
+    private PlayerHealth playerHealth;
 
     public float cameraInputX;
     public float cameraInputY;
@@ -30,6 +31,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void OnEnable()
@@ -74,7 +76,7 @@ public class PlayerInputManager : MonoBehaviour
         cameraInputX = cameraInput.x;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        animatorManager.UpdateAnimatorValues(0,moveAmount, playerLocomotion.isSprinting);
+        animatorManager.UpdateAnimatorValues(0,moveAmount, playerLocomotion.isSprinting, playerHealth.currentState);
     }
 
     private void HandleSprintingInput()

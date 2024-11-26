@@ -42,17 +42,24 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
 
     [SerializeField] private Transform lastCheckpoint;
+    [SerializeField] private Transform spawnPoint;
     private void Awake()
     {
         audioManager = GetComponent<PlayerAudioManager>();
     }
     void Start()
     {
+        lastCheckpoint = spawnPoint;
         health = maxHealth;
         UpdatePlayerMaterial(); 
         UpdateHealthUI(); 
         UpdateScreenEffect(); 
         UpdateTimerUI(); 
+    }
+    public void KillPlayer()
+    {
+        health = 0;
+        HandleDeath();
     }
     public void HandleDeath()
     {
@@ -188,10 +195,10 @@ public class PlayerHealth : MonoBehaviour
             HealPlayer();  // Heal the player when they touch a checkpoint
             lastCheckpoint = other.transform;  // Store the last checkpoint
             //dissable checkpoint stuff
-            var tempCollider = other.GetComponent<BoxCollider>();
+            /*var tempCollider = other.GetComponent<BoxCollider>();
             tempCollider.enabled = false;
             var tempRenderer = other.GetComponent<MeshRenderer>();
-            tempRenderer.enabled = false;
+            tempRenderer.enabled = false;*/
         }
         if(other.CompareTag("Arrow"))
         {
@@ -202,6 +209,10 @@ public class PlayerHealth : MonoBehaviour
             {
                 health -= arrowDamage;
             }
+        }
+        if(other.CompareTag("KillPlayer"))
+        {
+            KillPlayer();
         }
     }
 }
