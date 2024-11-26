@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f6f676824eb163f43b7e1693d93e3426
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 202484
+  packageName: Amplify Shader Pack
+  packageVersion: 2.3.2
+  assetPath: Assets/AmplifyShaderPack/Assets/Functions/Community Physical Based Rendering/PBR
+    Algorithms/GSF Smith GGX.asset
+  uploadId: 685514
