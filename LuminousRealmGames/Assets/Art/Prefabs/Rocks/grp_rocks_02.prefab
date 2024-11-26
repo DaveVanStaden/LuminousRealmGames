@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5fca248eb58fbd0489bab019c75b7c63, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 6ad0138429510a44982d8250b2194505, type: 2}
+      objectReference: {fileID: 2100000, guid: 15abcc054c440cc41809ea6f42559784, type: 2}
     - target: {fileID: 919132149155446097, guid: 5fca248eb58fbd0489bab019c75b7c63, type: 3}
       propertyPath: m_Name
       value: grp_rocks_02
@@ -88,6 +88,6 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1310191927555867307, guid: 5fca248eb58fbd0489bab019c75b7c63, type: 3}

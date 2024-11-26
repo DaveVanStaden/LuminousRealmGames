@@ -25,6 +25,7 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ASH_FEATURE_ON
   - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
   - _RECEIVESHADOWS_OFF
@@ -67,8 +68,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
-        m_Scale: {x: 2, y: 2}
+        m_Texture: {fileID: 2800000, guid: 6b861daf0882f5a438322cbe553ad39e, type: 3}
+        m_Scale: {x: -2.36, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
@@ -90,8 +91,28 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ash_texture:
+        m_Texture: {fileID: 2800000, guid: 51700b90dff9d4347affab71c9b30ef4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _base_color:
+        m_Texture: {fileID: 2800000, guid: c9c5fb5a9b5a896438357d3479542d85, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient:
+        m_Texture: {fileID: 2800000, guid: 58e19a3187f1a174f8387bf7315dca73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient_ash:
+        m_Texture: {fileID: 2800000, guid: 04cbee8881408bc49932a9a8e9f20dda, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _heightmap:
         m_Texture: {fileID: 2800000, guid: 50578a0dd9b4ca44f98c19b0f26dcb18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normal_map:
+        m_Texture: {fileID: 2800000, guid: 600899dd40e9273468a024d32d815cf3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _splatmask:
@@ -103,6 +124,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -143,16 +168,16 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Keyword0: 0
+    - _Keyword0: 1
     - _Metallic: 0
-    - _NormalScale: 0.668
+    - _NormalScale: 0.05
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _RimOffset: 6.16
-    - _RimShadow: 1
+    - _RimShadow: 0.718
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -161,17 +186,22 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _blend_strenght: 2.76
+    - _ash_feature: 1
+    - _ash_level: 5.47
+    - _ash_texture: 1
+    - _blend_strenght: 1.2
     - _blending: 0
-    - _burn: 0.09
-    - _distortion_amount: 0.267
-    - _heat_wave: 0.145
-    - _heatwave_offset: 5.32
-    - _heatwave_scale: 1.31
+    - _burn: 0.086
+    - _distortion_amount: 0.207
+    - _heat_wave: 0.462
+    - _heatwave_offset: 5.38
+    - _heatwave_scale: 1.16
     - _offset_blend: 0.31
-    - _scroll_speed: 0.022
-    - _texture_blending: 0
+    - _scroll_speed: 0.015
+    - _smoothness_strenght: 0.106
+    - _texture_blending: 1
     - _tiling_blend: 0.76
+    - _world_level: -0.11
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -179,7 +209,7 @@ Material:
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _hot_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
-    - _warm_color: {r: 0.9622641, g: 0.41288197, b: 0, a: 0}
+    - _hot_color: {r: 1, g: 0.7476182, b: 0.08962262, a: 0}
+    - _warm_color: {r: 1, g: 0.46900272, b: 0.07075471, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
