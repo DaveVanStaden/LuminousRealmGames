@@ -1716,7 +1716,7 @@ GameObject:
   - component: {fileID: 1250634914}
   - component: {fileID: 1250634913}
   - component: {fileID: 1250634912}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2188,7 +2188,7 @@ MonoBehaviour:
   SelectedState: 0
   SelectedStance: 0
   ShowStateInInspector: 1
-  Editor_Tabs1: 0
+  Editor_Tabs1: 1
   Editor_Tabs2: 4
   SelectedMode: -1
   Mode_Tabs1: 0
@@ -2208,12 +2208,20 @@ MonoBehaviour:
   InGroundChanger: 0
   states_C:
   - active: 1
+    state: {fileID: 11400000, guid: 31836c1e4a4a97341986fcb12a0b2800, type: 2}
+    priority: 4
+  - active: 1
+    state: {fileID: 11400000, guid: 1c3de879d1bd0ed489323bb712e9681e, type: 2}
+    priority: 3
+  - active: 1
     state: {fileID: 11400000, guid: 06246d781082f874ab0c2bd62a907835, type: 2}
     priority: 2
   - active: 1
     state: {fileID: 11400000, guid: 9f9de789b1170854196fa33e5d2dd439, type: 2}
     priority: 1
   states:
+  - {fileID: 11400000, guid: 31836c1e4a4a97341986fcb12a0b2800, type: 2}
+  - {fileID: 11400000, guid: 1c3de879d1bd0ed489323bb712e9681e, type: 2}
   - {fileID: 11400000, guid: 06246d781082f874ab0c2bd62a907835, type: 2}
   - {fileID: 11400000, guid: 9f9de789b1170854196fa33e5d2dd439, type: 2}
   Stances:
@@ -2274,7 +2282,7 @@ MonoBehaviour:
       m_Bits: 256
     Variable: {fileID: 0}
   height: 1
-  center: {x: 0, y: 0, z: 0}
+  center: {x: 0, y: 0, z: 0.21980286}
   currentStance: {fileID: 11400000, guid: 87ae38bfe93fc3f449ecd25863e2a6fe, type: 2}
   defaultStance: {fileID: 11400000, guid: 87ae38bfe93fc3f449ecd25863e2a6fe, type: 2}
   AnimatorSpeed:
@@ -2363,7 +2371,7 @@ MonoBehaviour:
   TerrainSlopeLimit:
     minValue: -50
     maxValue: 45
-  SlopeLimit: 10
+  SlopeLimit: 90
   slideThreshold: 10
   slideAmount: 0.5
   slideDamp: 15
@@ -2430,25 +2438,25 @@ MonoBehaviour:
     EditorDisplay: 0
     PivotColor: {r: 0, g: 0, b: 1, a: 1}
   Pivot_Hip:
-    name: 
-    position: {x: 0, y: 0, z: 0}
-    dir: {x: 0, y: 0, z: 0}
-    multiplier: 0
-    interval: 0
+    name: Hip
+    position: {x: 0, y: 1, z: -0.37634277}
+    dir: {x: 0, y: -1, z: 0}
+    multiplier: 1
+    interval: 1
     EditorModify: 0
     EditorDisplay: 0
-    PivotColor: {r: 0, g: 0, b: 0, a: 0}
+    PivotColor: {r: 0, g: 0, b: 1, a: 1}
   Pivot_Chest:
-    name: 
-    position: {x: 0, y: 0, z: 0}
-    dir: {x: 0, y: 0, z: 0}
-    multiplier: 0
-    interval: 0
+    name: Chest
+    position: {x: 0, y: 1, z: 0.8159485}
+    dir: {x: 0, y: -1, z: 0}
+    multiplier: 1
+    interval: 1
     EditorModify: 0
     EditorDisplay: 0
-    PivotColor: {r: 0, g: 0, b: 0, a: 0}
-  Has_Pivot_Hip: 0
-  Has_Pivot_Chest: 0
+    PivotColor: {r: 0, g: 0, b: 1, a: 1}
+  Has_Pivot_Hip: 1
+  Has_Pivot_Chest: 1
   speedSets:
   - name: Ground
     StartVerticalIndex:
@@ -3037,7 +3045,7 @@ MonoBehaviour:
       OnInputFloat:
         m_PersistentCalls:
           m_Calls: []
-    selectedIndex: 0
+    selectedIndex: 2
   ActiveMapIndex: 1
   DefaultMap:
     name:
@@ -3251,11 +3259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000009536743
+      value: 6.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 315.19196
+      value: 320.29
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_LocalRotation.w
