@@ -1113,6 +1113,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &794233965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2780399399824228522, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+  m_PrefabInstance: {fileID: 2099082626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &794233967
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794233965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3175195
+  m_Height: 0.9475416
+  m_Direction: 0
+  m_Center: {x: -0.10307622, y: -0.22750044, z: -0.0000000049297935}
+--- !u!1 &846777370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4878310643834769319, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+  m_PrefabInstance: {fileID: 2099082626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &846777372
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846777370}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.26607808
+  m_Height: 1.0598756
+  m_Direction: 0
+  m_Center: {x: -0.10159374, y: -0.026197232, z: 0}
 --- !u!1 &1000317525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1355,114 @@ Transform:
   - {fileID: 356103701}
   m_Father: {fileID: 2572833323768576458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1208052877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1208052881}
+  - component: {fileID: 1208052880}
+  - component: {fileID: 1208052879}
+  - component: {fileID: 1208052878}
+  m_Layer: 8
+  m_Name: wf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1208052878
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208052877}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1208052879
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208052877}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1208052880
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208052877}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1208052881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208052877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.03, y: 1.08, z: 321.29}
+  m_LocalScale: {x: 5.419346, y: 3.5794103, z: 5.329172}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1217806878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,6 +1556,34 @@ Transform:
   - {fileID: 1674459685}
   m_Father: {fileID: 2572833323768576458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1248457766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7883557685714120572, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+  m_PrefabInstance: {fileID: 2099082626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1248457768
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248457766}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24392325
+  m_Height: 0.8705003
+  m_Direction: 0
+  m_Center: {x: -0.006906064, y: -0.15390423, z: 0.0000000015147263}
 --- !u!1 &1250471515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,9 +2188,9 @@ MonoBehaviour:
   SelectedState: 0
   SelectedStance: 0
   ShowStateInInspector: 1
-  Editor_Tabs1: 1
+  Editor_Tabs1: 0
   Editor_Tabs2: 4
-  SelectedMode: 0
+  SelectedMode: -1
   Mode_Tabs1: 0
   Ability_Tabs: 0
   Editor_EventTabs: 0
@@ -2006,11 +2198,11 @@ MonoBehaviour:
   showModeList: 1
   showStateList: 1
   ShowOnGUIData: 0
-  debugStates: 0
+  debugStates: 1
   debugStances: 0
   debugModes: 0
   debugGizmos: 1
-  Runtime_Tabs1: 0
+  Runtime_Tabs1: 1
   Runtime_Tabs2: 4
   t: {fileID: 1804008608}
   InGroundChanger: 0
@@ -2079,7 +2271,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 256
     Variable: {fileID: 0}
   height: 1
   center: {x: 0, y: 0, z: 0}
@@ -2138,7 +2330,7 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 7ea1a63ddd7caaf41a8b7b2e5fcb5e18, type: 2}
   TurnMultiplier:
     UseConstant: 1
-    ConstantValue: 0
+    ConstantValue: 10
     Variable: {fileID: 11400000, guid: e48d7c5d72ee7fe47bee7b78e710ce18, type: 2}
   inPlaceDamp:
     UseConstant: 1
@@ -2146,11 +2338,11 @@ MonoBehaviour:
     Variable: {fileID: 0}
   AlignPosLerp:
     UseConstant: 1
-    ConstantValue: 15
+    ConstantValue: 0
     Variable: {fileID: 0}
   AlignPosDelta:
     UseConstant: 1
-    ConstantValue: 2.5
+    ConstantValue: 0
     Variable: {fileID: 0}
   AlignRotDelta:
     UseConstant: 1
@@ -2171,7 +2363,7 @@ MonoBehaviour:
   TerrainSlopeLimit:
     minValue: -50
     maxValue: 45
-  SlopeLimit: 50
+  SlopeLimit: 10
   slideThreshold: 10
   slideAmount: 0.5
   slideDamp: 15
@@ -2261,15 +2453,15 @@ MonoBehaviour:
   - name: Ground
     StartVerticalIndex:
       UseConstant: 1
-      ConstantValue: 1
+      ConstantValue: 2
       Variable: {fileID: 0}
     TopIndex:
       UseConstant: 1
-      ConstantValue: 2
+      ConstantValue: 3
       Variable: {fileID: 0}
     m_SprintIndex:
       UseConstant: 1
-      ConstantValue: 3
+      ConstantValue: 4
       Variable: {fileID: 0}
     m_LockIndex:
       UseConstant: 1
@@ -2331,7 +2523,7 @@ MonoBehaviour:
         Variable: {fileID: 0}
       rotation:
         UseConstant: 1
-        ConstantValue: 0
+        ConstantValue: 3
         Variable: {fileID: 0}
       lerpRotAnim:
         UseConstant: 1
@@ -2540,7 +2732,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-  TurnLimit: 120
+  TurnLimit: 0
   GlobalRootMotion:
     UseConstant: 1
     ConstantValue: 1
@@ -2670,7 +2862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputs:
-  - name: Speed Up
+  - name: New
     active:
       UseConstant: 1
       ConstantValue: 1
@@ -2680,86 +2872,14 @@ MonoBehaviour:
       ConstantValue: 0
       Variable: {fileID: 0}
     type: 0
-    input: Vertical
-    key: 0
+    input: InputValue
+    key: 48
     debug: 0
-    GetPressed: 1
+    GetPressed: 0
     ResetOnDisable: 1
     OnInputDown:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1804008610}
-          m_TargetAssemblyTypeName: MalbersAnimations.Controller.MAnimal, MalbersAnimations
-          m_MethodName: SpeedUp
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnInputUp:
-      m_PersistentCalls:
         m_Calls: []
-    OnLongPress:
-      m_PersistentCalls:
-        m_Calls: []
-    OnLongPressReleased:
-      m_PersistentCalls:
-        m_Calls: []
-    OnDoubleTap:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInputChanged:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInputEnable:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInputDisable:
-      m_PersistentCalls:
-        m_Calls: []
-    DoubleTapTime: 0.3
-    LongPressTime: 0.5
-    SmoothDecrease: 0
-    OnInputPressed:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInputFloat:
-      m_PersistentCalls:
-        m_Calls: []
-  - name: Speed Down
-    active:
-      UseConstant: 1
-      ConstantValue: 1
-      Variable: {fileID: 0}
-    ignoreOnPause:
-      UseConstant: 1
-      ConstantValue: 0
-      Variable: {fileID: 0}
-    type: 0
-    input: Vertical
-    key: 49
-    debug: 0
-    GetPressed: 2
-    ResetOnDisable: 1
-    OnInputDown:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1804008610}
-          m_TargetAssemblyTypeName: MalbersAnimations.Controller.MAnimal, MalbersAnimations
-          m_MethodName: SpeedDown
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
     OnInputUp:
       m_PersistentCalls:
         m_Calls: []
@@ -2791,8 +2911,134 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   AllInputs: []
-  actionMaps: []
-  ActiveMapIndex: 0
+  actionMaps:
+  - name:
+      UseConstant: 1
+      ConstantValue: Ground
+      Variable: {fileID: 0}
+    inputs:
+    - name: Speed Up
+      active:
+        UseConstant: 1
+        ConstantValue: 1
+        Variable: {fileID: 0}
+      ignoreOnPause:
+        UseConstant: 1
+        ConstantValue: 0
+        Variable: {fileID: 0}
+      type: 1
+      input: Speed Up
+      key: 50
+      debug: 0
+      GetPressed: 1
+      ResetOnDisable: 1
+      OnInputDown:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1804008610}
+            m_TargetAssemblyTypeName: MalbersAnimations.Controller.MAnimal, MalbersAnimations
+            m_MethodName: SpeedUp
+            m_Mode: 0
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: 
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      OnInputUp:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPress:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPressReleased:
+        m_PersistentCalls:
+          m_Calls: []
+      OnDoubleTap:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputChanged:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputEnable:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputDisable:
+        m_PersistentCalls:
+          m_Calls: []
+      DoubleTapTime: 0.3
+      LongPressTime: 0.5
+      SmoothDecrease: 0
+      OnInputPressed:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputFloat:
+        m_PersistentCalls:
+          m_Calls: []
+    - name: Speed Down
+      active:
+        UseConstant: 1
+        ConstantValue: 1
+        Variable: {fileID: 0}
+      ignoreOnPause:
+        UseConstant: 1
+        ConstantValue: 0
+        Variable: {fileID: 0}
+      type: 1
+      input: Speed Down
+      key: 49
+      debug: 0
+      GetPressed: 1
+      ResetOnDisable: 1
+      OnInputDown:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1804008610}
+            m_TargetAssemblyTypeName: MalbersAnimations.Controller.MAnimal, MalbersAnimations
+            m_MethodName: SpeedDown
+            m_Mode: 0
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: 
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      OnInputUp:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPress:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPressReleased:
+        m_PersistentCalls:
+          m_Calls: []
+      OnDoubleTap:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputChanged:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputEnable:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputDisable:
+        m_PersistentCalls:
+          m_Calls: []
+      DoubleTapTime: 0.3
+      LongPressTime: 0.5
+      SmoothDecrease: 0
+      OnInputPressed:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputFloat:
+        m_PersistentCalls:
+          m_Calls: []
+    selectedIndex: 0
+  ActiveMapIndex: 1
   DefaultMap:
     name:
       UseConstant: 1
@@ -2854,6 +3100,114 @@ MonoBehaviour:
   MovementEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2068434369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2068434373}
+  - component: {fileID: 2068434372}
+  - component: {fileID: 2068434371}
+  - component: {fileID: 2068434370}
+  m_Layer: 8
+  m_Name: wf (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &2068434370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068434369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2068434371
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068434369}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2068434372
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068434369}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2068434373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068434369}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 37.78, y: -0.77, z: 321.29}
+  m_LocalScale: {x: 5.419346, y: 3.5794103, z: 5.329172}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2095185615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5907813687048982312, guid: 251e0a928a7fe0d479f336db6eb40835, type: 3}
@@ -2997,7 +3351,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7469571211250626234, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_Layer
-      value: 20
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7469571211250626234, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -7230815569325489709, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_Layer
@@ -3177,7 +3535,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1460779683535743277, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_Layer
-      value: 20
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1460779683535743277, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -1439297820043717746, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_Layer
@@ -3265,7 +3627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411566327322432018, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_Layer
-      value: 20
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1411566327322432018, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1522543742732426216, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_Layer
@@ -3569,6 +3935,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1804008610}
+    - targetCorrespondingSourceObject: {fileID: -7883557685714120572, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1248457768}
+    - targetCorrespondingSourceObject: {fileID: -2780399399824228522, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 794233967}
+    - targetCorrespondingSourceObject: {fileID: 4878310643834769319, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 846777372}
   m_SourcePrefab: {fileID: 100100000, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
 --- !u!114 &2464231576652401376
 MonoBehaviour:
@@ -3944,3 +4319,5 @@ SceneRoots:
   - {fileID: 2099082626}
   - {fileID: 2572833323768576458}
   - {fileID: 1600198727}
+  - {fileID: 1208052881}
+  - {fileID: 2068434373}

@@ -130,7 +130,7 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 70, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -6901869247683852617}
-    m_Position: {x: 340, y: 0, z: 0}
+    m_Position: {x: 360, y: -10, z: 0}
   m_AnyStateTransitions:
   - {fileID: 7386883675016133255}
   - {fileID: -7297656309967498047}
@@ -520,10 +520,18 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Vertical
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: fcb77a11b027f3c47b16d6ab23cf37ab, type: 2}
+    m_Threshold: 7
+    m_Position: {x: 0, y: 3}
+    m_TimeScale: 1.2
+    m_CycleOffset: 0
+    m_DirectBlendParameter: Vertical
+    m_Mirror: 0
   m_BlendParameter: Horizontal
   m_BlendParameterY: Vertical
   m_MinThreshold: 0
-  m_MaxThreshold: 6
+  m_MaxThreshold: 7
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 3

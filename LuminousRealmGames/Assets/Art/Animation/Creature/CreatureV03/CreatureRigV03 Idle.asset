@@ -27,7 +27,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-  Priority: 1
+  Priority: 3
   resetInputOnFailed: 0
   ResetLastState: 1
   General:
