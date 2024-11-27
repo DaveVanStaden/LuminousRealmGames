@@ -3,7 +3,6 @@ guid: 8e503faa52c6a23459e0897b566af2e3
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _gradient_ash: {fileID: 2800000, guid: 58e19a3187f1a174f8387bf7315dca73, type: 3}
   - _Mask: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
   - _wave_normal: {fileID: 2800000, guid: a3c286e1384aa1f41aed5d4f9b65790c, type: 3}
   nonModifiableTextures: []
