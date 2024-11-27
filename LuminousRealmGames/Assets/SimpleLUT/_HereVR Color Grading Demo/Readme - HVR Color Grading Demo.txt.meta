@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0bf44df10505d9b4bbc237b2a52c4b2c
+timeCreated: 1449860724
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 51762
+  packageName: Simple LUT Adjuster
+  packageVersion: 1.0.1
+  assetPath: Assets/SimpleLUT/_HereVR Color Grading Demo/Readme - HVR Color Grading
+    Demo.txt
+  uploadId: 129478
