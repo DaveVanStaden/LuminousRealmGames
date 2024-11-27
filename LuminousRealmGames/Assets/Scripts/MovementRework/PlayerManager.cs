@@ -34,6 +34,10 @@ public class PlayerManager : MonoBehaviour
             playerHealth.UpdatePlayerState(PlayerHealth.PlayerState.Injured);
             playerHealth.HandleInjuredState();
         }
+        if (playerHealth.health <= 0)
+        {
+            playerHealth.HandleDeath();
+        }
     }
 
     private void FixedUpdate()
