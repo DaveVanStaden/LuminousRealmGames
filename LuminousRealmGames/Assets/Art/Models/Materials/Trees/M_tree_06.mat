@@ -63,11 +63,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c9c5fb5a9b5a896438357d3479542d85, type: 3}
+        m_Texture: {fileID: 2800000, guid: fc8eb9f4328f9fe45807c983baaf64a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b861daf0882f5a438322cbe553ad39e, type: 3}
         m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -75,7 +75,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 600899dd40e9273468a024d32d815cf3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 31a6fc1853cfdac4b83dfc43eeac244c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -90,7 +90,35 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ash_texture:
+        m_Texture: {fileID: 2800000, guid: 51700b90dff9d4347affab71c9b30ef4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient_ash:
+        m_Texture: {fileID: 2800000, guid: 8b18b0d1dc20f194c9aa0ba8f71226da, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _heightmap:
+        m_Texture: {fileID: 2800000, guid: 50578a0dd9b4ca44f98c19b0f26dcb18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _splatmask:
+        m_Texture: {fileID: 2800000, guid: 8b18b0d1dc20f194c9aa0ba8f71226da, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _terrain_albedo:
+        m_Texture: {fileID: 2800000, guid: 7417ecc1017574f4588b0c85480c83a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -131,14 +159,15 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Keyword0: 0
     - _Metallic: 0
-    - _NormalScale: 0.668
+    - _NormalScale: 0.625
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 0
-    - _RimOffset: 6.16
+    - _RimOffset: 4.52
     - _RimShadow: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -148,12 +177,21 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _burn: 0.127
-    - _distortion_amount: 0.16
-    - _heat_wave: 0.965
-    - _heatwave_offset: 1.72
-    - _heatwave_scale: 2.72
-    - _scroll_speed: 0.007
+    - _ash_feature: 0
+    - _ash_level: 2
+    - _ash_texture: 0
+    - _blend_strenght: 2.73
+    - _blending: 0
+    - _burn: 0.058
+    - _distortion_amount: 0.192
+    - _heat_wave: 0.047
+    - _heatwave_offset: 3.46
+    - _heatwave_scale: 1.03
+    - _offset_blend: 0.18
+    - _scroll_speed: 0.066
+    - _texture_blending: 0
+    - _tiling_blend: 0.65
+    - _world_level: 0.04
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

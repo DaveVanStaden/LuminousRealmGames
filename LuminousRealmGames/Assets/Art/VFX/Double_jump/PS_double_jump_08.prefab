@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7489393103188388334
+--- !u!1 &1169878574510118896
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1557985310150512710}
-  - component: {fileID: 748613951537059415}
-  - component: {fileID: 4804660059484299949}
+  - component: {fileID: 7083184094544506456}
+  - component: {fileID: 9056749198922049609}
+  - component: {fileID: 3854520373246188723}
   m_Layer: 0
   m_Name: PS_double_jump_08
   m_TagString: Untagged
@@ -18,28 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1557985310150512710
+--- !u!4 &7083184094544506456
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7489393103188388334}
+  m_GameObject: {fileID: 1169878574510118896}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7292889, y: -0, z: -0.68420595, w: 0}
-  m_LocalPosition: {x: 5.12, y: 3.16, z: -182.32}
+  m_LocalRotation: {x: 0.7292889, y: -0.0000000037252903, z: -0.68420595, w: 0.000000030733645}
+  m_LocalPosition: {x: -0.2, y: -0.47, z: -0.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: 86.346, z: 0}
---- !u!198 &748613951537059415
+--- !u!198 &9056749198922049609
 ParticleSystem:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7489393103188388334}
+  m_GameObject: {fileID: 1169878574510118896}
   serializedVersion: 8
   lengthInSec: 2
   simulationSpeed: 1
@@ -226,8 +226,8 @@ ParticleSystem:
       maxColor: {r: 0.8911853, g: 0.75, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.8783161, g: 0.759434, b: 1, a: 1}
-        key1: {r: 0.6556604, g: 0.86213094, b: 1, a: 1}
+        key0: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 0.9858491, g: 0.9996808, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -235,7 +235,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
+        ctime1: 65342
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -604,7 +604,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 5
+    maxNumParticles: 9
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -664,7 +664,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 17
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -4814,14 +4814,14 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &4804660059484299949
+--- !u!199 &3854520373246188723
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7489393103188388334}
+  m_GameObject: {fileID: 1169878574510118896}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -4838,7 +4838,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53f3a7b512ae150439497d55f3b6dc6a, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 2100000, guid: 0c12e02674d45734faabf6ab4e3a5283, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4864,7 +4864,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 3
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
