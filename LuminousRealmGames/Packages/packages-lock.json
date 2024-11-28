@@ -69,6 +69,17 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.formats.alembic": {
+      "version": "2.4.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.timeline": "1.0.0",
+        "com.unity.modules.cloth": "1.0.0",
+        "com.unity.modules.unityanalytics": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ide.rider": {
       "version": "3.0.31",
       "depth": 0,
@@ -215,16 +226,6 @@
         "com.unity.ugui": "1.0.0",
         "com.unity.mathematics": "1.2.1",
         "com.unity.settings-manager": "1.0.3"
-      },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.terrain-tools": {
-      "version": "5.1.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.terrain": "1.0.0",
-        "com.unity.modules.terrainphysics": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
