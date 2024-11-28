@@ -6,6 +6,8 @@ public class PlayerInputManager : MonoBehaviour
     private PlayerInput playerInput;
     private AnimatorManager animatorManager;
     private PlayerLocomotion playerLocomotion;
+    private PlayerHealth playerHealth;
+    private PauseMenu pauseMenu;
 
     public float cameraInputX;
     public float cameraInputY;
@@ -21,6 +23,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool jumpInput;
     public bool glideInput;
     public bool crouchInput;
+    public bool pauseInput;
 
     [Header("Jump Settings")]
     public bool jumpInputHeld; // True while jump button is held
@@ -30,6 +33,8 @@ public class PlayerInputManager : MonoBehaviour
     {
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        playerHealth = GetComponent<PlayerHealth>();
+        pauseMenu = FindFirstObjectByType<PauseMenu>().GetComponent<PauseMenu>();
     }
 
     private void OnEnable()
@@ -48,6 +53,7 @@ public class PlayerInputManager : MonoBehaviour
             playerInput.PlayerActions.Jump.performed += i => jumpInput = true;
             playerInput.PlayerActions.Crouch.performed += i => crouchInput = true;
             playerInput.PlayerActions.Crouch.canceled += i => crouchInput = false;
+            playerInput.PlayerActions.Pause.performed += i => pauseInput = true;
         }
         playerInput.Enable();
     }
@@ -63,6 +69,16 @@ public class PlayerInputManager : MonoBehaviour
         HandleSprintingInput();
         HandleJumpInput();
         HandleCrouchInput();
+        HandlePause();
+    }
+
+    private void HandlePause()
+    {
+        if (pauseInput)
+        {
+            pauseMenu.TogglePause();
+            pauseInput = false;
+        }
     }
 
     private void HandleMovementInput()
@@ -74,7 +90,7 @@ public class PlayerInputManager : MonoBehaviour
         cameraInputX = cameraInput.x;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        animatorManager.UpdateAnimatorValues(0,moveAmount, playerLocomotion.isSprinting);
+        animatorManager.UpdateAnimatorValues(0,moveAmount, playerLocomotion.isSprinting, playerHealth.currentState);
     }
 
     private void HandleSprintingInput()
