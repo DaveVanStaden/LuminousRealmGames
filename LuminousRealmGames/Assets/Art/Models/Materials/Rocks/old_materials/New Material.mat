@@ -214,7 +214,7 @@ Material:
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _hot_color: {r: 0.016820943, g: 0.509434, b: 0.19366056, a: 0}
-    - _moss_color: {r: 0.48011115, g: 1, b: 0.08962262, a: 0}
+    - _moss_color: {r: 0.57545125, g: 1, b: 0.25943398, a: 0}
     - _warm_color: {r: 0.2688679, g: 1, b: 0.33518064, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
