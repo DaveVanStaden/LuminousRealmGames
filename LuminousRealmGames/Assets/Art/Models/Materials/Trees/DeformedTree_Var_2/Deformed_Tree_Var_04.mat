@@ -193,8 +193,8 @@ Material:
     - _burn: 0.153
     - _distortion_amount: 0.16
     - _heat_wave: 0.754
-    - _heatwave_offset: 3.16
-    - _heatwave_scale: 3
+    - _heatwave_offset: 5.09
+    - _heatwave_scale: 1.82
     - _offset_blend: 0
     - _scroll_speed: 0.007
     - _texture_blending: 1
