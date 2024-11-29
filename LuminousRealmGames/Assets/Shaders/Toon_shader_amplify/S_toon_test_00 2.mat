@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: S_toon_test_00 2
-  m_Shader: {fileID: 4800000, guid: f26be5f01b21db94086ad9746ad45469, type: 3}
+  m_Shader: {fileID: 4800000, guid: 27f206f49913dd144bb162806f43acf4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -29,12 +29,44 @@ Material:
         m_Texture: {fileID: 2800000, guid: 022542a7e37eca8458734060b745c096, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 2800000, guid: 022542a7e37eca8458734060b745c096, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Mask:
+        m_Texture: {fileID: 2800000, guid: f25f9b30f82a4c74aad8b8145f44d2a6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 2800000, guid: e4a86e56dff00db40803b69142e10a3b, type: 3}
         m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 2800000, guid: e4a86e56dff00db40803b69142e10a3b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ash_texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient_ash:
+        m_Texture: {fileID: 2800000, guid: 58e19a3187f1a174f8387bf7315dca73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _moss_texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _wave_normal:
+        m_Texture: {fileID: 2800000, guid: a3c286e1384aa1f41aed5d4f9b65790c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -55,6 +87,7 @@ Material:
     - _DistanceCutoff: 86.2
     - _EnvironmentReflections: 1
     - _NormalScale: 1
+    - _NormalScale1: 0
     - _OutlineWidth: 0.0041
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -62,11 +95,22 @@ Material:
     - _RimOffset: 2.93
     - _RimShadow: 1
     - _SpecularHighlights: 1
+    - _ash_feature: 0
+    - _ash_level: 0
+    - _burn: 0.1015193
+    - _distortion_amount: 0
+    - _heat_wave: 0
+    - _heatwave_offset: 0.5478243
+    - _heatwave_scale: 0.5478243
+    - _scroll_speed: 0.06947487
+    - _world_level: 0.04
     m_Colors:
-    - _Color0: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
+    - _Color0: {r: 0.7921569, g: 0.5803922, b: 0.5058824, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _WireColor: {r: 0, g: 0, b: 0, a: 0}
+    - _hot_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
+    - _warm_color: {r: 0.9622641, g: 0.41288197, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
