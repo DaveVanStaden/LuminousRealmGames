@@ -20,15 +20,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Deformed_Tree_Var_2 4
-  m_Shader: {fileID: 4800000, guid: 27f206f49913dd144bb162806f43acf4, type: 3}
+  m_Name: Deformed_Tree_Var_1
+  m_Shader: {fileID: 4800000, guid: 8e503faa52c6a23459e0897b566af2e3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _ASH_FEATURE_ON
   - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
   - _RECEIVESHADOWS_OFF
-  - _TEXTURE_BLENDING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -64,7 +64,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 127edef9afb9a254098f8ad168f1ee29, type: 3}
+        m_Texture: {fileID: 2800000, guid: cbf2fa08bc9ffc849848103ee0f553d0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 2800000, guid: a183240ccf1e57548b2e7bc610f59bcb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -76,7 +80,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: c2e9f392114b36640b0503bd512ae8a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: eabdcdf9fd8a17440a780c85c1d3f5b6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 2800000, guid: eabdcdf9fd8a17440a780c85c1d3f5b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -92,15 +100,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ash_texture:
-        m_Texture: {fileID: 2800000, guid: 7417ecc1017574f4588b0c85480c83a2, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _gradient:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 696f20fb4e7323a4ba11608e10f2f98c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _gradient_ash:
-        m_Texture: {fileID: 2800000, guid: eb6755aa86cc5084f861e287f39ed0a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: f66be6469d0dd9240bbc8aaf7b1e1477, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _heightmap:
@@ -160,9 +164,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Keyword0: 0
     - _Metallic: 0
-    - _NormalScale: 0.362
+    - _NormalScale: 1
+    - _NormalScale1: 0.94
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -178,23 +182,23 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _ash_feature: 0
-    - _ash_level: 1.14
-    - _ash_texture: 0
-    - _blend_strenght: 0
-    - _burn: 0
-    - _distortion_amount: 0.16
-    - _heat_wave: 0.914
-    - _heatwave_offset: 3.24
-    - _heatwave_scale: 3.41
-    - _offset_blend: 0
-    - _scroll_speed: 0.007
+    - _ash_feature: 1
+    - _ash_level: 0.6
+    - _blend_strenght: 4.34
+    - _burn: 0.158
+    - _distortion_amount: 0.04
+    - _heat_wave: 0.024
+    - _heatwave_offset: 1.11
+    - _heatwave_scale: 0.25
+    - _offset_blend: 2.63
+    - _scroll_speed: 0.313
     - _texture_blending: 1
-    - _tiling_blend: 0
-    - _world_level: 1.07
+    - _tiling_blend: 3.07
+    - _world_level: 1.4
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.14150941, g: 0.12882696, b: 0.12882696, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
