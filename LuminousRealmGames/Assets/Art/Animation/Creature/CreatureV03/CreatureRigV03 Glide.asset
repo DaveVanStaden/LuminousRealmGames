@@ -27,7 +27,7 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-  Priority: 1
+  Priority: 5
   resetInputOnFailed: 0
   ResetLastState: 0
   General:
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_debug: 1
   Editor_Tabs1: 0
   SpeedSets: []
-  ID: {fileID: 11400000, guid: e540d0fa5cbb6d148aaf89c2cf966b6a, type: 2}
+  ID: {fileID: 11400000, guid: c44e7e8d6840aa243b6c33ec85052763, type: 2}
   GravityDrag:
     UseConstant: 1
     ConstantValue: 3
