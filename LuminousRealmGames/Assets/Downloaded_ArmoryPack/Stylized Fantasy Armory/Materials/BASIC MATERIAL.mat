@@ -8,13 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BASIC MATERIAL
-  m_Shader: {fileID: 4800000, guid: 27f206f49913dd144bb162806f43acf4, type: 3}
+  m_Shader: {fileID: 4800000, guid: 97caa457bc227cf428b8db02544716b5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _TEXTURE_BLENDING_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -48,6 +47,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: b2c9122ccf33d324db358304792e2ac7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask:
         m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,6 +63,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -68,8 +75,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ash_texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient_ash:
+        m_Texture: {fileID: 2800000, guid: 58e19a3187f1a174f8387bf7315dca73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _heightmap:
         m_Texture: {fileID: 2800000, guid: 50578a0dd9b4ca44f98c19b0f26dcb18, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _moss_texture:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _splatmask:
@@ -81,6 +100,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -103,16 +126,34 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
+    - _Amount: 1
+    - _BlendOp: 0
+    - _Brightness: 1
     - _BumpScale: 1
+    - _CameraFadingEnabled: 0
+    - _CameraFarFadeDistance: 2
+    - _CameraNearFadeDistance: 1
+    - _ColorMode: 0
+    - _Contrast: 1
+    - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DistortionBlend: 0.5
+    - _DistortionEnabled: 0
+    - _DistortionStrength: 1
+    - _DistortionStrengthScaled: 0
     - _DstBlend: 0
+    - _EmissionEnabled: 0
+    - _FlipbookMode: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.179
     - _GlossyReflections: 1
+    - _Hue: 0
+    - _LightingEnabled: 0
     - _Metallic: 0
     - _Mode: 0
     - _NormalScale: 1
+    - _NormalScale1: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueControl: 0
@@ -120,11 +161,18 @@ Material:
     - _ReceiveShadows: 1
     - _RimOffset: 0.08
     - _RimShadow: 0
+    - _Saturation: 1
+    - _Sharpness: 0
     - _SmoothnessTextureChannel: 0
+    - _SoftParticlesEnabled: 0
+    - _SoftParticlesFarFadeDistance: 1
+    - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
+    - _ash_feature: 0
+    - _ash_level: 0
     - _blend_strenght: 5
     - _burn: 0
     - _distortion_amount: 0
@@ -135,12 +183,19 @@ Material:
     - _scroll_speed: 0.06947487
     - _texture_blending: 1
     - _tiling_blend: 0
+    - _world_level: 0.04
     m_Colors:
+    - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+    - _Color0: {r: 0, g: 0, b: 0, a: 0}
+    - _ColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0.7735849, g: 0.45612317, b: 0.45612317, a: 1}
     - _RimColor: {r: 0.13207549, g: 0.1040406, b: 0.1040406, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
+    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}
     - _hot_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
+    - _moss_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
     - _warm_color: {r: 0.9622641, g: 0.41288197, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
