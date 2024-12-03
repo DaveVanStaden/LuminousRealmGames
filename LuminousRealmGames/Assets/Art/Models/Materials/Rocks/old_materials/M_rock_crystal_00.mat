@@ -24,7 +24,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 97caa457bc227cf428b8db02544716b5, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -181,7 +182,7 @@ Material:
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _ReceiveShadows: 0
     - _RimOffset: 10.82
     - _RimShadow: 0
     - _Smoothness: 0.5
@@ -208,13 +209,13 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.8773585, g: 0.8773585, b: 0.8773585, a: 0}
+    - _Color0: {r: 0.8018868, g: 0.8018868, b: 0.8018868, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _hot_color: {r: 0.016820943, g: 0.509434, b: 0.19366056, a: 0}
-    - _moss_color: {r: 0.57545125, g: 1, b: 0.25943398, a: 0}
+    - _moss_color: {r: 0.46900272, g: 1, b: 0.07075471, a: 0}
     - _warm_color: {r: 0.2688679, g: 1, b: 0.33518064, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
