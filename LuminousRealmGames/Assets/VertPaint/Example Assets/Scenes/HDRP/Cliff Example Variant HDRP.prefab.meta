@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e73398ba512aa5245a8327dc110556d3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Scenes/HDRP/Cliff Example Variant HDRP.prefab
+  uploadId: 555915

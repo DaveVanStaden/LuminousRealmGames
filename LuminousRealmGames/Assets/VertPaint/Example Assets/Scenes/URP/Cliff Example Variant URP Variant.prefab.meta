@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9b2a4bad126dba4408288b404b5ebb29
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Scenes/URP/Cliff Example Variant URP
+    Variant.prefab
+  uploadId: 555915

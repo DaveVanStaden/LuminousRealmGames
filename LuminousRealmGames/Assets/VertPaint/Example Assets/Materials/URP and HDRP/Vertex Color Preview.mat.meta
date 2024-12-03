@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a1a995ee355514a4aa9ce8eb37d42a10
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Materials/URP and HDRP/Vertex Color
+    Preview.mat
+  uploadId: 555915
