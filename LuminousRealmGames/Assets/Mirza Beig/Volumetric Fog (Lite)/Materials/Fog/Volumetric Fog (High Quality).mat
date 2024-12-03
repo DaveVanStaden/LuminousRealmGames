@@ -205,7 +205,7 @@ Material:
     - _Raymarch_Height_Falloff: 0.456
     - _Raymarch_Height_Offset: 0
     - _Raymarch_Max_Depth: 0
-    - _Raymarch_Noise: 0.041
+    - _Raymarch_Noise: 0.035
     - _Raymarch_Self_Shadow_Steps: 4
     - _Raymarch_Steps: 128
     - _ReceiveShadows: 1
@@ -249,14 +249,14 @@ Material:
     - _Cloud_Noise_Voronoi_Animation: {r: 0, g: 0, b: 0.5, a: 0.5}
     - _Cloud_Noise_Voronoi_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 0.36933854, b: 0, a: 1}
-    - _Colour: {r: 1.6245048, g: 1.6245048, b: 1.6245048, a: 0.79607844}
+    - _Colour: {r: 0.4245283, g: 0.09812211, b: 0.09812211, a: 0.79607844}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 45}
     - _Raymarch_Vertical_Range: {r: 0, g: 0.1, b: 0, a: 0}
     - _Simplex_Noise_Animation: {r: 0.2, g: 0.2, b: -0.25, a: -0.5}
     - _Simplex_Noise_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tint: {r: 1, g: 1, b: 1, a: 1}
+    - _Tint: {r: 0.6117647, g: 0, b: 0.54293466, a: 1}
     - _Voronoi_Noise_Animation: {r: -0.08, g: 0.2, b: -0.2, a: 1}
     - _Voronoi_Noise_Offset: {r: 0, g: 0, b: 0, a: 45}
   m_BuildTextureStacks: []

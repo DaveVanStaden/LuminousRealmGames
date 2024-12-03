@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex1:
-        m_Texture: {fileID: 2800000, guid: 8e1b3dae48f6351438c78febffc76f2f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8e89385a5b101a64cadf77ce75bfa667, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal1:
-        m_Texture: {fileID: 2800000, guid: fa8fd8f7343422747bcd0526aa427cb1, type: 3}
+        m_Texture: {fileID: 2800000, guid: eabdcdf9fd8a17440a780c85c1d3f5b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ash_texture:
@@ -71,21 +71,21 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _NormalScale1: 0.29
+    - _NormalScale1: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ash_feature: 1
-    - _ash_level: 2.4
-    - _burn: 0.1015193
+    - _ash_level: 1.4
+    - _burn: 0
     - _distortion_amount: 0
     - _heat_wave: 0
     - _heatwave_offset: 0.5478243
     - _heatwave_scale: 0.5478243
     - _scroll_speed: 0
-    - _world_level: 18.6
+    - _world_level: 0.42
     m_Colors:
-    - _Color0: {r: 0.6792453, g: 0.66322535, b: 0.66322535, a: 0}
+    - _Color0: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _hot_color: {r: 1, g: 0.813481, b: 0.32264146, a: 0}
     - _warm_color: {r: 0.9622641, g: 0.41288197, b: 0, a: 0}
