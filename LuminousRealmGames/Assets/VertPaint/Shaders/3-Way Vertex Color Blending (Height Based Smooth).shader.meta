@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 026894f1e3bd48748b70c26fe8e9a974
+timeCreated: 1501861825
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Shaders/3-Way Vertex Color Blending (Height Based Smooth).shader
+  uploadId: 555915

@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: e0df0acfc85c4f84b6dd62b64ccd5509
+timeCreated: 1618317653
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Scripts/Classes/Editor/Editor Windows/VertPaintWindow.TemplateLoader.cs
+  uploadId: 555915
