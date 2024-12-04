@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: f23441cf6eb64fb48d149f28079a91f6
+timeCreated: 1618318311
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Scripts/Classes/Editor/Editor Windows/VertPaintWindow.Constants.cs
+  uploadId: 555915

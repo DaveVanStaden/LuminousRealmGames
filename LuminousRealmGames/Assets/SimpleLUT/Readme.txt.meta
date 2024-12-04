@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 36b3f5a7afe0884468ea288cf1572a0f
+timeCreated: 1449775342
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 51762
+  packageName: Simple LUT Adjuster
+  packageVersion: 1.0.1
+  assetPath: Assets/SimpleLUT/Readme.txt
+  uploadId: 129478

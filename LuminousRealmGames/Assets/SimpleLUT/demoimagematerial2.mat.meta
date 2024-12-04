@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 86679559caedc114cac848752d091803
+timeCreated: 1449946520
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 51762
+  packageName: Simple LUT Adjuster
+  packageVersion: 1.0.1
+  assetPath: Assets/SimpleLUT/demoimagematerial2.mat
+  uploadId: 129478

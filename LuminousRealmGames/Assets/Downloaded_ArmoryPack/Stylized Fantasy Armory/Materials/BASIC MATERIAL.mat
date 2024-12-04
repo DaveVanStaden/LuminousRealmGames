@@ -69,15 +69,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _heightmap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 50578a0dd9b4ca44f98c19b0f26dcb18, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _splatmask:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 88250ee9abb08744c8674789d69c2a57, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _terrain_albedo:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ad9ddf389bf9425438e881243422f4dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -125,13 +125,13 @@ Material:
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
-    - _blend_strenght: 0
+    - _blend_strenght: 5
     - _burn: 0
     - _distortion_amount: 0
     - _heat_wave: 0
     - _heatwave_offset: 0
     - _heatwave_scale: 0
-    - _offset_blend: 0
+    - _offset_blend: 1.45
     - _scroll_speed: 0.06947487
     - _texture_blending: 1
     - _tiling_blend: 0

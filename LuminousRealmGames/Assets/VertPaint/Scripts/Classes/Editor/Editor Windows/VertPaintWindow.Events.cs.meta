@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: fc99342cfcb249eb835315c28c75608c
+timeCreated: 1618317907
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Scripts/Classes/Editor/Editor Windows/VertPaintWindow.Events.cs
+  uploadId: 555915

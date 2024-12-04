@@ -14,8 +14,8 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         animator.GetComponent<Animator>();
-        inputManager = GetComponent<PlayerInputManager>();
-        playerLocomotion = GetComponent<PlayerLocomotion>();
+        //inputManager = GetComponent<PlayerInputManager>();
+        //playerLocomotion = GetComponent<PlayerLocomotion>();
         cameraManager = FindAnyObjectByType<CameraManager>();
         playerHealth = GetComponent<PlayerHealth>();
     }
@@ -23,7 +23,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         currentState = playerHealth.currentState;
-        inputManager.HandleAllInputs();
+        //inputManager.HandleAllInputs();
         if (playerHealth.currentState == PlayerHealth.PlayerState.Healed)
         {
             playerHealth.UpdatePlayerState(PlayerHealth.PlayerState.Healed);
@@ -42,17 +42,17 @@ public class PlayerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerLocomotion.HandleAllMovement();
+        //playerLocomotion.HandleAllMovement();
         playerHealth.UpdateHealthUI();  // Update health display every physics frame
         playerHealth.UpdateScreenEffect();
     }
 
     private void LateUpdate()
     {
-        cameraManager.HandleAllCameraMovement();
+        //cameraManager.HandleAllCameraMovement();
         
         isInteracting = animator.GetBool("isInteracting");
-        playerLocomotion.isJumping = animator.GetBool("isJumping");
-        animator.SetBool("isGrounded",playerLocomotion.isGrounded);
+        //playerLocomotion.isJumping = animator.GetBool("isJumping");
+        //animator.SetBool("isGrounded",playerLocomotion.isGrounded);
     }
 }
