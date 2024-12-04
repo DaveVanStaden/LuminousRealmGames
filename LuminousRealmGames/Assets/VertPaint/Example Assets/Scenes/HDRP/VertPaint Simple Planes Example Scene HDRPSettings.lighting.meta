@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: dbfcea0769d905e42ac2dbf3b077404e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Scenes/HDRP/VertPaint Simple Planes
+    Example Scene HDRPSettings.lighting
+  uploadId: 555915

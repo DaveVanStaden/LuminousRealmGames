@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: fca851443e18848ec92434bba2199686
+timeCreated: 1505344918
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Output/Meshes/VertPaint Simple Planes Example Scene/4-Way
+    Blend Example (Simple Lerp).asset
+  uploadId: 555915

@@ -24,8 +24,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 27f206f49913dd144bb162806f43acf4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _RECEIVE_SHADOWS_OFF
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _RECEIVESHADOWS_OFF
   - _TEXTURE_BLENDING_ON
@@ -67,6 +66,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: c9c5fb5a9b5a896438357d3479542d85, type: 3}
         m_Scale: {x: 0.34, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask:
         m_Texture: {fileID: 2800000, guid: 6b861daf0882f5a438322cbe553ad39e, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -78,6 +81,10 @@ Material:
     - _Normal:
         m_Texture: {fileID: 2800000, guid: f6c6c1b32bc656d46965609595a5ab7c, type: 3}
         m_Scale: {x: -5.6, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
@@ -163,11 +170,12 @@ Material:
     - _Keyword0: 0
     - _Metallic: 0
     - _NormalScale: 1
+    - _NormalScale1: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 0
+    - _ReceiveShadows: 1
     - _RimOffset: 6.16
     - _RimShadow: 1
     - _Smoothness: 0.5
@@ -195,6 +203,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
