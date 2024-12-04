@@ -2293,11 +2293,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowOnPlay: 0
   PivotPosDir: 0
-  SelectedState: 0
+  SelectedState: 4
   SelectedStance: 0
   ShowStateInInspector: 1
-  Editor_Tabs1: 1
-  Editor_Tabs2: 4
+  Editor_Tabs1: 4
+  Editor_Tabs2: 1
   SelectedMode: -1
   Mode_Tabs1: 0
   Ability_Tabs: 0
@@ -2316,6 +2316,12 @@ MonoBehaviour:
   InGroundChanger: 0
   states_C:
   - active: 1
+    state: {fileID: 11400000, guid: a087e01e3f43c9647863c39bd9bc3806, type: 2}
+    priority: 6
+  - active: 1
+    state: {fileID: 11400000, guid: 72ed8fdfe657e3946b455982cf89c7ac, type: 2}
+    priority: 5
+  - active: 1
     state: {fileID: 11400000, guid: d24edd6b0498cb74d8d2b043b754933f, type: 2}
     priority: 4
   - active: 1
@@ -2328,6 +2334,8 @@ MonoBehaviour:
     state: {fileID: 11400000, guid: 9f9de789b1170854196fa33e5d2dd439, type: 2}
     priority: 1
   states:
+  - {fileID: 11400000, guid: a087e01e3f43c9647863c39bd9bc3806, type: 2}
+  - {fileID: 11400000, guid: 72ed8fdfe657e3946b455982cf89c7ac, type: 2}
   - {fileID: 11400000, guid: d24edd6b0498cb74d8d2b043b754933f, type: 2}
   - {fileID: 11400000, guid: 1c3de879d1bd0ed489323bb712e9681e, type: 2}
   - {fileID: 11400000, guid: 06246d781082f874ab0c2bd62a907835, type: 2}
@@ -2446,7 +2454,7 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 7ea1a63ddd7caaf41a8b7b2e5fcb5e18, type: 2}
   TurnMultiplier:
     UseConstant: 1
-    ConstantValue: 10
+    ConstantValue: 2
     Variable: {fileID: 11400000, guid: e48d7c5d72ee7fe47bee7b78e710ce18, type: 2}
   inPlaceDamp:
     UseConstant: 1
@@ -2639,7 +2647,7 @@ MonoBehaviour:
         Variable: {fileID: 0}
       rotation:
         UseConstant: 1
-        ConstantValue: 3
+        ConstantValue: 0
         Variable: {fileID: 0}
       lerpRotAnim:
         UseConstant: 1
@@ -2721,7 +2729,7 @@ MonoBehaviour:
         Variable: {fileID: 0}
       rotation:
         UseConstant: 1
-        ConstantValue: 0
+        ConstantValue: 3
         Variable: {fileID: 0}
       lerpRotAnim:
         UseConstant: 1
@@ -3471,7 +3479,115 @@ MonoBehaviour:
       OnInputFloat:
         m_PersistentCalls:
           m_Calls: []
-    selectedIndex: 3
+    - name: Glide
+      active:
+        UseConstant: 1
+        ConstantValue: 1
+        Variable: {fileID: 0}
+      ignoreOnPause:
+        UseConstant: 1
+        ConstantValue: 0
+        Variable: {fileID: 0}
+      type: 1
+      input: InputValue
+      key: 113
+      debug: 0
+      GetPressed: 5
+      ResetOnDisable: 1
+      OnInputDown:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputUp:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPress:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPressReleased:
+        m_PersistentCalls:
+          m_Calls: []
+      OnDoubleTap:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputChanged:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputEnable:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputDisable:
+        m_PersistentCalls:
+          m_Calls: []
+      DoubleTapTime: 0.3
+      LongPressTime: 0.5
+      SmoothDecrease: 0
+      OnInputPressed:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputFloat:
+        m_PersistentCalls:
+          m_Calls: []
+    - name: Death
+      active:
+        UseConstant: 1
+        ConstantValue: 1
+        Variable: {fileID: 0}
+      ignoreOnPause:
+        UseConstant: 1
+        ConstantValue: 0
+        Variable: {fileID: 0}
+      type: 1
+      input: InputValue
+      key: 107
+      debug: 0
+      GetPressed: 1
+      ResetOnDisable: 1
+      OnInputDown:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 1804008610}
+            m_TargetAssemblyTypeName: MalbersAnimations.Controller.MAnimal, MalbersAnimations
+            m_MethodName: State_Activate
+            m_Mode: 2
+            m_Arguments:
+              m_ObjectArgument: {fileID: 11400000, guid: adfa24f62d6db4d40a1d837f4ec1a6e9, type: 2}
+              m_ObjectArgumentAssemblyTypeName: MalbersAnimations.StateID, MalbersAnimations
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      OnInputUp:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPress:
+        m_PersistentCalls:
+          m_Calls: []
+      OnLongPressReleased:
+        m_PersistentCalls:
+          m_Calls: []
+      OnDoubleTap:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputChanged:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputEnable:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputDisable:
+        m_PersistentCalls:
+          m_Calls: []
+      DoubleTapTime: 0.3
+      LongPressTime: 0.5
+      SmoothDecrease: 0
+      OnInputPressed:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInputFloat:
+        m_PersistentCalls:
+          m_Calls: []
+    selectedIndex: 4
   - name:
       UseConstant: 1
       ConstantValue: Death
@@ -3574,7 +3690,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     selectedIndex: 0
-  ActiveMapIndex: 1
+  ActiveMapIndex: 2
   DefaultMap:
     name:
       UseConstant: 1
@@ -3787,7 +3903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.12
+      value: 13.81
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f659757e3e74fd54291a023c2ef24fed, type: 3}
       propertyPath: m_LocalPosition.z
