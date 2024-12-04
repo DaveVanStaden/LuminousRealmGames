@@ -24,6 +24,7 @@ public class ChangeControls : MonoBehaviour
                     {
                         buttons[i].text = kcode.ToString();
                         string name = buttons[i].name;
+                        //malbersInput.inputs[i].key = kcode;
                         
                     }
                 }
@@ -34,5 +35,10 @@ public class ChangeControls : MonoBehaviour
     public void ChangeSpeedUpKey()
     {
         buttons[0].text = "Awaiting Input";
+        malbersInput.SetMap("Default");
+    }
+    public void ChangeSpeedDownKey()
+    {
+        buttons[1].text = "Awaiting Input";
     }
 }

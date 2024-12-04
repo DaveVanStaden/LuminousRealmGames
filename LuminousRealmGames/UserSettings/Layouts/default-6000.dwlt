@@ -454,8 +454,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "VertPaint\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1425
-    y: 302
+    x: 0
+    y: 26
     width: 388
     height: 552
   m_SerializedDataModeController:
@@ -477,9 +477,9 @@ MonoBehaviour:
   enabled: 0
   hideTransformHandle: 1
   togglePreview: 1
-  radius: 1.74
+  radius: 174
   maxRadius: 10
-  delay: 0.029
+  delay: 29
   opacity: 1
   falloff:
     serializedVersion: 2
@@ -508,7 +508,7 @@ MonoBehaviour:
   color: {r: 0, g: 1, b: 0, a: 1}
   style: 2
   blinkBrushWhileResizing: 1
-  alpha: 0.74
+  alpha: 74
   meshOutputDirectory: Assets/VertPaint/Output/Meshes/
   paintKey: 323
   modifyRadiusKey: 120
@@ -535,8 +535,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1094
-    y: 79
+    x: 1095
+    y: 24
     width: 800
     height: 739
   m_SerializedDataModeController:
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
+    y: 24
     width: 274
     height: 739
   m_SerializedDataModeController:
@@ -652,9 +652,9 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 4242}
-      m_SelectedIDs: 1643ffff
-      m_LastClickedID: -48362
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: 0ae8ffff0af6fffffafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -701,8 +701,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 275
-    y: 79
+    x: 276
+    y: 24
     width: 817
     height: 739
   m_SerializedDataModeController:
@@ -1040,7 +1040,7 @@ MonoBehaviour:
       containerId: overlay-toolbar__left
       displayed: 0
       id: Brush Masks
-      index: 1
+      index: 2
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":48.0,"y":48.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 1252.3167, y: 84.13887, z: 205.31607}
+    m_Target: {x: 532.5709, y: 507.9069, z: -751.8839}
     speed: 2
     m_Value: {x: 1252.3167, y: 84.13887, z: 205.31607}
   m_RenderMode: 0
@@ -1349,13 +1349,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.1197676, y: 0.7985931, z: -0.17125922, w: 0.5661906}
+    m_Target: {x: -0.1378555, y: 0.013962125, z: -0.0019435905, w: -0.99035335}
     speed: 2
-    m_Value: {x: 0.119391434, y: 0.79864454, z: -0.17126778, w: 0.5644288}
+    m_Value: {x: 0.1197676, y: 0.7985931, z: -0.17125922, w: 0.5661906}
   m_Size:
-    m_Target: 12.954716
+    m_Target: 10
     speed: 2
-    m_Value: 12.396857
+    m_Value: 12.954716
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1616,7 +1616,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 844
+    y: 24
     width: 1400
     height: 502
   m_SerializedDataModeController:
@@ -1660,7 +1660,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 286}
     m_SelectedIDs: 80e70000
     m_LastClickedID: 59264
-    m_ExpandedIDs: 00000000aee50000b0e50000b2e50000b4e50000b6e50000b8e50000bae50000bce50000bee50000c0e50000c2e50000c4e50000c6e50000c8e50000cae50000cce50000cee50000d0e50000d2e50000d4e5000050e7000056e700008ee70000b8e7000034ec0000a2ec0000a4ec0000a6ec000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000006eff000070ff000072ff000074ff000076ff0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1689,7 +1689,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000aee50000b0e50000b2e50000b4e50000b6e50000b8e50000bae50000bce50000bee50000c0e50000c2e50000c4e50000c6e50000c8e50000cae50000cce50000cee50000d0e50000d2e50000d4e50000
+    m_ExpandedIDs: 000000006eff000070ff000072ff000074ff000076ff0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1768,8 +1768,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1401
-    y: 844
+    x: 1402
+    y: 24
     width: 493
     height: 502
   m_SerializedDataModeController:
@@ -1804,8 +1804,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1896
-    y: 79
+    x: 1897
+    y: 24
     width: 663
     height: 1267
   m_SerializedDataModeController:
