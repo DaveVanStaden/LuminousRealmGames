@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Scenes/ArtBlockout.unity.meta
 guid: f3afa5ad2df03c44b8301317aa2faf43
+========
+guid: 44b9a97bf027b6f499333cbabf303ea9
+folderAsset: yes
+>>>>>>>> origin/LILO+:LuminousRealmGames/Assets/FImpossible Creations/Plugins - Animating/Spine Animator/Packages - Demo Scenes - Assembly Definitions.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

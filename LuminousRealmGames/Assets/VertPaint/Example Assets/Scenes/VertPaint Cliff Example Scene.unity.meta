@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 07c2704b7bb684533a07e6433cd3ce7f
+timeCreated: 1505926727
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Scenes/VertPaint Cliff Example Scene.unity
+  uploadId: 555915
