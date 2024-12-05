@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4680070360339710001
+--- !u!114 &-4222477990654087860
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,11 +76,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo1:
-        m_Texture: {fileID: 2800002, guid: c40d5572f8d7d6843bd8d20c21f1c0be, type: 2}
+        m_Texture: {fileID: 2800000, guid: 7417ecc1017574f4588b0c85480c83a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo2:
-        m_Texture: {fileID: 2800000, guid: ecb46f49df4e23241a1d4f143d520fb2, type: 3}
+        m_Texture: {fileID: 2800000, guid: bba4fb40d4dd1424eb66a06232eec962, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo3:
@@ -88,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo4:
-        m_Texture: {fileID: 2800000, guid: 696f20fb4e7323a4ba11608e10f2f98c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8293d03eb8c11384cb38795b489461ce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -136,19 +136,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO1:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO3:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO4:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 53060b41efcc4934593c04914bd72e4a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -164,15 +164,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap1:
-        m_Texture: {fileID: 2800000, guid: 55fb75cdce4f3ca49b27fd73c745a026, type: 3}
+        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap2:
-        m_Texture: {fileID: 2800000, guid: 55fb75cdce4f3ca49b27fd73c745a026, type: 3}
+        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap3:
-        m_Texture: {fileID: 2800000, guid: 55fb75cdce4f3ca49b27fd73c745a026, type: 3}
+        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap4:
@@ -323,8 +323,8 @@ Material:
     - _Metallic: 0
     - _MetallicScale: 1
     - _NormalBlendSrc: 0
-    - _NormalMap1Strength: 2.97
-    - _NormalMap2Strength: 0.88
+    - _NormalMap1Strength: 1
+    - _NormalMap2Strength: 1
     - _NormalMap3Strength: 1
     - _NormalMap4Strength: 1.57
     - _NormalMapSpace: 0
@@ -345,10 +345,10 @@ Material:
     - _RequireSplitLighting: 0
     - _SSRefractionProjectionModel: 0
     - _Smoothness: 0.5
-    - _Smoothness1: 0
-    - _Smoothness2: 0
-    - _Smoothness3: 0
-    - _Smoothness4: 0
+    - _Smoothness1: 0.041
+    - _Smoothness2: 0.107
+    - _Smoothness3: 0.096
+    - _Smoothness4: 0.107
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
@@ -408,13 +408,13 @@ Material:
     - _Offset1: {r: 0, g: 0, b: 0, a: 0}
     - _Offset2: {r: 0, g: 0, b: 0, a: 0}
     - _Offset3: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset4: {r: 50, g: 50, b: 0, a: 0}
+    - _Offset4: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _Tiling1: {r: 10, g: 10, b: 0, a: 0}
-    - _Tiling2: {r: 20, g: 20, b: 0, a: 0}
-    - _Tiling3: {r: 100, g: 100, b: 0, a: 0}
-    - _Tiling4: {r: 100, g: 100, b: 0, a: 0}
+    - _Tiling2: {r: 10, g: 10, b: 0, a: 0}
+    - _Tiling3: {r: 10, g: 10, b: 0, a: 0}
+    - _Tiling4: {r: 30, g: 30, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}

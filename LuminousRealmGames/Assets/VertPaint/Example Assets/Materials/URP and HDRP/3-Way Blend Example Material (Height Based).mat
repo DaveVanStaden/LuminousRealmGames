@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8746972175275598544
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
 --- !u!114 &-7029650463836639096
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -13,19 +26,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 11
---- !u!114 &-1259597788606815130
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -106,15 +106,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo1:
-        m_Texture: {fileID: 2800000, guid: e55068629bc6eae4caff15512f183ef3, type: 3}
+        m_Texture: {fileID: 2800000, guid: fa0d3ac8f40e1ba4c85421b077a79a9d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo2:
-        m_Texture: {fileID: 2800000, guid: ad9ddf389bf9425438e881243422f4dc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 267c961a6ffb84055afa432e6dda1f87, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo3:
-        m_Texture: {fileID: 2800000, guid: ab4b727147b6209438fcc0875b267283, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3c61584751f1d354baaacaa710cfb3cd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo4:
@@ -142,11 +142,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO1:
-        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89fabeef397bede47a128615a57345f6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO2:
-        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9871c90bb2ccc47c9ae553bd6f3738a9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO2Height4Way_7D847CDB_Texture2D74D9D325_3987009057:
@@ -158,7 +158,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO3:
-        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
+        m_Texture: {fileID: 2800000, guid: dfa9a35eabb75724fabf47e6e4a06c1a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO4:
@@ -174,15 +174,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap1:
-        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 73ba00738d44b4046aa4a9392948c0b7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap2:
-        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3ae7309aee6a744cb8b84685cc49dec2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap3:
-        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 19ce9a458d481f94a8c91c3d4b1d7ec6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap4:
@@ -247,28 +247,26 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Height1Shift: -0.03
+    - _Height1Shift: 0.12
     - _Height2Shift: 0.5
     - _Height3Shift: 0.46
     - _Height4Shift: -2.47
     - _Metallic: 0
     - _Mode: 0
-    - _NormalMap1Strength: 1.07
+    - _NormalMap1Strength: 1
     - _NormalMap2Strength: 1
     - _NormalMap3Strength: 1
     - _NormalMap4Strength: 1
     - _OcclusionStrength: 1
     - _OpaqueCullMode: 2
     - _Parallax: 0.02
-    - _QueueControl: 1
-    - _QueueOffset: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness1: 0
+    - _Smoothness1: 0.32
     - _Smoothness2: 0.17
     - _Smoothness3: 0.22
     - _Smoothness4: 0.5
@@ -324,8 +322,8 @@ Material:
     - _Offset1: {r: 0, g: 0, b: 0, a: 0}
     - _Offset2: {r: 0, g: 0, b: 0, a: 0}
     - _Offset3: {r: 0, g: 0, b: 0, a: 0}
-    - _Tiling1: {r: 6, g: 6, b: 0, a: 0}
-    - _Tiling2: {r: 4, g: 4, b: 1, a: 1}
-    - _Tiling3: {r: 4, g: 4, b: 1, a: 1}
+    - _Tiling1: {r: 1, g: 1, b: 1, a: 1}
+    - _Tiling2: {r: 1, g: 1, b: 1, a: 1}
+    - _Tiling3: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

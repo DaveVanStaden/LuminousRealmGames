@@ -144,7 +144,7 @@ Material:
     - _Curl_Strength_Raymarch_Offset: 2
     - _Curl_Strength_Raymarch_Sample: 0.2
     - _Cutoff: 0.5
-    - _Density: 0.3
+    - _Density: 0.02
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -177,40 +177,40 @@ Material:
     - _MAIN_LIGHT_SHADOWS_5: 0
     - _MAIN_LIGHT_SHADOWS_ENABLED: 1
     - _Main_Light_Anisotropic_Blend: 0.8
-    - _Main_Light_Anisotropy: 0.568
-    - _Main_Light_Anisotropy_Blend: 0.568
-    - _Main_Light_Intensity: 0.62
+    - _Main_Light_Anisotropy: 1
+    - _Main_Light_Anisotropy_Blend: 0.969
+    - _Main_Light_Intensity: 0.552
     - _Main_Light_Self_Shadow_Absorption_Coefficient: 0.5
     - _Main_Light_Self_Shadow_Raymarch_Distance: 5
     - _Main_Light_Self_Shadow_Raymarch_Steps: 8
     - _Main_Light_Self_Shadow_Sample_Offset: 0.2
     - _Main_Light_Self_Shadow_Steps: 1
     - _Main_Light_Self_Shadow_Strength: 1
-    - _Main_Light_Shadow_Strength: 0.9
+    - _Main_Light_Shadow_Strength: 0.484
     - _Metallic: 0
     - _Noise_Blend: 0.5
     - _OcclusionStrength: 1
     - _PROBE_VOLUMES: 2
     - _PROCEDURAL_DENSITY: 0
     - _Parallax: 0.005
-    - _Power: 5.86
+    - _Power: -156.8
     - _QueueOffset: 0
     - _RAYMARCH_CLAMP_TO_SURFACE: 0
     - _RaymarchSteps: 2.29
     - _Raymarch_Additional_Light_Self_Shadow_Steps: 8
     - _Raymarch_Depth_Fade: 0
     - _Raymarch_Depth_Fade_Power: 2
-    - _Raymarch_Distance: 30.8
-    - _Raymarch_Distance_Bias: 0.03
+    - _Raymarch_Distance: 28.59
+    - _Raymarch_Distance_Bias: 1
     - _Raymarch_Height_Falloff: 0.456
     - _Raymarch_Height_Offset: 0
     - _Raymarch_Max_Depth: 0
-    - _Raymarch_Noise: 0.035
+    - _Raymarch_Noise: 1
     - _Raymarch_Self_Shadow_Steps: 4
     - _Raymarch_Steps: 128
     - _ReceiveShadows: 1
-    - _Remap_Max: 1
-    - _Remap_Min: 0
+    - _Remap_Max: 0.596
+    - _Remap_Min: 0.019
     - _SIMPLEX_NOISE_ENABLED: 1
     - _SOFT_SHADOWS: 1
     - _Scale: 1.8
@@ -249,14 +249,14 @@ Material:
     - _Cloud_Noise_Voronoi_Animation: {r: 0, g: 0, b: 0.5, a: 0.5}
     - _Cloud_Noise_Voronoi_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 0.36933854, b: 0, a: 1}
-    - _Colour: {r: 0.4245283, g: 0.09812211, b: 0.09812211, a: 0.79607844}
+    - _Colour: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 45}
     - _Raymarch_Vertical_Range: {r: 0, g: 0.1, b: 0, a: 0}
     - _Simplex_Noise_Animation: {r: 0.2, g: 0.2, b: -0.25, a: -0.5}
     - _Simplex_Noise_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tint: {r: 0.6117647, g: 0, b: 0.54293466, a: 1}
+    - _Tint: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
     - _Voronoi_Noise_Animation: {r: -0.08, g: 0.2, b: -0.2, a: 1}
     - _Voronoi_Noise_Offset: {r: 0, g: 0, b: 0, a: 45}
   m_BuildTextureStacks: []
