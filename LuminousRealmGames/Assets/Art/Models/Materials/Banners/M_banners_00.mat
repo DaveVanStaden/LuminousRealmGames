@@ -196,7 +196,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _ash_feature: 1
-    - _ash_level: 6.6
+    - _ash_level: 10
     - _ash_texture: 0
     - _blend_strenght: 5
     - _burn: 0.015
@@ -208,7 +208,7 @@ Material:
     - _scroll_speed: 0.257
     - _texture_blending: 0
     - _tiling_blend: 0.77
-    - _world_level: 0.77
+    - _world_level: 2.24
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

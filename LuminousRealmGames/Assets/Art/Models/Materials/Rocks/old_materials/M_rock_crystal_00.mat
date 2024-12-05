@@ -34,7 +34,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _moss_texture
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -71,7 +71,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: 55c28fe040f082a4b83497881b4ddb97, type: 3}
+        m_Texture: {fileID: 2800000, guid: e7d92504c5684544a9b8cdd1f5f606d1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -115,7 +115,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _moss_texture:
-        m_Texture: {fileID: 2800000, guid: 4b6b32d4587e988499f825a58d8e7aeb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 93317fb46537abf43a240196e5e628c4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _normal_map:
@@ -197,7 +197,7 @@ Material:
     - _ash_feature: 0
     - _ash_level: 0
     - _blend_strenght: 0
-    - _burn: 0.03
+    - _burn: 0
     - _distortion_amount: 0
     - _heat_wave: 0.53
     - _heatwave_offset: 6
@@ -216,7 +216,7 @@ Material:
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _hot_color: {r: 0.016820943, g: 0.509434, b: 0.19366056, a: 0}
-    - _moss_color: {r: 0.39588186, g: 0.745283, b: 0.34100214, a: 0}
+    - _moss_color: {r: 0.10477424, g: 0.5188679, b: 0.04160734, a: 0}
     - _warm_color: {r: 0.2688679, g: 1, b: 0.33518064, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
