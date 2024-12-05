@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Volumetric Fog (Medium Quality)
-  m_Shader: {fileID: -6465566751694194690, guid: b41208ea9fa867440be4a9ec08db6e2a, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: b41208ea9fa867440be4a9ec08db6e2a,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -178,7 +179,6 @@ Material:
     - _MAIN_LIGHT_SHADOWS_ENABLED: 1
     - _Main_Light_Anisotropic_Blend: 0.8
     - _Main_Light_Anisotropy: 0.6
-    - _Main_Light_Anisotropy_Blend: 0.8
     - _Main_Light_Intensity: 0.5
     - _Main_Light_Self_Shadow_Absorption_Coefficient: 0.5
     - _Main_Light_Self_Shadow_Raymarch_Distance: 5
@@ -207,7 +207,7 @@ Material:
     - _Raymarch_Max_Depth: 0
     - _Raymarch_Noise: 0.08
     - _Raymarch_Self_Shadow_Steps: 4
-    - _Raymarch_Steps: 36.7
+    - _Raymarch_Steps: 32
     - _ReceiveShadows: 1
     - _Remap_Max: 0.9
     - _Remap_Min: 0
@@ -249,7 +249,7 @@ Material:
     - _Cloud_Noise_Voronoi_Animation: {r: 0, g: 0, b: 0.5, a: 0.5}
     - _Cloud_Noise_Voronoi_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 0.36933854, b: 0, a: 1}
-    - _Colour: {r: 0.2322891, g: 0.3191552, b: 0.5660378, a: 1}
+    - _Colour: {r: 0.05490196, g: 0.09411765, b: 0.20784314, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 45}
     - _Raymarch_Vertical_Range: {r: 0, g: 0.1, b: 0, a: 0}
