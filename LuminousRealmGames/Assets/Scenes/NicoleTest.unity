@@ -868,8 +868,8 @@ Transform:
   m_GameObject: {fileID: 1208052877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.03, y: 1.08, z: 321.29}
-  m_LocalScale: {x: 5.419346, y: 3.5794103, z: 5.329172}
+  m_LocalPosition: {x: 44.5, y: 1.08, z: 321.29}
+  m_LocalScale: {x: 8.581534, y: 3.5794103, z: 10.031761}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1455,6 +1455,118 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: Editor_Tabs1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: Editor_Tabs2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: SelectedState
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: slideThreshold
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: ShowStateInInspector
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: AlignCycle.ConstantValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: AlignPosLerp.ConstantValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: AlignPosDelta.ConstantValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: AlignRotDelta.ConstantValue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: rayCastRadius.ConstantValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: pivots.Array.data[0].multiplier
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: pivots.Array.data[1].multiplier
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: speedSets.Array.data[0].Speeds.Array.data[2].position.ConstantValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: speedSets.Array.data[0].Speeds.Array.data[2].lerpPosAnim.ConstantValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: ActiveMapIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].selectedIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].key
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].name
+      value: Death
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].input
+      value: InputValue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].GetPressed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].DoubleTapTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].LongPressTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].ResetOnDisable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].active.UseConstant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].active.ConstantValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: actionMaps.Array.data[1].inputs.Array.data[2].ignoreOnPause.UseConstant
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3882233303548242525, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_Name
       value: VaraelV01
