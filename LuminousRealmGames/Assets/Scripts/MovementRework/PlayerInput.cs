@@ -46,7 +46,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Speed Up"",
+                    ""name"": ""SpeedUp"",
                     ""type"": ""Button"",
                     ""id"": ""aab207ed-852a-4858-89bb-08720f289536"",
                     ""expectedControlType"": """",
@@ -55,9 +55,54 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Speed Down"",
+                    ""name"": ""SpeedDown"",
                     ""type"": ""Button"",
                     ""id"": ""2f18cc00-7b98-4266-baee-52d281bb5a40"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""B"",
+                    ""type"": ""Button"",
+                    ""id"": ""d86ebeb5-0673-4a88-9f77-af037d99cd9a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c63baa5-7a5d-4db8-8e15-43cb84c54c3d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Glide"",
+                    ""type"": ""Button"",
+                    ""id"": ""4ed4c890-f1a3-456e-a00b-ba00ba7dfb29"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""04712725-f0e6-4bc9-9bba-0b038d051422"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""97cd9141-0aea-4ee6-940c-e92574c59269"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -248,7 +293,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Speed Up"",
+                    ""action"": ""SpeedUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -259,66 +304,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Speed Down"",
+                    ""action"": ""SpeedDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""PlayerActions"",
-            ""id"": ""ec9a2550-64f6-4abb-97f9-7ab66d094741"",
-            ""actions"": [
-                {
-                    ""name"": ""B"",
-                    ""type"": ""Button"",
-                    ""id"": ""4fc2d28b-6b40-4251-ae09-e99d1ddcff0c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""390762c5-122e-4586-8770-53ba6fd79902"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Glide"",
-                    ""type"": ""Button"",
-                    ""id"": ""d76d72ab-ad0f-40cd-b410-a3fc9364a729"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Crouch"",
-                    ""type"": ""Button"",
-                    ""id"": ""d4ae3d5b-83cf-4688-8034-3058ea80dce3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""f57d8596-97cf-4836-8999-f43fe5ab6960"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""5dc7612e-e58d-4045-a3f9-4405fbc44c0b"",
+                    ""id"": ""d8bd811e-7485-42f8-b4bc-f2fa62a9df03"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -329,7 +321,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1f80fc02-50ed-4c75-87b4-3eb5dcd98618"",
+                    ""id"": ""5581bff0-874c-4ed2-beea-feb2a608cc7b"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -340,18 +332,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""bce6b1bd-31eb-4026-889a-ccb281455be1"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""15166169-2e27-4dc2-b703-a973faf9e5d1"",
+                    ""id"": ""792ea7ee-5e09-4786-8b04-60715577d590"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -362,7 +343,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4cd7f5f5-d3dd-48a0-b460-8c3e10d2fb88"",
+                    ""id"": ""91c1633d-a304-401c-be74-580c8ba1f9e6"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -373,7 +354,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cc8479d6-4638-4d4e-ba08-8f61c8d4bf29"",
+                    ""id"": ""b716c2e0-5222-4940-8264-91c303384def"",
                     ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -384,7 +365,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6557f340-6706-4261-99f0-0330c49d7e4b"",
+                    ""id"": ""70bfd3eb-3512-4bce-988a-aa730fd83d89"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -395,7 +376,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3f3e8b08-30da-47cb-a065-981626c427cc"",
+                    ""id"": ""38612ec1-3ac2-4066-89f3-e608dbb9f822"",
                     ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -406,7 +387,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e41e773a-b47b-4a58-99ba-5489e27985fc"",
+                    ""id"": ""cf640261-2abd-4f0b-b761-d024e49155d4"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -416,6 +397,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerActions"",
+            ""id"": ""ec9a2550-64f6-4abb-97f9-7ab66d094741"",
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": []
@@ -424,15 +411,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_PlayerMovement = asset.FindActionMap("Player Movement", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
         m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
-        m_PlayerMovement_SpeedUp = m_PlayerMovement.FindAction("Speed Up", throwIfNotFound: true);
-        m_PlayerMovement_SpeedDown = m_PlayerMovement.FindAction("Speed Down", throwIfNotFound: true);
+        m_PlayerMovement_SpeedUp = m_PlayerMovement.FindAction("SpeedUp", throwIfNotFound: true);
+        m_PlayerMovement_SpeedDown = m_PlayerMovement.FindAction("SpeedDown", throwIfNotFound: true);
+        m_PlayerMovement_B = m_PlayerMovement.FindAction("B", throwIfNotFound: true);
+        m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerMovement_Glide = m_PlayerMovement.FindAction("Glide", throwIfNotFound: true);
+        m_PlayerMovement_Crouch = m_PlayerMovement.FindAction("Crouch", throwIfNotFound: true);
+        m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
         // PlayerActions
         m_PlayerActions = asset.FindActionMap("PlayerActions", throwIfNotFound: true);
-        m_PlayerActions_B = m_PlayerActions.FindAction("B", throwIfNotFound: true);
-        m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
-        m_PlayerActions_Glide = m_PlayerActions.FindAction("Glide", throwIfNotFound: true);
-        m_PlayerActions_Crouch = m_PlayerActions.FindAction("Crouch", throwIfNotFound: true);
-        m_PlayerActions_Pause = m_PlayerActions.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -504,6 +491,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Camera;
     private readonly InputAction m_PlayerMovement_SpeedUp;
     private readonly InputAction m_PlayerMovement_SpeedDown;
+    private readonly InputAction m_PlayerMovement_B;
+    private readonly InputAction m_PlayerMovement_Jump;
+    private readonly InputAction m_PlayerMovement_Glide;
+    private readonly InputAction m_PlayerMovement_Crouch;
+    private readonly InputAction m_PlayerMovement_Pause;
     public struct PlayerMovementActions
     {
         private @PlayerInput m_Wrapper;
@@ -512,6 +504,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Camera => m_Wrapper.m_PlayerMovement_Camera;
         public InputAction @SpeedUp => m_Wrapper.m_PlayerMovement_SpeedUp;
         public InputAction @SpeedDown => m_Wrapper.m_PlayerMovement_SpeedDown;
+        public InputAction @B => m_Wrapper.m_PlayerMovement_B;
+        public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
+        public InputAction @Glide => m_Wrapper.m_PlayerMovement_Glide;
+        public InputAction @Crouch => m_Wrapper.m_PlayerMovement_Crouch;
+        public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -533,6 +530,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SpeedDown.started += instance.OnSpeedDown;
             @SpeedDown.performed += instance.OnSpeedDown;
             @SpeedDown.canceled += instance.OnSpeedDown;
+            @B.started += instance.OnB;
+            @B.performed += instance.OnB;
+            @B.canceled += instance.OnB;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @Glide.started += instance.OnGlide;
+            @Glide.performed += instance.OnGlide;
+            @Glide.canceled += instance.OnGlide;
+            @Crouch.started += instance.OnCrouch;
+            @Crouch.performed += instance.OnCrouch;
+            @Crouch.canceled += instance.OnCrouch;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerMovementActions instance)
@@ -549,6 +561,21 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SpeedDown.started -= instance.OnSpeedDown;
             @SpeedDown.performed -= instance.OnSpeedDown;
             @SpeedDown.canceled -= instance.OnSpeedDown;
+            @B.started -= instance.OnB;
+            @B.performed -= instance.OnB;
+            @B.canceled -= instance.OnB;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @Glide.started -= instance.OnGlide;
+            @Glide.performed -= instance.OnGlide;
+            @Glide.canceled -= instance.OnGlide;
+            @Crouch.started -= instance.OnCrouch;
+            @Crouch.performed -= instance.OnCrouch;
+            @Crouch.canceled -= instance.OnCrouch;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerMovementActions instance)
@@ -570,20 +597,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // PlayerActions
     private readonly InputActionMap m_PlayerActions;
     private List<IPlayerActionsActions> m_PlayerActionsActionsCallbackInterfaces = new List<IPlayerActionsActions>();
-    private readonly InputAction m_PlayerActions_B;
-    private readonly InputAction m_PlayerActions_Jump;
-    private readonly InputAction m_PlayerActions_Glide;
-    private readonly InputAction m_PlayerActions_Crouch;
-    private readonly InputAction m_PlayerActions_Pause;
     public struct PlayerActionsActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerActionsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @B => m_Wrapper.m_PlayerActions_B;
-        public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
-        public InputAction @Glide => m_Wrapper.m_PlayerActions_Glide;
-        public InputAction @Crouch => m_Wrapper.m_PlayerActions_Crouch;
-        public InputAction @Pause => m_Wrapper.m_PlayerActions_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -593,40 +610,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsActionsCallbackInterfaces.Add(instance);
-            @B.started += instance.OnB;
-            @B.performed += instance.OnB;
-            @B.canceled += instance.OnB;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Glide.started += instance.OnGlide;
-            @Glide.performed += instance.OnGlide;
-            @Glide.canceled += instance.OnGlide;
-            @Crouch.started += instance.OnCrouch;
-            @Crouch.performed += instance.OnCrouch;
-            @Crouch.canceled += instance.OnCrouch;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
         {
-            @B.started -= instance.OnB;
-            @B.performed -= instance.OnB;
-            @B.canceled -= instance.OnB;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Glide.started -= instance.OnGlide;
-            @Glide.performed -= instance.OnGlide;
-            @Glide.canceled -= instance.OnGlide;
-            @Crouch.started -= instance.OnCrouch;
-            @Crouch.performed -= instance.OnCrouch;
-            @Crouch.canceled -= instance.OnCrouch;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -650,13 +637,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnCamera(InputAction.CallbackContext context);
         void OnSpeedUp(InputAction.CallbackContext context);
         void OnSpeedDown(InputAction.CallbackContext context);
-    }
-    public interface IPlayerActionsActions
-    {
         void OnB(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGlide(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IPlayerActionsActions
+    {
     }
 }

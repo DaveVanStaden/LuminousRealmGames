@@ -46,14 +46,14 @@ public class PlayerInputManager : MonoBehaviour
             playerInput.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerInput.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
 
-            playerInput.PlayerActions.B.performed += i => b_Input = true;
-            playerInput.PlayerActions.B.canceled += i => b_Input = false;
-            playerInput.PlayerActions.Jump.performed += i => glideInput = true;
-            playerInput.PlayerActions.Jump.canceled += i => glideInput = false;
-            playerInput.PlayerActions.Jump.performed += i => jumpInput = true;
-            playerInput.PlayerActions.Crouch.performed += i => crouchInput = true;
-            playerInput.PlayerActions.Crouch.canceled += i => crouchInput = false;
-            playerInput.PlayerActions.Pause.performed += i => pauseInput = true;
+            playerInput.PlayerMovement.B.performed += i => b_Input = true;
+            playerInput.PlayerMovement.B.canceled += i => b_Input = false;
+            playerInput.PlayerMovement.Jump.performed += i => glideInput = true;
+            playerInput.PlayerMovement.Jump.canceled += i => glideInput = false;
+            playerInput.PlayerMovement.Jump.performed += i => jumpInput = true;
+            playerInput.PlayerMovement.Crouch.performed += i => crouchInput = true;
+            playerInput.PlayerMovement.Crouch.canceled += i => crouchInput = false;
+            playerInput.PlayerMovement.Pause.performed += i => pauseInput = true;
         }
         playerInput.Enable();
     }
@@ -109,7 +109,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         if (jumpInput)
         {
-            playerInput.PlayerActions.Jump.canceled += i => jumpInput = false;
+            playerInput.PlayerMovement.Jump.canceled += i => jumpInput = false;
             playerLocomotion.HandleJump(); // Initial jum
         }
 
