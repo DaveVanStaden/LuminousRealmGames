@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 98c3b314c61d5ef4da70c6435e86f7f3
+timeCreated: 1501861825
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Shaders/4-Way Vertex Color Blending (Simple).shader
+  uploadId: 555915

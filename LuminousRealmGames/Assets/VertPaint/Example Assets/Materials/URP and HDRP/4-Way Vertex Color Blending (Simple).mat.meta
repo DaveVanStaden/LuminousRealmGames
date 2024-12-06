@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: eb219315634f56549b752789bd62b885
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Materials/URP and HDRP/4-Way Vertex
+    Color Blending (Simple).mat
+  uploadId: 555915

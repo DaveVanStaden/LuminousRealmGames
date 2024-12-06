@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d129ae5d6f84e0149b8231bdfdb30d3f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Scenes/VertPaint Simple Planes Example
+    SceneSettings.lighting
+  uploadId: 555915

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3217e2a193ccf9f4197a8ce753435ae9
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Templates/Autosave/VertPaint Autosave.xml
+  uploadId: 555915

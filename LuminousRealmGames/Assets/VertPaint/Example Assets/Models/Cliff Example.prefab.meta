@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dbf475c3589da22448b42000ebc05e08
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Models/Cliff Example.prefab
+  uploadId: 555915

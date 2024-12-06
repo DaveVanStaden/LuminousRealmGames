@@ -227,8 +227,8 @@ Material:
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorBottom: {r: 0, g: 0.39118576, b: 1, a: 0}
-    - _ColorTop: {r: 0.023584902, g: 0.9601347, b: 1, a: 0}
+    - _ColorBottom: {r: 0.03604484, g: 0.35591832, b: 0.8490566, a: 0}
+    - _ColorTop: {r: 0.046146322, g: 0.55119073, b: 0.5754717, a: 0}
     - _DissolveUVP: {r: 0, g: 0, b: 0, a: 0}
     - _DissolveUVS: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0.002377775, b: 0.09433961, a: 1}

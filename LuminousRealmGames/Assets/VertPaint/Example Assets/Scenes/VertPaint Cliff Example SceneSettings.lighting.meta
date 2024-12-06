@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1f32b0842ba1dbe459807382de8a2d74
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Scenes/VertPaint Cliff Example SceneSettings.lighting
+  uploadId: 555915

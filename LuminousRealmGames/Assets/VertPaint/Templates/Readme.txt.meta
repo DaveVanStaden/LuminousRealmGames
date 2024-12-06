@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 40457b884f3af3448a30ab58ba189db4
+timeCreated: 1503968933
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Templates/Readme.txt
+  uploadId: 555915

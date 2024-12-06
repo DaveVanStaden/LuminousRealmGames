@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5e398478b7a659042a37fd9aa8d5ab95
+timeCreated: 1449690834
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 51762
+  packageName: Simple LUT Adjuster
+  packageVersion: 1.0.1
+  assetPath: Assets/SimpleLUT/DemoScene.unity
+  uploadId: 129478

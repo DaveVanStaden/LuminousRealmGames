@@ -2,7 +2,8 @@ using UnityEngine;
 using TMPro;
 using Unity.Cinemachine; // Import TextMeshPro namespace
 using UnityEngine.UI;
-using static Unity.Cinemachine.CinemachineCamera; // Import UI namespace for the screen effect
+using static Unity.Cinemachine.CinemachineCamera;
+using MalbersAnimations; // Import UI namespace for the screen effect
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public PlayerState currentState = PlayerState.Healed;
 
     [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float health;
+    public float health;
     public float injuryRate = 1f;  // How fast the player gets injured over time
     [SerializeField] private float damagePerSecond = 5f;  // Damage taken while injured
     [SerializeField] private float healCooldown = 30f;  // Time to remain healed after touching a checkpoint
@@ -40,20 +41,35 @@ public class PlayerHealth : MonoBehaviour
 
     // Text for timer display
     [SerializeField] private TextMeshProUGUI timerText;
+
+    [SerializeField] private Transform lastCheckpoint;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private MalbersInput malbersInput;
     private void Awake()
     {
         audioManager = GetComponent<PlayerAudioManager>();
+        malbersInput = FindAnyObjectByType<MalbersInput>().GetComponent<MalbersInput>();
     }
     void Start()
     {
-        
+        lastCheckpoint = spawnPoint;
         health = maxHealth;
         UpdatePlayerMaterial(); 
         UpdateHealthUI(); 
         UpdateScreenEffect(); 
         UpdateTimerUI(); 
     }
-
+    public void KillPlayer()
+    {
+        health = 0;
+        HandleDeath();
+    }
+    public void HandleDeath()
+    {
+        //Play death sound and animation
+        transform.position = lastCheckpoint.position;
+        HealPlayer();
+    }
     public void HandleHealedState()
     {
         healTimer += Time.deltaTime;
@@ -94,16 +110,25 @@ public class PlayerHealth : MonoBehaviour
 
     public void HealPlayer()
     {
+        if (malbersInput.ActiveMap.name != "PowerUp")
+        {
+            malbersInput.SetMap("PowerUp");
+        }
         health = maxHealth;  
         healTimer = 0f;  
         currentState = PlayerState.Healed;  
         UpdatePlayerMaterial(); 
         UpdateTimerUI();
         Debug.Log("Player healed and in Healed state.");
+        animator.SetLayerWeight(1, 0);
     }
 
     private void SwitchToInjured()
     {
+        if(malbersInput.ActiveMap.name != "Death")
+        {
+            malbersInput.SetMap("Death");
+        }
         currentState = PlayerState.Injured;
         audioManager.aura.loop = false;
         audioManager.PowerupEnd();
@@ -179,7 +204,12 @@ public class PlayerHealth : MonoBehaviour
             audioManager.PowerupStart();
             audioManager.crystal.Play();
             HealPlayer();  // Heal the player when they touch a checkpoint
-            Destroy(other.gameObject);
+            lastCheckpoint = other.transform;  // Store the last checkpoint
+            //dissable checkpoint stuff
+            /*var tempCollider = other.GetComponent<BoxCollider>();
+            tempCollider.enabled = false;
+            var tempRenderer = other.GetComponent<MeshRenderer>();
+            tempRenderer.enabled = false;*/
         }
         if(other.CompareTag("Arrow"))
         {
@@ -190,6 +220,10 @@ public class PlayerHealth : MonoBehaviour
             {
                 health -= arrowDamage;
             }
+        }
+        if(other.CompareTag("KillPlayer"))
+        {
+            KillPlayer();
         }
     }
 }
