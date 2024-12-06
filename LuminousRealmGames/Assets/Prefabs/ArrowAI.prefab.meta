@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Prefabs/ArrowAI.prefab.meta
 guid: 45ee4095ef1c25c4a8e2e2689330c18a
 PrefabImporter:
+========
+guid: f6995f4eab80237489ce6962c13d8372
+DefaultImporter:
+>>>>>>>> NicoleNew:LuminousRealmGames/Assets/Samples/Input System/1.11.2/Rebinding UI/RebindingUISampleScene.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

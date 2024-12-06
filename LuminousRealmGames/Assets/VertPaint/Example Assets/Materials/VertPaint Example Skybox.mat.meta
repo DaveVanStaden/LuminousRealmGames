@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5ee4b8d94aa53eb44a29cc50df7c3bae
+timeCreated: 1504873618
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Materials/VertPaint Example Skybox.mat
+  uploadId: 555915

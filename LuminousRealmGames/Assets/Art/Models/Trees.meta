@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Art/Models/Trees.meta
 guid: 246a4d3cefd0a9d4fabc538837282b55
 folderAsset: yes
+========
+guid: 68456c10eacadb54f96f4c4e97786554
+>>>>>>>> NicoleNew:LuminousRealmGames/Assets/Scenes/Valentine_EndingArea.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9ea6cdbd0d74e384a9dd446c899a29e8
+timeCreated: 1504130347
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Templates/Autosave/VertPaint Favorite Templates.xml
+  uploadId: 555915
