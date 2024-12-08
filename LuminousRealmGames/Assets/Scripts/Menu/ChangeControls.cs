@@ -10,6 +10,7 @@ public class ChangeControls : MonoBehaviour
 {
     [SerializeField] private InputActionReference jumpAction = null;
     [SerializeField] private TMP_Text bindingDisplayNameText = null;
+    [SerializeField] private PlayerManager playerManager = null;
     [SerializeField] private GameObject startRebindObject = null;
     [SerializeField] private GameObject waitingForInputObject = null;
 
@@ -19,6 +20,7 @@ public class ChangeControls : MonoBehaviour
     {
         startRebindObject.SetActive(false);
         waitingForInputObject.SetActive(true);
+        //playerManager.PlayerInput.PlayerMovement.Disable();
 
         rebindingOperation = jumpAction.action.PerformInteractiveRebinding()
             .WithControlsExcluding("Mouse")
@@ -30,7 +32,8 @@ public class ChangeControls : MonoBehaviour
     private void RebindComplete()
     {
         rebindingOperation.Dispose();
-
+        playerManager.PlayerInput.PlayerMenu.Enable();
+        playerManager.PlayerInput.PlayerMovement.Disable();
         startRebindObject.SetActive(true);
         waitingForInputObject.SetActive(false);
     }

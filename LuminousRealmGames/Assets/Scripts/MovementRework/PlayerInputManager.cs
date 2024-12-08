@@ -53,7 +53,7 @@ public class PlayerInputManager : MonoBehaviour
             playerInput.PlayerMovement.Jump.performed += i => jumpInput = true;
             playerInput.PlayerMovement.Crouch.performed += i => crouchInput = true;
             playerInput.PlayerMovement.Crouch.canceled += i => crouchInput = false;
-            playerInput.PlayerMovement.Pause.performed += i => pauseInput = true;
+            
         }
         playerInput.Enable();
     }
@@ -69,17 +69,10 @@ public class PlayerInputManager : MonoBehaviour
         HandleSprintingInput();
         HandleJumpInput();
         HandleCrouchInput();
-        HandlePause();
+        
     }
 
-    private void HandlePause()
-    {
-        if (pauseInput)
-        {
-            pauseMenu.TogglePause();
-            pauseInput = false;
-        }
-    }
+
 
     private void HandleMovementInput()
     {

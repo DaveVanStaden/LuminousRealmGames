@@ -93,7 +93,7 @@ MonoBehaviour:
   MovementStrafe: 1
   IdleStrafe: 1
   m_debug: 1
-  Editor_Tabs1: 4
+  Editor_Tabs1: 0
   SpeedSets:
   - name: Gliding
     StartVerticalIndex:
