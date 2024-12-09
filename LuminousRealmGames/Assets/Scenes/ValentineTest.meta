@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Roberto.meta
+guid: 60f61c0e8e0ce854190428fe644b9b25
+========
 guid: 10c55b76b20849543bc485e625c830fe
+>>>>>>>> origin/Valentine+:LuminousRealmGames/Assets/Scenes/ValentineTest.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

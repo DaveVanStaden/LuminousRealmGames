@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Samples.meta
+guid: 07cdbb2d3281e2e4ba2a24cfa47a5969
+folderAsset: yes
+DefaultImporter:
+========
 guid: 4cbdc6d09cb3a024db7515932e941b75
 PrefabImporter:
+>>>>>>>> origin/ValentijnFix:LuminousRealmGames/Assets/Art/Prefabs/Rocks/Mo_rocks_flat_small_01.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

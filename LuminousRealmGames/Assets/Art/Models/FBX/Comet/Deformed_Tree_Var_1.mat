@@ -166,7 +166,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _NormalScale: 1
-    - _NormalScale1: 0
+    - _NormalScale1: 0.9
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
