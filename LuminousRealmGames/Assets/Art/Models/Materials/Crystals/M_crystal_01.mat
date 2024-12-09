@@ -163,7 +163,7 @@ Material:
     - _metallic: 0
     - _offset: 1
     - _parallax_strenght: 0.44
-    - _smoothness: -2.25
+    - _smoothness: 0
     - _strenght: 0.63
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
