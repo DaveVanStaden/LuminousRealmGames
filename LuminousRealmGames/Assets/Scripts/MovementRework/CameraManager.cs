@@ -1,6 +1,7 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraManager : MonoBehaviour
 {
@@ -30,6 +31,25 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
+        inputManager = FindAnyObjectByType<PlayerInputManager>();
+        targetTransform = FindAnyObjectByType<PlayerManager>().transform;
+        cameraTransform = Camera.main.transform;
+        defaultPosition = -cameraDistance; // Set the default position based on the camera distance
+    }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Reinitialize necessary components after the scene is loaded
         inputManager = FindAnyObjectByType<PlayerInputManager>();
         targetTransform = FindAnyObjectByType<PlayerManager>().transform;
         cameraTransform = Camera.main.transform;
