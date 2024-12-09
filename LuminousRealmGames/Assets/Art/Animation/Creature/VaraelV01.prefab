@@ -9962,6 +9962,7 @@ MonoBehaviour:
   lastCheckpoint: {fileID: 0}
   spawnPoint: {fileID: 0}
   malbersInput: {fileID: 2250077151179890382}
+  PlayerObject: {fileID: 3882233303548242525}
 --- !u!114 &4089082303495978992
 MonoBehaviour:
   m_ObjectHideFlags: 0
