@@ -17,25 +17,14 @@ MonoBehaviour:
     x: 0
     y: 43
     width: 1920
-<<<<<<< HEAD
     height: 997
   m_ShowMode: 4
-  m_Title: Project
-=======
-    height: 1007
-  m_ShowMode: 4
   m_Title: Scene
-<<<<<<< HEAD
->>>>>>> NicoleNew
   m_RootView: {fileID: 3}
-=======
-  m_RootView: {fileID: 2}
->>>>>>> origin/ValentijnFix
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
-<<<<<<< HEAD
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,7 +33,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: GameView
   m_EditorClassIdentifier: 
@@ -62,27 +50,7 @@ MonoBehaviour:
   - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 0
-=======
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 6}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 36
-    width: 1920
-    height: 951
-  m_MinSize: {x: 400, y: 100}
-  m_MaxSize: {x: 32384, y: 16192}
-  vertical: 1
-  controlID: 97
-  draggingID: 0
->>>>>>> NicoleNew
 --- !u!114 &3
-=======
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,40 +63,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-<<<<<<< HEAD
   - {fileID: 4}
-<<<<<<< HEAD
   - {fileID: 6}
-=======
-  - {fileID: 2}
->>>>>>> NicoleNew
   - {fileID: 5}
-=======
-  - {fileID: 3}
-  - {fileID: 5}
-  - {fileID: 4}
->>>>>>> origin/ValentijnFix
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1920
-<<<<<<< HEAD
     height: 997
-=======
-    height: 1007
->>>>>>> NicoleNew
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 36
   m_UseBottomView: 1
   m_BottomViewHeight: 20
-<<<<<<< HEAD
 --- !u!114 &4
-=======
---- !u!114 &3
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,11 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
-<<<<<<< HEAD
 --- !u!114 &5
-=======
---- !u!114 &4
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,16 +116,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 977
-=======
-    y: 987
->>>>>>> NicoleNew
     width: 1920
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
-<<<<<<< HEAD
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -194,7 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 7}
-<<<<<<< HEAD
   - {fileID: 12}
   m_Position:
     serializedVersion: 2
@@ -205,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 24921
+  controlID: 58
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -222,25 +162,18 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8}
   - {fileID: 11}
-=======
-  - {fileID: 15}
->>>>>>> NicoleNew
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 1405
     height: 941
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 24922
+  controlID: 59
   draggingID: 0
 --- !u!114 &8
-=======
---- !u!114 &5
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,14 +186,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-<<<<<<< HEAD
   - {fileID: 9}
   - {fileID: 10}
   - {fileID: 2}
-=======
-  - {fileID: 6}
-  - {fileID: 14}
->>>>>>> origin/ValentijnFix
   m_Position:
     serializedVersion: 2
     x: 0
@@ -270,18 +198,9 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 24923
-=======
-    width: 1920
-    height: 951
-  m_MinSize: {x: 400, y: 100}
-  m_MaxSize: {x: 32384, y: 16192}
-  vertical: 0
-<<<<<<< HEAD
-  controlID: 98
->>>>>>> NicoleNew
+  controlID: 60
   draggingID: 0
---- !u!114 &7
+--- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,121 +209,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 1
-<<<<<<< HEAD
-=======
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 8}
-  - {fileID: 12}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1354
-    height: 951
-  m_MinSize: {x: 300, y: 100}
-  m_MaxSize: {x: 24288, y: 16192}
-  vertical: 1
-  controlID: 99
-  draggingID: 0
---- !u!114 &8
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 9}
-  - {fileID: 10}
-  - {fileID: 11}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1354
-    height: 677
-  m_MinSize: {x: 300, y: 50}
-  m_MaxSize: {x: 24288, y: 8096}
-  vertical: 0
-  controlID: 100
-=======
-  controlID: 58283
->>>>>>> origin/ValentijnFix
-  draggingID: 0
---- !u!114 &6
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-<<<<<<< HEAD
->>>>>>> NicoleNew
-=======
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 7}
-  - {fileID: 11}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1896
-    height: 1293
-  m_MinSize: {x: 300, y: 100}
-  m_MaxSize: {x: 24288, y: 16192}
-  vertical: 1
-  controlID: 58284
-  draggingID: 0
---- !u!114 &7
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-  - {fileID: 8}
-  - {fileID: 9}
-  - {fileID: 10}
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1896
-    height: 765
-  m_MinSize: {x: 300, y: 50}
-  m_MaxSize: {x: 24288, y: 8096}
-  vertical: 0
-  controlID: 58285
-  draggingID: 0
---- !u!114 &8
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
->>>>>>> origin/ValentijnFix
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -413,119 +217,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
     width: 240
     height: 711
   m_MinSize: {x: 201, y: 226}
   m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 14}
-=======
-    width: 274
-    height: 677
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 17}
-  m_Panes:
-  - {fileID: 17}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &10
-=======
-    width: 270
-    height: 765
-  m_MinSize: {x: 201, y: 226}
-  m_MaxSize: {x: 4001, y: 4026}
-  m_ActualView: {fileID: 16}
-  m_Panes:
-  - {fileID: 16}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &9
->>>>>>> origin/ValentijnFix
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-<<<<<<< HEAD
-    x: 274
-    y: 0
-    width: 455
-    height: 677
-  m_MinSize: {x: 102, y: 126}
-  m_MaxSize: {x: 4002, y: 4026}
-  m_ActualView: {fileID: 18}
-  m_Panes:
-  - {fileID: 19}
-  - {fileID: 18}
-  m_Selected: 1
-  m_LastSelected: 0
---- !u!114 &11
-=======
-    x: 270
-    y: 0
-    width: 824
-    height: 765
-  m_MinSize: {x: 102, y: 126}
-  m_MaxSize: {x: 4002, y: 4026}
-  m_ActualView: {fileID: 17}
-  m_Panes:
-  - {fileID: 17}
-  - {fileID: 18}
-  m_Selected: 0
-  m_LastSelected: 1
---- !u!114 &10
->>>>>>> origin/ValentijnFix
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 729
-    y: 0
-    width: 625
-    height: 677
-  m_MinSize: {x: 52, y: 76}
-  m_MaxSize: {x: 4002, y: 4026}
-<<<<<<< HEAD
-  m_ActualView: {fileID: 16}
->>>>>>> NicoleNew
   m_Panes:
   - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 0
-<<<<<<< HEAD
 --- !u!114 &10
-=======
---- !u!114 &12
->>>>>>> NicoleNew
-=======
-  m_ActualView: {fileID: 15}
-  m_Panes:
-  - {fileID: 15}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &11
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -533,7 +234,6 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-<<<<<<< HEAD
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: SceneView
@@ -554,38 +254,6 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &11
-=======
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children:
-<<<<<<< HEAD
-  - {fileID: 13}
-  - {fileID: 14}
-=======
-  - {fileID: 12}
-  - {fileID: 13}
->>>>>>> origin/ValentijnFix
-  m_Position:
-    serializedVersion: 2
-    x: 0
-    y: 677
-    width: 1354
-    height: 274
-  m_MinSize: {x: 200, y: 50}
-  m_MaxSize: {x: 16192, y: 8096}
-  vertical: 0
-<<<<<<< HEAD
-  controlID: 179
-  draggingID: 0
---- !u!114 &13
->>>>>>> NicoleNew
-=======
-  controlID: 58310
-  draggingID: 0
---- !u!114 &12
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -601,13 +269,11 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 711
     width: 1405
     height: 230
   m_MinSize: {x: 231, y: 276}
   m_MaxSize: {x: 10001, y: 10026}
-<<<<<<< HEAD
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -615,66 +281,6 @@ MonoBehaviour:
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &12
-=======
-    y: 0
-    width: 1110
-    height: 274
-  m_MinSize: {x: 231, y: 276}
-  m_MaxSize: {x: 10001, y: 10026}
-  m_ActualView: {fileID: 20}
-  m_Panes:
-  - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &14
->>>>>>> NicoleNew
-=======
-  m_ActualView: {fileID: 19}
-  m_Panes:
-  - {fileID: 19}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &13
->>>>>>> origin/ValentijnFix
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 1110
-    y: 0
-<<<<<<< HEAD
-    width: 244
-    height: 274
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 21}
-  m_Panes:
-  - {fileID: 21}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &15
-=======
-    width: 495
-    height: 528
-  m_MinSize: {x: 102, y: 126}
-  m_MaxSize: {x: 4002, y: 4026}
-  m_ActualView: {fileID: 20}
-  m_Panes:
-  - {fileID: 20}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &14
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -689,43 +295,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 1405
     y: 0
     width: 515
     height: 941
   m_MinSize: {x: 276, y: 76}
   m_MaxSize: {x: 4001, y: 4026}
-<<<<<<< HEAD
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &13
-=======
-    x: 1354
-    y: 0
-    width: 566
-    height: 951
-  m_MinSize: {x: 276, y: 76}
-  m_MaxSize: {x: 4001, y: 4026}
-  m_ActualView: {fileID: 22}
-  m_Panes:
-  - {fileID: 22}
-  m_Selected: 0
-  m_LastSelected: 1
---- !u!114 &16
->>>>>>> NicoleNew
-=======
-  m_ActualView: {fileID: 21}
-  m_Panes:
-  - {fileID: 21}
-  - {fileID: 22}
-  m_Selected: 0
-  m_LastSelected: 1
---- !u!114 &15
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -733,11 +314,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-<<<<<<< HEAD
   m_EditorHideFlags: 0
-=======
-  m_EditorHideFlags: 1
->>>>>>> origin/ValentijnFix
   m_Script: {fileID: 12015, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -750,17 +327,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 1305
-    y: 79
+    x: 1306
+    y: 24
     width: 98
     height: 685
-=======
-    x: 729
-    y: 79
-    width: 623
-    height: 651
->>>>>>> NicoleNew
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -778,11 +348,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-<<<<<<< HEAD
   m_TargetSize: {x: 98, y: 664}
-=======
-  m_TargetSize: {x: 623, y: 630}
->>>>>>> NicoleNew
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -797,17 +363,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-<<<<<<< HEAD
     m_HBaseRangeMin: -49
     m_HBaseRangeMax: 49
     m_VBaseRangeMin: -332
     m_VBaseRangeMax: 332
-=======
-    m_HBaseRangeMin: -311.5
-    m_HBaseRangeMax: 311.5
-    m_VBaseRangeMin: -315
-    m_VBaseRangeMax: 315
->>>>>>> NicoleNew
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -825,68 +384,29 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-<<<<<<< HEAD
-<<<<<<< HEAD
       width: 98
       height: 664
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 49, y: 332}
-=======
-      width: 623
-      height: 630
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 311.5, y: 315}
->>>>>>> NicoleNew
-=======
-      width: 800
-      height: 718
-    m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 400, y: 359}
->>>>>>> origin/ValentijnFix
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
       x: -49
       y: -332
       width: 98
       height: 664
-=======
-      x: -400
-      y: -359
-      width: 800
-      height: 718
->>>>>>> origin/ValentijnFix
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 98, y: 685}
-=======
-      x: -311.5
-      y: -315
-      width: 623
-      height: 630
-    m_MinimalGUI: 1
-  m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 623, y: 651}
->>>>>>> NicoleNew
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!114 &14
-=======
---- !u!114 &17
->>>>>>> NicoleNew
-=======
---- !u!114 &16
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -908,19 +428,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 79
-<<<<<<< HEAD
-<<<<<<< HEAD
+    y: 24
     width: 239
     height: 685
-=======
-    width: 273
-    height: 651
->>>>>>> NicoleNew
-=======
-    width: 269
-    height: 739
->>>>>>> origin/ValentijnFix
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -934,24 +444,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-<<<<<<< HEAD
-<<<<<<< HEAD
-      scrollPos: {x: 0, y: 5536}
+      scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: fe43f6ff4e5ff6ff707ff6ff727ff6ff8a17f7ff301cfaff0850fcfff829fdffec2bfdfffa2efdffac2fffff8649ffff4e5ffffffcfaffffc0c80000a2c9000016d50000e8290100ae350100da4b010056570100d8470200268f020008b00200fcba0200d6bb020082c60200aec90200a8ca0200
-=======
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e4faffff
-      m_LastClickedID: -1308
-      m_ExpandedIDs: e6faffff
->>>>>>> NicoleNew
-=======
-      scrollPos: {x: 0, y: 4592}
-      m_SelectedIDs: 06a6e4ff
-      m_LastClickedID: -1792506
-      m_ExpandedIDs: 66d6d5ffb8c3d9ffe297dfff5456e6ffb656e6ff9c65e6ff2469e6ff3088e6ff9cc4e6ff78c9e6ffa6dee6ff4c7ce7ff48ade7ffdcbee7ff92f3ffff9af3ffffb2f3ffff1afaffff5402020098090200
->>>>>>> origin/ValentijnFix
+      m_ExpandedIDs: aeecfffffcfaffff96c8000002c90000ecc90000d8d30000aad60000fad60000eed70000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -968,28 +464,15 @@ MonoBehaviour:
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
-<<<<<<< HEAD
         m_ClientGUIView: {fileID: 9}
-=======
-        m_ClientGUIView: {fileID: 8}
->>>>>>> origin/ValentijnFix
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
     m_LockTracker:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
-<<<<<<< HEAD
   m_WindowGUID: 1f94c3b0a42359241943fbe7c733fc33
 --- !u!114 &15
-=======
-  m_WindowGUID: 7f5a3022da1b86f40b3079ccf43cb6f5
-<<<<<<< HEAD
---- !u!114 &18
->>>>>>> NicoleNew
-=======
---- !u!114 &17
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -997,11 +480,7 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
-<<<<<<< HEAD
   m_EditorHideFlags: 1
-=======
-  m_EditorHideFlags: 0
->>>>>>> NicoleNew
   m_Script: {fileID: 12013, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1014,24 +493,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-    x: 240
-    y: 79
+    x: 241
+    y: 24
     width: 1063
     height: 685
-=======
-    x: 274
-    y: 79
-    width: 453
-    height: 651
->>>>>>> NicoleNew
-=======
-    x: 270
-    y: 79
-    width: 822
-    height: 739
->>>>>>> origin/ValentijnFix
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1060,21 +525,12 @@ MonoBehaviour:
       displayed: 1
       id: unity-grid-and-snap-toolbar
       index: 1
-<<<<<<< HEAD
       contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":164.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
       snapOffset: {x: 164, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
-=======
-      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-141.0,"y":-25.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":3,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
-      floating: 0
-      collapsed: 0
-      snapOffset: {x: -141, y: -25}
-      snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
->>>>>>> NicoleNew
       layout: 1
       size: {x: 0, y: 0}
       sizeOverridden: 0
@@ -1139,19 +595,12 @@ MonoBehaviour:
       displayed: 1
       id: Orientation
       index: 0
-<<<<<<< HEAD
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-138.5,"y":86.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":1,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
       snapOffset: {x: -138.5, y: 86}
-=======
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-90.5,"y":-88.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":3,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
-      floating: 0
-      collapsed: 0
-      snapOffset: {x: -90.5, y: -88}
->>>>>>> NicoleNew
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
+      snapCorner: 1
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
@@ -1281,7 +730,6 @@ MonoBehaviour:
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
-<<<<<<< HEAD
     - dockPosition: 0
       containerId: Floating
       displayed: 0
@@ -1291,39 +739,14 @@ MonoBehaviour:
       floating: 1
       collapsed: 0
       snapOffset: {x: -131, y: -42}
-=======
-    - dockPosition: 1
-      containerId: overlay-container--right
-      displayed: 0
-      id: Scene View/Scene Visibility
-      index: 5
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
-      floating: 0
-      collapsed: 0
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 24, y: 0}
-      snapCorner: 0
-      layout: 4
-      size: {x: 0, y: 0}
-      sizeOverridden: 0
-    - dockPosition: 1
-      containerId: overlay-container--right
-      displayed: 0
-      id: Scene View/Particles
-      index: 6
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
-      floating: 0
-      collapsed: 0
-      snapOffset: {x: 24, y: 0}
->>>>>>> NicoleNew
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 3
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
     - dockPosition: 1
       containerId: overlay-container--right
-      displayed: 0
+      displayed: 1
       id: Scene View/Particles
       index: 5
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
@@ -1423,7 +846,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: APV Overlay
-      index: 7
+      index: 6
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":48.0,"y":48.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -1437,7 +860,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: Scene View/TrailRenderer
-      index: 8
+      index: 7
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":48.0,"y":48.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -1480,12 +903,12 @@ MonoBehaviour:
       displayed: 1
       id: Overlays/OverlayMenu
       index: 1
-      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-311.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":1,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      contents: '{"m_Layout":1,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
-      snapOffset: {x: -311, y: 0}
+      snapOffset: {x: 24, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 1
+      snapCorner: 0
       layout: 1
       size: {x: 0, y: 0}
       sizeOverridden: 0
@@ -1549,7 +972,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: SceneView/CamerasOverlay
-      index: 9
+      index: 8
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -1563,7 +986,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: Scene View/PBR Validation Settings
-      index: 10
+      index: 9
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
@@ -1574,7 +997,6 @@ MonoBehaviour:
       size: {x: 0, y: 0}
       sizeOverridden: 0
     - dockPosition: 0
-<<<<<<< HEAD
       containerId: overlay-toolbar__right
       displayed: 1
       id: AINavigationOverlay
@@ -1585,18 +1007,6 @@ MonoBehaviour:
       snapOffset: {x: -208.00098, y: 92}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 1
-=======
-      containerId: Floating
-      displayed: 1
-      id: AINavigationOverlay
-      index: 0
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":true,"m_FloatingSnapOffset":{"x":-207.0,"y":-174.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":3,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
-      floating: 1
-      collapsed: 0
-      snapOffset: {x: -207, y: -174}
-      snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
->>>>>>> NicoleNew
       layout: 4
       size: {x: 0, y: 0}
       sizeOverridden: 0
@@ -1647,11 +1057,11 @@ MonoBehaviour:
       displayed: 0
       id: Brush Filters
       index: 1
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 24, y: 0}
+      snapOffset: {x: 24, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       layout: 4
       size: {x: 0, y: 0}
@@ -1660,16 +1070,12 @@ MonoBehaviour:
       containerId: overlay-container--right
       displayed: 0
       id: brush-info-overlay
-<<<<<<< HEAD
       index: 11
-=======
-      index: 12
->>>>>>> NicoleNew
-      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":0.0,"y":0.0},"m_SnapOffsetDelta":{"x":24.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
+      contents: '{"m_Layout":4,"m_Collapsed":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":24.0,"y":0.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":0,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
       floating: 0
       collapsed: 0
-      snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 24, y: 0}
+      snapOffset: {x: 24, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       layout: 4
       size: {x: 0, y: 0}
@@ -1690,13 +1096,8 @@ MonoBehaviour:
     - containerId: Floating
       scrollOffset: 0
     m_OverlaysVisible: 1
-<<<<<<< HEAD
   m_WindowGUID: 2929190fbf0160e49b404f0fd6e75a31
   m_Gizmos: 1
-=======
-  m_WindowGUID: cebc5b4dfc17e94468311f669dad46b5
-  m_Gizmos: 0
->>>>>>> origin/ValentijnFix
   m_OverrideSceneCullingMask: 6917529027641081856
   m_SceneIsLit: 1
   m_SceneLighting: 1
@@ -1706,21 +1107,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_Target: {x: 96.38816, y: 79.40396, z: 153.56047}
+    m_Target: {x: 103.052986, y: 84.513504, z: 300.57224}
     speed: 2
-    m_Value: {x: 96.38816, y: 79.40396, z: 153.56047}
-=======
-    m_Target: {x: 44.185585, y: 4.098796, z: 314.22833}
-    speed: 2
-    m_Value: {x: 44.185585, y: 4.098796, z: 314.22833}
->>>>>>> NicoleNew
-=======
-    m_Target: {x: 1195.9768, y: 60.002293, z: 239.07675}
-    speed: 2
-    m_Value: {x: 1195.9768, y: 60.002293, z: 239.07675}
->>>>>>> origin/ValentijnFix
+    m_Value: {x: 103.052986, y: 84.513504, z: 300.57224}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1745,11 +1134,7 @@ MonoBehaviour:
         m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
       m_Size: {x: 0.5, y: 0.5}
-=======
-      m_Size: {x: 1, y: 1}
->>>>>>> NicoleNew
     yGrid:
       m_Fade:
         m_Target: 1
@@ -1765,59 +1150,25 @@ MonoBehaviour:
         m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
-      m_Size: {x: 0, y: 0}
-=======
       m_Size: {x: 1, y: 1}
->>>>>>> NicoleNew
     m_ShowGrid: 1
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_Target: {x: 0.112044826, y: -0.123246334, z: 0.011667772, w: 0.98646903}
+    m_Target: {x: 0.13428518, y: -0.77613777, z: 0.18041076, w: 0.5900583}
     speed: 2
-    m_Value: {x: 0.112006165, y: -0.1217056, z: 0.011493941, w: 0.9861594}
+    m_Value: {x: -0.13420875, y: 0.77569604, z: -0.18030807, w: -0.5897225}
   m_Size:
-    m_Target: 60.310482
+    m_Target: 40.80121
     speed: 2
-    m_Value: 60.31048
-=======
-    m_Target: {x: 0.0066694324, y: -0.45618883, z: -0.0034329656, w: -0.8898888}
-    speed: 2
-    m_Value: {x: 0.0066692107, y: -0.45617366, z: -0.0034328515, w: -0.8898592}
-  m_Size:
-    m_Target: 7.943845
-    speed: 2
-    m_Value: 7.943845
->>>>>>> NicoleNew
-=======
-    m_Target: {x: -0.15810867, y: -0.62404484, z: 0.13458098, w: -0.7551443}
-    speed: 2
-    m_Value: {x: -0.15901735, y: -0.62297463, z: 0.13533165, w: -0.75385773}
-  m_Size:
-    m_Target: 81.90398
-    speed: 2
-    m_Value: 81.90398
->>>>>>> origin/ValentijnFix
+    m_Value: 40.80121
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-<<<<<<< HEAD
-<<<<<<< HEAD
     m_Speed: 2
     m_SpeedNormalized: 1
-=======
-    m_Speed: 1
-    m_SpeedNormalized: 0.5
->>>>>>> NicoleNew
-=======
-    m_Speed: 1.0646999
-    m_SpeedNormalized: 0.53
->>>>>>> origin/ValentijnFix
     m_SpeedMin: 0.01
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1828,18 +1179,10 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-<<<<<<< HEAD
-  m_LastSceneViewRotation: {x: 0.028564505, y: 0.97131866, z: -0.15757082, w: 0.1765136}
-=======
-  m_LastSceneViewRotation: {x: 0.14551416, y: 0.6772955, z: -0.1392783, w: 0.7076303}
->>>>>>> NicoleNew
+  m_LastSceneViewRotation: {x: -0.0809025, y: 0.91642106, z: -0.22087748, w: -0.32550284}
   m_LastSceneViewOrtho: 0
   m_Viewpoint:
-<<<<<<< HEAD
     m_SceneView: {fileID: 15}
-=======
-    m_SceneView: {fileID: 17}
->>>>>>> origin/ValentijnFix
     m_CameraOverscanSettings:
       m_Opacity: 50
       m_Scale: 1
@@ -1849,15 +1192,7 @@ MonoBehaviour:
   m_LastLockedObject: {fileID: 0}
   m_LastDebugDrawMode: 35
   m_ViewIsLockedToObject: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!114 &16
-=======
---- !u!114 &19
->>>>>>> NicoleNew
-=======
---- !u!114 &18
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1878,17 +1213,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Asset Store\u200B"
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 468
     y: 181
     width: 973
     height: 501
-=======
-    x: 274
-    y: 79
-    width: 453
-    height: 651
->>>>>>> NicoleNew
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1900,328 +1228,7 @@ MonoBehaviour:
     m_SaveData: []
     m_ContainerData: []
     m_OverlaysVisible: 1
-<<<<<<< HEAD
 --- !u!114 &17
-=======
-  m_ViewTransforms:
-    m_KeySerializationHelper:
-    - {fileID: -7693577494618588624, guid: 23cecce80c4149b4494c114133bcd38d, type: 2}
-    - {fileID: -3116423031551111626, guid: 23cecce80c4149b4494c114133bcd38d, type: 2}
-    - {fileID: 6624608881535718090, guid: 7cbc4cc3526d4f64ba8069f0ce7a0645, type: 2}
-    - {fileID: 1487724804214301301, guid: 7cbc4cc3526d4f64ba8069f0ce7a0645, type: 2}
-    - {fileID: -7610713294345529352, guid: 7cbc4cc3526d4f64ba8069f0ce7a0645, type: 2}
-    - {fileID: 6624608881535718090, guid: 3b70db5f350af4a4cb2841d17efc4b3a, type: 2}
-    - {fileID: 1487724804214301301, guid: 3b70db5f350af4a4cb2841d17efc4b3a, type: 2}
-    - {fileID: -7610713294345529352, guid: 3b70db5f350af4a4cb2841d17efc4b3a, type: 2}
-    - {fileID: 8344551242857986092, guid: 3b70db5f350af4a4cb2841d17efc4b3a, type: 2}
-    - {fileID: -4643817669293840070, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    - {fileID: 4226023493449898234, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    - {fileID: -6901869247683852617, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    - {fileID: -5242909072103827904, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    - {fileID: -1970275854627883102, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    - {fileID: -7955242100098503674, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    - {fileID: -136047121963613424, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    - {fileID: -3221344206260197869, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    m_ValueSerializationHelper:
-    - e00: 0.6903533
-      e01: 0
-      e02: 0
-      e03: -171.0285
-      e10: 0
-      e11: 0.6903533
-      e12: 0
-      e13: 438.21967
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 1
-      e01: 0
-      e02: 0
-      e03: -44.5
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 336
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.56842107
-      e01: 0
-      e02: 0
-      e03: -13.421051
-      e10: 0
-      e11: 0.56842107
-      e12: 0
-      e13: 202.8421
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.9235602
-      e01: 0
-      e02: 0
-      e03: -89.6492
-      e10: 0
-      e11: 0.9235602
-      e12: 0
-      e13: 175.0995
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.27029702
-      e01: 0
-      e02: 0
-      e03: 17.702972
-      e10: 0
-      e11: 0.27029702
-      e12: 0
-      e13: 270.21783
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.7
-      e01: 0
-      e02: 0
-      e03: -20
-      e10: 0
-      e11: 0.7
-      e12: 0
-      e13: 266.85
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.84816754
-      e01: 0
-      e02: 0
-      e03: -44.371735
-      e10: 0
-      e11: 0.84816754
-      e12: 0
-      e13: 158.58115
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.26764706
-      e01: 0
-      e02: 0
-      e03: 20.352936
-      e10: 0
-      e11: 0.26764706
-      e12: 0
-      e13: 270.05884
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.7
-      e01: 0
-      e02: 0
-      e03: -123.99998
-      e10: 0
-      e11: 0.7
-      e12: 0
-      e13: 266.85
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.8130512
-      e01: 0
-      e02: 0
-      e03: -88.586334
-      e10: 0
-      e11: 0.8130512
-      e12: 0
-      e13: 328.5282
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.72094953
-      e01: 0
-      e02: 0
-      e03: -317.18423
-      e10: 0
-      e11: 0.72094953
-      e12: 0
-      e13: 148.60027
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.77775544
-      e01: 0
-      e02: 0
-      e03: -102.157295
-      e10: 0
-      e11: 0.77775544
-      e12: 0
-      e13: 222.71599
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.85
-      e01: 0
-      e02: 0
-      e03: -26.825
-      e10: 0
-      e11: 0.85
-      e12: 0
-      e13: 99.574974
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.7177369
-      e01: 0
-      e02: 0
-      e03: -243.7721
-      e10: 0
-      e11: 0.7177369
-      e12: 0
-      e13: 277.3645
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.6528973
-      e01: 0
-      e02: 0
-      e03: -269.41968
-      e10: 0
-      e11: 0.6528973
-      e12: 0
-      e13: 261.9273
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.68199235
-      e01: 0
-      e02: 0
-      e03: -233.89655
-      e10: 0
-      e11: 0.68199235
-      e12: 0
-      e13: 219.8377
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    - e00: 0.44825786
-      e01: 0
-      e02: 0
-      e03: -174.82054
-      e10: 0
-      e11: 0.44825786
-      e12: 0
-      e13: 314.61044
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-  m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-  m_BreadCrumbs:
-  - m_Target: {fileID: -4643817669293840070, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    m_ScrollPosition: {x: 0, y: 0}
-  - m_Target: {fileID: -6901869247683852617, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    m_ScrollPosition: {x: 0, y: 0}
-  - m_Target: {fileID: -5242909072103827904, guid: 506fb0a085405af49b0ec9a1d10496a0, type: 2}
-    m_ScrollPosition: {x: 0, y: 0}
-  stateMachineGraph: {fileID: 0}
-  stateMachineGraphGUI: {fileID: 0}
-  blendTreeGraph: {fileID: 0}
-  blendTreeGraphGUI: {fileID: 0}
-  m_AutoLiveLink: 1
-  m_MiniTool: 0
-  m_LockTracker:
-    m_IsLocked: 0
-  m_CurrentEditor: 1
-  m_LayerEditor:
-<<<<<<< HEAD
-    m_SelectedLayerIndex: 0
---- !u!114 &20
->>>>>>> NicoleNew
-=======
-    m_SelectedLayerIndex: 1
---- !u!114 &19
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2243,15 +1250,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
-    y: 790
+    y: 735
     width: 1404
     height: 204
-=======
-    y: 756
-    width: 1109
-    height: 248
->>>>>>> NicoleNew
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -2274,15 +1275,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    - Assets/Roberto/Roberto Scripts
-=======
-    - Assets/Art/Animation/Creature/CreatureV03
->>>>>>> NicoleNew
-=======
-    - Assets/Art/Prefabs/Trees/Uptodate_Trees
->>>>>>> origin/ValentijnFix
+    - Assets/Art
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -2292,40 +1285,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - Assets/Roberto/Roberto Scripts
-=======
-  - Assets/Art/Prefabs/Trees/Uptodate_Trees
->>>>>>> origin/ValentijnFix
+  - Assets/Art
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Gebruiker\Documents\Free III\LuminousRealmGames\LuminousRealmGames
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-<<<<<<< HEAD
-    scrollPos: {x: 0, y: 344}
-    m_SelectedIDs: fe360100
-    m_LastClickedID: 79614
-    m_ExpandedIDs: 00000000bce10000bee10000c0e10000fee4000022e5000024e5000026e50000
-=======
-  - Assets/Art/Animation/Creature/CreatureV03
-  m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Git Projects\LuminousRealmGames\LuminousRealmGames
-  m_LockTracker:
-    m_IsLocked: 0
-  m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 10dd0000
-    m_LastClickedID: 56592
-    m_ExpandedIDs: 00000000e6d90000e8d90000ead90000ecd90000eed90000f0d90000f2d90000f4d90000f6d90000f8d90000fad90000fcd90000fed9000000da000002da000004da000006da0000ffffff7f
->>>>>>> NicoleNew
-=======
-    scrollPos: {x: 0, y: 727}
-    m_SelectedIDs: 8edb0200
-    m_LastClickedID: 187278
-    m_ExpandedIDs: 000000009ee80000a0e80000a2e80000a4e80000a6e80000a8e80000aae80000ace80000aee80000b0e80000b2e80000b4e80000b6e80000b8e80000bae80000bce80000bee80000c0e80000c2e80000c4e80000c6e8000098ea000000ca9a3bffffff7f
->>>>>>> origin/ValentijnFix
+    scrollPos: {x: 0, y: 211}
+    m_SelectedIDs: f2e60000
+    m_LastClickedID: 59122
+    m_ExpandedIDs: 0000000070f9000072f9000074f90000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2342,11 +1311,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-<<<<<<< HEAD
       m_ClientGUIView: {fileID: 11}
-=======
-      m_ClientGUIView: {fileID: 12}
->>>>>>> origin/ValentijnFix
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -2358,15 +1323,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
-    m_ExpandedIDs: 00000000bce10000bee10000c0e10000
-=======
-    m_ExpandedIDs: 00000000e6d90000e8d90000ead90000ecd90000eed90000f0d90000f2d90000f4d90000f6d90000f8d90000fad90000fcd90000fed9000000da000002da000004da000006da0000
->>>>>>> NicoleNew
-=======
-    m_ExpandedIDs: 000000009ee80000a0e80000a2e80000a4e80000a6e80000a8e80000aae80000ace80000aee80000b0e80000b2e80000b4e80000b6e80000b8e80000bae80000bce80000bee80000c0e80000c2e80000c4e80000c6e8000000ca9a3bffffff7f
->>>>>>> origin/ValentijnFix
+    m_ExpandedIDs: 0000000070f9000072f9000074f90000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2395,11 +1352,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-<<<<<<< HEAD
     m_ExpandedInstanceIDs: c623000044d50000
-=======
-    m_ExpandedInstanceIDs: c6230000000000009ec10000dec4000080be000000c700007ae9000002f10000b6d50000bad50000
->>>>>>> NicoleNew
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2416,11 +1369,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-<<<<<<< HEAD
       m_ClientGUIView: {fileID: 11}
-=======
-      m_ClientGUIView: {fileID: 12}
->>>>>>> origin/ValentijnFix
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -2428,22 +1377,11 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 82.5}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
-<<<<<<< HEAD
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 199
 --- !u!114 &18
-=======
-  m_SkipHiddenPackages: 1
-<<<<<<< HEAD
-  m_DirectoriesAreaWidth: 148
---- !u!114 &21
->>>>>>> NicoleNew
-=======
-  m_DirectoriesAreaWidth: 228
---- !u!114 &20
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2464,17 +1402,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 0
     y: 790
     width: 1609
     height: 204
-=======
-    x: 1110
-    y: 756
-    width: 242
-    height: 248
->>>>>>> NicoleNew
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -2486,15 +1417,7 @@ MonoBehaviour:
     m_SaveData: []
     m_ContainerData: []
     m_OverlaysVisible: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
 --- !u!114 &19
-=======
---- !u!114 &22
->>>>>>> NicoleNew
-=======
---- !u!114 &21
->>>>>>> origin/ValentijnFix
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2515,17 +1438,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
-    x: 1405
-    y: 79
+    x: 1406
+    y: 24
     width: 514
     height: 915
-=======
-    x: 1354
-    y: 79
-    width: 565
-    height: 925
->>>>>>> NicoleNew
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -2540,56 +1456,13 @@ MonoBehaviour:
   m_ObjectsLockedBeforeSerialization: []
   m_InstanceIDsLockedBeforeSerialization: 
   m_PreviewResizer:
-<<<<<<< HEAD
     m_CachedPref: 160
-=======
-    m_CachedPref: 353
->>>>>>> NicoleNew
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 1026
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
-<<<<<<< HEAD
-=======
---- !u!114 &22
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 12079, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 390, y: 390}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: Lighting
-    m_Image: {fileID: -1347227620855488341, guid: 0000000000000000d000000000000000, type: 0}
-    m_Tooltip: 
-    m_TextWithWhitespace: "Lighting\u200B"
-  m_Pos:
-    serializedVersion: 2
-    x: 1896
-    y: 79
-    width: 663
-    height: 1267
-  m_SerializedDataModeController:
-    m_DataMode: 0
-    m_PreferredDataMode: 0
-    m_SupportedDataModes: 
-    isAutomatic: 1
-  m_ViewDataDictionary: {fileID: 0}
-  m_OverlayCanvas:
-    m_LastAppliedPresetName: Default
-    m_SaveData: []
-    m_ContainerData: []
-    m_OverlaysVisible: 1
->>>>>>> origin/ValentijnFix
