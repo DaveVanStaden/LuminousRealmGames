@@ -2,7 +2,8 @@ using UnityEngine;
 using TMPro;
 using Unity.Cinemachine; // Import TextMeshPro namespace
 using UnityEngine.UI;
-using static Unity.Cinemachine.CinemachineCamera; // Import UI namespace for the screen effect
+using static Unity.Cinemachine.CinemachineCamera;
+using MalbersAnimations; // Import UI namespace for the screen effect
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -43,9 +44,11 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private Transform lastCheckpoint;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private MalbersInput malbersInput;
     private void Awake()
     {
         audioManager = GetComponent<PlayerAudioManager>();
+        malbersInput = FindAnyObjectByType<MalbersInput>().GetComponent<MalbersInput>();
     }
     void Start()
     {
@@ -107,6 +110,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void HealPlayer()
     {
+        if (malbersInput.ActiveMap.name != "PowerUp")
+        {
+            malbersInput.SetMap("PowerUp");
+        }
         health = maxHealth;  
         healTimer = 0f;  
         currentState = PlayerState.Healed;  
@@ -118,6 +125,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void SwitchToInjured()
     {
+        if(malbersInput.ActiveMap.name != "Death")
+        {
+            malbersInput.SetMap("Death");
+        }
         currentState = PlayerState.Injured;
         audioManager.aura.loop = false;
         audioManager.PowerupEnd();

@@ -66,6 +66,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: ac843ba8bd23671419efde8a06e09a3e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 2800000, guid: ac843ba8bd23671419efde8a06e09a3e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask:
         m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -75,6 +79,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
+        m_Texture: {fileID: 2800000, guid: fa8fd8f7343422747bcd0526aa427cb1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal1:
         m_Texture: {fileID: 2800000, guid: fa8fd8f7343422747bcd0526aa427cb1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -162,6 +170,7 @@ Material:
     - _Keyword0: 0
     - _Metallic: 0
     - _NormalScale: 0
+    - _NormalScale1: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -178,7 +187,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _ash_feature: 1
-    - _ash_level: 1.5
+    - _ash_level: 0.4
     - _ash_texture: 0
     - _blend_strenght: 0
     - _burn: 0
@@ -190,10 +199,11 @@ Material:
     - _scroll_speed: 0.06947487
     - _texture_blending: 1
     - _tiling_blend: 0
-    - _world_level: 0.95
+    - _world_level: 2.51
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}

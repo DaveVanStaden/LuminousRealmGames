@@ -21,14 +21,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Deformed_Tree_Var_2
-  m_Shader: {fileID: 4800000, guid: 27f206f49913dd144bb162806f43acf4, type: 3}
+  m_Shader: {fileID: 4800000, guid: f26be5f01b21db94086ad9746ad45469, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
   - _RECEIVESHADOWS_OFF
-  - _TEXTURE_BLENDING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -195,6 +194,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.5566038, g: 0.51197046, b: 0.51197046, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}

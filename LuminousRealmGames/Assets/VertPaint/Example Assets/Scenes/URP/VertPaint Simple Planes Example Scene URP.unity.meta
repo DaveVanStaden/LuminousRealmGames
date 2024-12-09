@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 336861a2b2702e1449e1279a69b43a40
+timeCreated: 1504873828
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Scenes/URP/VertPaint Simple Planes Example
+    Scene URP.unity
+  uploadId: 555915

@@ -93,6 +93,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 5c24de6cb1aa5c149bf9e5ae8632e510, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _gradient:
+        m_Texture: {fileID: 2800000, guid: 04cd6f32080c28840b25838522d25463, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _normals:
         m_Texture: {fileID: 2800000, guid: 8a76224996c6b9a469452eb7d1bc6c33, type: 3}
         m_Scale: {x: 0.83, y: 1}
@@ -149,15 +153,17 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _depth: 1
+    - _emission_strenght: 1
     - _fresnel_size: 0.2
     - _fresnel_strenght: 1.92
     - _metallic: 0
     - _offset: 0.06
+    - _parallax_strenght: 0
     - _smoothness: 2.47
     - _strenght: 1.17
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.18039216, g: 0.69130737, b: 0.99215686, a: 1}
+    - _Color: {r: 0.10849059, g: 0.6700715, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _tiling: {r: 0, g: 0, b: 0, a: 0}

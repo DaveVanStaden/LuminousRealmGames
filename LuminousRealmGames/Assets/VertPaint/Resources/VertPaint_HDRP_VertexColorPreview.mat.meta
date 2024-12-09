@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 30741b9a6b8daee4aba5723135419c03
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Resources/VertPaint_HDRP_VertexColorPreview.mat
+  uploadId: 555915
