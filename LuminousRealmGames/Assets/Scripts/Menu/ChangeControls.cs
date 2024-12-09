@@ -8,37 +8,33 @@ using UnityEngine.InputSystem;
 
 public class ChangeControls : MonoBehaviour
 {
-    public KeyCode speedUpKey = KeyCode.Alpha1;
-    public KeyCode speedDownKey = KeyCode.Alpha2;
-    [SerializeField] private List<TextMeshProUGUI> buttons;
-    [SerializeField] private MalbersInput malbersInput;
-    private void Update()
+    [SerializeField] private InputActionReference jumpAction = null;
+    [SerializeField] private TMP_Text bindingDisplayNameText = null;
+    [SerializeField] private PlayerManager playerManager = null;
+    [SerializeField] private GameObject startRebindObject = null;
+    [SerializeField] private GameObject waitingForInputObject = null;
+
+    private InputActionRebindingExtensions.RebindingOperation rebindingOperation;
+
+    public void StartRebinding()
     {
-        for (int i = 0; i < buttons.Count; i++)
-        {
-            if (buttons[i].text == "Awaiting Input")
-            {
-                foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-                {
-                    if (Input.GetKey(kcode))
-                    {
-                        buttons[i].text = kcode.ToString();
-                        string name = buttons[i].name;
-                        //malbersInput.inputs[i].key = kcode;
-                        
-                    }
-                }
-            }
-        }
+        startRebindObject.SetActive(false);
+        waitingForInputObject.SetActive(true);
+        //playerManager.PlayerInput.PlayerMovement.Disable();
+
+        rebindingOperation = jumpAction.action.PerformInteractiveRebinding()
+            .WithControlsExcluding("Mouse")
+            .OnMatchWaitForAnother(0.1f)
+            .OnComplete(operation => RebindComplete())
+            .Start();
     }
 
-    public void ChangeSpeedUpKey()
+    private void RebindComplete()
     {
-        buttons[0].text = "Awaiting Input";
-        malbersInput.SetMap("Default");
-    }
-    public void ChangeSpeedDownKey()
-    {
-        buttons[1].text = "Awaiting Input";
+        rebindingOperation.Dispose();
+        playerManager.PlayerInput.PlayerMenu.Enable();
+        playerManager.PlayerInput.PlayerMovement.Disable();
+        startRebindObject.SetActive(true);
+        waitingForInputObject.SetActive(false);
     }
 }
