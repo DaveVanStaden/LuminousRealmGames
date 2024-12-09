@@ -9976,6 +9976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   animator: {fileID: 4542585083436422303}
+  pauseInput: 0
   isInteracting: 0
 --- !u!136 &3414264527825957469
 CapsuleCollider:
