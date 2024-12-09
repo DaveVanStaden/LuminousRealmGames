@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Roberto/Roberto Materials/Destroyed Crystal.mat.meta
+guid: 3565c611f16629c478fda6e6727d0c48
+NativeFormatImporter:
+========
 guid: 3b38a6ba32b869f48812e595baf39746
 DefaultImporter:
+>>>>>>>> NicoleNew:LuminousRealmGames/Assets/TextMesh Pro/Examples & Extras/Scenes/27 - Double Pass Shader Example.unity.meta
   externalObjects: {}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

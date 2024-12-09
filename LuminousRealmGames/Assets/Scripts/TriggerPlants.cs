@@ -12,7 +12,8 @@ public class TriggerPlants : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             {
-                MyAnimationController.SetBool("start_plants", true);
+                MyAnimationController.SetBool("start_plants_01", true);
+                MyAnimationController.SetBool("plants_grow_01", true);
             }
         }
     }
