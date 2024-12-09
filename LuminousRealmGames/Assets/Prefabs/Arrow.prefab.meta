@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Art/Prefabs/Trees/Uptodate_Trees.meta
+guid: 2e0f720919ea15245bbd43e6eb28672e
+folderAsset: yes
+DefaultImporter:
+========
 guid: 058701ef6348240458792cd472f41c87
 PrefabImporter:
+>>>>>>>> origin/fix-maybe:LuminousRealmGames/Assets/Prefabs/Arrow.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

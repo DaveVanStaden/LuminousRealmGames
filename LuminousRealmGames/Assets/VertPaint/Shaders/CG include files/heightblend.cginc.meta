@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0ebe98dd6180f97479cd956993e5d91a
+timeCreated: 1502110061
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Shaders/CG include files/heightblend.cginc
+  uploadId: 555915

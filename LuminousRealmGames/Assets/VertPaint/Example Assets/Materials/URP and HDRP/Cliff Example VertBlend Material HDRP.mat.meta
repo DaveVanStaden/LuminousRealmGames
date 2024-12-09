@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7ef4152d01e006a4d9b4849230063328
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Materials/URP and HDRP/Cliff Example
+    VertBlend Material HDRP.mat
+  uploadId: 555915
