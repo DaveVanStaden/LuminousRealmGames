@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenuUI;
     public bool isPaused = false;
     [SerializeField] private GameObject pauseMenuFirst;
+    [SerializeField] private GameObject settingsMenuFirst;
     public void PauseGame()
     {
         EventSystem.current.SetSelectedGameObject(pauseMenuFirst);
@@ -36,6 +37,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void OpenSettings()
     {
-
+        EventSystem.current.SetSelectedGameObject(settingsMenuFirst);
     }
 }

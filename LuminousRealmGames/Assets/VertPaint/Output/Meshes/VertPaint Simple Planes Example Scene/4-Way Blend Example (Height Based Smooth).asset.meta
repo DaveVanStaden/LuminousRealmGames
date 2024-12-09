@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 3880122551dc0b84ea89217e9ac4626f
+timeCreated: 1504878446
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Output/Meshes/VertPaint Simple Planes Example Scene/4-Way
+    Blend Example (Height Based Smooth).asset
+  uploadId: 555915

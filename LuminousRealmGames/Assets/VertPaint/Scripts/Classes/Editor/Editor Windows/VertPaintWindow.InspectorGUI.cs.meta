@@ -1,0 +1,10 @@
+﻿fileFormatVersion: 2
+guid: f9f44d8bdfcc46e4b45771d1218907e6
+timeCreated: 1618318089
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Scripts/Classes/Editor/Editor Windows/VertPaintWindow.InspectorGUI.cs
+  uploadId: 555915
