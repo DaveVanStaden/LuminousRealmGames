@@ -21,7 +21,7 @@ public class AnimatorManager : MonoBehaviour
         animator.CrossFade(targetAnimation,0.2f);
     }
 
-    public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting)
+    public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting, PlayerHealth.PlayerState isInjured)
     {
         float snappedHorizontal;
         float snappedVertical;
@@ -70,7 +70,16 @@ public class AnimatorManager : MonoBehaviour
             snappedVertical = 2;
             snappedHorizontal = horizontalMovement;
         }
-        
+        if(isInjured == PlayerHealth.PlayerState.Injured && snappedVertical >= 0.5f)
+        {
+            snappedVertical = 0.5f;
+            snappedHorizontal = horizontalMovement;
+        } else if (isInjured == PlayerHealth.PlayerState.Injured && snappedVertical == 0)
+        {
+            snappedVertical = 0;
+            snappedHorizontal = horizontalMovement;
+        }
+
         animator.SetFloat(horizontal,snappedHorizontal,0.1f,Time.deltaTime);
         animator.SetFloat(vertical,snappedVertical,0.1f,Time.deltaTime);
     }
