@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LuminousRealmGames/Assets/TextMesh Pro/Examples & Extras/Scenes/28 - HDRP Shader Example.unity.meta
 guid: eea2b7206368b444e84fbec4ec32b64a
+========
+guid: 4f812a56d08a52244b5080d3a59073fe
+folderAsset: yes
+>>>>>>>> origin/ValentijnFix:LuminousRealmGames/Assets/Art/Models/FBX/Terrain.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
