@@ -1489,6 +1489,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1803912161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 767250169859735441, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+  m_PrefabInstance: {fileID: 3942875380454818285}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee1fbf4dd84c7d4faf7900812b348a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1907022351 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8952129312810365224, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
@@ -1674,11 +1685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1161953536403780918, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: health
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1161953536403780918, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: maxHealth
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1161953536403780918, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: timerText
@@ -1694,7 +1705,7 @@ PrefabInstance:
       objectReference: {fileID: 151355922}
     - target: {fileID: 1161953536403780918, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: healCooldown
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1161953536403780918, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: screenEffectImage
@@ -1875,6 +1886,50 @@ PrefabInstance:
     - target: {fileID: 7517365349393712378, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].interaction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1803912161}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: State_Activate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MalbersAnimations.Controller.MAnimal, MalbersAnimations
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ae07cd2f8f4c054687fecf634f8e5b3, type: 2}
+    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
+      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: MalbersAnimations.StateID, MalbersAnimations
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
