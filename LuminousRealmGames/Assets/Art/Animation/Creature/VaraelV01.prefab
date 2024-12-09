@@ -14852,7 +14852,6 @@ GameObject:
   - component: {fileID: 767250169859735441}
   - component: {fileID: 4232328960375997841}
   - component: {fileID: 8626995436645549736}
-  - component: {fileID: 598536978914890083}
   m_Layer: 20
   m_Name: VaraelV01
   m_TagString: Untagged
@@ -17830,25 +17829,6 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
---- !u!114 &598536978914890083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3882233303548242525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23682c8349926044aab82510a61135ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actionsToRebind:
-  - actionReference: {fileID: 2610944140782005787, guid: d65337a759dd2234caf37eb0e7c27d9e, type: 3}
-    displayName: Sprint
-    rebindButton: {fileID: 0}
-    bindingText: {fileID: 0}
-    bindingIndex: 0
-  player: {fileID: 767250169859735441}
 --- !u!1 &3900264221395565837
 GameObject:
   m_ObjectHideFlags: 0

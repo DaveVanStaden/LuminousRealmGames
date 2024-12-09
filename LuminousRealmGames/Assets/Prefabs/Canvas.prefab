@@ -1469,7 +1469,6 @@ GameObject:
   - component: {fileID: 5207287362017910150}
   - component: {fileID: 6032370551622893029}
   - component: {fileID: 2570450245866484351}
-  - component: {fileID: 670938506782486404}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -1537,24 +1536,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &670938506782486404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2555822706062123790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75292c953a93c074aa23c84cc74638e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedUpKey: 49
-  speedDownKey: 50
-  buttons:
-  - {fileID: 3509493355538826846}
-  - {fileID: 3732564917119567973}
-  malbersInput: {fileID: 0}
 --- !u!1 &2634263205649664452
 GameObject:
   m_ObjectHideFlags: 0
@@ -2769,7 +2750,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 670938506782486404}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeControls, Assembly-CSharp
         m_MethodName: ChangeSpeedDownKey
         m_Mode: 1
@@ -4583,7 +4564,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 670938506782486404}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ChangeControls, Assembly-CSharp
         m_MethodName: ChangeSpeedUpKey
         m_Mode: 1
