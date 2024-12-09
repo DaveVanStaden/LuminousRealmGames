@@ -45,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Transform lastCheckpoint;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private MalbersInput malbersInput;
+    [SerializeField] private GameObject PlayerObject;
     private void Awake()
     {
         audioManager = GetComponent<PlayerAudioManager>();
@@ -67,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
     public void HandleDeath()
     {
         //Play death sound and animation
-        transform.position = lastCheckpoint.position;
+        PlayerObject.transform.position = lastCheckpoint.position;
         HealPlayer();
     }
     public void HandleHealedState()
