@@ -9,8 +9,6 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_VFX_Ashes_01
   m_Shader: {fileID: 4800000, guid: b8a99704b1204314e816971e63a2a521, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 0
@@ -22,7 +20,6 @@ Material:
   disabledShaderPasses:
   - DistortionVectors
   - TransparentBackface
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -51,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise_01_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 18fec5444868e3a4ea8d35621cf36657, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Noise_02_Texture:
@@ -93,7 +90,7 @@ Material:
     - _CullModeForward: 2
     - _DepthFade: 1
     - _Dissolve: 0
-    - _Distortion: 0
+    - _Distortion: 1.5
     - _DistortionEnable: 0
     - _DistortionIntensity: 0
     - _DistortionMask: 0
@@ -103,7 +100,7 @@ Material:
     - _DoubleSidedNormalMode: 2
     - _Dst1: 10
     - _DstBlend: 1
-    - _EmissionIntensity: 80
+    - _EmissionIntensity: 42
     - _Emissive: 40
     - _Emissive_Amount: 10
     - _EnableFogOnTransparent: 1
@@ -113,7 +110,7 @@ Material:
     - _MaskMovePower: 1
     - _MaskMove_Multiply: 1
     - _MaskMove_Power: 1
-    - _MaskMultiply: 1.91
+    - _MaskMultiply: 1
     - _MaskPower: 1
     - _MaskSpeed: 0
     - _Mask_Multiply: 1
@@ -123,7 +120,7 @@ Material:
     - _NoisesPower: 1
     - _Noises_Multiply: 1
     - _Noises_Power: 1
-    - _OpacityBoost: 0.47
+    - _OpacityBoost: 1
     - _Opacity_Boost: 1
     - _Opacity_DepthDistance: 1
     - _Opacity_DepthFade: 1
@@ -131,7 +128,6 @@ Material:
     - _Power: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
     - _ReceivesSSR: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
@@ -159,7 +155,7 @@ Material:
     - _TransparentSortPriority: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
-    - _WindSpeed: 0
+    - _WindSpeed: 1
     - _ZTest1: 2
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4
@@ -168,21 +164,21 @@ Material:
     - _ZWrite1: 0
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _MaskMoveScale: {r: 1, g: 1, b: 0, a: 0}
     - _MaskMove_Scale: {r: 1, g: 1, b: 0, a: 0}
     - _MaskOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _MaskScale: {r: 1.6, g: 1.6, b: 0, a: 0}
+    - _MaskScale: {r: 1, g: 1, b: 0, a: 0}
     - _Mask_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Mask_Scale: {r: 1, g: 1, b: 0, a: 0}
-    - _Noise01Scale: {r: 0.1, g: 1, b: 0, a: 0}
+    - _Noise01Scale: {r: 3, g: 3, b: 0, a: 0}
     - _Noise01Speed: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _Noise02Scale: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - _Noise02Scale: {r: 1, g: 1, b: 0, a: 0}
     - _Noise02Speed: {r: 0, g: 0, b: 0, a: 0}
     - _NoiseDistortionScale: {r: 1, g: 1, b: 0, a: 0}
-    - _NoiseDistortionSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _NoiseDistortionSpeed: {r: 0.2, g: 0.25, b: 0, a: 0}
     - _NoiseDistortion_Scale: {r: 2, g: 2, b: 0, a: 0}
     - _NoiseDistortion_Speed: {r: 0, g: 0, b: 0, a: 0}
     - _Noise_01_Scale: {r: 3, g: 3, b: 0, a: 0}
@@ -190,4 +186,3 @@ Material:
     - _Noise_02_Scale: {r: 1, g: 1, b: 0, a: 0}
     - _Noise_02_Speed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1

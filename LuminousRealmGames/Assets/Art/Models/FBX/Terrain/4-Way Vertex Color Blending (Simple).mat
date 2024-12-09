@@ -76,19 +76,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo1:
-        m_Texture: {fileID: 2800000, guid: 7417ecc1017574f4588b0c85480c83a2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 068a02c1bb7d96745b6d9927c3e338e6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo2:
-        m_Texture: {fileID: 2800000, guid: 3c61584751f1d354baaacaa710cfb3cd, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo3:
-        m_Texture: {fileID: 2800000, guid: 267c961a6ffb84055afa432e6dda1f87, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo4:
-        m_Texture: {fileID: 2800000, guid: d0ada73c65a8c2c44af3692fba9a1e7e, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -136,19 +136,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO1:
-        m_Texture: {fileID: 2800000, guid: 89fabeef397bede47a128615a57345f6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO2:
-        m_Texture: {fileID: 2800000, guid: dfa9a35eabb75724fabf47e6e4a06c1a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO3:
-        m_Texture: {fileID: 2800000, guid: 9871c90bb2ccc47c9ae553bd6f3738a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO4:
-        m_Texture: {fileID: 2800000, guid: 53060b41efcc4934593c04914bd72e4a, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -396,7 +396,7 @@ Material:
     - _Color1: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
-    - _Color4: {r: 1, g: 1, b: 1, a: 1}
+    - _Color4: {r: 0.009433985, g: 0.009433985, b: 0.009433985, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

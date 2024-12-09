@@ -1,20 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <vertPaintTemplate version="1.1.1">
   <enabled>true</enabled>
   <togglePreview>false</togglePreview>
   <hideTransformHandle>true</hideTransformHandle>
   <brushSettings>
-<<<<<<< HEAD
-    <radius>174</radius>
-    <maxRadius>10</maxRadius>
-    <delay>29</delay>
-    <opacity>1</opacity>
-=======
-    <radius>6.55</radius>
+    <radius>3</radius>
     <maxRadius>10</maxRadius>
     <delay>0.001</delay>
-    <opacity>0.366</opacity>
->>>>>>> origin/ValentijnFix
+    <opacity>0.901</opacity>
     <falloff>
       <key>
         <time>0</time>
@@ -30,18 +23,13 @@
       </key>
     </falloff>
     <color>
-      <r>0</r>
-      <g>1</g>
+      <r>1</r>
+      <g>0</g>
       <b>0</b>
       <a>1</a>
     </color>
-<<<<<<< HEAD
-    <style>2</style>
-    <alpha>74</alpha>
-=======
     <style>1</style>
     <alpha>0.2</alpha>
->>>>>>> origin/ValentijnFix
     <blink>true</blink>
   </brushSettings>
   <keyBindings>

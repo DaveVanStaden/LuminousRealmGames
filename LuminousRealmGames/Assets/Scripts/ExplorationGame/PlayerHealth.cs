@@ -45,6 +45,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Transform lastCheckpoint;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private MalbersInput malbersInput;
+    [SerializeField] private GameObject PlayerObject;
     private void Awake()
     {
         audioManager = GetComponent<PlayerAudioManager>();
@@ -67,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
     public void HandleDeath()
     {
         //Play death sound and animation
-        transform.position = lastCheckpoint.position;
+        PlayerObject.transform.position = lastCheckpoint.position;
         HealPlayer();
     }
     public void HandleHealedState()
@@ -179,21 +180,24 @@ public class PlayerHealth : MonoBehaviour
     public void UpdateHealthUI()
     {
         // Display rounded health value
-        healthText.text = Mathf.RoundToInt(health).ToString();
+        if(healthText != null)
+            healthText.text = Mathf.RoundToInt(health).ToString();
     }
 
     public void UpdateScreenEffect()
     {
         // Lerp the color of the screen effect based on the player's health
         float healthPercentage = health / maxHealth;
-        screenEffectImage.color = Color.Lerp(maxColor, initialColor, healthPercentage);
+        if (screenEffectImage != null)
+            screenEffectImage.color = Color.Lerp(maxColor, initialColor, healthPercentage);
     }
 
     private void UpdateTimerUI()
     {
         // Display remaining time until injury
         float timeUntilInjured = healCooldown - healTimer;
-        timerText.text = $"Injured in: {Mathf.Max(0, Mathf.RoundToInt(timeUntilInjured))}"; // Show 0 if negative
+        if (timerText != null)
+            timerText.text = $"Injured in: {Mathf.Max(0, Mathf.RoundToInt(timeUntilInjured))}"; // Show 0 if negative
     }
 
     private void OnTriggerEnter(Collider other)

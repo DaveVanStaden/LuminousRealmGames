@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:LuminousRealmGames/Assets/Scenes/FullGameScenes/MainMenu.unity.meta
-guid: 380019aae41bd154f943c3ef70849809
-========
-guid: 0e6741ad19d22274b80e2bf5b57e7877
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Art/Animation/Floating_Rocks_Animation.meta
+guid: 17d2bced82f686e47aa4fdc2571095dd
 folderAsset: yes
->>>>>>>> origin/ValentijnFix:LuminousRealmGames/Assets/Art/Models/Materials/Sun_textures/Materials.meta
+========
+guid: 380019aae41bd154f943c3ef70849809
+>>>>>>>> fix-maybe:LuminousRealmGames/Assets/Scenes/FullGameScenes/MainMenu.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

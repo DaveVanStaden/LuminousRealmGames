@@ -106,19 +106,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo1:
-        m_Texture: {fileID: 2800000, guid: fa0d3ac8f40e1ba4c85421b077a79a9d, type: 3}
+        m_Texture: {fileID: 2800000, guid: ad9ddf389bf9425438e881243422f4dc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo2:
-        m_Texture: {fileID: 2800000, guid: 3c61584751f1d354baaacaa710cfb3cd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 052ca4268ed7e09409af016d6a88333d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo3:
-        m_Texture: {fileID: 2800000, guid: 267c961a6ffb84055afa432e6dda1f87, type: 3}
+        m_Texture: {fileID: 2800000, guid: ab4b727147b6209438fcc0875b267283, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo4:
-        m_Texture: {fileID: 2800000, guid: d0ada73c65a8c2c44af3692fba9a1e7e, type: 3}
+        m_Texture: {fileID: 2800000, guid: e55068629bc6eae4caff15512f183ef3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
@@ -166,19 +166,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO1:
-        m_Texture: {fileID: 2800000, guid: 89fabeef397bede47a128615a57345f6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO2:
-        m_Texture: {fileID: 2800000, guid: dfa9a35eabb75724fabf47e6e4a06c1a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO3:
-        m_Texture: {fileID: 2800000, guid: 9871c90bb2ccc47c9ae553bd6f3738a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MSHAO4:
-        m_Texture: {fileID: 2800000, guid: 53060b41efcc4934593c04914bd72e4a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 89d7ce4a684cf6a4db5a30d0f7fa2eeb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -194,19 +194,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap1:
-        m_Texture: {fileID: 2800000, guid: 73ba00738d44b4046aa4a9392948c0b7, type: 3}
+        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap2:
-        m_Texture: {fileID: 2800000, guid: 19ce9a458d481f94a8c91c3d4b1d7ec6, type: 3}
+        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap3:
-        m_Texture: {fileID: 2800000, guid: 3ae7309aee6a744cb8b84685cc49dec2, type: 3}
+        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap4:
-        m_Texture: {fileID: 2800000, guid: 3f4c1813e714ea34c84b881628113436, type: 3}
+        m_Texture: {fileID: 2800000, guid: b592f01d541a7554f80d4cac6b9a21a1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
@@ -319,10 +319,10 @@ Material:
     - _EnableGeometricSpecularAA: 0
     - _EnergyConservingSpecularColor: 1
     - _HdrpVersion: 2
-    - _Height1Shift: -0.02
+    - _Height1Shift: -0.07
     - _Height2Shift: 0.16
-    - _Height3Shift: 0.16
-    - _Height4Shift: 1.77
+    - _Height3Shift: 1.34
+    - _Height4Shift: -0.59
     - _HeightAmplitude: 0.02
     - _HeightCenter: 0.5
     - _HeightMapParametrization: 0
@@ -339,10 +339,10 @@ Material:
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
     - _Metallic: 0
-    - _NormalMap1Strength: 1
+    - _NormalMap1Strength: 0
     - _NormalMap2Strength: 1
     - _NormalMap3Strength: 1
-    - _NormalMap4Strength: 1
+    - _NormalMap4Strength: 0.43
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OpaqueCullMode: 2
@@ -351,6 +351,8 @@ Material:
     - _PPDMinSamples: 5
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
+    - _QueueControl: 1
+    - _QueueOffset: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
@@ -359,8 +361,8 @@ Material:
     - _RequireSplitLighting: 0
     - _SSRefractionProjectionModel: 0
     - _Smoothness: 0.5
-    - _Smoothness1: 0.5
-    - _Smoothness2: 0.5
+    - _Smoothness1: 0
+    - _Smoothness2: 0.599
     - _Smoothness3: 0.5
     - _Smoothness4: 0.5
     - _SmoothnessRemapMax: 1
@@ -385,7 +387,7 @@ Material:
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
-    - _TransitionSmoothness: 0.055
+    - _TransitionSmoothness: 0.334
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -420,9 +422,9 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 1, g: 1, b: 1, a: 0}
-    - _Color2: {r: 1, g: 1, b: 1, a: 0}
-    - _Color3: {r: 1, g: 1, b: 1, a: 0}
+    - _Color1: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
+    - _Color2: {r: 0.5566037, g: 0.5566037, b: 0.5566037, a: 1}
+    - _Color3: {r: 1, g: 1, b: 1, a: 1}
     - _Color4: {r: 1, g: 1, b: 1, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
@@ -437,10 +439,10 @@ Material:
     - _Offset4: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _Tiling1: {r: 1, g: 1, b: 1, a: 1}
+    - _Tiling1: {r: 50, g: 50, b: 1, a: 1}
     - _Tiling2: {r: 1, g: 1, b: 1, a: 1}
     - _Tiling3: {r: 1, g: 1, b: 1, a: 1}
-    - _Tiling4: {r: 1, g: 1, b: 1, a: 1}
+    - _Tiling4: {r: 40, g: 40, b: 1, a: 1}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}

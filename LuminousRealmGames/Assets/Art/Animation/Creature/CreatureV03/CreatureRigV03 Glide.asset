@@ -93,7 +93,7 @@ MonoBehaviour:
   MovementStrafe: 1
   IdleStrafe: 1
   m_debug: 1
-  Editor_Tabs1: 0
+  Editor_Tabs1: 4
   SpeedSets:
   - name: Gliding
     StartVerticalIndex:
@@ -218,7 +218,7 @@ MonoBehaviour:
     m_Bits: 321
   CheckLandDistance:
     UseConstant: 1
-    ConstantValue: 3
+    ConstantValue: 5
     Variable: {fileID: 0}
   LandDistance:
     UseConstant: 1
@@ -226,7 +226,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   LowerBlendDistance:
     UseConstant: 1
-    ConstantValue: 0.5
+    ConstantValue: 1
     Variable: {fileID: 0}
   LerpDistance:
     UseConstant: 1

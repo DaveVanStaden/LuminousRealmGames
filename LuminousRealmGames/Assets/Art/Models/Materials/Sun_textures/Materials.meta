@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:LuminousRealmGames/Assets/Scenes/FullGameScenes/MainMenu.unity.meta
-guid: 80f1b62b1f32b254ab9845f638c77758
-========
+<<<<<<<< HEAD:LuminousRealmGames/Assets/Art/Models/Materials/Sun_textures/Materials.meta
 guid: 0e6741ad19d22274b80e2bf5b57e7877
 folderAsset: yes
->>>>>>>> origin/ValentijnFix:LuminousRealmGames/Assets/Art/Models/Materials/Sun_textures/Materials.meta
+========
+guid: 0851605490a599b46b6ac5cb681d93ea
+>>>>>>>> fix-maybe:LuminousRealmGames/Assets/TextMesh Pro/Examples & Extras/Scenes/26 - Dropdown Placeholder Example.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -17,7 +17,7 @@ MonoBehaviour:
   Input: Jump
   ExitInput:
     UseConstant: 1
-    ConstantValue: 
+    ConstantValue: Jump
     Variable: {fileID: 0}
   m_StateProfile:
     UseConstant: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
   jumpProfiles:
   - name: Jump in Place
     VerticalSpeed: 0
-    JumpLandDistance: 2.54
+    JumpLandDistance: 2.9
     fallingTime: 0.4
     ExitTime: 0.6
     CliffTime:
