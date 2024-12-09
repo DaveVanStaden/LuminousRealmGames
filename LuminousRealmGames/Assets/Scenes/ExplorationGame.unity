@@ -317,10 +317,6 @@ PrefabInstance:
       propertyPath: screenEffectImage
       value: 
       objectReference: {fileID: 1780595100}
-    - target: {fileID: 2250077151179890382, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: showInputEvents
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3882233303548242525, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_Name
       value: VaraelV01
@@ -366,10 +362,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: debug
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -382,19 +374,11 @@ PrefabInstance:
       value: Sprint
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].name
-      value: Sprint
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[0].reference
       value: 
       objectReference: {fileID: -3420281069009276692, guid: d65337a759dd2234caf37eb0e7c27d9e, type: 3}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[1].reference
-      value: 
-      objectReference: {fileID: 2610944140782005787, guid: d65337a759dd2234caf37eb0e7c27d9e, type: 3}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].reference
       value: 
       objectReference: {fileID: 2610944140782005787, guid: d65337a759dd2234caf37eb0e7c27d9e, type: 3}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
@@ -422,10 +406,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[0].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 2
       objectReference: {fileID: 0}
@@ -438,23 +418,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1051693649}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1051693649}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[0].OnInputDown.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SpeedDown
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[0].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[1].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
@@ -466,19 +434,11 @@ PrefabInstance:
       value: set_Sprint
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_Sprint
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[0].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MalbersAnimations.Controller.MAnimal, MalbersAnimations
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
       propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[1].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MalbersAnimations.Controller.MAnimal, MalbersAnimations
-      objectReference: {fileID: 0}
-    - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
-      propertyPath: m_MapButtons.Array.data[0].buttons.Array.data[2].OnInputChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: MalbersAnimations.Controller.MAnimal, MalbersAnimations
       objectReference: {fileID: 0}
     - target: {fileID: 8626995436645549736, guid: e095fdf655afbad4884f704e8b8e691b, type: 3}
