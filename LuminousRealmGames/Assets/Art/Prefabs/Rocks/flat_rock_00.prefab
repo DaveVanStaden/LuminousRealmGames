@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b3cd187eeb8fb3a4095003db2d474e38, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 58b84cb7476a92644a23c62ef83c9f5b, type: 2}
+      objectReference: {fileID: 2100000, guid: 8fc0d29181277a3439cddb57936f6627, type: 2}
     - target: {fileID: 919132149155446097, guid: b3cd187eeb8fb3a4095003db2d474e38, type: 3}
       propertyPath: m_Name
       value: flat_rock_00

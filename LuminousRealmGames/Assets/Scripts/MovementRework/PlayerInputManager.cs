@@ -6,6 +6,8 @@ public class PlayerInputManager : MonoBehaviour
     private PlayerInput playerInput;
     private AnimatorManager animatorManager;
     private PlayerLocomotion playerLocomotion;
+    private PlayerHealth playerHealth;
+    private PauseMenu pauseMenu;
 
     public float cameraInputX;
     public float cameraInputY;
@@ -21,6 +23,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool jumpInput;
     public bool glideInput;
     public bool crouchInput;
+    public bool pauseInput;
 
     [Header("Jump Settings")]
     public bool jumpInputHeld; // True while jump button is held
@@ -30,6 +33,8 @@ public class PlayerInputManager : MonoBehaviour
     {
         animatorManager = GetComponent<AnimatorManager>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
+        playerHealth = GetComponent<PlayerHealth>();
+        pauseMenu = FindFirstObjectByType<PauseMenu>().GetComponent<PauseMenu>();
     }
 
     private void OnEnable()
@@ -41,13 +46,14 @@ public class PlayerInputManager : MonoBehaviour
             playerInput.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerInput.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
 
-            playerInput.PlayerActions.B.performed += i => b_Input = true;
-            playerInput.PlayerActions.B.canceled += i => b_Input = false;
-            playerInput.PlayerActions.Jump.performed += i => glideInput = true;
-            playerInput.PlayerActions.Jump.canceled += i => glideInput = false;
-            playerInput.PlayerActions.Jump.performed += i => jumpInput = true;
-            playerInput.PlayerActions.Crouch.performed += i => crouchInput = true;
-            playerInput.PlayerActions.Crouch.canceled += i => crouchInput = false;
+            playerInput.PlayerMovement.B.performed += i => b_Input = true;
+            playerInput.PlayerMovement.B.canceled += i => b_Input = false;
+            playerInput.PlayerMovement.Jump.performed += i => glideInput = true;
+            playerInput.PlayerMovement.Jump.canceled += i => glideInput = false;
+            playerInput.PlayerMovement.Jump.performed += i => jumpInput = true;
+            playerInput.PlayerMovement.Crouch.performed += i => crouchInput = true;
+            playerInput.PlayerMovement.Crouch.canceled += i => crouchInput = false;
+            
         }
         playerInput.Enable();
     }
@@ -63,7 +69,10 @@ public class PlayerInputManager : MonoBehaviour
         HandleSprintingInput();
         HandleJumpInput();
         HandleCrouchInput();
+        
     }
+
+
 
     private void HandleMovementInput()
     {
@@ -74,7 +83,7 @@ public class PlayerInputManager : MonoBehaviour
         cameraInputX = cameraInput.x;
         
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
-        animatorManager.UpdateAnimatorValues(0,moveAmount, playerLocomotion.isSprinting);
+        animatorManager.UpdateAnimatorValues(0,moveAmount, playerLocomotion.isSprinting, playerHealth.currentState);
     }
 
     private void HandleSprintingInput()
@@ -93,7 +102,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         if (jumpInput)
         {
-            playerInput.PlayerActions.Jump.canceled += i => jumpInput = false;
+            playerInput.PlayerMovement.Jump.canceled += i => jumpInput = false;
             playerLocomotion.HandleJump(); // Initial jum
         }
 

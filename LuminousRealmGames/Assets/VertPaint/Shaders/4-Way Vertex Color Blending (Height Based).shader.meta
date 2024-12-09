@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 484116f3b6f42774b9e9e71f228df0be
+timeCreated: 1501861825
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Shaders/4-Way Vertex Color Blending (Height Based).shader
+  uploadId: 555915

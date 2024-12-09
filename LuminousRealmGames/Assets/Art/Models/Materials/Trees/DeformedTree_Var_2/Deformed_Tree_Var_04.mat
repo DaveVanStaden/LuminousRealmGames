@@ -28,7 +28,6 @@ Material:
   - _RECEIVE_SHADOWS_OFF
   m_InvalidKeywords:
   - _RECEIVESHADOWS_OFF
-  - _TEXTURE_BLENDING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -67,6 +66,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 127edef9afb9a254098f8ad168f1ee29, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask:
         m_Texture: {fileID: 2800000, guid: f25f9b30f82a4c74aad8b8145f44d2a6, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -77,6 +80,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Normal:
         m_Texture: {fileID: 2800000, guid: c2e9f392114b36640b0503bd512ae8a9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal1:
+        m_Texture: {fileID: 2800000, guid: 04da9e4c56d0ae64cb38046048febb44, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -163,6 +170,7 @@ Material:
     - _Keyword0: 0
     - _Metallic: 0
     - _NormalScale: 0.522
+    - _NormalScale1: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -182,11 +190,11 @@ Material:
     - _ash_level: 5.46
     - _ash_texture: 0
     - _blend_strenght: 0
-    - _burn: 0.092
+    - _burn: 0.153
     - _distortion_amount: 0.16
     - _heat_wave: 0.754
-    - _heatwave_offset: 3.16
-    - _heatwave_scale: 3
+    - _heatwave_offset: 5.09
+    - _heatwave_scale: 1.82
     - _offset_blend: 0
     - _scroll_speed: 0.007
     - _texture_blending: 1
@@ -195,6 +203,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0.23584908, g: 0.23473659, b: 0.23473659, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0.5549643, b: 1, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}

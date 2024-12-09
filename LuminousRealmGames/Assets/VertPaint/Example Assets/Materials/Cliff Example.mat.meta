@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f81a62b426319b84b85e985f27ced578
+timeCreated: 1504874806
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 100282
+  packageName: VertPaint
+  packageVersion: V1.1.2
+  assetPath: Assets/VertPaint/Example Assets/Materials/Cliff Example.mat
+  uploadId: 555915
