@@ -977,7 +977,7 @@
                 {
                     "name": "",
                     "id": "a70ff16f-cd5b-42bf-93ee-3a856365daaf",
-                    "path": "<Keyboard>/q",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard and Mouse",
