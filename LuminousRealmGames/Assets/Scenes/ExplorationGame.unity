@@ -2649,9 +2649,13 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2263783147334665677, guid: 45ee4095ef1c25c4a8e2e2689330c18a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
+    - target: {fileID: 7908088964248095314, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
+      propertyPath: m_Name
+      value: JumpInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543645721484196412, guid: 349b4ad82887a73448e2d61a26627e4b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 211.59308
       objectReference: {fileID: 0}
     - target: {fileID: 2263783147334665677, guid: 45ee4095ef1c25c4a8e2e2689330c18a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
