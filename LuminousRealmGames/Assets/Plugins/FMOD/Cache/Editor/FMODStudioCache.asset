@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../FMOD/luminous_realm/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638670175135903132
+  lastModified: 638690864814210345
   FileSizes:
   - Name: Desktop
     Value: 712
@@ -35,7 +35,7 @@ MonoBehaviour:
   Path: ../FMOD/luminous_realm/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638670175135903132
+  lastModified: 638690864814210345
   FileSizes:
   - Name: Desktop
     Value: 1036
@@ -61,5 +61,5 @@ MonoBehaviour:
   - {fileID: -5381202494444009608}
   StringsBanks:
   - {fileID: -6531206769583030170}
-  cacheTime: 638670175135903132
+  cacheTime: 638690864814210345
   cacheVersion: 131620
