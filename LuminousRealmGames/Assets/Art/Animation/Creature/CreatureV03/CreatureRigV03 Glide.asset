@@ -222,7 +222,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   LandDistance:
     UseConstant: 1
-    ConstantValue: 2
+    ConstantValue: 3
     Variable: {fileID: 0}
   LowerBlendDistance:
     UseConstant: 1
