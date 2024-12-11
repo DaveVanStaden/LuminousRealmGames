@@ -57,6 +57,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: ad9ddf389bf9425438e881243422f4dc, type: 3}
         m_Scale: {x: 80, y: 80}
         m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Mask:
         m_Texture: {fileID: 2800000, guid: b7ec81aab0af4bf47b5e1d30bc7d9994, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -133,11 +137,23 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ash_texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _gradient_ash:
+        m_Texture: {fileID: 2800000, guid: 58e19a3187f1a174f8387bf7315dca73, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _power_up_texture:
         m_Texture: {fileID: 2800000, guid: 696f20fb4e7323a4ba11608e10f2f98c, type: 3}
         m_Scale: {x: 0, y: 0}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord2:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -187,6 +203,7 @@ Material:
     - _Metallic2: 0
     - _Metallic3: 0
     - _NormalScale: 1
+    - _NormalScale1: 0
     - _NumLayersCount: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -207,17 +224,23 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _ash_feature: 0
+    - _ash_level: 0
     - _burn: 0
     - _distortion_amount: 0
     - _heat_wave: 0
+    - _heatwave_offset: 0.5478243
+    - _heatwave_scale: 0.5478243
     - _power_up_strenght: 0.076
     - _power_up_texture_offset: 0
     - _power_up_texture_strenght: 0
     - _scroll_speed: 0
     - _scroll_speed1: 0
+    - _world_level: 0.04
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0, g: 0, b: 0, a: 0}
     - _RimFalloff: {r: 0, g: 0, b: 0, a: 0}
